@@ -3,3 +3,12 @@
 ################################################################################
 
 /.vs/CvSeachTool/DesignTimeBuild
+/.vs/CvSeachTool/FileContentIndex
+/.vs/CvSeachTool/v17
+/.vs/ProjectEvaluation
+/CvSeachTool/bin/Debug/net6.0-windows
+/CvSeachTool/obj
+/MVVMCore/bin
+/MVVMCore/obj/Debug/net5.0-windows
+/MVVMCore/obj/Release/net5.0-windows
+/MVVMCore/obj

@@ -15,11 +15,12 @@ namespace CvSeachTool.Models
         /// </summary>
         /// <param name="url">URL</param>
         /// <returns>Task</returns>
-        public async Task<string> Request(int limit)
+        public async Task<string> Request(int limit, string allowCommercialUse, string sort, string types, string priod)
         {
             using (var client = new HttpClient())
             {
-                var response = await client.GetAsync(CvsModelM.Endpoint + $"?limit={limit}");
+                string url = CvsModelM.Endpoint + $"?limit={limit}&allowCommercialUse={allowCommercialUse}&sort={sort}&types={types}&period={priod}";
+                var response = await client.GetAsync(url);
                 return await response.Content.ReadAsStringAsync();
             }
         }

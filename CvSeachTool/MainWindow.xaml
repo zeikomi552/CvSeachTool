@@ -17,7 +17,22 @@
     </b:Interaction.Triggers>
 
     <Grid>
-        <DataGrid IsReadOnly="True" ItemsSource="{Binding CvsModel.Items}" AutoGenerateColumns="False">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="193*"/>
+            <RowDefinition Height="591*"/>
+        </Grid.RowDefinitions>
+        <GroupBox Header="メニュー">
+            <WrapPanel>
+                <Button Width="100" Height="50" Content="出力">
+                    <b:Interaction.Triggers>
+                        <b:EventTrigger EventName="Click">
+                            <b:CallMethodAction TargetObject="{Binding}" MethodName="Output"/>
+                        </b:EventTrigger>
+                    </b:Interaction.Triggers>
+                </Button>
+            </WrapPanel>
+        </GroupBox>
+        <DataGrid Margin="5,5,5,5" IsReadOnly="True" ItemsSource="{Binding CvsModel.Items}" AutoGenerateColumns="False" Grid.Row="1">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
