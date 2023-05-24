@@ -40,7 +40,11 @@ namespace CvSeachTool.ViewModels
         }
         #endregion
 
-
+        /// <summary>
+        /// 画面初期化処理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public override async void Init(object sender, EventArgs e)
         {
             GetModelReqestM tmp = new GetModelReqestM();
