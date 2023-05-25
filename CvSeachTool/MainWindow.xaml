@@ -181,6 +181,7 @@
                             </b:EventTrigger>
                         </b:Interaction.Triggers>
                     </Button>
+                    <TextBlock VerticalAlignment="Center" Text="{Binding CvsModel.RequestURL}"/>
                 </StackPanel>
                 <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>

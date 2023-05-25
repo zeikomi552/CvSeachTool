@@ -9,11 +9,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data.Common;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Json;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
@@ -215,14 +217,28 @@ namespace CvSeachTool.ViewModels
                 GetModelReqestM tmp = new GetModelReqestM();
                 string request = string.Empty;
 
+                // エンドポイント + パラメータ
+                string url = string.Empty;
+                if (add_endpoint)
+                {
+                    // エンドポイント + パラメータ
+                    url = CvsModelM.Endpoint + query;
+                }
+                else
+                {
+                    // エンドポイント + パラメータ
+                    url = query;
+                }
+
                 // 実行してJSON形式をデシリアライズ
-                var request_model = JsonExtensions.DeserializeFromFile<CvsModelM>(request = await tmp.Request(query, add_endpoint));
+                var request_model = JsonExtensions.DeserializeFromFile<CvsModelM>(request = await tmp.Request(url));
 
                 // Nullチェック
                 if (request_model != null)
                 {
                     this.CvsModel = new CvsModelExM(request_model); // ModelListへ変換
                     this.CvsModel!.Rowdata = request;               // 生データの保持
+                    this.CvsModel!.RequestURL = url;               // 生データの保持
                 }
             }
             catch (Exception e)

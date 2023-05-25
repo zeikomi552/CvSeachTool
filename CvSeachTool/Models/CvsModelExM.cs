@@ -98,5 +98,32 @@ namespace CvSeachTool.Models
             }
         }
         #endregion
+
+        #region request url[RequestURL]プロパティ
+        /// <summary>
+        /// request url[RequestURL]プロパティ用変数
+        /// </summary>
+        string _RequestURL = string.Empty;
+        /// <summary>
+        /// request url[RequestURL]プロパティ
+        /// </summary>
+        public string RequestURL
+        {
+            get
+            {
+                return _RequestURL;
+            }
+            set
+            {
+                if (_RequestURL == null || !_RequestURL.Equals(value))
+                {
+                    _RequestURL = value;
+                    NotifyPropertyChanged("RequestURL");
+                }
+            }
+        }
+        #endregion
+
+
     }
 }
