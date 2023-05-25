@@ -222,6 +222,33 @@ namespace CvSeachTool.ViewModels
             }
         }
         #endregion
+        #region フレーズのダブルクリック
+        /// <summary>
+        /// フレーズのダブルクリック
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void OpenURLModelVersion(object sender, EventArgs e)
+        {
+            try
+            {
+                // ウィンドウを取得
+                var wnd = VisualTreeHelperWrapper.GetWindow<MainWindow>(sender) as MainWindow;
+
+                // nullチェック
+                if (wnd != null && this.CvsModel != null && this.CvsModel.Items != null && this.CvsModel.Items.SelectedItem != null && this.CvsModel!.Items.SelectedItem.SelectedModelVersion != null)
+                {
+                    var startInfo = new System.Diagnostics.ProcessStartInfo($"https://civitai.com/models/{this.CvsModel!.Items.SelectedItem.Id}" + $"?modelVersionId={this.CvsModel!.Items.SelectedItem.SelectedModelVersion.Id}");
+                    startInfo.UseShellExecute = true;
+                    System.Diagnostics.Process.Start(startInfo);
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowMessage.ShowErrorOK(ex.Message, "Error");
+            }
+        }
+        #endregion
 
         #region 次のページへ移動
         /// <summary>

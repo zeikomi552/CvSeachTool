@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Converters="clr-namespace:CvSeachTool.Common.Converters"
         xmlns:enum="clr-namespace:CvSeachTool.Common.Enums"
         xmlns:local="clr-namespace:CvSeachTool"
         xmlns:b="http://schemas.microsoft.com/xaml/behaviors" xmlns:ViewModels="clr-namespace:CvSeachTool.ViewModels" x:Class="CvSeachTool.MainWindow"
@@ -13,6 +14,7 @@
         <ViewModels:MainWindowVM/>
     </Window.DataContext>
     <Window.Resources>
+        <Converters:URLStringToImageSourceConverter x:Key="URLStringToImageSourceConverter"/>
         <ObjectDataProvider MethodName="GetValues" ObjectType="{x:Type sys:Enum}" x:Key="ModelTypeEnum">
             <ObjectDataProvider.MethodParameters>
                 <x:Type TypeName="enum:ModelTypeEnum" />
@@ -180,29 +182,89 @@
                         </b:Interaction.Triggers>
                     </Button>
                 </StackPanel>
-                <DataGrid Grid.Row="1" Margin="5,5,5,5" IsReadOnly="True" ItemsSource="{Binding CvsModel.Items.Items}" SelectedItem="{Binding CvsModel.Items.SelectedItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="id" Binding="{Binding Id}"/>
-                        <DataGridTextColumn Header="name" Width="100" Binding="{Binding Name}"/>
-                        <DataGridTextColumn Header="type" Binding="{Binding Type}"/>
-                        <DataGridTextColumn Header="nsfw" Binding="{Binding Nsfw}"/>
-                        <DataGridTextColumn Header="allowCommercialUse" Binding="{Binding AllowCommercialUse}"/>
-                        <DataGridTextColumn Header="stats.downloadCount" Binding="{Binding Stats.CommentCount}"/>
-                        <DataGridTextColumn Header="stats.favoriteCount" Binding="{Binding Stats.FavoriteCount}"/>
-                        <DataGridTextColumn Header="stats.commentCount" Binding="{Binding Stats.CommentCount}"/>
-                        <DataGridTextColumn Header="stats.ratingCount" Binding="{Binding Stats.RatingCount}"/>
-                        <DataGridTextColumn Header="stats.rating" Binding="{Binding Stats.Rating}"/>
-                        <DataGridTextColumn Header="creator.username" Binding="{Binding Creator.Username}"/>
-                        <!--<DataGridTextColumn Header="creator.image" Binding="{Binding Creator.Image}"/>-->
-                        <DataGridTextColumn Width="150" Header="description" Binding="{Binding Description}"/>
-                        <DataGridTextColumn Header="mode" Binding="{Binding Mode}"/>
-                    </DataGrid.Columns>
-                    <b:Interaction.Triggers>
-                        <b:EventTrigger EventName="MouseDoubleClick">
-                            <b:CallMethodAction TargetObject="{Binding}" MethodName="OpenURL"/>
-                        </b:EventTrigger>
-                    </b:Interaction.Triggers>
-                </DataGrid>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <GroupBox Header="Model">
+                        <DataGrid Margin="5" IsReadOnly="True" ItemsSource="{Binding CvsModel.Items.Items}" 
+                                  SelectedItem="{Binding CvsModel.Items.SelectedItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="id" Binding="{Binding Id}"/>
+                                <DataGridTextColumn Header="name" Width="100" Binding="{Binding Name}"/>
+                                <DataGridTextColumn Header="type" Binding="{Binding Type}"/>
+                                <DataGridTextColumn Header="nsfw" Binding="{Binding Nsfw}"/>
+                                <DataGridTextColumn Header="allowCommercialUse" Binding="{Binding AllowCommercialUse}"/>
+                                <DataGridTextColumn Header="stats.downloadCount" Binding="{Binding Stats.CommentCount}"/>
+                                <DataGridTextColumn Header="stats.favoriteCount" Binding="{Binding Stats.FavoriteCount}"/>
+                                <DataGridTextColumn Header="stats.commentCount" Binding="{Binding Stats.CommentCount}"/>
+                                <DataGridTextColumn Header="stats.ratingCount" Binding="{Binding Stats.RatingCount}"/>
+                                <DataGridTextColumn Header="stats.rating" Binding="{Binding Stats.Rating}"/>
+                                <DataGridTextColumn Header="creator.username" Binding="{Binding Creator.Username}"/>
+                                <!--<DataGridTextColumn Header="creator.image" Binding="{Binding Creator.Image}"/>-->
+                                <DataGridTextColumn Width="150" Header="description" Binding="{Binding Description}"/>
+                                <DataGridTextColumn Header="mode" Binding="{Binding Mode}"/>
+                            </DataGrid.Columns>
+                            <b:Interaction.Triggers>
+                                <b:EventTrigger EventName="MouseDoubleClick">
+                                    <b:CallMethodAction TargetObject="{Binding}" MethodName="OpenURL"/>
+                                </b:EventTrigger>
+                            </b:Interaction.Triggers>
+                        </DataGrid>
+                    </GroupBox>
+                    <GroupBox Header="ModelVersion" Grid.Column="1" Margin="5">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <DataGrid Margin="5" IsReadOnly="True" ItemsSource="{Binding CvsModel.Items.SelectedItem.ModelVersions}" 
+                                  SelectedItem="{Binding CvsModel.Items.SelectedItem.SelectedModelVersion, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                  AutoGenerateColumns="False">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="id" Binding="{Binding Id}"/>
+                                    <DataGridTextColumn Header="name" Binding="{Binding Name}"/>
+                                    <DataGridTextColumn Header="createdAt" Binding="{Binding CreatedAt}"/>
+                                    <DataGridTextColumn Header="downloadUrl" Binding="{Binding DownloadUrl}"/>
+                                    <DataGridTextColumn Header="trainedWords" Binding="{Binding TrainedWords}"/>
+                                    <DataGridTextColumn Width="300" Header="description" Binding="{Binding Description}"/>
+                                </DataGrid.Columns>
+                                <b:Interaction.Triggers>
+                                    <b:EventTrigger EventName="MouseDoubleClick">
+                                        <b:CallMethodAction TargetObject="{Binding}" MethodName="OpenURLModelVersion"/>
+                                    </b:EventTrigger>
+                                </b:Interaction.Triggers>
+                            </DataGrid>
+
+                            <ListView ScrollViewer.VerticalScrollBarVisibility="Visible" Grid.Row="1"
+                                          ItemsSource="{Binding CvsModel.Items.SelectedItem.SelectedModelVersion.Images}">
+                                <ListView.Template>
+                                    <ControlTemplate TargetType="{x:Type ListView}">
+                                        <Border BorderThickness="5">
+                                            <ScrollViewer>
+                                                <ItemsPresenter Margin="5" />
+                                            </ScrollViewer>
+                                        </Border>
+                                    </ControlTemplate>
+                                </ListView.Template>
+                                <ListView.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal" />
+                                    </ItemsPanelTemplate>
+                                </ListView.ItemsPanel>
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel>
+                                            <Image Width="100" Source="{Binding  Url, Converter={StaticResource URLStringToImageSourceConverter}}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+
+                            </ListView>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
             </Grid>
         </GroupBox>
         <StackPanel Orientation="Horizontal" Grid.Row="2">

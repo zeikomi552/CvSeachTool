@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using static CvSeachTool.Models.CvsModelM.CvsModelVersions;
 
 namespace CvSeachTool.Models
 {
@@ -969,6 +970,33 @@ namespace CvSeachTool.Models
         }
         #endregion
 
+        #region Selected image item[SelectedImage]プロパティ
+        /// <summary>
+        /// Selected image item[SelectedImage]プロパティ用変数
+        /// </summary>
+        CvsImages _SelectedImage = new CvsImages();
+        /// <summary>
+        /// Selected image item[SelectedImage]プロパティ
+        /// </summary>
+        public CvsImages SelectedImage
+        {
+            get
+            {
+                return _SelectedImage;
+            }
+            set
+            {
+                if (_SelectedImage == null || !_SelectedImage.Equals(value))
+                {
+                    _SelectedImage = value;
+                    NotifyPropertyChanged("SelectedImage");
+                }
+            }
+        }
+        #endregion
+
+
+
         #region Items
         /// <summary>
         /// Items
@@ -1338,6 +1366,32 @@ namespace CvSeachTool.Models
                 }
             }
             #endregion
+            #region Selected model version item[SelectedModelVersion]プロパティ
+            /// <summary>
+            /// Selected model version item[SelectedModelVersion]プロパティ用変数
+            /// </summary>
+            CvsModelVersions _SelectedModelVersion = new CvsModelVersions();
+            /// <summary>
+            /// Selected model version item[SelectedModelVersion]プロパティ
+            /// </summary>
+            public CvsModelVersions SelectedModelVersion
+            {
+                get
+                {
+                    return _SelectedModelVersion;
+                }
+                set
+                {
+                    if (_SelectedModelVersion == null || !_SelectedModelVersion.Equals(value))
+                    {
+                        _SelectedModelVersion = value;
+                        NotifyPropertyChanged("SelectedModelVersion");
+                    }
+                }
+            }
+            #endregion
+
+
         }
         #endregion
         #endregion
