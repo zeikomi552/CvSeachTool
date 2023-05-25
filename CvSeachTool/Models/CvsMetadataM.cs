@@ -27,7 +27,7 @@ namespace CvSeachTool.Models
             }
             set
             {
-                if (_TotalItems == null || !_TotalItems.Equals(value))
+                if (!_TotalItems.Equals(value))
                 {
                     _TotalItems = value;
                     NotifyPropertyChanged("TotalItems");
@@ -53,7 +53,7 @@ namespace CvSeachTool.Models
             }
             set
             {
-                if (_CurrentPage == null || !_CurrentPage.Equals(value))
+                if (!_CurrentPage.Equals(value))
                 {
                     _CurrentPage = value;
                     NotifyPropertyChanged("CurrentPage");
@@ -79,7 +79,7 @@ namespace CvSeachTool.Models
             }
             set
             {
-                if (_PageSize == null || !_PageSize.Equals(value))
+                if (!_PageSize.Equals(value))
                 {
                     _PageSize = value;
                     NotifyPropertyChanged("PageSize");
@@ -105,7 +105,7 @@ namespace CvSeachTool.Models
             }
             set
             {
-                if (_TotalPages == null || !_TotalPages.Equals(value))
+                if (!_TotalPages.Equals(value))
                 {
                     _TotalPages = value;
                     NotifyPropertyChanged("TotalPages");

@@ -8,6 +8,12 @@ namespace CvSeachTool.Common.Enums
 {
     public enum ModelTypeEnum
     {
-        Checkpoint, TextualInversion, Hypernetwork, AestheticGradient, LORA, Controlnet, Poses
+        Checkpoint,
+        TextualInversion,
+        Hypernetwork,
+        AestheticGradient,
+        LORA,
+        Controlnet,
+        Poses
     }
 }

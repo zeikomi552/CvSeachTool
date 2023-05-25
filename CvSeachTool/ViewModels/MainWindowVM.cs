@@ -1,5 +1,6 @@
 ﻿using CvSeachTool.Common.Utilities;
 using CvSeachTool.Models;
+using CvSeachTool.Models.Condition;
 using Microsoft.Win32;
 using MVVMCore.BaseClass;
 using MVVMCore.Common.Utilities;
@@ -42,6 +43,32 @@ namespace CvSeachTool.ViewModels
             }
         }
         #endregion
+
+        #region GET Query Condtion[GetCondition]プロパティ
+        /// <summary>
+        /// GET Query Condtion[GetCondition]プロパティ用変数
+        /// </summary>
+        CvsModelGetConditionM _GetCondition = new CvsModelGetConditionM();
+        /// <summary>
+        /// GET Query Condtion[GetCondition]プロパティ
+        /// </summary>
+        public CvsModelGetConditionM GetCondition
+        {
+            get
+            {
+                return _GetCondition;
+            }
+            set
+            {
+                if (_GetCondition == null || !_GetCondition.Equals(value))
+                {
+                    _GetCondition = value;
+                    NotifyPropertyChanged("GetCondition");
+                }
+            }
+        }
+        #endregion
+
 
 
         public void Output()
@@ -96,17 +123,32 @@ namespace CvSeachTool.ViewModels
                 File.WriteAllText(dialog.FileName, sb.ToString());
             }
         }
+
+        /// <summary>
+        /// Execute GET REST API
+        /// </summary>
+        public async void GETQuery()
+        {
+            try
+            {
+                GetModelReqestM tmp = new GetModelReqestM();
+                string request = string.Empty;
+                this.CvsModel = JsonExtensions.DeserializeFromFile<CvsModelM>(request = await tmp.Request(this.GetCondition.GetConditionQuery));
+                this.CvsModel!.Rowdata = request;
+            }
+            catch(Exception e)
+            {
+                ShowMessage.ShowErrorOK(e.Message, "Error");
+            }
+        }
+
         /// <summary>
         /// 画面初期化処理
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public override async void Init(object sender, EventArgs e)
+        public override void Init(object sender, EventArgs e)
         {
-            GetModelReqestM tmp = new GetModelReqestM();
-            string request = string.Empty;
-            this.CvsModel = JsonExtensions.DeserializeFromFile<CvsModelM>(request = await tmp.Request(100, "Image", "Most Downloaded", "Checkpoint", "AllTime"));
-            this.CvsModel!.Rowdata = request;
         }
 
         public override void Close(object sender, EventArgs e)

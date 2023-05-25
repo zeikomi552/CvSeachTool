@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace CvSeachTool.Common.Enums
 {
-    public enum ModelModeEnum
+    public enum ModelAllowCommercialUseEnum
     {
-        Archived, TakenDown
+        None, 
+        Image, 
+        Rent,
+        Sell
     }
 }

@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace CvSeachTool.Common.Enums
 {
-    public enum ModelModelVersionsFilesMetadataSizeEnum
+    public enum ModelSortEnum
     {
-        full, pruned
+        Highest_Rated, 
+        Most_Downloaded, 
+        Newest
     }
 }

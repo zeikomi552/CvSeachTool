@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace CvSeachTool.Common.Enums
 {
-    public enum ModelModelVersionsFilesMetadataFormatEnum
+    public enum ModelPeriodEnum
     {
-        SafeTensor, PickleTensor, Other
+        AllTime, 
+        Year, 
+        Month,
+        Week,
+        Day
     }
 }
