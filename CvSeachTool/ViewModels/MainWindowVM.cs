@@ -4,7 +4,9 @@ using CvSeachTool.Models.Condition;
 using Microsoft.Win32;
 using MVVMCore.BaseClass;
 using MVVMCore.Common.Utilities;
+using MVVMCore.Common.Wrapper;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -23,11 +25,11 @@ namespace CvSeachTool.ViewModels
         /// <summary>
         /// stablediffusion model object[CvsModel]プロパティ用変数
         /// </summary>
-        CvsModelM? _CvsModel = new CvsModelM();
+        CvsModelExM? _CvsModel = null;
         /// <summary>
         /// stablediffusion model object[CvsModel]プロパティ
         /// </summary>
-        public CvsModelM? CvsModel
+        public CvsModelExM? CvsModel
         {
             get
             {
@@ -64,6 +66,31 @@ namespace CvSeachTool.ViewModels
                 {
                     _GetCondition = value;
                     NotifyPropertyChanged("GetCondition");
+                }
+            }
+        }
+        #endregion
+
+        #region Current page[CurrentPage]プロパティ
+        /// <summary>
+        /// Current page[CurrentPage]プロパティ用変数
+        /// </summary>
+        int _CurrentPage = 0;
+        /// <summary>
+        /// Current page[CurrentPage]プロパティ
+        /// </summary>
+        public int CurrentPage
+        {
+            get
+            {
+                return _CurrentPage;
+            }
+            set
+            {
+                if (!_CurrentPage.Equals(value))
+                {
+                    _CurrentPage = value;
+                    NotifyPropertyChanged("CurrentPage");
                 }
             }
         }
@@ -127,20 +154,118 @@ namespace CvSeachTool.ViewModels
         /// <summary>
         /// Execute GET REST API
         /// </summary>
-        public async void GETQuery()
+        public void GETQuery()
         {
             try
             {
-                GetModelReqestM tmp = new GetModelReqestM();
-                string request = string.Empty;
-                this.CvsModel = JsonExtensions.DeserializeFromFile<CvsModelM>(request = await tmp.Request(this.GetCondition.GetConditionQuery));
-                this.CvsModel!.Rowdata = request;
+                // GET クエリの実行
+                GETQuery(this.GetCondition.GetConditionQuery);
             }
             catch(Exception e)
             {
                 ShowMessage.ShowErrorOK(e.Message, "Error");
             }
         }
+
+        /// <summary>
+        /// GETクエリの実行処理
+        /// </summary>
+        /// <param name="query"></param>
+        /// <param name="add_endpoint"></param>
+        private async void GETQuery(string query, bool add_endpoint = true)
+        {
+            try
+            {
+                GetModelReqestM tmp = new GetModelReqestM();
+                string request = string.Empty;
+
+                // 実行してJSON形式をデシリアライズ
+                var request_model = JsonExtensions.DeserializeFromFile<CvsModelM>(request = await tmp.Request(query, add_endpoint));
+
+                // Nullチェック
+                if (request_model != null)
+                {
+                    this.CvsModel = new CvsModelExM(request_model); // ModelListへ変換
+                    this.CvsModel!.Rowdata = request;               // 生データの保持
+                }
+            }
+            catch (Exception e)
+            {
+                ShowMessage.ShowErrorOK(e.Message, "Error");
+            }
+        }
+
+        #region フレーズのダブルクリック
+        /// <summary>
+        /// フレーズのダブルクリック
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void OpenURL(object sender, EventArgs e)
+        {
+            try
+            {
+                // ウィンドウを取得
+                var wnd = VisualTreeHelperWrapper.GetWindow<MainWindow>(sender) as MainWindow;
+
+                // nullチェック
+                if (wnd != null && this.CvsModel != null && this.CvsModel.Items != null && this.CvsModel.Items.SelectedItem != null)
+                {
+                    var startInfo = new System.Diagnostics.ProcessStartInfo($"https://civitai.com/models/{this.CvsModel!.Items.SelectedItem.Id}");
+                    startInfo.UseShellExecute = true;
+                    System.Diagnostics.Process.Start(startInfo);
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowMessage.ShowErrorOK(ex.Message, "Error");
+            }
+        }
+        #endregion
+
+        #region 次のページへ移動
+        /// <summary>
+        /// 次のページへ移動
+        /// </summary>
+        public void MoveNext()
+        {
+            try
+            {
+                // null check
+                if (this.CvsModel != null)
+                {
+                    // Execute GET Query
+                    GETQuery(this.CvsModel.Metadata.NextPage, false);
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowMessage.ShowErrorOK(ex.Message, "Error");
+            }
+        }
+        #endregion
+
+        #region 前のページへ移動
+        /// <summary>
+        /// 前のページへ移動
+        /// </summary>
+        public void MovePrev()
+        {
+            try
+            {
+                // null check
+                if (this.CvsModel != null)
+                {
+                    // Execute GET Query
+                    GETQuery(this.CvsModel.Metadata.PrevPage, false);
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowMessage.ShowErrorOK(ex.Message, "Error");
+            }
+        }
+        #endregion
 
         /// <summary>
         /// 画面初期化処理

@@ -73,5 +73,30 @@ namespace CvSeachTool.Models
             }
         }
         #endregion
+
+        #region json row data[Rowdata]プロパティ
+        /// <summary>
+        /// json row data[Rowdata]プロパティ用変数
+        /// </summary>
+        string _Rowdata = string.Empty;
+        /// <summary>
+        /// json row data[Rowdata]プロパティ
+        /// </summary>
+        public string Rowdata
+        {
+            get
+            {
+                return _Rowdata;
+            }
+            set
+            {
+                if (_Rowdata == null || !_Rowdata.Equals(value))
+                {
+                    _Rowdata = value;
+                    NotifyPropertyChanged("Rowdata");
+                }
+            }
+        }
+        #endregion
     }
 }
