@@ -8,14 +8,18 @@ using MVVMCore.Common.Wrapper;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Windows;
+using static CvSeachTool.Models.CvsModelM;
+using static CvSeachTool.Models.CvsModelM.CvsModelVersions;
 
 namespace CvSeachTool.ViewModels
 {
@@ -96,8 +100,36 @@ namespace CvSeachTool.ViewModels
         }
         #endregion
 
+        #region This model images[Images]プロパティ
+        /// <summary>
+        /// This model images[Images]プロパティ用変数
+        /// </summary>
+        ObservableCollection<CvsImages> _Images = new ObservableCollection<CvsImages>();
+        /// <summary>
+        /// This model images[Images]プロパティ
+        /// </summary>
+        [JsonPropertyName("images")]
+        public ObservableCollection<CvsImages> Images
+        {
+            get
+            {
+                return _Images;
+            }
+            set
+            {
+                if (_Images == null || !_Images.Equals(value))
+                {
+                    _Images = value;
+                    NotifyPropertyChanged("Images");
+                }
+            }
+        }
+        #endregion
 
-
+        #region マークダウンの出力処理
+        /// <summary>
+        /// マークダウンの出力処理
+        /// </summary>
         public void Output()
         {
             // ダイアログのインスタンスを生成
@@ -150,7 +182,9 @@ namespace CvSeachTool.ViewModels
                 File.WriteAllText(dialog.FileName, sb.ToString());
             }
         }
+        #endregion
 
+        #region Execute GET REST API
         /// <summary>
         /// Execute GET REST API
         /// </summary>
@@ -166,7 +200,9 @@ namespace CvSeachTool.ViewModels
                 ShowMessage.ShowErrorOK(e.Message, "Error");
             }
         }
+        #endregion
 
+        #region GETクエリの実行処理
         /// <summary>
         /// GETクエリの実行処理
         /// </summary>
@@ -194,6 +230,60 @@ namespace CvSeachTool.ViewModels
                 ShowMessage.ShowErrorOK(e.Message, "Error");
             }
         }
+        #endregion
+
+        #region モデルの選択が変更された場合の処理
+        /// <summary>
+        /// モデルの選択が変更された場合の処理
+        /// </summary>
+        public void ModelSelectionChanged()
+        {
+            try
+            {
+                if (this.CvsModel != null && this.CvsModel.Items != null && this.CvsModel.Items.SelectedItem != null)
+                {
+                    List<CvsImages> tmp_img = new List<CvsImages>();
+
+                    foreach (var modelver in this.CvsModel.Items.SelectedItem.ModelVersions)
+                    {
+                        tmp_img.AddRange(modelver.Images);
+                    }
+
+                    this.Images = new ObservableCollection<CvsImages>(tmp_img);
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowMessage.ShowErrorOK(ex.Message, "Error");
+            }
+        }
+        #endregion
+
+        #region モデルの選択が変更された場合の処理
+        /// <summary>
+        /// モデルの選択が変更された場合の処理
+        /// </summary>
+        public void ModelVersionSelectionChanged()
+        {
+            try
+            {
+                // nullチェック
+                if (this.CvsModel != null && this.CvsModel.Items != null 
+                    && this.CvsModel.Items.SelectedItem != null 
+                    && this.CvsModel.Items.SelectedItem.SelectedModelVersion != null)
+                {
+                    List<CvsImages> tmp_img = new List<CvsImages>();
+
+                    // 対象行をセット
+                    this.Images = new ObservableCollection<CvsImages>(this.CvsModel.Items.SelectedItem.SelectedModelVersion.Images);
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowMessage.ShowErrorOK(ex.Message, "Error");
+            }
+        }
+        #endregion
 
         #region フレーズのダブルクリック
         /// <summary>
@@ -222,6 +312,7 @@ namespace CvSeachTool.ViewModels
             }
         }
         #endregion
+
         #region フレーズのダブルクリック
         /// <summary>
         /// フレーズのダブルクリック

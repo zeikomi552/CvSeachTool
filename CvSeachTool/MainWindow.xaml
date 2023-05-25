@@ -210,6 +210,9 @@
                                 <b:EventTrigger EventName="MouseDoubleClick">
                                     <b:CallMethodAction TargetObject="{Binding}" MethodName="OpenURL"/>
                                 </b:EventTrigger>
+                                <b:EventTrigger EventName="SelectionChanged">
+                                    <b:CallMethodAction TargetObject="{Binding}" MethodName="ModelSelectionChanged"/>
+                                </b:EventTrigger>
                             </b:Interaction.Triggers>
                         </DataGrid>
                     </GroupBox>
@@ -234,11 +237,15 @@
                                     <b:EventTrigger EventName="MouseDoubleClick">
                                         <b:CallMethodAction TargetObject="{Binding}" MethodName="OpenURLModelVersion"/>
                                     </b:EventTrigger>
+                                    <b:EventTrigger EventName="SelectionChanged">
+                                        <b:CallMethodAction TargetObject="{Binding}" MethodName="ModelVersionSelectionChanged"/>
+                                    </b:EventTrigger>
                                 </b:Interaction.Triggers>
+                                
                             </DataGrid>
 
-                            <ListView ScrollViewer.VerticalScrollBarVisibility="Visible" Grid.Row="1"
-                                          ItemsSource="{Binding CvsModel.Items.SelectedItem.SelectedModelVersion.Images}">
+                            <ListView Grid.Row="1"
+                                          ItemsSource="{Binding Images}">
                                 <ListView.Template>
                                     <ControlTemplate TargetType="{x:Type ListView}">
                                         <Border BorderThickness="5">
@@ -255,9 +262,9 @@
                                 </ListView.ItemsPanel>
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
-                                        <StackPanel>
+                                        <WrapPanel Orientation="Horizontal">
                                             <Image Width="100" Source="{Binding  Url, Converter={StaticResource URLStringToImageSourceConverter}}"/>
-                                        </StackPanel>
+                                        </WrapPanel>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
 
