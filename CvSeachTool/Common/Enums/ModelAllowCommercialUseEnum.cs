@@ -8,6 +8,7 @@ namespace CvSeachTool.Common.Enums
 {
     public enum ModelAllowCommercialUseEnum
     {
+        Empty,
         None, 
         Image, 
         Rent,

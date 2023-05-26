@@ -8,6 +8,7 @@ namespace CvSeachTool.Common.Enums
 {
     public enum ModelPeriodEnum
     {
+        Empty,
         AllTime, 
         Year, 
         Month,

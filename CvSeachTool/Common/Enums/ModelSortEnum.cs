@@ -8,6 +8,7 @@ namespace CvSeachTool.Common.Enums
 {
     public enum ModelSortEnum
     {
+        Empty,
         Highest_Rated, 
         Most_Downloaded, 
         Newest

@@ -8,6 +8,7 @@ namespace CvSeachTool.Common.Enums
 {
     public enum ModelTypeEnum
     {
+        Empty,
         Checkpoint,
         TextualInversion,
         Hypernetwork,

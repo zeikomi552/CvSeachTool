@@ -231,7 +231,7 @@
                                     </b:Interaction.Triggers>
                                 </Button>
                             </StackPanel>
-                            <DataGrid MaxHeight="300" Grid.Row="2" Margin="5" IsReadOnly="True" ItemsSource="{Binding CvsModel.Items.SelectedItem.ModelVersions}" 
+                            <DataGrid MaxHeight="150" Grid.Row="2" Margin="5" IsReadOnly="True" ItemsSource="{Binding CvsModel.Items.SelectedItem.ModelVersions}" 
                                   SelectedItem="{Binding CvsModel.Items.SelectedItem.SelectedModelVersion, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                   AutoGenerateColumns="False">
                                 <DataGrid.Columns>

@@ -139,7 +139,7 @@ namespace CvSeachTool.Models.Condition
         /// <summary>
         /// The type of model you want to filter with. If none is specified, it will return all types[Types]プロパティ用変数
         /// </summary>
-        ModelTypeEnum? _Types = ModelTypeEnum.Checkpoint;
+        ModelTypeEnum? _Types = ModelTypeEnum.Empty;
         /// <summary>
         /// The type of model you want to filter with. If none is specified, it will return all types[Types]プロパティ
         /// </summary>
@@ -164,7 +164,7 @@ namespace CvSeachTool.Models.Condition
         /// <summary>
         /// The order in which you wish to sort the results[Sort]プロパティ用変数
         /// </summary>
-        ModelSortEnum? _Sort = ModelSortEnum.Most_Downloaded;
+        ModelSortEnum? _Sort = ModelSortEnum.Empty;
         /// <summary>
         /// The order in which you wish to sort the results[Sort]プロパティ
         /// </summary>
@@ -189,7 +189,7 @@ namespace CvSeachTool.Models.Condition
         /// <summary>
         /// The time frame in which the models will be sorted[Period]プロパティ用変数
         /// </summary>
-        ModelPeriodEnum? _Period = ModelPeriodEnum.AllTime;
+        ModelPeriodEnum? _Period = ModelPeriodEnum.Empty;
         /// <summary>
         /// The time frame in which the models will be sorted[Period]プロパティ
         /// </summary>
@@ -390,7 +390,7 @@ namespace CvSeachTool.Models.Condition
         /// <summary>
         /// Filter to models based on their commercial permissions[AllowCommercialUse ]プロパティ用変数
         /// </summary>
-        ModelAllowCommercialUseEnum? _AllowCommercialUse = ModelAllowCommercialUseEnum.None;
+        ModelAllowCommercialUseEnum? _AllowCommercialUse = ModelAllowCommercialUseEnum.Empty;
         /// <summary>
         /// Filter to models based on their commercial permissions[AllowCommercialUse ]プロパティ
         /// </summary>
@@ -456,9 +456,9 @@ namespace CvSeachTool.Models.Condition
                 if (!string.IsNullOrEmpty(this.Query)) query += $"&query={this.Query}";
                 if (!string.IsNullOrEmpty(this.Tag)) query += $"&tag={this.Tag}";
                 if (!string.IsNullOrEmpty(this.Username)) query += $"&username={this.Username}";
-                if (this.Types.HasValue) query += $"&types={this.Types.Value.ToString().Replace("_", "+")}";
-                if (this.Sort.HasValue) query += $"&sort={this.Sort.Value.ToString().Replace("_", "+")}";
-                if (this.Period.HasValue) query += $"&period={this.Period.Value}";
+                if (this.Types.HasValue && !this.Types.Equals(ModelTypeEnum.Empty)) query += $"&types={this.Types.Value.ToString().Replace("_", "+")}";
+                if (this.Sort.HasValue && !this.Sort.Equals(ModelSortEnum.Empty)) query += $"&sort={this.Sort.Value.ToString().Replace("_", "+")}";
+                if (this.Period.HasValue && !this.Period.Equals(ModelPeriodEnum.Empty)) query += $"&period={this.Period.Value}";
                 if (this.Rating.HasValue) query += $"&rating={this.Rating.Value}";
                 if (this.Favorites.HasValue) query += $"&favorites={this.Favorites.Value}";
                 if (this.Hidden.HasValue) query += $"&hidden={this.Hidden.Value}";
@@ -466,7 +466,7 @@ namespace CvSeachTool.Models.Condition
                 if (this.AllowNoCredit.HasValue) query += $"&allowNoCredit={this.AllowNoCredit.Value}";
                 if (this.AllowDerivatives.HasValue) query += $"&allowDerivatives={this.AllowDerivatives.Value}";
                 if (this.AllowDifferentLicenses.HasValue) query += $"&allowDifferentLicenses={this.AllowDifferentLicenses.Value}";
-                if (this.AllowCommercialUse.HasValue) query += $"&allowCommercialUse={this.AllowCommercialUse.Value}";
+                if (this.AllowCommercialUse.HasValue && !this.AllowCommercialUse.Equals(ModelAllowCommercialUseEnum.Empty)) query += $"&allowCommercialUse={this.AllowCommercialUse.Value}";
                 if (this.Nsfw.HasValue) query += $"&nsfw={this.Nsfw.Value}";
 
                 return "?" + query;
