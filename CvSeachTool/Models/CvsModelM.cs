@@ -635,7 +635,7 @@ namespace CvSeachTool.Models
                         }
                         set
                         {
-                            if (_Seed == null || !_Seed.Equals(value))
+                            if (!_Seed.Equals(value))
                             {
                                 _Seed = value;
                                 NotifyPropertyChanged("Seed");
@@ -649,12 +649,12 @@ namespace CvSeachTool.Models
                     /// <summary>
                     /// image Eta DDIM[EtaDDIM]プロパティ用変数
                     /// </summary>
-                    double _EtaDDIM = 0.0;
+                    object _EtaDDIM = 0.0;
                     /// <summary>
                     /// image Eta DDIM[EtaDDIM]プロパティ
                     /// </summary>
                     [JsonPropertyName("Eta DDIM")]
-                    public double EtaDDIM
+                    public object EtaDDIM
                     {
                         get
                         {
