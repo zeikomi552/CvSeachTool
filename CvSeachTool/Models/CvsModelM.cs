@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using static CvSeachTool.Models.CvsModelM.CvsModelVersions;
+using System.Windows;
 
 namespace CvSeachTool.Models
 {
@@ -484,6 +485,354 @@ namespace CvSeachTool.Models
             /// </summary>
             public class CvsImages : ModelBase
             {
+                #region Inner Class
+                public class CvsMeta : ModelBase
+                {
+                    #region image size[Size]プロパティ
+                    /// <summary>
+                    /// image size[Size]プロパティ用変数
+                    /// </summary>
+                    string _Size = string.Empty;
+                    /// <summary>
+                    /// image size[Size]プロパティ
+                    /// </summary>
+                    [JsonPropertyName("Size")]
+                    public string Size
+                    {
+                        get
+                        {
+                            return _Size;
+                        }
+                        set
+                        {
+                            if (_Size == null || !_Size.Equals(value))
+                            {
+                                _Size = value;
+                                NotifyPropertyChanged("Size");
+                            }
+                        }
+                    }
+                    #endregion
+
+
+                    #region promt[Prompt]プロパティ
+                    /// <summary>
+                    /// promt[Prompt]プロパティ用変数
+                    /// </summary>
+                    string _Prompt = string.Empty;
+                    /// <summary>
+                    /// promt[Prompt]プロパティ
+                    /// </summary>
+                    [JsonPropertyName("prompt")]
+                    public string Prompt
+                    {
+                        get
+                        {
+                            return _Prompt;
+                        }
+                        set
+                        {
+                            if (_Prompt == null || !_Prompt.Equals(value))
+                            {
+                                _Prompt = value;
+                                NotifyPropertyChanged("Prompt");
+                            }
+                        }
+                    }
+                    #endregion
+
+                    #region image negative prompt[NegativPrompt]プロパティ
+                    /// <summary>
+                    /// image negative prompt[NegativPrompt]プロパティ用変数
+                    /// </summary>
+                    string _NegativPrompt = string.Empty;
+                    /// <summary>
+                    /// image negative prompt[NegativPrompt]プロパティ
+                    /// </summary>
+                    [JsonPropertyName("negativePrompt")]
+                    public string NegativPrompt
+                    {
+                        get
+                        {
+                            return _NegativPrompt;
+                        }
+                        set
+                        {
+                            if (_NegativPrompt == null || !_NegativPrompt.Equals(value))
+                            {
+                                _NegativPrompt = value;
+                                NotifyPropertyChanged("NegativPrompt");
+                            }
+                        }
+                    }
+                    #endregion
+
+                    #region image sampler[Sampler]プロパティ
+                    /// <summary>
+                    /// image sampler[Sampler]プロパティ用変数
+                    /// </summary>
+                    string _Sampler = string.Empty;
+                    /// <summary>
+                    /// image sampler[Sampler]プロパティ
+                    /// </summary>
+                    [JsonPropertyName("sampler")]
+                    public string Sampler
+                    {
+                        get
+                        {
+                            return _Sampler;
+                        }
+                        set
+                        {
+                            if (_Sampler == null || !_Sampler.Equals(value))
+                            {
+                                _Sampler = value;
+                                NotifyPropertyChanged("Sampler");
+                            }
+                        }
+                    }
+                    #endregion
+
+                    #region image ENSD[ENSD]プロパティ
+                    /// <summary>
+                    /// image ENSD[ENSD]プロパティ用変数
+                    /// </summary>
+                    string _ENSD = string.Empty;
+                    /// <summary>
+                    /// image ENSD[ENSD]プロパティ
+                    /// </summary>
+                    [JsonPropertyName("ENSD")]
+                    public string ENSD
+                    {
+                        get
+                        {
+                            return _ENSD;
+                        }
+                        set
+                        {
+                            if (_ENSD == null || !_ENSD.Equals(value))
+                            {
+                                _ENSD = value;
+                                NotifyPropertyChanged("ENSD");
+                            }
+                        }
+                    }
+                    #endregion
+                    #region image sample seed[Seed]プロパティ
+                    /// <summary>
+                    /// image sample seed[Seed]プロパティ用変数
+                    /// </summary>
+                    Int64 _Seed = new Int64();
+                    /// <summary>
+                    /// image sample seed[Seed]プロパティ
+                    /// </summary>
+                    [JsonPropertyName("seed")]
+                    public Int64 Seed
+                    {
+                        get
+                        {
+                            return _Seed;
+                        }
+                        set
+                        {
+                            if (_Seed == null || !_Seed.Equals(value))
+                            {
+                                _Seed = value;
+                                NotifyPropertyChanged("Seed");
+                            }
+                        }
+                    }
+                    #endregion
+
+
+                    #region image Eta DDIM[EtaDDIM]プロパティ
+                    /// <summary>
+                    /// image Eta DDIM[EtaDDIM]プロパティ用変数
+                    /// </summary>
+                    double _EtaDDIM = 0.0;
+                    /// <summary>
+                    /// image Eta DDIM[EtaDDIM]プロパティ
+                    /// </summary>
+                    [JsonPropertyName("Eta DDIM")]
+                    public double EtaDDIM
+                    {
+                        get
+                        {
+                            return _EtaDDIM;
+                        }
+                        set
+                        {
+                            if (!_EtaDDIM.Equals(value))
+                            {
+                                _EtaDDIM = value;
+                                NotifyPropertyChanged("EtaDDIM");
+                            }
+                        }
+                    }
+                    #endregion
+
+                    #region image Cfg Scale[CfgScale]プロパティ
+                    /// <summary>
+                    /// image Cfg Scale[CfgScale]プロパティ用変数
+                    /// </summary>
+                    double _CfgScale = 0.0;
+                    /// <summary>
+                    /// image Cfg Scale[CfgScale]プロパティ
+                    /// </summary>
+                    [JsonPropertyName("cfgScale")]
+                    public double CfgScale
+                    {
+                        get
+                        {
+                            return _CfgScale;
+                        }
+                        set
+                        {
+                            if (!_CfgScale.Equals(value))
+                            {
+                                _CfgScale = value;
+                                NotifyPropertyChanged("CfgScale");
+                            }
+                        }
+                    }
+                    #endregion
+
+                    #region image model hash[ModelHash]プロパティ
+                    /// <summary>
+                    /// image model hash[ModelHash]プロパティ用変数
+                    /// </summary>
+                    string _ModelHash = string.Empty;
+                    /// <summary>
+                    /// image model hash[ModelHash]プロパティ
+                    /// </summary>
+                    [JsonPropertyName("Model hash")]
+                    public string ModelHash
+                    {
+                        get
+                        {
+                            return _ModelHash;
+                        }
+                        set
+                        {
+                            if (_ModelHash == null || !_ModelHash.Equals(value))
+                            {
+                                _ModelHash = value;
+                                NotifyPropertyChanged("ModelHash");
+                            }
+                        }
+                    }
+                    #endregion
+
+                    #region image hires upscale[HiresUpscale]プロパティ
+                    /// <summary>
+                    /// image hires upscale[HiresUpscale]プロパティ用変数
+                    /// </summary>
+                    object _HiresUpscale = 0.0;
+                    /// <summary>
+                    /// image hires upscale[HiresUpscale]プロパティ
+                    /// </summary>
+                    [JsonPropertyName("Hires upscale")]
+                    public object HiresUpscale
+                    {
+                        get
+                        {
+                            return _HiresUpscale;
+                        }
+                        set
+                        {
+                            if (_HiresUpscale == null || !_HiresUpscale.Equals(value))
+                            {
+                                _HiresUpscale = value;
+                                NotifyPropertyChanged("HiresUpscale");
+                            }
+                        }
+                    }
+                    #endregion
+
+                    #region image hires upscaler[HiresUpscaler]プロパティ
+                    /// <summary>
+                    /// image hires upscaler[HiresUpscaler]プロパティ用変数
+                    /// </summary>
+                    string _HiresUpscaler = string.Empty;
+                    /// <summary>
+                    /// image hires upscaler[HiresUpscaler]プロパティ
+                    /// </summary>
+                    [JsonPropertyName("Hires upscaler")]
+                    public string HiresUpscaler
+                    {
+                        get
+                        {
+                            return _HiresUpscaler;
+                        }
+                        set
+                        {
+                            if (_HiresUpscaler == null || !_HiresUpscaler.Equals(value))
+                            {
+                                _HiresUpscaler = value;
+                                NotifyPropertyChanged("HiresUpscaler");
+                            }
+                        }
+                    }
+                    #endregion
+
+                    #region image denoising strength[DenoisingStrength]プロパティ
+                    /// <summary>
+                    /// image denoising strength[DenoisingStrength]プロパティ用変数
+                    /// </summary>
+                    object _DenoisingStrength = 0.0;
+                    /// <summary>
+                    /// image denoising strength[DenoisingStrength]プロパティ
+                    /// </summary>
+                    [JsonPropertyName("Denoising strength")]
+                    public object DenoisingStrength
+                    {
+                        get
+                        {
+                            return _DenoisingStrength;
+                        }
+                        set
+                        {
+                            if (_DenoisingStrength == null || !_DenoisingStrength.Equals(value))
+                            {
+                                _DenoisingStrength = value;
+                                NotifyPropertyChanged("DenoisingStrength");
+                            }
+                        }
+                    }
+                    #endregion
+
+
+
+                    /// <summary>
+                    /// プロンプトのコピー
+                    /// </summary>
+                    public void CopyClipbordPrompt()
+                    {
+                        try
+                        {
+                            Clipboard.SetText(this.Prompt);
+                        }
+                        catch { }
+                    }
+
+                    /// <summary>
+                    /// ネガティブプロンプトのコピー
+                    /// </summary>
+                    public void CopyClipbordNegativePrompt()
+                    {
+                        try
+                        {
+                            Clipboard.SetText(this.NegativPrompt);
+                        }
+                        catch { }
+                    }
+
+                }
+
+
+
+                #endregion
+
                 #region The url for the image[Url]プロパティ
                 /// <summary>
                 /// The url for the image[Url]プロパティ用変数
@@ -618,12 +967,12 @@ namespace CvSeachTool.Models
                 /// <summary>
                 /// The generation params of the image[Meta]プロパティ用変数
                 /// </summary>
-                object _Meta = new object();
+                CvsImages.CvsMeta _Meta = new ();
                 /// <summary>
                 /// The generation params of the image[Meta]プロパティ
                 /// </summary>
                 [JsonPropertyName("meta")]
-                public object Meta
+                public CvsImages.CvsMeta Meta
                 {
                     get
                     {

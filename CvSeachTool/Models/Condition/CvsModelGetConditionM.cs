@@ -453,9 +453,9 @@ namespace CvSeachTool.Models.Condition
 
                 query += $"limit={this.Limit}";
                 if (this.Page.HasValue) query += $"&page={this.Page.Value}";
-                if (string.IsNullOrEmpty(this.Query)) query += $"&query={this.Query}";
-                if (string.IsNullOrEmpty(this.Tag)) query += $"&tag={this.Tag}";
-                if (string.IsNullOrEmpty(this.Username)) query += $"&username={this.Username}";
+                if (!string.IsNullOrEmpty(this.Query)) query += $"&query={this.Query}";
+                if (!string.IsNullOrEmpty(this.Tag)) query += $"&tag={this.Tag}";
+                if (!string.IsNullOrEmpty(this.Username)) query += $"&username={this.Username}";
                 if (this.Types.HasValue) query += $"&types={this.Types.Value.ToString().Replace("_", "+")}";
                 if (this.Sort.HasValue) query += $"&sort={this.Sort.Value.ToString().Replace("_", "+")}";
                 if (this.Period.HasValue) query += $"&period={this.Period.Value}";

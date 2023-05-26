@@ -128,6 +128,33 @@ namespace CvSeachTool.ViewModels
         }
         #endregion
 
+        #region Selected image[SelectedImage]プロパティ
+        /// <summary>
+        /// Selected image[SelectedImage]プロパティ用変数
+        /// </summary>
+        CvsImages _SelectedImage = new CvsImages();
+        /// <summary>
+        /// Selected image[SelectedImage]プロパティ
+        /// </summary>
+        public CvsImages SelectedImage
+        {
+            get
+            {
+                return _SelectedImage;
+            }
+            set
+            {
+                if (_SelectedImage == null || !_SelectedImage.Equals(value))
+                {
+                    _SelectedImage = value;
+                    NotifyPropertyChanged("SelectedImage");
+                }
+            }
+        }
+        #endregion
+
+
+
         #region マークダウンの出力処理
         /// <summary>
         /// マークダウンの出力処理
