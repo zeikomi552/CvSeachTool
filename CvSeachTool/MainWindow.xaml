@@ -185,7 +185,7 @@
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
-                            <DataGrid Margin="5" IsReadOnly="True" ItemsSource="{Binding CvsModel.Items.Items}" 
+                            <DataGrid x:Name="dgModel" Margin="5" IsReadOnly="True" ItemsSource="{Binding CvsModel.Items.Items}" 
                                   SelectedItem="{Binding CvsModel.Items.SelectedItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="id" Binding="{Binding Id}"/>
@@ -231,7 +231,7 @@
                                     </b:Interaction.Triggers>
                                 </Button>
                             </StackPanel>
-                            <DataGrid MaxHeight="150" Grid.Row="2" Margin="5" IsReadOnly="True" ItemsSource="{Binding CvsModel.Items.SelectedItem.ModelVersions}" 
+                            <DataGrid x:Name="dgModelVersions" MaxHeight="150" Grid.Row="2" Margin="5" IsReadOnly="True" ItemsSource="{Binding CvsModel.Items.SelectedItem.ModelVersions}" 
                                   SelectedItem="{Binding CvsModel.Items.SelectedItem.SelectedModelVersion, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                   AutoGenerateColumns="False">
                                 <DataGrid.Columns>
@@ -262,7 +262,7 @@
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
 
-                        <ListView ItemsSource="{Binding Images}" SelectedItem="{Binding SelectedImage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        <ListView x:Name="lvImages" ItemsSource="{Binding Images}" SelectedItem="{Binding SelectedImage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                             <ListView.Template>
                                 <ControlTemplate TargetType="{x:Type ListView}">
                                     <Border BorderThickness="5">
@@ -334,6 +334,13 @@
                         <b:Interaction.Triggers>
                             <b:EventTrigger EventName="Click">
                                 <b:CallMethodAction TargetObject="{Binding}" MethodName="Output"/>
+                            </b:EventTrigger>
+                        </b:Interaction.Triggers>
+                    </Button>
+                    <Button Width="auto" Content="Output Markdown">
+                        <b:Interaction.Triggers>
+                            <b:EventTrigger EventName="Click">
+                                <b:CallMethodAction TargetObject="{Binding}" MethodName="Output2"/>
                             </b:EventTrigger>
                         </b:Interaction.Triggers>
                     </Button>

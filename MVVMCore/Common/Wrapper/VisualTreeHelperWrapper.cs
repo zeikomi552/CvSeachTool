@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace MVVMCore.Common.Wrapper
 {
@@ -50,6 +51,36 @@ namespace MVVMCore.Common.Wrapper
                     return null;
                 }
             }
+        }
+        #endregion
+
+        #region スクロールビューワーの取得処理
+        /// <summary>
+        /// スクロールビューワーの取得処理
+        /// </summary>
+        /// <param name="o"></param>
+        /// <returns></returns>
+        public static DependencyObject GetScrollViewer(DependencyObject o)
+        {
+            if (o is ScrollViewer)
+            { return o; }
+
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(o); i++)
+            {
+                var child = VisualTreeHelper.GetChild(o, i);
+
+                var result = GetScrollViewer(child);
+                if (result == null)
+                {
+                    continue;
+                }
+                else
+                {
+                    return result;
+                }
+            }
+
+            return null;
         }
         #endregion
     }
