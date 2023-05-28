@@ -16,6 +16,7 @@
         <ViewModels:MainWindowVM/>
     </Window.DataContext>
     <Window.Resources>
+        <Converters:ConvertBooleanConverter x:Key="ConvertBooleanConverter"/>
         <Converters:URLStringToImageSourceConverter x:Key="URLStringToImageSourceConverter"/>
         <ObjectDataProvider MethodName="GetValues" ObjectType="{x:Type sys:Enum}" x:Key="ModelTypeEnum">
             <ObjectDataProvider.MethodParameters>
@@ -151,7 +152,7 @@
 
                         </WrapPanel>
                         <StackPanel Grid.Row="1" Orientation="Horizontal">
-                            <Button Margin="5" Width="100" Content="GET">
+                            <Button Margin="5" Width="100" Content="GET" IsEnabled="{Binding ExecuteGetAPI, Converter={StaticResource ConvertBooleanConverter}}">
                                 <b:Interaction.Triggers>
                                     <b:EventTrigger EventName="Click">
                                         <b:CallMethodAction TargetObject="{Binding}" MethodName="GETQuery"/>
@@ -213,7 +214,7 @@
                                 </b:Interaction.Triggers>
                             </DataGrid>
                             <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-                                <Button Width="50" Margin="5" Content="←">
+                                <Button Width="50" Margin="5" Content="←" IsEnabled="{Binding ExecuteGetAPI, Converter={StaticResource ConvertBooleanConverter}}">
                                     <b:Interaction.Triggers>
                                         <b:EventTrigger EventName="Click">
                                             <b:CallMethodAction TargetObject="{Binding}" MethodName="MovePrev"/>
@@ -223,7 +224,7 @@
                                 <TextBlock Margin="5" Text="{Binding CvsModel.Metadata.CurrentPage}" TextAlignment="Center" VerticalAlignment="Center"/>
                                 <TextBlock Margin="5" Text="/" TextAlignment="Center" VerticalAlignment="Center"/>
                                 <TextBlock Margin="5" Text="{Binding CvsModel.Metadata.TotalPages}" TextAlignment="Center" VerticalAlignment="Center"/>
-                                <Button Width="50" Margin="5" Content="→">
+                                <Button Width="50" Margin="5" Content="→" IsEnabled="{Binding ExecuteGetAPI, Converter={StaticResource ConvertBooleanConverter}}" Cursor="Hand">
                                     <b:Interaction.Triggers>
                                         <b:EventTrigger EventName="Click">
                                             <b:CallMethodAction TargetObject="{Binding}" MethodName="MoveNext"/>

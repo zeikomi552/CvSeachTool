@@ -17,7 +17,7 @@ namespace MVVMCore.Common.Utilities
         public static void TopRow4ListView(ListView lv)
         {
             // スクロールビューワの取得
-            ScrollViewer? scrollViewer = VisualTreeHelperWrapper.GetScrollViewer(lv) as ScrollViewer;
+            ScrollViewer scrollViewer = VisualTreeHelperWrapper.GetScrollViewer(lv) as ScrollViewer;
 
             // nullチェック
             if (scrollViewer != null && lv.Items.Count > 0)
@@ -34,7 +34,7 @@ namespace MVVMCore.Common.Utilities
         public static void TopRow4DataGrid(DataGrid dg)
         {
             // スクロールビューワの取得
-            ScrollViewer? scrollViewer = VisualTreeHelperWrapper.GetScrollViewer(dg) as ScrollViewer;
+            ScrollViewer scrollViewer = VisualTreeHelperWrapper.GetScrollViewer(dg) as ScrollViewer;
 
             // nullチェック
             if (scrollViewer != null && dg.Items.Count > 0)

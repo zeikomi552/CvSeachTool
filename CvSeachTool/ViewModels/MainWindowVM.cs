@@ -30,6 +30,31 @@ namespace CvSeachTool.ViewModels
 {
     public class MainWindowVM : ViewModelBase
     {
+        #region API実行中フラグ(true:実行中 false:実行中でない)[ExecuteGetAPI]プロパティ
+        /// <summary>
+        /// API実行中フラグ(true:実行中 false:実行中でない)[ExecuteGetAPI]プロパティ用変数
+        /// </summary>
+        bool _ExecuteGetAPI = false;
+        /// <summary>
+        /// API実行中フラグ(true:実行中 false:実行中でない)[ExecuteGetAPI]プロパティ
+        /// </summary>
+        public bool ExecuteGetAPI
+        {
+            get
+            {
+                return _ExecuteGetAPI;
+            }
+            set
+            {
+                if (!_ExecuteGetAPI.Equals(value))
+                {
+                    _ExecuteGetAPI = value;
+                    NotifyPropertyChanged("ExecuteGetAPI");
+                }
+            }
+        }
+        #endregion
+
         #region stablediffusion model object[CvsModel]プロパティ
         /// <summary>
         /// stablediffusion model object[CvsModel]プロパティ用変数
@@ -155,8 +180,6 @@ namespace CvSeachTool.ViewModels
             }
         }
         #endregion
-
-
 
         #region マークダウンの出力処理
         /// <summary>
@@ -306,6 +329,7 @@ namespace CvSeachTool.ViewModels
         {
             try
             {
+                this.ExecuteGetAPI = true;
                 GetModelReqestM tmp = new GetModelReqestM();
                 string request = string.Empty;
 
@@ -347,6 +371,10 @@ namespace CvSeachTool.ViewModels
             catch (Exception e)
             {
                 ShowMessage.ShowErrorOK(e.Message, "Error");
+            }
+            finally
+            {
+                this.ExecuteGetAPI = false;
             }
         }
         #endregion
@@ -391,7 +419,6 @@ namespace CvSeachTool.ViewModels
             }
         }
         #endregion
-
 
         #region モデルの選択が変更された場合の処理
         /// <summary>
@@ -443,7 +470,6 @@ namespace CvSeachTool.ViewModels
             ScrollbarTopRow.TopRow4ListView(wnd.lvImages);
         }
         #endregion
-
 
         #region フレーズのダブルクリック
         /// <summary>
