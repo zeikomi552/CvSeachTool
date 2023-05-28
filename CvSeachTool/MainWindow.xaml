@@ -259,7 +259,7 @@
                     <Grid Margin="5" Grid.Column="1">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
-                            <RowDefinition Height="Auto"/>
+                            <RowDefinition MaxHeight="200" Height="Auto"/>
                         </Grid.RowDefinitions>
 
                         <ListView x:Name="lvImages" ItemsSource="{Binding Images}" SelectedItem="{Binding SelectedImage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
