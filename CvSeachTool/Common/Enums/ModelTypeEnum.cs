@@ -15,6 +15,10 @@ namespace CvSeachTool.Common.Enums
         AestheticGradient,
         LORA,
         Controlnet,
-        Poses
+        Poses,
+        Wildcards,
+        VAE,
+        LoCon,
+        Other
     }
 }
