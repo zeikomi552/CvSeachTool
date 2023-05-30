@@ -593,6 +593,32 @@ namespace CvSeachTool.Models
                     }
                     #endregion
 
+                    #region checkpoint name[Model]プロパティ
+                    /// <summary>
+                    /// checkpoint name[Model]プロパティ用変数
+                    /// </summary>
+                    string _Model = string.Empty;
+                    /// <summary>
+                    /// checkpoint name[Model]プロパティ
+                    /// </summary>
+                    [JsonPropertyName("Model")]
+                    public string Model
+                    {
+                        get
+                        {
+                            return _Model;
+                        }
+                        set
+                        {
+                            if (_Model == null || !_Model.Equals(value))
+                            {
+                                _Model = value;
+                                NotifyPropertyChanged("Model");
+                            }
+                        }
+                    }
+                    #endregion
+
                     #region image ENSD[ENSD]プロパティ
                     /// <summary>
                     /// image ENSD[ENSD]プロパティ用変数
