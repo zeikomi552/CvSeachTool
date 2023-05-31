@@ -154,11 +154,12 @@ namespace CvSeachTool.ViewModels
             }
         }
         #endregion
+
         #region ブックマーク[BookmarkConf]プロパティ
         /// <summary>
         /// ブックマーク[BookmarkConf]プロパティ用変数
         /// </summary>
-        ConfigManager<ModelList<CvsItems>>? _BookmarkConf;// = new ConfigManager<ModelList<CvsItems>>("conf", "bookmark.conf", BookmarkItems);
+        ConfigManager<ModelList<CvsItems>>? _BookmarkConf;
         /// <summary>
         /// ブックマーク[BookmarkConf]プロパティ
         /// </summary>
@@ -230,6 +231,11 @@ namespace CvSeachTool.ViewModels
             }
         }
         #endregion
+
+        public MainWindowVM()
+        {
+            this.BookmarkConf = new ConfigManager<ModelList<CvsItems>>("conf", "bookmark.conf", BookmarkItems);
+        }
 
         #region マークダウンの出力処理
         /// <summary>
@@ -397,7 +403,7 @@ namespace CvSeachTool.ViewModels
                 }
 
                 // 実行してJSON形式をデシリアライズ
-                var request_model = JsonExtensions.DeserializeFromFile<CvsModelM>(request = await tmp.Request(url));
+                var request_model = JSONUtil.DeserializeFromText<CvsModelM>(request = await tmp.Request(url));
 
                 // Nullチェック
                 if (request_model != null)
@@ -700,7 +706,8 @@ namespace CvSeachTool.ViewModels
                         // ブックマークの追加
                         this.BookmarkItems.Items.Add(this.CvsModel.Items.SelectedItem);
 
-                        JsonExtensions.SerializeFromFile<ModelList<CvsItems>>(this.BookmarkItems, "bookmark.conf");
+                        // JSON形式で保存
+                        this.BookmarkConf!.SaveJSON();
                     }
                 }
             }
@@ -719,12 +726,9 @@ namespace CvSeachTool.ViewModels
         {
             try
             {
-                StreamReader sr = new StreamReader("bookmark.conf", Encoding.UTF8);
-
-                string str = sr.ReadToEnd();
-
-                sr.Close();
-                this.BookmarkItems = JsonExtensions.DeserializeFromFile<ModelList<CvsItems>>(str)!;
+                this.BookmarkConf!.LoadJSON();
+                this.CvsModel = new CvsModelExM(new CvsModelM());
+                this.CvsModel.Items = this.BookmarkConf.Item; // ModelListへ変換
 
             }
             catch (Exception ex)

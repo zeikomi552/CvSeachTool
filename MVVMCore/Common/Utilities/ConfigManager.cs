@@ -175,6 +175,28 @@ namespace MVVMCore.Common.Utilities
             }
         }
         #endregion
+
+        /// <summary>
+        /// JSONでの保存処理
+        /// </summary>
+        /// <exception cref="Exception">ファイル保存に失敗</exception>
+        public void SaveJSON()
+        {
+            JSONUtil.SerializeFromFile<T>(this.Item, this.ConfigFile);
+        }
+
+        #region JSONファイルの読み込み
+        /// <summary>
+        /// JSONファイルの読み込み
+        /// </summary>
+        public void LoadJSON()
+        {
+            if (File.Exists(this.ConfigFile))
+            {
+                this.Item = JSONUtil.DeserializeFromFile<T>(this.ConfigFile);
+            }
+        }
+        #endregion
     }
 
 }
