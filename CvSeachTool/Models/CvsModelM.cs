@@ -81,7 +81,7 @@ namespace CvSeachTool.Models
         /// <summary>
         /// Stats
         /// </summary>
-        public class CvsStats : ModelBase
+        public class CvsStats1 : ModelBase
         {
             #region The number of downloads the model has[DownloadCount]プロパティ
             /// <summary>
@@ -212,9 +212,6 @@ namespace CvSeachTool.Models
                 }
             }
             #endregion
-
-
-
 
         }
         #endregion
@@ -1590,12 +1587,12 @@ namespace CvSeachTool.Models
             /// <summary>
             /// This model stats[Stats]プロパティ用変数
             /// </summary>
-            CvsStats _Stats = new CvsStats();
+            CvsStats1 _Stats = new CvsStats1();
             /// <summary>
             /// This model stats[Stats]プロパティ
             /// </summary>
             [JsonPropertyName("stats")]
-            public CvsStats Stats
+            public CvsStats1 Stats
             {
                 get
                 {

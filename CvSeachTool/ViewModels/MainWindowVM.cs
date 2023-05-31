@@ -24,7 +24,9 @@ using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Markup;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using static CvSeachTool.Models.CvsModelM;
 using static CvSeachTool.Models.CvsModelM.CvsModelVersions;
 
@@ -78,7 +80,6 @@ namespace CvSeachTool.ViewModels
         }
         #endregion
 
-
         #region API実行中フラグ(true:実行中 false:実行中でない)[ExecuteGetAPI]プロパティ
         /// <summary>
         /// API実行中フラグ(true:実行中 false:実行中でない)[ExecuteGetAPI]プロパティ用変数
@@ -129,6 +130,57 @@ namespace CvSeachTool.ViewModels
         }
         #endregion
 
+        #region お気に入り[BookmarkItems]プロパティ
+        /// <summary>
+        /// お気に入り[BookmarkItems]プロパティ用変数
+        /// </summary>
+        ModelList<CvsItems> _BookmarkItems = new ModelList<CvsItems>();
+        /// <summary>
+        /// お気に入り[BookmarkItems]プロパティ
+        /// </summary>
+        public ModelList<CvsItems> BookmarkItems
+        {
+            get
+            {
+                return _BookmarkItems;
+            }
+            set
+            {
+                if (_BookmarkItems == null || !_BookmarkItems.Equals(value))
+                {
+                    _BookmarkItems = value;
+                    NotifyPropertyChanged("BookmarkItems");
+                }
+            }
+        }
+        #endregion
+        #region ブックマーク[BookmarkConf]プロパティ
+        /// <summary>
+        /// ブックマーク[BookmarkConf]プロパティ用変数
+        /// </summary>
+        ConfigManager<ModelList<CvsItems>>? _BookmarkConf;// = new ConfigManager<ModelList<CvsItems>>("conf", "bookmark.conf", BookmarkItems);
+        /// <summary>
+        /// ブックマーク[BookmarkConf]プロパティ
+        /// </summary>
+        public ConfigManager<ModelList<CvsItems>>? BookmarkConf
+        {
+            get
+            {
+                return _BookmarkConf;
+            }
+            set
+            {
+                if (_BookmarkConf == null || !_BookmarkConf.Equals(value))
+                {
+                    _BookmarkConf = value;
+                    NotifyPropertyChanged("BookmarkConf");
+                }
+            }
+        }
+        #endregion
+
+
+
         #region GET Query Condtion[GetCondition]プロパティ
         /// <summary>
         /// GET Query Condtion[GetCondition]プロパティ用変数
@@ -178,8 +230,6 @@ namespace CvSeachTool.ViewModels
             }
         }
         #endregion
-
-
 
         #region マークダウンの出力処理
         /// <summary>
@@ -584,6 +634,82 @@ namespace CvSeachTool.ViewModels
         }
         #endregion
 
+        #region ファイルのプロンプト情報抜き出し
+        /// <summary>
+        /// ファイルのプロンプト情報抜き出し
+        /// </summary>
+        public void ImageFileRead()
+        {
+            
+            try
+            {
+                // ダイアログのインスタンスを生成
+                var dialog = new OpenFileDialog();
+
+                // ファイルの種類を設定
+                dialog.Filter = "画像ファイル (*.png)|*.png|全てのファイル (*.*)|*.*";
+
+                string message = string.Empty;
+                // ダイアログを表示する
+                if (dialog.ShowDialog() == true)
+                {
+
+                    using (var reader = new BinaryReader(File.Open(dialog.FileName, FileMode.Open, FileAccess.Read)))
+                    {
+                        if (PngReader.ReadPngSignature(reader))
+                        {
+                            var ihdrchunk = PngReader.ReadChunk(reader);
+                            var itextchunk = PngReader.ReadChunk(reader);
+
+                            // データがutf - 8の場合
+                            message = System.Text.Encoding.UTF8.GetString(itextchunk.ChunkData).Replace("\0", ":");
+                        }
+                    }
+
+                }
+
+                if (!string.IsNullOrEmpty(message))
+                {
+                    ShowMessage.ShowNoticeOK(message, "Notice");
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowMessage.ShowErrorOK(ex.Message, "Error");
+            }
+        }
+        #endregion
+
+        /// <summary>
+        /// ブックマークへ追加
+        /// </summary>
+        public void AddBookmark()
+        {
+            try
+            {
+                // nullチェック
+                if (this.CvsModel != null && this.CvsModel.Items != null && this.CvsModel.Items.SelectedItem != null)
+                {
+                    var check = (from x in this.BookmarkItems.Items
+                                 where x.Id.Equals(this.CvsModel.Items.SelectedItem.Id)
+                                 select x).Any();
+
+                    // 存在しなければ追加
+                    if (!check)
+                    {
+                        // ブックマークの追加
+                        this.BookmarkItems.Items.Add(this.CvsModel.Items.SelectedItem);
+
+                        JsonExtensions.SerializeFromFile<ModelList<CvsItems>>(this.BookmarkItems, "bookmark.conf");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowMessage.ShowErrorOK(ex.Message, "Error");
+            }
+        }
+
         /// <summary>
         /// 画面初期化処理
         /// </summary>
@@ -591,6 +717,20 @@ namespace CvSeachTool.ViewModels
         /// <param name="e"></param>
         public override void Init(object sender, EventArgs e)
         {
+            try
+            {
+                StreamReader sr = new StreamReader("bookmark.conf", Encoding.UTF8);
+
+                string str = sr.ReadToEnd();
+
+                sr.Close();
+                this.BookmarkItems = JsonExtensions.DeserializeFromFile<ModelList<CvsItems>>(str)!;
+
+            }
+            catch (Exception ex)
+            {
+                ShowMessage.ShowErrorOK(ex.Message, "Error");
+            }
         }
 
         public override void Close(object sender, EventArgs e)
