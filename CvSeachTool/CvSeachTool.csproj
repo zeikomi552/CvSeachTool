@@ -5,6 +5,9 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <Authors>Zeikomi552</Authors>
+    <Company>Zeikomi</Company>
+    <Copyright>Zeikomi552</Copyright>
   </PropertyGroup>
 
   <ItemGroup>

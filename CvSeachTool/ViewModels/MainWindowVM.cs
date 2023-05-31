@@ -694,9 +694,10 @@ namespace CvSeachTool.ViewModels
             try
             {
                 // nullチェック
-                if (this.CvsModel != null && this.CvsModel.Items != null && this.CvsModel.Items.SelectedItem != null)
+                if (this.CvsModel != null && this.CvsModel.Items != null && this.CvsModel.Items.SelectedItem != null
+                    && this.BookmarkConf != null && this.BookmarkConf.Item != null && this.BookmarkConf.Item.Items != null)
                 {
-                    var check = (from x in this.BookmarkItems.Items
+                    var check = (from x in this.BookmarkConf.Item.Items
                                  where x.Id.Equals(this.CvsModel.Items.SelectedItem.Id)
                                  select x).Any();
 
@@ -704,7 +705,7 @@ namespace CvSeachTool.ViewModels
                     if (!check)
                     {
                         // ブックマークの追加
-                        this.BookmarkItems.Items.Add(this.CvsModel.Items.SelectedItem);
+                        this.BookmarkConf.Item.Items.Add(this.CvsModel.Items.SelectedItem);
 
                         // JSON形式で保存
                         this.BookmarkConf!.SaveJSON();

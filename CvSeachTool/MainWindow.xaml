@@ -206,7 +206,7 @@
                                     <DataGridTextColumn Header="type" Binding="{Binding Type}"/>
                                     <DataGridTextColumn Header="nsfw" Binding="{Binding Nsfw}"/>
                                     <DataGridTextColumn Header="allowCommercialUse" Binding="{Binding AllowCommercialUse}"/>
-                                    <DataGridTextColumn Header="stats.downloadCount" Binding="{Binding Stats.CommentCount}"/>
+                                    <DataGridTextColumn Header="stats.downloadCount" Binding="{Binding Stats.DownloadCount}"/>
                                     <DataGridTextColumn Header="stats.favoriteCount" Binding="{Binding Stats.FavoriteCount}"/>
                                     <DataGridTextColumn Header="stats.commentCount" Binding="{Binding Stats.CommentCount}"/>
                                     <DataGridTextColumn Header="stats.ratingCount" Binding="{Binding Stats.RatingCount}"/>
@@ -343,30 +343,46 @@
                             </ListView.ItemTemplate>
                         </ListView>
 
-                        <StackPanel Grid.Row="2" >
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Width="100" VerticalAlignment="Center" TextAlignment="Right" Text="Prompt:"/>
-                                <TextBox IsReadOnly="True" Width="300" Margin="5" Text="{Binding  ImageList.SelectedImage.Meta.Prompt}"/>
-                                <Button Margin="5" Width="100" Content="Copy">
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock VerticalAlignment="Center" TextAlignment="Right" Text="Prompt:"/>
+                                <TextBox VerticalAlignment="Center" Grid.Column="1" IsReadOnly="True" Margin="5"
+                                         TextAlignment="Center" Text="{Binding  ImageList.SelectedImage.Meta.Prompt}"/>
+                                <Button Grid.Column="2" Margin="5" Content="Copy">
                                     <b:Interaction.Triggers>
                                         <b:EventTrigger EventName="Click">
                                             <b:CallMethodAction TargetObject="{Binding ImageList.SelectedImage.Meta}" MethodName="CopyClipbordPrompt"/>
                                         </b:EventTrigger>
                                     </b:Interaction.Triggers>
                                 </Button>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Width="100" VerticalAlignment="Center" TextAlignment="Right" Text="NegativPrompt:"/>
-                                <TextBox IsReadOnly="True" Width="300" Margin="5" Text="{Binding ImageList.SelectedImage.Meta.NegativPrompt, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                                <Button Margin="5" Width="100" Content="Copy">
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock VerticalAlignment="Center" TextAlignment="Right" Text="NegativPrompt:"/>
+                                <TextBox VerticalAlignment="Center" Grid.Column="1" IsReadOnly="True" Margin="5" TextAlignment="Center"
+                                         Text="{Binding ImageList.SelectedImage.Meta.NegativPrompt, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                <Button Grid.Column="2" Margin="5" Content="Copy">
                                     <b:Interaction.Triggers>
                                         <b:EventTrigger EventName="Click">
                                             <b:CallMethodAction TargetObject="{Binding ImageList.SelectedImage.Meta}" MethodName="CopyClipbordNegativePrompt"/>
                                         </b:EventTrigger>
                                     </b:Interaction.Triggers>
                                 </Button>
-                            </StackPanel>
-                        </StackPanel>
+                            </Grid>
+                        </Grid>
                     </Grid>
                 </Grid>
             </Grid>
