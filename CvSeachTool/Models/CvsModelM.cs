@@ -642,16 +642,17 @@ namespace CvSeachTool.Models
                         }
                     }
                     #endregion
+                    
                     #region image sample seed[Seed]プロパティ
                     /// <summary>
                     /// image sample seed[Seed]プロパティ用変数
                     /// </summary>
-                    Int64 _Seed = new Int64();
+                    object _Seed = new Int64();
                     /// <summary>
                     /// image sample seed[Seed]プロパティ
                     /// </summary>
                     [JsonPropertyName("seed")]
-                    public Int64 Seed
+                    public object Seed
                     {
                         get
                         {

@@ -560,10 +560,12 @@ namespace CvSeachTool.ViewModels
                 // null check
                 if (this.CvsModel != null)
                 {
-                    // Execute GET Query
-                    GETQuery(sender, this.CvsModel.Metadata.NextPage, false);
-
-
+                    // 次のページが最終ページより前である場合
+                    if (this.CvsModel.Metadata.CurrentPage + 1 <= CvsModel.Metadata.TotalPages)
+                    {
+                        // Execute GET Query
+                        GETQuery(sender, this.CvsModel.Metadata.NextPage, false);
+                    }
                 }
             }
             catch (Exception ex)
@@ -584,8 +586,12 @@ namespace CvSeachTool.ViewModels
                 // null check
                 if (this.CvsModel != null)
                 {
-                    // Execute GET Query
-                    GETQuery(sender, this.CvsModel.Metadata.PrevPage, false);
+                    // 前のページが1より大きい場合
+                    if (this.CvsModel.Metadata.CurrentPage - 1 >= 1)
+                    {
+                        // Execute GET Query
+                        GETQuery(sender, this.CvsModel.Metadata.PrevPage, false);
+                    }
                 }
             }
             catch (Exception ex)
