@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static CvSeachTool.Models.CvsModelM.CvsModelVersions;
 using System.Windows;
+using CvSeachTool.ViewModels;
 
 namespace CvSeachTool.Models
 {
@@ -1738,6 +1739,7 @@ namespace CvSeachTool.Models
                 }
             }
             #endregion
+
             #region Selected model version item[SelectedModelVersion]プロパティ
             /// <summary>
             /// Selected model version item[SelectedModelVersion]プロパティ用変数
@@ -1762,8 +1764,6 @@ namespace CvSeachTool.Models
                 }
             }
             #endregion
-
-
         }
         #endregion
         #endregion
@@ -1851,8 +1851,6 @@ namespace CvSeachTool.Models
             }
         }
         #endregion
-
-
     }
 
 }

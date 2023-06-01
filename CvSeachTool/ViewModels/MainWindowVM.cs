@@ -3,6 +3,7 @@ using CvSeachTool.Common.Enums;
 using CvSeachTool.Common.Utilities;
 using CvSeachTool.Models;
 using CvSeachTool.Models.Condition;
+using CvSeachTool.Views;
 using Microsoft.Win32;
 using MVVMCore.BaseClass;
 using MVVMCore.Common.Utilities;
@@ -130,36 +131,9 @@ namespace CvSeachTool.ViewModels
         }
         #endregion
 
-        #region お気に入り[BookmarkItems]プロパティ
-        /// <summary>
-        /// お気に入り[BookmarkItems]プロパティ用変数
-        /// </summary>
-        ModelList<CvsItems> _BookmarkItems = new ModelList<CvsItems>();
-        /// <summary>
-        /// お気に入り[BookmarkItems]プロパティ
-        /// </summary>
-        public ModelList<CvsItems> BookmarkItems
-        {
-            get
-            {
-                return _BookmarkItems;
-            }
-            set
-            {
-                if (_BookmarkItems == null || !_BookmarkItems.Equals(value))
-                {
-                    _BookmarkItems = value;
-                    NotifyPropertyChanged("BookmarkItems");
-                }
-            }
-        }
-        #endregion
+        
 
         #region ブックマーク[BookmarkConf]プロパティ
-        /// <summary>
-        /// ブックマーク[BookmarkConf]プロパティ用変数
-        /// </summary>
-        ConfigManager<ModelList<CvsItems>>? _BookmarkConf;
         /// <summary>
         /// ブックマーク[BookmarkConf]プロパティ
         /// </summary>
@@ -167,13 +141,13 @@ namespace CvSeachTool.ViewModels
         {
             get
             {
-                return _BookmarkConf;
+                return GblValues.Instance.BookmarkConf;
             }
             set
             {
-                if (_BookmarkConf == null || !_BookmarkConf.Equals(value))
+                if (GblValues.Instance.BookmarkConf == null || !GblValues.Instance.BookmarkConf.Equals(value))
                 {
-                    _BookmarkConf = value;
+                    GblValues.Instance.BookmarkConf = value;
                     NotifyPropertyChanged("BookmarkConf");
                 }
             }
@@ -234,7 +208,6 @@ namespace CvSeachTool.ViewModels
 
         public MainWindowVM()
         {
-            this.BookmarkConf = new ConfigManager<ModelList<CvsItems>>("conf", "bookmark.conf", BookmarkItems);
         }
 
         #region マークダウンの出力処理
@@ -686,6 +659,25 @@ namespace CvSeachTool.ViewModels
         }
         #endregion
 
+        public void OpenBookmarkV()
+        {
+            try
+            {
+                var wnd = new BookmarkV();
+                var vm = wnd.DataContext as BookmarkVM;
+
+                if (wnd.ShowDialog() == true)
+                {
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ShowMessage.ShowErrorOK(ex.Message, "Error");
+            }
+        }
+
         /// <summary>
         /// ブックマークへ追加
         /// </summary>
@@ -727,6 +719,8 @@ namespace CvSeachTool.ViewModels
         {
             try
             {
+                this.BookmarkConf = new ConfigManager<ModelList<CvsItems>>("conf", "bookmark.conf", new ModelList<CvsItems>());
+
                 this.BookmarkConf!.LoadJSON();
                 this.CvsModel = new CvsModelExM(new CvsModelM());
                 this.CvsModel.Items = this.BookmarkConf.Item; // ModelListへ変換

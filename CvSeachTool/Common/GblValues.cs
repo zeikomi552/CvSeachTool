@@ -1,9 +1,11 @@
 ﻿using CvSeachTool.Common.Enums;
+using MVVMCore.Common.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static CvSeachTool.Models.CvsModelM;
 
 namespace CvSeachTool.Common
 {
@@ -47,6 +49,28 @@ namespace CvSeachTool.Common
         }
         #endregion
 
-
+        #region ブックマーク[BookmarkConf]プロパティ
+        /// <summary>
+        /// ブックマーク[BookmarkConf]プロパティ用変数
+        /// </summary>
+        ConfigManager<ModelList<CvsItems>>? _BookmarkConf;
+        /// <summary>
+        /// ブックマーク[BookmarkConf]プロパティ
+        /// </summary>
+        public ConfigManager<ModelList<CvsItems>>? BookmarkConf
+        {
+            get
+            {
+                return _BookmarkConf;
+            }
+            set
+            {
+                if (_BookmarkConf == null || !_BookmarkConf.Equals(value))
+                {
+                    _BookmarkConf = value;
+                }
+            }
+        }
+        #endregion
     }
 }

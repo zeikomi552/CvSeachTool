@@ -67,91 +67,91 @@
                         </Grid.RowDefinitions>
                         <WrapPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Width="80" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Limit"/>
+                                <TextBlock Width="120" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Limit"/>
                                 <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
                                 <TextBox Width="80" Margin="5" Text="{Binding GetCondition.Limit}" VerticalAlignment="Center" TextAlignment="Center"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Width="80" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Page"/>
+                                <TextBlock Width="120" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Page"/>
                                 <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
                                 <TextBox Width="100" Margin="5" Text="{Binding GetCondition.Page}" VerticalAlignment="Center" TextAlignment="Center"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Width="80" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Query"/>
+                                <TextBlock Width="120" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Query"/>
                                 <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
                                 <TextBox Width="100" Margin="5" Text="{Binding GetCondition.Query}" VerticalAlignment="Center" TextAlignment="Center"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Width="80" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Tag"/>
+                                <TextBlock Width="120" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Tag"/>
                                 <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
                                 <TextBox Width="100" Margin="5" Text="{Binding GetCondition.Tag}" VerticalAlignment="Center" TextAlignment="Center"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Width="80" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Username"/>
+                                <TextBlock Width="120" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Username"/>
                                 <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
                                 <TextBox Width="100" Margin="5" Text="{Binding GetCondition.Username}" VerticalAlignment="Center" TextAlignment="Center"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Width="80" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Types"/>
+                                <TextBlock Width="120" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Types"/>
                                 <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
                                 <ComboBox Width="100" SelectedItem="{Binding GetCondition.Types, NotifyOnSourceUpdated=True, UpdateSourceTrigger=LostFocus}" 
                                                     ItemsSource="{Binding Mode=OneWay, Source={StaticResource ModelTypeEnum}}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Width="80" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Sort"/>
+                                <TextBlock Width="120" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Sort"/>
                                 <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
                                 <ComboBox Width="100" SelectedItem="{Binding GetCondition.Sort, NotifyOnSourceUpdated=True, UpdateSourceTrigger=LostFocus}" 
                                                     ItemsSource="{Binding Mode=OneWay, Source={StaticResource ModelSortEnum}}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Width="80" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Period"/>
+                                <TextBlock Width="120" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Period"/>
                                 <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
                                 <ComboBox Width="100" SelectedItem="{Binding GetCondition.Period, NotifyOnSourceUpdated=True, UpdateSourceTrigger=LostFocus}" 
                                                     ItemsSource="{Binding Mode=OneWay, Source={StaticResource ModelPeriodEnum}}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Width="80" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Rating"/>
+                                <TextBlock Width="120" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Rating"/>
                                 <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
                                 <TextBox Width="100" Margin="5" Text="{Binding GetCondition.Rating}" VerticalAlignment="Center" TextAlignment="Center"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Width="80" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Favorites"/>
+                                <TextBlock Width="120" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Favorites"/>
                                 <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
                                 <CheckBox Width="100" Margin="5" IsChecked="{Binding GetCondition.Favorites}" IsThreeState="True" VerticalAlignment="Center"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Width="80" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Hidden"/>
+                                <TextBlock Width="120" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Hidden"/>
                                 <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
                                 <CheckBox Width="100" Margin="5" IsChecked="{Binding GetCondition.Hidden}" IsThreeState="True" VerticalAlignment="Center"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Width="80" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="PrimaryFileOnly"/>
+                                <TextBlock Width="120" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="PrimaryFileOnly"/>
                                 <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
                                 <CheckBox Width="100" Margin="5" IsChecked="{Binding GetCondition.PrimaryFileOnly}" IsThreeState="True" VerticalAlignment="Center"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Width="80" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="AllowNoCredit"/>
+                                <TextBlock Width="120" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="AllowNoCredit"/>
                                 <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
                                 <CheckBox Width="100" Margin="5" IsChecked="{Binding GetCondition.AllowNoCredit}" IsThreeState="True" VerticalAlignment="Center"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Width="80" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="AllowDerivatives"/>
+                                <TextBlock Width="120" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="AllowDerivatives"/>
                                 <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
                                 <CheckBox Width="100" Margin="5" IsChecked="{Binding GetCondition.AllowDerivatives}" IsThreeState="True" VerticalAlignment="Center"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Width="80" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="AllowDifferentLicenses"/>
+                                <TextBlock Width="120" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="AllowDifferentLicenses"/>
                                 <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
                                 <CheckBox Width="100" Margin="5" IsChecked="{Binding GetCondition.AllowDifferentLicenses}" IsThreeState="True" VerticalAlignment="Center"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Width="80" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="AllowCommercialUse"/>
+                                <TextBlock Width="120" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="AllowCommercialUse"/>
                                 <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
                                 <ComboBox Width="100" SelectedItem="{Binding GetCondition.AllowCommercialUse, NotifyOnSourceUpdated=True, UpdateSourceTrigger=LostFocus}" 
                                                     ItemsSource="{Binding Mode=OneWay, Source={StaticResource ModelAllowCommercialUseEnum}}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Width="80" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Nsfw"/>
+                                <TextBlock Width="120" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Nsfw"/>
                                 <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
                                 <CheckBox Width="100" Margin="5" IsChecked="{Binding GetCondition.Nsfw}" IsThreeState="True" VerticalAlignment="Center"/>
                             </StackPanel>
@@ -184,104 +184,102 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    
-                    <GroupBox Header="Model">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
-                            <DataGrid x:Name="dgModel" Margin="5" IsReadOnly="True" ItemsSource="{Binding CvsModel.Items.Items}" 
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <DataGrid x:Name="dgModel" Margin="5" IsReadOnly="True" ItemsSource="{Binding CvsModel.Items.Items}" 
                                   SelectedItem="{Binding CvsModel.Items.SelectedItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False">
-                                <DataGrid.RowStyle>
-                                    <Style TargetType="DataGridRow" BasedOn="{StaticResource MaterialDesignDataGridRow}">
-                                        <!-- (B) -->
-                                        <Setter Property="MaxHeight" Value="50" />
-                                    </Style>
-                                </DataGrid.RowStyle>
-                                <DataGrid.Columns>
-                                    <DataGridTextColumn Header="id" Binding="{Binding Id}"/>
-                                    <DataGridTextColumn Header="name" Width="100" Binding="{Binding Name}"/>
-                                    <DataGridTextColumn Header="type" Binding="{Binding Type}"/>
-                                    <DataGridTextColumn Header="nsfw" Binding="{Binding Nsfw}"/>
-                                    <DataGridTextColumn Header="allowCommercialUse" Binding="{Binding AllowCommercialUse}"/>
-                                    <DataGridTextColumn Header="stats.downloadCount" Binding="{Binding Stats.DownloadCount}"/>
-                                    <DataGridTextColumn Header="stats.favoriteCount" Binding="{Binding Stats.FavoriteCount}"/>
-                                    <DataGridTextColumn Header="stats.commentCount" Binding="{Binding Stats.CommentCount}"/>
-                                    <DataGridTextColumn Header="stats.ratingCount" Binding="{Binding Stats.RatingCount}"/>
-                                    <DataGridTextColumn Header="stats.rating" Binding="{Binding Stats.Rating}"/>
-                                    <DataGridTextColumn Header="creator.username" Binding="{Binding Creator.Username}"/>
-                                    <!--<DataGridTextColumn Header="creator.image" Binding="{Binding Creator.Image}"/>-->
-                                    <DataGridTextColumn Width="150" Header="description" Binding="{Binding Description}"/>
-                                    <DataGridTextColumn Header="mode" Binding="{Binding Mode}"/>
-                                </DataGrid.Columns>
+                            <DataGrid.RowStyle>
+                                <Style TargetType="DataGridRow" BasedOn="{StaticResource MaterialDesignDataGridRow}">
+                                    <!-- (B) -->
+                                    <Setter Property="MaxHeight" Value="50" />
+                                </Style>
+                            </DataGrid.RowStyle>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="id" Binding="{Binding Id}"/>
+                                <DataGridTextColumn Header="name" Width="100" Binding="{Binding Name}"/>
+                                <DataGridTextColumn Header="type" Binding="{Binding Type}"/>
+                                <DataGridTextColumn Header="nsfw" Binding="{Binding Nsfw}"/>
+                                <DataGridTextColumn Header="allowCommercialUse" Binding="{Binding AllowCommercialUse}"/>
+                                <DataGridTextColumn Header="stats.downloadCount" Binding="{Binding Stats.DownloadCount}"/>
+                                <DataGridTextColumn Header="stats.favoriteCount" Binding="{Binding Stats.FavoriteCount}"/>
+                                <DataGridTextColumn Header="stats.commentCount" Binding="{Binding Stats.CommentCount}"/>
+                                <DataGridTextColumn Header="stats.ratingCount" Binding="{Binding Stats.RatingCount}"/>
+                                <DataGridTextColumn Header="stats.rating" Binding="{Binding Stats.Rating}"/>
+                                <DataGridTextColumn Header="creator.username" Binding="{Binding Creator.Username}"/>
+                                <!--<DataGridTextColumn Header="creator.image" Binding="{Binding Creator.Image}"/>-->
+                                <DataGridTextColumn Width="150" Header="description" Binding="{Binding Description}"/>
+                                <DataGridTextColumn Header="mode" Binding="{Binding Mode}"/>
+                            </DataGrid.Columns>
+                            <b:Interaction.Triggers>
+                                <b:EventTrigger EventName="MouseDoubleClick">
+                                    <b:CallMethodAction TargetObject="{Binding}" MethodName="OpenURL"/>
+                                </b:EventTrigger>
+                                <b:EventTrigger EventName="SelectionChanged">
+                                    <b:CallMethodAction TargetObject="{Binding}" MethodName="ModelSelectionChanged"/>
+                                </b:EventTrigger>
+                            </b:Interaction.Triggers>
+                        </DataGrid>
+                        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Button Width="50" Margin="5" Content="←" IsEnabled="{Binding ExecuteGetAPI, Converter={StaticResource ConvertBooleanConverter}}">
                                 <b:Interaction.Triggers>
-                                    <b:EventTrigger EventName="MouseDoubleClick">
-                                        <b:CallMethodAction TargetObject="{Binding}" MethodName="OpenURL"/>
-                                    </b:EventTrigger>
-                                    <b:EventTrigger EventName="SelectionChanged">
-                                        <b:CallMethodAction TargetObject="{Binding}" MethodName="ModelSelectionChanged"/>
+                                    <b:EventTrigger EventName="Click">
+                                        <b:CallMethodAction TargetObject="{Binding}" MethodName="MovePrev"/>
                                     </b:EventTrigger>
                                 </b:Interaction.Triggers>
-                            </DataGrid>
-                            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-                                <Button Width="50" Margin="5" Content="←" IsEnabled="{Binding ExecuteGetAPI, Converter={StaticResource ConvertBooleanConverter}}">
-                                    <b:Interaction.Triggers>
-                                        <b:EventTrigger EventName="Click">
-                                            <b:CallMethodAction TargetObject="{Binding}" MethodName="MovePrev"/>
-                                        </b:EventTrigger>
-                                    </b:Interaction.Triggers>
-                                </Button>
-                                <TextBlock Margin="5" Text="{Binding CvsModel.Metadata.CurrentPage}" TextAlignment="Center" VerticalAlignment="Center"/>
-                                <TextBlock Margin="5" Text="/" TextAlignment="Center" VerticalAlignment="Center"/>
-                                <TextBlock Margin="5" Text="{Binding CvsModel.Metadata.TotalPages}" TextAlignment="Center" VerticalAlignment="Center"/>
-                                <Button Width="50" Margin="5" Content="→" IsEnabled="{Binding ExecuteGetAPI, Converter={StaticResource ConvertBooleanConverter}}" Cursor="Hand">
-                                    <b:Interaction.Triggers>
-                                        <b:EventTrigger EventName="Click">
-                                            <b:CallMethodAction TargetObject="{Binding}" MethodName="MoveNext"/>
-                                        </b:EventTrigger>
-                                    </b:Interaction.Triggers>
-                                </Button>
-                                <Button Width="50" Margin="5" Content="☆" Cursor="Hand">
-                                    <b:Interaction.Triggers>
-                                        <b:EventTrigger EventName="Click">
-                                            <b:CallMethodAction TargetObject="{Binding}" MethodName="AddBookmark"/>
-                                        </b:EventTrigger>
-                                    </b:Interaction.Triggers>
-                                </Button>
-                            </StackPanel>
-                            <DataGrid x:Name="dgModelVersions" MaxHeight="150" Grid.Row="2" Margin="5" IsReadOnly="True" ItemsSource="{Binding CvsModel.Items.SelectedItem.ModelVersions}" 
+                            </Button>
+                            <TextBlock Margin="5" Text="{Binding CvsModel.Metadata.CurrentPage}" TextAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBlock Margin="5" Text="/" TextAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBlock Margin="5" Text="{Binding CvsModel.Metadata.TotalPages}" TextAlignment="Center" VerticalAlignment="Center"/>
+                            <Button Width="50" Margin="5" Content="→" IsEnabled="{Binding ExecuteGetAPI, Converter={StaticResource ConvertBooleanConverter}}" Cursor="Hand">
+                                <b:Interaction.Triggers>
+                                    <b:EventTrigger EventName="Click">
+                                        <b:CallMethodAction TargetObject="{Binding}" MethodName="MoveNext"/>
+                                    </b:EventTrigger>
+                                </b:Interaction.Triggers>
+                            </Button>
+                            <Button Width="50" Margin="5" Content="☆" Cursor="Hand">
+                                <b:Interaction.Triggers>
+                                    <b:EventTrigger EventName="Click">
+                                        <b:CallMethodAction TargetObject="{Binding}" MethodName="AddBookmark"/>
+                                    </b:EventTrigger>
+                                </b:Interaction.Triggers>
+                            </Button>
+                        </StackPanel>
+                        <DataGrid x:Name="dgModelVersions" MaxHeight="150" Grid.Row="2" Margin="5" IsReadOnly="True" ItemsSource="{Binding CvsModel.Items.SelectedItem.ModelVersions}" 
                                   SelectedItem="{Binding CvsModel.Items.SelectedItem.SelectedModelVersion, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                   AutoGenerateColumns="False">
-                                <DataGrid.RowStyle>
-                                    <Style TargetType="DataGridRow">
-                                        <!-- (B) -->
-                                        <Setter Property="Height" Value="50" />
-                                    </Style>
-                                </DataGrid.RowStyle>
-                                <DataGrid.Columns>
-                                    <DataGridTextColumn Header="id" Binding="{Binding Id}"/>
-                                    <DataGridTextColumn Header="name" Binding="{Binding Name}"/>
-                                    <DataGridTextColumn Header="createdAt" Binding="{Binding CreatedAt}"/>
-                                    <DataGridTextColumn Header="downloadUrl" Binding="{Binding DownloadUrl}"/>
-                                    <DataGridTextColumn Header="trainedWords" Binding="{Binding TrainedWords}"/>
-                                    <DataGridTextColumn Width="300" Header="description" Binding="{Binding Description}"/>
-                                </DataGrid.Columns>
-                                <b:Interaction.Triggers>
-                                    <b:EventTrigger EventName="MouseDoubleClick">
-                                        <b:CallMethodAction TargetObject="{Binding}" MethodName="OpenURLModelVersion"/>
-                                    </b:EventTrigger>
-                                    <b:EventTrigger EventName="SelectionChanged">
-                                        <b:CallMethodAction TargetObject="{Binding}" MethodName="ModelVersionSelectionChanged"/>
-                                    </b:EventTrigger>
-                                </b:Interaction.Triggers>
+                            <DataGrid.RowStyle>
+                                <Style TargetType="DataGridRow">
+                                    <!-- (B) -->
+                                    <Setter Property="Height" Value="50" />
+                                </Style>
+                            </DataGrid.RowStyle>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="id" Binding="{Binding Id}"/>
+                                <DataGridTextColumn Header="name" Binding="{Binding Name}"/>
+                                <DataGridTextColumn Header="createdAt" Binding="{Binding CreatedAt}"/>
+                                <DataGridTextColumn Header="downloadUrl" Binding="{Binding DownloadUrl}"/>
+                                <DataGridTextColumn Header="trainedWords" Binding="{Binding TrainedWords}"/>
+                                <DataGridTextColumn Width="300" Header="description" Binding="{Binding Description}"/>
+                            </DataGrid.Columns>
+                            <b:Interaction.Triggers>
+                                <b:EventTrigger EventName="MouseDoubleClick">
+                                    <b:CallMethodAction TargetObject="{Binding}" MethodName="OpenURLModelVersion"/>
+                                </b:EventTrigger>
+                                <b:EventTrigger EventName="SelectionChanged">
+                                    <b:CallMethodAction TargetObject="{Binding}" MethodName="ModelVersionSelectionChanged"/>
+                                </b:EventTrigger>
+                            </b:Interaction.Triggers>
 
-                            </DataGrid>
+                        </DataGrid>
 
 
-                        </Grid>
-                    </GroupBox>
+                    </Grid>
                     <Grid Margin="5" Grid.Column="1">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
@@ -408,6 +406,13 @@
                         <b:Interaction.Triggers>
                             <b:EventTrigger EventName="Click">
                                 <b:CallMethodAction TargetObject="{Binding}" MethodName="ImageFileRead"/>
+                            </b:EventTrigger>
+                        </b:Interaction.Triggers>
+                    </Button>
+                    <Button Width="auto" Content="Bookmark" Cursor="Hand">
+                        <b:Interaction.Triggers>
+                            <b:EventTrigger EventName="Click">
+                                <b:CallMethodAction TargetObject="{Binding}" MethodName="OpenBookmarkV"/>
                             </b:EventTrigger>
                         </b:Interaction.Triggers>
                     </Button>
