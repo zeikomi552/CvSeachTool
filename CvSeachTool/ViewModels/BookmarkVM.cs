@@ -150,8 +150,17 @@ namespace CvSeachTool.ViewModels
             // ブックマークリストのセット
             this.BookmarkList.Items = new ObservableCollection<BookmarkM>(list);
 
-            // 最初の要素を選択
-            this.BookmarkList.SelectedFirst();
+            var tmp = (from x in this.BookmarkList.Items
+                      where x.BookmarkFile.Equals(this.Config.Item.BookmarkFile)
+                      select x).FirstOrDefault();
+
+
+            if (tmp != null)
+            {
+                // 最初の要素を選択
+                this.BookmarkList.SelectedItem = tmp;
+                BookmarkSelectionChanged();
+            }
         }
         #endregion
 
@@ -163,7 +172,7 @@ namespace CvSeachTool.ViewModels
         {
             try
             {
-
+                // nullチェックとファイルの存在確認
                 if (this.BookmarkList.SelectedItem != null &&
                     File.Exists(this.BookmarkList.SelectedItem.BookmarkFilePath))
                 {
@@ -287,7 +296,7 @@ namespace CvSeachTool.ViewModels
                 if (this.BookmarkList != null && this.BookmarkList.SelectedItem != null)
                 {
                     // ブックマークのセット
-                    this.Config!.Item.BookmarkFile = this.BookmarkList.SelectedItem.BookmarkFilePath;
+                    this.Config!.Item.BookmarkFile = Path.GetFileName(this.BookmarkList.SelectedItem.BookmarkFilePath);
 
                     // JSON形式で保存
                     this.Config.SaveXML();

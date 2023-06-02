@@ -124,7 +124,7 @@ namespace CvSeachTool.Common
             this.Config.LoadXML();
 
             // ブックマークファイルの存在確認
-            if (File.Exists(this.Config.Item.BookmarkFile))
+            if (File.Exists(Path.Combine(PathManager.GetApplicationFolder(), this.Config.Item.BookmarkDir, this.Config.Item.BookmarkFile)))
             {
                 // ブックマーク情報の作成
                 this.BookmarkConf = new ConfigManager<ModelList<CvsItems>>(this.Config.Item.BookmarkDir, this.Config.Item.BookmarkFile, new ModelList<CvsItems>());
