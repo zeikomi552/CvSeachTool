@@ -1,9 +1,13 @@
-﻿using MVVMCore.BaseClass;
+﻿using CvSeachTool.Common;
+using MVVMCore.BaseClass;
+using MVVMCore.Common.Utilities;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static CvSeachTool.Models.CvsModelM;
 
 namespace CvSeachTool.Models
 {
@@ -60,5 +64,18 @@ namespace CvSeachTool.Models
         #endregion
 
 
+        #region コンフィグファイルの初期化処理
+        /// <summary>
+        /// コンフィグファイルの初期化処理
+        /// </summary>
+        public void InitConfig()
+        {
+            // コンフィグファイルの読み込み
+            GblValues.Instance.Config!.LoadXML();
+
+            // ブックマーク情報をJSON形式で読み込み
+            GblValues.Instance.BookmarkConf!.LoadJSON();
+        }
+        #endregion
     }
 }

@@ -758,7 +758,7 @@ namespace CvSeachTool.ViewModels
             try
             {
                 // コンフィグの初期化処理
-                GblValues.Instance.InitConfig();
+                this.Config!.Item.InitConfig();
 
                 // オブジェクトの作成
                 this.CvsModel = new CvsModelExM(new CvsModelM());

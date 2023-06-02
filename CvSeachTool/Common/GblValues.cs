@@ -15,10 +15,32 @@ namespace CvSeachTool.Common
     {
         private static GblValues _Instance = new GblValues();
 
+        #region コンストラクタ
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
         private GblValues()
         {
-        }
+            // コンフィグファイルの作成
+            this.Config = new ConfigManager<ConfigM>("conf", "CvSearchTool.conf", new ConfigM());
 
+            if (File.Exists(this.Config.Item.BookmarkFile))
+            {
+                // ブックマーク情報の作成
+                this.BookmarkConf = new ConfigManager<ModelList<CvsItems>>(this.Config.Item.BookmarkDir, this.Config.Item.BookmarkFile, new ModelList<CvsItems>());
+            }
+            else
+            {
+                // ブックマーク情報の作成
+                this.BookmarkConf = new ConfigManager<ModelList<CvsItems>>(@"conf\bookmark", @"bookmark.conf", new ModelList<CvsItems>());
+            }
+        }
+        #endregion
+
+        #region インスタンス
+        /// <summary>
+        /// インスタンス
+        /// </summary>
         public static GblValues Instance
         {
             get
@@ -26,6 +48,7 @@ namespace CvSeachTool.Common
                 return _Instance;
             }
         }
+        #endregion
 
         #region イメージフィルタ用[ImageFilter]プロパティ
         /// <summary>
@@ -99,32 +122,5 @@ namespace CvSeachTool.Common
         }
         #endregion
 
-        #region コンフィグファイルの初期化処理
-        /// <summary>
-        /// コンフィグファイルの初期化処理
-        /// </summary>
-        public void InitConfig()
-        {
-            // コンフィグファイルの作成
-            this.Config = new ConfigManager<ConfigM>("conf", "CvSearchTool.conf", new ConfigM());
-
-            // コンフィグファイルの読み込み
-            this.Config.LoadXML();
-
-            if (File.Exists(this.Config.Item.BookmarkFile))
-            {
-                // ブックマーク情報の作成
-                this.BookmarkConf = new ConfigManager<ModelList<CvsItems>>(this.Config.Item.BookmarkDir, this.Config.Item.BookmarkFile, new ModelList<CvsItems>());
-            }
-            else
-            {
-                // ブックマーク情報の作成
-                this.BookmarkConf = new ConfigManager<ModelList<CvsItems>>(@"conf\bookmark", @"bookmark.conf", new ModelList<CvsItems>());
-            }
-
-            // ブックマーク情報をJSON形式で読み込み
-            this.BookmarkConf!.LoadJSON();
-        }
-        #endregion
     }
 }
