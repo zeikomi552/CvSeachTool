@@ -198,41 +198,80 @@ namespace MVVMCore.Common.Utilities
                 ShowMessage.ShowErrorOK(ex.Message, "Error");
             }
         }
-		#endregion
+        #endregion
 
-		/// <summary>
-		/// カウント
-		/// </summary>
-		public int Count
+        #region カウント
+        /// <summary>
+        /// カウント
+        /// </summary>
+        public int Count
 		{
 			get
 			{
 				return this.Items.Count;
 			}
 		}
+        #endregion
 
-		/// <summary>
-		/// 最初の要素を取得する
-		/// </summary>
-		/// <returns></returns>
-		public T First()
+        #region 最初の要素を取得する
+        /// <summary>
+        /// 最初の要素を取得する
+        /// </summary>
+        /// <returns></returns>
+        public T First()
 		{
 			return this.Items.First();
 		}
+        #endregion
 
-		/// <summary>
-		/// 最後の要素を取得する
-		/// </summary>
-		/// <returns></returns>
-		public T Last()
+        #region 最後の要素を取得する
+        /// <summary>
+        /// 最後の要素を取得する
+        /// </summary>
+        /// <returns></returns>
+        public T Last()
 		{
 			return this.Items.Last();
 		}
+        #endregion
 
-		public int IndexOf(T item)
+        #region Indexof
+        /// <summary>
+        /// Indexof
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
+        public int IndexOf(T item)
 		{
 			return this.Items.IndexOf(item);
 		}
+        #endregion
+
+        #region 最初の要素を選択する
+        /// <summary>
+        /// 最初の要素を選択する
+        /// </summary>
+        public void SelectedFirst()
+		{
+			if (this.Items != null && this.Items.Count > 0)
+			{
+				this.SelectedItem = this.ElementAt(0);
+			}
+		}
+        #endregion
+
+        #region 最後の要素を選択する
+        /// <summary>
+        /// 最後の要素を選択する
+        /// </summary>
+        public void SelectedLast()
+        {
+            if (this.Items != null && this.Items.Count > 0)
+            {
+                this.SelectedItem = this.Last();
+            }
+        }
+        #endregion
 
         #region INotifyPropertyChanged 
         public event PropertyChangedEventHandler PropertyChanged;

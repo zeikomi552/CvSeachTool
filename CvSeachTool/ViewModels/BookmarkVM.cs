@@ -149,6 +149,9 @@ namespace CvSeachTool.ViewModels
 
             // ブックマークリストのセット
             this.BookmarkList.Items = new ObservableCollection<BookmarkM>(list);
+
+            // 最初の要素を選択
+            this.BookmarkList.SelectedFirst();
         }
         #endregion
 
@@ -241,6 +244,10 @@ namespace CvSeachTool.ViewModels
         }
         #endregion
 
+        #region Bookmarkの削除
+        /// <summary>
+        /// Bookmarkの削除
+        /// </summary>
         public void DeleteBookmark()
         {
             try
@@ -253,5 +260,6 @@ namespace CvSeachTool.ViewModels
                 ShowMessage.ShowErrorOK(ex.Message, "Error");
             }
         }
+        #endregion
     }
 }
