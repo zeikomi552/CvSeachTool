@@ -154,7 +154,26 @@ namespace CvSeachTool.ViewModels
         }
         #endregion
 
-
+        #region Configファイルオブジェクト[Config]プロパティ
+        /// <summary>
+        /// Configファイルオブジェクト[Config]プロパティ
+        /// </summary>
+        public ConfigManager<ConfigM>? Config
+        {
+            get
+            {
+                return GblValues.Instance.Config;
+            }
+            set
+            {
+                if (GblValues.Instance.Config == null || !GblValues.Instance.Config.Equals(value))
+                {
+                    GblValues.Instance.Config = value;
+                    NotifyPropertyChanged("Config");
+                }
+            }
+        }
+        #endregion
 
         #region GET Query Condtion[GetCondition]プロパティ
         /// <summary>
@@ -206,9 +225,14 @@ namespace CvSeachTool.ViewModels
         }
         #endregion
 
+        #region コンストラクタ
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
         public MainWindowVM()
         {
         }
+        #endregion
 
         #region マークダウンの出力処理
         /// <summary>
@@ -665,6 +689,10 @@ namespace CvSeachTool.ViewModels
         }
         #endregion
 
+        #region ブックマーク画面を開く処理
+        /// <summary>
+        /// ブックマーク画面を開く処理
+        /// </summary>
         public void OpenBookmarkV()
         {
             try
@@ -683,7 +711,9 @@ namespace CvSeachTool.ViewModels
                 ShowMessage.ShowErrorOK(ex.Message, "Error");
             }
         }
+        #endregion
 
+        #region ブックマークへ追加
         /// <summary>
         /// ブックマークへ追加
         /// </summary>
@@ -715,7 +745,9 @@ namespace CvSeachTool.ViewModels
                 ShowMessage.ShowErrorOK(ex.Message, "Error");
             }
         }
+        #endregion
 
+        #region 画面初期化処理
         /// <summary>
         /// 画面初期化処理
         /// </summary>
@@ -725,24 +757,33 @@ namespace CvSeachTool.ViewModels
         {
             try
             {
-                this.BookmarkConf = new ConfigManager<ModelList<CvsItems>>("conf", "bookmark.conf", new ModelList<CvsItems>());
+                // コンフィグの初期化処理
+                GblValues.Instance.InitConfig();
 
-                this.BookmarkConf!.LoadJSON();
+                // オブジェクトの作成
                 this.CvsModel = new CvsModelExM(new CvsModelM());
-                this.CvsModel.Items = this.BookmarkConf.Item; // ModelListへ変換
 
+                // Bookmarkを初期リストに追加
+                this.CvsModel.Items = this.BookmarkConf!.Item;
             }
             catch (Exception ex)
             {
                 ShowMessage.ShowErrorOK(ex.Message, "Error");
             }
         }
+        #endregion
 
+        #region クローズ処理
+        /// <summary>
+        /// クローズ処理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public override void Close(object sender, EventArgs e)
         {
 
         }
-
+        #endregion
 
     }
 }

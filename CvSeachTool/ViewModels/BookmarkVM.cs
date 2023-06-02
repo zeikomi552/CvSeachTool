@@ -7,6 +7,7 @@ using MVVMCore.Common.Wrapper;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,7 @@ namespace CvSeachTool.ViewModels
 {
     public class BookmarkVM : ViewModelBase
     {
+
         #region ブックマーク[BookmarkConf]プロパティ
         /// <summary>
         /// ブックマーク[BookmarkConf]プロパティ
@@ -33,6 +35,27 @@ namespace CvSeachTool.ViewModels
                 {
                     GblValues.Instance.BookmarkConf = value;
                     NotifyPropertyChanged("BookmarkConf");
+                }
+            }
+        }
+        #endregion
+
+        #region Configファイルオブジェクト[Config]プロパティ
+        /// <summary>
+        /// Configファイルオブジェクト[Config]プロパティ
+        /// </summary>
+        public ConfigManager<ConfigM>? Config
+        {
+            get
+            {
+                return GblValues.Instance.Config;
+            }
+            set
+            {
+                if (GblValues.Instance.Config == null || !GblValues.Instance.Config.Equals(value))
+                {
+                    GblValues.Instance.Config = value;
+                    NotifyPropertyChanged("Config");
                 }
             }
         }
@@ -63,16 +86,95 @@ namespace CvSeachTool.ViewModels
         }
         #endregion
 
+        #region ブックマークリスト[BookmarkList]プロパティ
+        /// <summary>
+        /// ブックマークリスト[BookmarkList]プロパティ用変数
+        /// </summary>
+        ModelList<BookmarkM> _BookmarkList = new ModelList<BookmarkM>();
+        /// <summary>
+        /// ブックマークリスト[BookmarkList]プロパティ
+        /// </summary>
+        public ModelList<BookmarkM> BookmarkList
+        {
+            get
+            {
+                return _BookmarkList;
+            }
+            set
+            {
+                if (_BookmarkList == null || !_BookmarkList.Equals(value))
+                {
+                    _BookmarkList = value;
+                    NotifyPropertyChanged("BookmarkList");
+                }
+            }
+        }
+        #endregion
+
+        #region 初期化処理
+        /// <summary>
+        /// 初期化処理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="ev"></param>
         public override void Init(object sender, EventArgs ev)
         {
             try
             {
+                InitBookmarkList();
             }
             catch (Exception e)
             {
                 ShowMessage.ShowErrorOK(e.Message, "Error");
             }
         }
+        #endregion
+
+        #region ブックマークリストの初期化処理
+        /// <summary>
+        /// ブックマークリストの初期化処理
+        /// </summary>
+        private void InitBookmarkList()
+        {
+            // フォルダのパス
+            var dirPath = Path.Combine(PathManager.GetApplicationFolder(), this.Config!.Item.BookmarkDir);
+
+            List<BookmarkM> list = new List<BookmarkM>();
+            // フォルダ内のファイル一覧を取得
+            var fileArray = Directory.GetFiles(dirPath);
+            foreach (string file in fileArray)
+            {
+                list.Add(new BookmarkM() { BookmarkFilePath = file });
+            }
+
+            // ブックマークリストのセット
+            this.BookmarkList.Items = new ObservableCollection<BookmarkM>(list);
+        }
+        #endregion
+
+        #region ブックマークの選択変更
+        /// <summary>
+        /// ブックマークの選択変更
+        /// </summary>
+        public void BookmarkSelectionChanged()
+        {
+            try
+            {
+
+            }
+            catch (Exception e)
+            {
+                ShowMessage.ShowErrorOK(e.Message, "Error");
+            }
+        }
+        #endregion
+
+        #region クローズ処理
+        /// <summary>
+        /// クローズ処理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="ev"></param>
         public override void Close(object sender, EventArgs ev)
         {
             try
@@ -84,6 +186,7 @@ namespace CvSeachTool.ViewModels
                 ShowMessage.ShowErrorOK(e.Message, "Error");
             }
         }
+        #endregion
 
         #region モデルの選択が変更された場合の処理
         /// <summary>
