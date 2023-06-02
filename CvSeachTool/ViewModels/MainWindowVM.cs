@@ -622,10 +622,14 @@ namespace CvSeachTool.ViewModels
                 var wnd = new BookmarkV();
                 var vm = wnd.DataContext as BookmarkVM;
 
-                if (wnd.ShowDialog() == true)
-                {
+                // ブックマーク画面の表示
+                wnd.ShowDialog();
 
-                }
+                // コンフィグファイルの読み込み直し
+                GblValues.Instance.ConfigInit();
+
+                // モデルのリストの初期化処理
+                InitModelList();
 
             }
             catch (Exception ex)
@@ -679,19 +683,27 @@ namespace CvSeachTool.ViewModels
         {
             try
             {
-                // コンフィグの初期化処理
-                this.Config!.Item.InitConfig();
-
-                // オブジェクトの作成
-                this.CvsModel = new CvsModelExM(new CvsModelM());
-
-                // Bookmarkを初期リストに追加
-                this.CvsModel.Items = this.BookmarkConf!.Item;
+                // モデルのリストの初期化処理
+                InitModelList();
             }
             catch (Exception ex)
             {
                 ShowMessage.ShowErrorOK(ex.Message, "Error");
             }
+        }
+        #endregion
+
+        #region モデルのリストの初期化処理
+        /// <summary>
+        /// モデルのリストの初期化処理
+        /// </summary>
+        private void InitModelList()
+        {
+            // オブジェクトの作成
+            this.CvsModel = new CvsModelExM(new CvsModelM());
+
+            // Bookmarkを初期リストに追加
+            this.CvsModel.Items = this.BookmarkConf!.Item;
         }
         #endregion
 

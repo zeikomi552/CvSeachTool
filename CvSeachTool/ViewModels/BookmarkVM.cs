@@ -164,6 +164,19 @@ namespace CvSeachTool.ViewModels
             try
             {
 
+                if (this.BookmarkList.SelectedItem != null &&
+                    File.Exists(this.BookmarkList.SelectedItem.BookmarkFilePath))
+                {
+                    // ブックマーク情報の作成
+                    this.BookmarkConf = new ConfigManager<ModelList<CvsItems>>(this.Config!.Item.BookmarkDir, this.BookmarkList.SelectedItem.BookmarkFile, new ModelList<CvsItems>());
+                    this.BookmarkConf.LoadJSON();
+                }
+                else
+                {
+                    // ブックマーク情報の作成
+                    this.BookmarkConf = new ConfigManager<ModelList<CvsItems>>(@"conf\bookmark", @"bookmark.conf", new ModelList<CvsItems>());
+                    this.BookmarkConf.LoadJSON();
+                }
             }
             catch (Exception e)
             {
@@ -254,6 +267,31 @@ namespace CvSeachTool.ViewModels
             {
                 // 選択行の削除処理
                 this.BookmarkConf!.Item.SelectedItemDelete();
+            }
+            catch (Exception ex)
+            {
+                ShowMessage.ShowErrorOK(ex.Message, "Error");
+            }
+        }
+        #endregion
+
+        #region ブックマークの保存処理
+        /// <summary>
+        /// ブックマークの保存処理
+        /// </summary>
+        public void SaveBookmark()
+        {
+            try
+            {
+                // nullチェック
+                if (this.BookmarkList != null && this.BookmarkList.SelectedItem != null)
+                {
+                    // ブックマークのセット
+                    this.Config!.Item.BookmarkFile = this.BookmarkList.SelectedItem.BookmarkFilePath;
+
+                    // JSON形式で保存
+                    this.Config.SaveXML();
+                }
             }
             catch (Exception ex)
             {

@@ -21,19 +21,8 @@ namespace CvSeachTool.Common
         /// </summary>
         private GblValues()
         {
-            // コンフィグファイルの作成
-            this.Config = new ConfigManager<ConfigM>("conf", "CvSearchTool.conf", new ConfigM());
-
-            if (File.Exists(this.Config.Item.BookmarkFile))
-            {
-                // ブックマーク情報の作成
-                this.BookmarkConf = new ConfigManager<ModelList<CvsItems>>(this.Config.Item.BookmarkDir, this.Config.Item.BookmarkFile, new ModelList<CvsItems>());
-            }
-            else
-            {
-                // ブックマーク情報の作成
-                this.BookmarkConf = new ConfigManager<ModelList<CvsItems>>(@"conf\bookmark", @"bookmark.conf", new ModelList<CvsItems>());
-            }
+            // コンフィグファイルの初期化処理
+            ConfigInit();
         }
         #endregion
 
@@ -122,5 +111,33 @@ namespace CvSeachTool.Common
         }
         #endregion
 
+        #region コンフィグファイルの初期化処理
+        /// <summary>
+        /// コンフィグファイルの初期化処理
+        /// </summary>
+        public void ConfigInit()
+        {
+            // コンフィグファイルの作成
+            this.Config = new ConfigManager<ConfigM>("conf", "CvSearchTool.conf", new ConfigM());
+
+            // コンフィグファイルの読み込み
+            this.Config.LoadXML();
+
+            // ブックマークファイルの存在確認
+            if (File.Exists(this.Config.Item.BookmarkFile))
+            {
+                // ブックマーク情報の作成
+                this.BookmarkConf = new ConfigManager<ModelList<CvsItems>>(this.Config.Item.BookmarkDir, this.Config.Item.BookmarkFile, new ModelList<CvsItems>());
+            }
+            else
+            {
+                // ブックマーク情報の作成
+                this.BookmarkConf = new ConfigManager<ModelList<CvsItems>>(@"conf\bookmark", @"bookmark.conf", new ModelList<CvsItems>());
+            }
+
+            // ブックマークファイルの読み込み
+            this.BookmarkConf.LoadJSON();
+        }
+        #endregion
     }
 }

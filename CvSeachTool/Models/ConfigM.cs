@@ -63,19 +63,5 @@ namespace CvSeachTool.Models
         }
         #endregion
 
-
-        #region コンフィグファイルの初期化処理
-        /// <summary>
-        /// コンフィグファイルの初期化処理
-        /// </summary>
-        public void InitConfig()
-        {
-            // コンフィグファイルの読み込み
-            GblValues.Instance.Config!.LoadXML();
-
-            // ブックマーク情報をJSON形式で読み込み
-            GblValues.Instance.BookmarkConf!.LoadJSON();
-        }
-        #endregion
     }
 }

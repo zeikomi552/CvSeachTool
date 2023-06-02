@@ -9,7 +9,7 @@
         xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:ViewModels="clr-namespace:CvSeachTool.ViewModels" x:Class="CvSeachTool.Views.BookmarkV"
         mc:Ignorable="d"
-        Title="BookmarkV" Height="450" Width="800">
+        Title="BookmarkV" Height="800" Width="1200">
     <Window.DataContext>
         <ViewModels:BookmarkVM/>
     </Window.DataContext>
@@ -45,8 +45,21 @@
                         <TextBlock Margin="5" VerticalAlignment="Center" Text="お気入ファイル"/>
                         <ComboBox Margin="5" Width="150" ItemsSource="{Binding BookmarkList.Items}"
                                   SelectedItem="{Binding BookmarkList.SelectedItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                  DisplayMemberPath="BookmarkFile"/>
+                                  DisplayMemberPath="BookmarkFile">
+                            <b:Interaction.Triggers>
+                                <b:EventTrigger EventName="SelectionChanged">
+                                    <b:CallMethodAction TargetObject="{Binding}" MethodName="BookmarkSelectionChanged"/>
+                                </b:EventTrigger>
+                            </b:Interaction.Triggers>
+                        </ComboBox>
                         <Button Margin="5" Content="名前変更"/>
+                        <Button Margin="5" Content="初期値として保存">
+                            <b:Interaction.Triggers>
+                                <b:EventTrigger EventName="Click">
+                                    <b:CallMethodAction TargetObject="{Binding}" MethodName="SaveBookmark"/>
+                                </b:EventTrigger>
+                            </b:Interaction.Triggers>
+                        </Button>
                     </StackPanel>
                     <DataGrid Grid.Row="1" AutoGenerateColumns="False" Margin="5,5,5,5" IsReadOnly="True" ItemsSource="{Binding BookmarkConf.Item.Items}" 
                   SelectedItem="{Binding BookmarkConf.Item.SelectedItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.RowSpan="2">
