@@ -11,7 +11,7 @@
         xmlns:local="clr-namespace:CvSeachTool"
         xmlns:b="http://schemas.microsoft.com/xaml/behaviors" xmlns:ViewModels="clr-namespace:CvSeachTool.ViewModels" x:Class="CvSeachTool.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="1200">
+        Title="MainWindow" Height="800" Width="1200" WindowStartupLocation="CenterScreen">
     <Window.DataContext>
         <ViewModels:MainWindowVM/>
     </Window.DataContext>
@@ -413,6 +413,13 @@
                         <b:Interaction.Triggers>
                             <b:EventTrigger EventName="Click">
                                 <b:CallMethodAction TargetObject="{Binding}" MethodName="OpenBookmarkV"/>
+                            </b:EventTrigger>
+                        </b:Interaction.Triggers>
+                    </Button>
+                    <Button Margin="5" Width="auto" Content="Output Markdown">
+                        <b:Interaction.Triggers>
+                            <b:EventTrigger EventName="Click">
+                                <b:CallMethodAction TargetObject="{Binding}" MethodName="Output3"/>
                             </b:EventTrigger>
                         </b:Interaction.Triggers>
                     </Button>

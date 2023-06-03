@@ -53,6 +53,18 @@ namespace MVVMCore.Common.Utilities
         }
         #endregion
 
+        #region カレントディレクトリパスを取得する
+        /// <summary>
+        /// カレントディレクトリパスを取得する
+        /// </summary>
+        /// <param name="file_path">ファイルパス</param>
+        /// <returns>カレントディレクトリパス</returns>
+        public static string GetCurrentDirectory(string file_path)
+        {
+            return Directory.GetParent(file_path).FullName;
+        }
+        #endregion
+
         #region 最後の文字列が指定した文字と同じなら最後の文字列を削除する
         /// <summary>
         /// 最後の文字列が指定した文字と同じなら最後の文字列を削除する

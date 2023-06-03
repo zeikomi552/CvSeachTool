@@ -5,6 +5,7 @@ using CvSeachTool.Models;
 using CvSeachTool.Models.Condition;
 using CvSeachTool.Views;
 using Microsoft.Win32;
+using Microsoft.WindowsAPICodePack.Dialogs;
 using MVVMCore.BaseClass;
 using MVVMCore.Common.Utilities;
 using MVVMCore.Common.Wrapper;
@@ -275,6 +276,34 @@ namespace CvSeachTool.ViewModels
             }
         }
         #endregion
+
+        public void Output3()
+        {
+            try
+            {
+                // nullチェック
+                if (this.CvsModel != null)
+                {
+
+                    using (var cofd = new CommonOpenFileDialog()
+                    {
+                        Title = "フォルダを選択してください",
+                        // フォルダ選択モードにする
+                        IsFolderPicker = true,
+                    })
+                    {
+                        if (cofd.ShowDialog() == CommonFileDialogResult.Ok)
+                        {
+                            this.CvsModel.OutputMarkdown3(cofd.FileName);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowMessage.ShowErrorOK(ex.Message, "Error");
+            }
+        }
 
         #region Execute GET REST API
         /// <summary>

@@ -9,7 +9,7 @@
         xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:ViewModels="clr-namespace:CvSeachTool.ViewModels" x:Class="CvSeachTool.Views.BookmarkV"
         mc:Ignorable="d"
-        Title="BookmarkV" Height="800" Width="1200">
+        Title="BookmarkV" Height="800" Width="1200" WindowStartupLocation="CenterScreen">
     <Window.DataContext>
         <ViewModels:BookmarkVM/>
     </Window.DataContext>
