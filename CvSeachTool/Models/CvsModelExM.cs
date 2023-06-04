@@ -351,7 +351,7 @@ namespace CvSeachTool.Models
 
                 sb.AppendLine($"### {tmp.Prompt}");
                 string img_file_soutai = Path.Combine(Path.GetFileName(img_dir), mk_filename + "_" + Path.GetFileName(tmp.FilePath));
-                sb.AppendLine($"![]({img_file_soutai}))");
+                sb.AppendLine($"![]({img_file_soutai})");
                 sb.AppendLine($"");
                 sb.AppendLine($"```");
                 sb.AppendLine($"{tmp.ImageText.Replace("parameters:", "prompt: ")}");
