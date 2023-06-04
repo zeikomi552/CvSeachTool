@@ -111,6 +111,19 @@ namespace CvSeachTool.ViewModels
         }
         #endregion
 
+        #region お気に入りを保存しているフォルダ
+        /// <summary>
+        /// お気に入りを保存しているフォルダ
+        /// </summary>
+        public string BookmarkDir
+        {
+            get
+            {
+                return Path.Combine(PathManager.GetApplicationFolder(), this.Config!.Item.BookmarkDir);
+            }
+        }
+        #endregion
+
         #region 初期化処理
         /// <summary>
         /// 初期化処理
@@ -136,10 +149,11 @@ namespace CvSeachTool.ViewModels
         /// </summary>
         private void InitBookmarkList()
         {
-            // フォルダのパス
-            var dirPath = Path.Combine(PathManager.GetApplicationFolder(), this.Config!.Item.BookmarkDir);
+            // お気に入りのフォルダのパス
+            var dirPath = this.BookmarkDir;
 
-            List<BookmarkM> list = new List<BookmarkM>();
+            List<BookmarkM> list = new();
+
             // フォルダ内のファイル一覧を取得
             var fileArray = Directory.GetFiles(dirPath);
             foreach (string file in fileArray)
@@ -151,7 +165,7 @@ namespace CvSeachTool.ViewModels
             this.BookmarkList.Items = new ObservableCollection<BookmarkM>(list);
 
             var tmp = (from x in this.BookmarkList.Items
-                      where x.BookmarkFile.Equals(this.Config.Item.BookmarkFile)
+                      where x.BookmarkFile.Equals(this.Config!.Item.BookmarkFile)
                       select x).FirstOrDefault();
 
 
@@ -178,12 +192,6 @@ namespace CvSeachTool.ViewModels
                 {
                     // ブックマーク情報の作成
                     this.BookmarkConf = new ConfigManager<ModelList<CvsItems>>(this.Config!.Item.BookmarkDir, this.BookmarkList.SelectedItem.BookmarkFile, new ModelList<CvsItems>());
-                    this.BookmarkConf.LoadJSON();
-                }
-                else
-                {
-                    // ブックマーク情報の作成
-                    this.BookmarkConf = new ConfigManager<ModelList<CvsItems>>(@"conf\bookmark", @"bookmark.conf", new ModelList<CvsItems>());
                     this.BookmarkConf.LoadJSON();
                 }
             }
@@ -301,6 +309,38 @@ namespace CvSeachTool.ViewModels
                     // JSON形式で保存
                     this.Config.SaveXML();
                 }
+            }
+            catch (Exception ex)
+            {
+                ShowMessage.ShowErrorOK(ex.Message, "Error");
+            }
+        }
+        #endregion
+
+        #region 新規作成
+        /// <summary>
+        /// 新規作成
+        /// </summary>
+        public void CreateNew()
+        {
+            try
+            {
+                string filename = @"bookmark.conf";
+
+                int i = 0;
+                // ファイルの存在確認
+                while (File.Exists(Path.Combine(this.BookmarkDir, filename)))
+                {
+                    filename = $"bookmark({i++}).conf";
+                }
+
+                // ブックマーク情報の作成
+                this.BookmarkConf = new ConfigManager<ModelList<CvsItems>>(this.BookmarkDir, filename, new ModelList<CvsItems>());
+                this.BookmarkConf.SaveJSON();
+
+                // お気に入りのコンボボックスに追加する
+                this.BookmarkList.Items.Add(new BookmarkM() { BookmarkFilePath = Path.Combine(this.BookmarkDir, filename) });
+                this.BookmarkList.SelectedLast();
             }
             catch (Exception ex)
             {
