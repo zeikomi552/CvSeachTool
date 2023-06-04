@@ -359,6 +359,7 @@
                         </DataGrid>
                     </GroupBox>
                 </Grid>
+                <GridSplitter  Background="{DynamicResource MahApps.Brushes.Accent4}" Width="5" HorizontalAlignment="Right" />
                 <Grid Margin="5" Grid.Column="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
