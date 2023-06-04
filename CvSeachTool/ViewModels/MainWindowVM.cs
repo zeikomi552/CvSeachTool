@@ -753,6 +753,11 @@ namespace CvSeachTool.ViewModels
 
             // Bookmarkを初期リストに追加
             this.CvsModel.Items = this.BookmarkConf!.Item;
+
+            foreach (var item in this.CvsModel.Items)
+            {
+                item.IsBookmark = true;
+            }
         }
         #endregion
 

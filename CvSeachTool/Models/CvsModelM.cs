@@ -1383,6 +1383,7 @@ namespace CvSeachTool.Models
             /// <summary>
             /// ブックマーク[IsBookmark]プロパティ
             /// </summary>
+            [JsonPropertyName("IsBookmark")]
             public bool IsBookmark
             {
                 get

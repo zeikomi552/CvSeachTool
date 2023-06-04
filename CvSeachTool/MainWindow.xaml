@@ -234,7 +234,7 @@
                                         <svgc:SvgViewbox Height="20" Source="/Common/Images/search-file-svgrepo-com.svg" />
                                     </StackPanel>
                                 </Button>
-                                <TextBlock VerticalAlignment="Center" Text="{Binding CvsModel.RequestURL}"/>
+                                <TextBlock MaxWidth="250" TextWrapping="WrapWithOverflow" VerticalAlignment="Center" Text="{Binding CvsModel.RequestURL}"/>
 
                             </StackPanel>
                         </Grid>
