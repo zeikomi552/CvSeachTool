@@ -1369,14 +1369,37 @@ namespace CvSeachTool.Models
         }
         #endregion
 
-
-
         #region Items
         /// <summary>
         /// Items
         /// </summary>
         public class CvsItems : ModelBase
         {
+            #region ブックマーク[IsBookmark]プロパティ
+            /// <summary>
+            /// ブックマーク[IsBookmark]プロパティ用変数
+            /// </summary>
+            bool _IsBookmark = false;
+            /// <summary>
+            /// ブックマーク[IsBookmark]プロパティ
+            /// </summary>
+            public bool IsBookmark
+            {
+                get
+                {
+                    return _IsBookmark;
+                }
+                set
+                {
+                    if (!_IsBookmark.Equals(value))
+                    {
+                        _IsBookmark = value;
+                        NotifyPropertyChanged("IsBookmark");
+                    }
+                }
+            }
+            #endregion
+
             #region The identifier for the model[Id]プロパティ
             /// <summary>
             /// The identifier for the model[Id]プロパティ用変数

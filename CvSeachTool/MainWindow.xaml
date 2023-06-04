@@ -302,6 +302,7 @@
                                 </Style>
                             </DataGrid.RowStyle>
                             <DataGrid.Columns>
+                                <DataGridCheckBoxColumn Header="☆" Width="50" Binding="{Binding IsBookmark}"/>
                                 <DataGridTextColumn Header="id" Binding="{Binding Id}"/>
                                 <DataGridTextColumn Header="name" Width="100" Binding="{Binding Name}"/>
                                 <DataGridTextColumn Header="type" Binding="{Binding Type}"/>

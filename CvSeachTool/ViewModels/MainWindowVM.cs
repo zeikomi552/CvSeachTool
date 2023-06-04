@@ -370,6 +370,19 @@ namespace CvSeachTool.ViewModels
                         DataGridTopRow(sender);
                     }
 
+                    // ブックマーク登録されている場合はブックマーク情報をセットする
+                    if (this.BookmarkConf != null && this.BookmarkConf.Item != null && this.BookmarkConf.Item.Items != null)
+                    {
+                        // モデル全数分回す
+                        foreach (var cvitem in this.CvsModel.Items)
+                        {
+                            // ブックマークに登録されているIDならセット
+                            cvitem.IsBookmark = (from x in this.BookmarkConf.Item.Items
+                                                 where x.Id.Equals(cvitem.Id)
+                                                 select x).Any();
+                        }
+                    }
+
                 }
             }
             catch (Exception e)
@@ -682,17 +695,24 @@ namespace CvSeachTool.ViewModels
                 {
                     var check = (from x in this.BookmarkConf.Item.Items
                                  where x.Id.Equals(this.CvsModel.Items.SelectedItem.Id)
-                                 select x).Any();
+                                 select x);
+
+                    // Bookmarkをセット
+                    this.CvsModel.Items.SelectedItem.IsBookmark = !this.CvsModel.Items.SelectedItem.IsBookmark;
 
                     // 存在しなければ追加
-                    if (!check)
+                    if (!check.Any())
                     {
                         // ブックマークの追加
                         this.BookmarkConf.Item.Items.Add(this.CvsModel.Items.SelectedItem);
-
-                        // JSON形式で保存
-                        this.BookmarkConf!.SaveJSON();
                     }
+                    else
+                    {
+                        // ブックマークの追加
+                        this.BookmarkConf.Item.Items.Remove(check.First());
+                    }
+                    // JSON形式で保存
+                    this.BookmarkConf!.SaveJSON();
                 }
             }
             catch (Exception ex)
