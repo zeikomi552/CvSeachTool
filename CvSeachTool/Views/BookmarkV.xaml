@@ -59,7 +59,13 @@
                                 </b:EventTrigger>
                             </b:Interaction.Triggers>
                         </Button>
-                        <Button Margin="5" Content="名前変更" Cursor="Hand"/>
+                        <Button Margin="5" Content="名前変更" Cursor="Hand">
+                            <b:Interaction.Triggers>
+                                <b:EventTrigger EventName="Click">
+                                    <b:CallMethodAction TargetObject="{Binding}" MethodName="OpenBookmarkRenameV"/>
+                                </b:EventTrigger>
+                            </b:Interaction.Triggers>
+                        </Button>
                         <Button Margin="5" Content="初期値として保存">
                             <b:Interaction.Triggers>
                                 <b:EventTrigger EventName="Click">

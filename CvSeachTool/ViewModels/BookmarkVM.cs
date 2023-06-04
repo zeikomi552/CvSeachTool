@@ -202,6 +202,54 @@ namespace CvSeachTool.ViewModels
         }
         #endregion
 
+        #region リネーム画面を開く
+        /// <summary>
+        /// リネーム画面を開く
+        /// </summary>
+        public void OpenBookmarkRenameV()
+        {
+            try
+            {
+                var wnd = new BookmarkRenameV();
+                var vm = wnd.DataContext as BookmarkRenameVM;
+
+                // ディレクトリパスをセット
+                vm!.DirPath = this.Config!.Item.BookmarkDir;
+
+                // リネーム前のファイル名をセット
+                vm!.RenameFilename = Path.GetFileNameWithoutExtension(this.BookmarkList.SelectedItem.BookmarkFile);
+
+                // Windowを開く
+                if (wnd.ShowDialog() == true)
+                {
+                    // ファイルパスの作成
+                    string file_path = Path.Combine(this.BookmarkDir, vm!.RenameFilename + ".conf");
+
+                    // ファイル名の変更
+                    System.IO.File.Move(this.BookmarkList.SelectedItem.BookmarkFilePath, file_path);
+
+                    // 変更後のファイル名をセット
+                    this.BookmarkList.SelectedItem.BookmarkFilePath = file_path;
+
+                    // コンフィグのファイルパスが当該ブックマークファイルを選択しているのであれば
+                    if (this.Config.Item.BookmarkFile.Equals(this.BookmarkList.SelectedItem.BookmarkFile))
+                    {
+                        // ファイル名を変更する
+                        this.Config.Item.BookmarkFile = Path.GetFileName(file_path);
+
+                        // ファイルを保存する
+                        this.Config.SaveXML();
+                    }
+
+                }
+            }
+            catch (Exception e)
+            {
+                ShowMessage.ShowErrorOK(e.Message, "Error");
+            }
+        }
+        #endregion
+
         #region クローズ処理
         /// <summary>
         /// クローズ処理
