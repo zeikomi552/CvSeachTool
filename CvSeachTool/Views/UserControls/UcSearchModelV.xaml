@@ -255,6 +255,7 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
                     <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left">
                         <Button Width="50" Margin="5" IsEnabled="{Binding ExecuteGetAPI, Converter={StaticResource ConvertBooleanConverter}}">
@@ -358,6 +359,15 @@
 
                         </DataGrid>
                     </GroupBox>
+
+                    <Button Margin="5" Grid.Row="3" Content="Download">
+                        <b:Interaction.Triggers>
+                            <b:EventTrigger EventName="Click">
+                                <b:CallMethodAction TargetObject="{Binding}" MethodName="Download"/>
+                            </b:EventTrigger>
+                        </b:Interaction.Triggers>
+                    </Button>
+
                 </Grid>
                 <GridSplitter  Background="{DynamicResource MahApps.Brushes.Accent4}" Width="5" HorizontalAlignment="Right" />
                 <Grid Margin="5" Grid.Column="1">
