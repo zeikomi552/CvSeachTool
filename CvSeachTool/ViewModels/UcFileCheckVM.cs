@@ -152,7 +152,7 @@ namespace CvSeachTool.ViewModels
                 List<FileInfoM> list = new List<FileInfoM>();
 
                 // フォルダ内のファイル一覧を取得
-                var fileArray = Directory.GetFiles(dir);
+                var fileArray = Directory.GetFiles(dir, "*.png");
                 foreach (string file in fileArray)
                 {
                     // バイナリで開く

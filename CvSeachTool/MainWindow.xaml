@@ -21,7 +21,7 @@
         <TabItem Header="Bookmark">
             <UserControls:UcBookmarkV />
         </TabItem>
-        <TabItem Header="Image">
+        <TabItem Header="Folder">
             <UserControls:UcFileCheckV />
         </TabItem>
     </TabControl>
