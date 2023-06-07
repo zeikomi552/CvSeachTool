@@ -30,7 +30,7 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <GroupBox Margin="5" Header="ブックマーク">
+        <GroupBox Margin="5" Header="Bookmark">
             <Grid Cursor="Hand">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
