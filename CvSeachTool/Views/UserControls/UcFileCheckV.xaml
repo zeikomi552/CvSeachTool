@@ -33,6 +33,16 @@
                     <svgc:SvgViewbox Source="/Common/Images/directory-search-1623-svgrepo-com.svg" />
                 </StackPanel>
             </Button>
+            <Button Cursor="Hand">
+                <b:Interaction.Triggers>
+                    <b:EventTrigger EventName="Click">
+                        <b:CallMethodAction TargetObject="{Binding}" MethodName="OutputMarkdown"/>
+                    </b:EventTrigger>
+                </b:Interaction.Triggers>
+                <StackPanel Orientation="Vertical">
+                    <svgc:SvgViewbox Source="/Common/Images/markdown-svgrepo-com.svg" />
+                </StackPanel>
+            </Button>
         </StackPanel>
 
         <Grid Grid.Row="1">

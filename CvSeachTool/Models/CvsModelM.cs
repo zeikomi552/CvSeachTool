@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using static CvSeachTool.Models.CvsModelM.CvsModelVersions;
 using System.Windows;
 using CvSeachTool.ViewModels;
+using MVVMCore.Common.Utilities;
 
 namespace CvSeachTool.Models
 {
@@ -1341,6 +1342,36 @@ namespace CvSeachTool.Models
             }
             #endregion
 
+            #region ダウンロード処理
+            /// <summary>
+            /// ダウンロード処理
+            /// </summary>
+            public void Download()
+            {
+                try
+                {
+                    // nullチェック
+                    if (string.IsNullOrEmpty(this.DownloadUrl))
+                    {
+                        // ダウンロードするバージョンを選択してください
+                        ShowMessage.ShowNoticeOK("Choose the version you want to download", "Notice");
+                        return;
+                    }
+
+                    // ダウンロードURLの取得
+                    string download_url = this.DownloadUrl;
+
+                    // ブラウザでURLを開く
+                    var startInfo = new System.Diagnostics.ProcessStartInfo($"{download_url}");
+                    startInfo.UseShellExecute = true;
+                    System.Diagnostics.Process.Start(startInfo);
+                }
+                catch (Exception ex)
+                {
+                    ShowMessage.ShowErrorOK(ex.Message, "Error");
+                }
+            }
+            #endregion
         }
         #endregion
 

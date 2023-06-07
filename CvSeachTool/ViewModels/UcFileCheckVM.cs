@@ -1,5 +1,6 @@
 ﻿using CvSeachTool.Common.Utilities;
 using CvSeachTool.Models;
+using Microsoft.Win32;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using MVVMCore.BaseClass;
 using MVVMCore.Common.Utilities;
@@ -184,16 +185,33 @@ namespace CvSeachTool.ViewModels
         }
         #endregion
 
-        public void Output3()
+        #region マークダウンの出力処理
+        /// <summary>
+        /// マークダウンの出力処理
+        /// </summary>
+        public void OutputMarkdown()
         {
             try
             {
-               
+                // ダイアログのインスタンスを生成
+                var dialog = new SaveFileDialog();
+
+                // ファイルの種類を設定
+                dialog.Filter = "マークダウン (*.md)|*.md";
+
+                string img_dir = string.Empty;
+                string mk_filename = string.Empty;
+                // ダイアログを表示する
+                if (dialog.ShowDialog() == true)
+                {
+                    MarkdownM.OutputMarkdown(this.FileList.Items.ToList<FileInfoM>(), this.DirectoryPath, dialog.FileName);
+                }
             }
             catch (Exception ex)
             {
                 ShowMessage.ShowErrorOK(ex.Message, "Error");
             }
         }
+        #endregion
     }
 }

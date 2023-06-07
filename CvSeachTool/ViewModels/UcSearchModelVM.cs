@@ -265,66 +265,6 @@ namespace CvSeachTool.ViewModels
         }
         #endregion
 
-        #region ダウンロード処理
-        /// <summary>
-        /// ダウンロード処理
-        /// </summary>
-        public void Download()
-        {
-            try
-            {
-                // nullチェック
-                if (this.CvsModel!.Items == null || this.CvsModel!.Items.SelectedItem == null 
-                    || this.CvsModel!.Items.SelectedItem.SelectedModelVersion == null 
-                    || string.IsNullOrEmpty(this.CvsModel!.Items.SelectedItem.SelectedModelVersion.DownloadUrl))
-                {
-                    // ダウンロードするバージョンを選択してください
-                    ShowMessage.ShowNoticeOK("Choose the version you want to download", "Notice");
-                    return;
-                }
-
-                // ダウンロードURLの取得
-                string download_url = this.CvsModel!.Items.SelectedItem.SelectedModelVersion.DownloadUrl;
-
-                // ブラウザでURLを開く
-                var startInfo = new System.Diagnostics.ProcessStartInfo($"{download_url}");
-                startInfo.UseShellExecute = true;
-                System.Diagnostics.Process.Start(startInfo);
-            }
-            catch (Exception ex)
-            {
-                ShowMessage.ShowErrorOK(ex.Message, "Error");
-            }
-        }
-        #endregion
-
-        //public void Output3()
-        //{
-        //    try
-        //    {
-        //        // nullチェック
-        //        if (this.CvsModel != null)
-        //        {
-
-        //            using (var cofd = new CommonOpenFileDialog()
-        //            {
-        //                Title = "フォルダを選択してください",
-        //                // フォルダ選択モードにする
-        //                IsFolderPicker = true,
-        //            })
-        //            {
-        //                if (cofd.ShowDialog() == CommonFileDialogResult.Ok)
-        //                {
-        //                    this.CvsModel.OutputMarkdown3(cofd.FileName);
-        //                }
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        ShowMessage.ShowErrorOK(ex.Message, "Error");
-        //    }
-        //}
 
         #region Execute GET REST API
         /// <summary>

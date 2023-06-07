@@ -14,14 +14,16 @@
         mc:Ignorable="d"
         Title="CvSeachTool" Height="800" Width="1200" WindowStartupLocation="CenterScreen" TitleCharacterCasing="Normal">
     <TabControl>
+
         <TabItem Header="Civitai">
             <UserControls:UcSearchModelV/>
         </TabItem>
         <TabItem Header="Bookmark">
-            <UserControls:UcBookmarkV />    
+            <UserControls:UcBookmarkV />
         </TabItem>
         <TabItem Header="Image">
             <UserControls:UcFileCheckV />
         </TabItem>
     </TabControl>
+
 </mah:MetroWindow>
