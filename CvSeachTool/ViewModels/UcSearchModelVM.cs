@@ -298,33 +298,33 @@ namespace CvSeachTool.ViewModels
         }
         #endregion
 
-        public void Output3()
-        {
-            try
-            {
-                // nullチェック
-                if (this.CvsModel != null)
-                {
+        //public void Output3()
+        //{
+        //    try
+        //    {
+        //        // nullチェック
+        //        if (this.CvsModel != null)
+        //        {
 
-                    using (var cofd = new CommonOpenFileDialog()
-                    {
-                        Title = "フォルダを選択してください",
-                        // フォルダ選択モードにする
-                        IsFolderPicker = true,
-                    })
-                    {
-                        if (cofd.ShowDialog() == CommonFileDialogResult.Ok)
-                        {
-                            this.CvsModel.OutputMarkdown3(cofd.FileName);
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                ShowMessage.ShowErrorOK(ex.Message, "Error");
-            }
-        }
+        //            using (var cofd = new CommonOpenFileDialog()
+        //            {
+        //                Title = "フォルダを選択してください",
+        //                // フォルダ選択モードにする
+        //                IsFolderPicker = true,
+        //            })
+        //            {
+        //                if (cofd.ShowDialog() == CommonFileDialogResult.Ok)
+        //                {
+        //                    this.CvsModel.OutputMarkdown3(cofd.FileName);
+        //                }
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        ShowMessage.ShowErrorOK(ex.Message, "Error");
+        //    }
+        //}
 
         #region Execute GET REST API
         /// <summary>
@@ -674,34 +674,6 @@ namespace CvSeachTool.ViewModels
         }
         #endregion
 
-        #region ブックマーク画面を開く処理
-        /// <summary>
-        /// ブックマーク画面を開く処理
-        /// </summary>
-        public void OpenBookmarkV()
-        {
-            try
-            {
-                var wnd = new BookmarkV();
-                var vm = wnd.DataContext as BookmarkVM;
-
-                // ブックマーク画面の表示
-                wnd.ShowDialog();
-
-                // コンフィグファイルの読み込み直し
-                GblValues.Instance.ConfigInit();
-
-                // モデルのリストの初期化処理
-                InitModelList();
-
-            }
-            catch (Exception ex)
-            {
-                ShowMessage.ShowErrorOK(ex.Message, "Error");
-            }
-        }
-        #endregion
-
         #region ブックマークへ追加
         /// <summary>
         /// ブックマークへ追加
@@ -753,31 +725,11 @@ namespace CvSeachTool.ViewModels
         {
             try
             {
-                // モデルのリストの初期化処理
-                InitModelList();
+
             }
             catch (Exception ex)
             {
                 ShowMessage.ShowErrorOK(ex.Message, "Error");
-            }
-        }
-        #endregion
-
-        #region モデルのリストの初期化処理
-        /// <summary>
-        /// モデルのリストの初期化処理
-        /// </summary>
-        private void InitModelList()
-        {
-            // オブジェクトの作成
-            this.CvsModel = new CvsModelExM(new CvsModelM());
-
-            // Bookmarkを初期リストに追加
-            this.CvsModel.Items = this.BookmarkConf!.Item;
-
-            foreach (var item in this.CvsModel.Items)
-            {
-                item.IsBookmark = true;
             }
         }
         #endregion

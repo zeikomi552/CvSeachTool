@@ -10,7 +10,10 @@
     <Compile Update="Views\BookmarkRenameV.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\BookmarkV.xaml.cs">
+    <Compile Update="Views\UserControls\UcBookmarkV.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\UserControls\UcFileCheckV.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\UserControls\UcSearchModelV.xaml.cs">
@@ -24,7 +27,10 @@
     <Page Update="Views\BookmarkRenameV.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\BookmarkV.xaml">
+    <Page Update="Views\UserControls\UcBookmarkV.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\UserControls\UcFileCheckV.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\UserControls\UcSearchModelV.xaml">

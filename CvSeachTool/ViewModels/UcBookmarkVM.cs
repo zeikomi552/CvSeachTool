@@ -1,6 +1,7 @@
 ﻿using CvSeachTool.Common;
 using CvSeachTool.Models;
 using CvSeachTool.Views;
+using CvSeachTool.Views.UserControls;
 using MVVMCore.BaseClass;
 using MVVMCore.Common.Utilities;
 using MVVMCore.Common.Wrapper;
@@ -16,7 +17,7 @@ using static CvSeachTool.Models.CvsModelM.CvsModelVersions;
 
 namespace CvSeachTool.ViewModels
 {
-    public class BookmarkVM : ViewModelBase
+    public class UcBookmarkVM : ViewModelBase
     {
 
         #region ブックマーク[BookmarkConf]プロパティ
@@ -315,7 +316,7 @@ namespace CvSeachTool.ViewModels
         private void ListViewTopRow(object sender)
         {
             // ウィンドウの取得
-            var wnd = (BookmarkV)VisualTreeHelperWrapper.GetWindow<BookmarkV>(sender);
+            var wnd = (UcBookmarkV)VisualTreeHelperWrapper.GetWindow<UcBookmarkV>(sender);
 
             // イメージのListViewのスクロールバーを先頭へ移動
             ScrollbarTopRow.TopRow4ListView(wnd.lvImages);

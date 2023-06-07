@@ -13,5 +13,15 @@
         xmlns:b="http://schemas.microsoft.com/xaml/behaviors" xmlns:ViewModels="clr-namespace:CvSeachTool.ViewModels" xmlns:UserControls="clr-namespace:CvSeachTool.Views.UserControls" x:Class="CvSeachTool.MainWindow"
         mc:Ignorable="d"
         Title="CvSeachTool" Height="800" Width="1200" WindowStartupLocation="CenterScreen" TitleCharacterCasing="Normal">
-    <UserControls:UcSearchModelV/>
+    <TabControl>
+        <TabItem Header="Civitai">
+            <UserControls:UcSearchModelV/>
+        </TabItem>
+        <TabItem Header="Bookmark">
+            <UserControls:UcBookmarkV />    
+        </TabItem>
+        <TabItem Header="Image">
+            <UserControls:UcFileCheckV />
+        </TabItem>
+    </TabControl>
 </mah:MetroWindow>

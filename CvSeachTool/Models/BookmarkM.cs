@@ -1,4 +1,7 @@
-﻿using MVVMCore.BaseClass;
+﻿using CvSeachTool.Common.Utilities;
+using Microsoft.Win32;
+using MVVMCore.BaseClass;
+using MVVMCore.Common.Utilities;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -49,5 +52,7 @@ namespace CvSeachTool.Models
 
         }
         #endregion
+
+
     }
 }

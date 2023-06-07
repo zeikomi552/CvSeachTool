@@ -101,17 +101,6 @@
                             <svgc:SvgViewbox Source="/Common/Images/lens-svgrepo-com.svg" />
                         </StackPanel>
                     </Button>
-                    <Button Margin="5" Height="auto" Width="auto" Cursor="Hand">
-                        <b:Interaction.Triggers>
-                            <b:EventTrigger EventName="Click">
-                                <b:CallMethodAction TargetObject="{Binding}" MethodName="OpenBookmarkV"/>
-                            </b:EventTrigger>
-                        </b:Interaction.Triggers>
-                        <StackPanel Orientation="Vertical">
-                            <svgc:SvgViewbox Height="25" Source="/Common/Images/bookmark-svgrepo-com.svg" />
-                        </StackPanel>
-                    </Button>
-
                 </StackPanel>
             </DockPanel>
         </materialDesign:ColorZone>
