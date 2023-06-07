@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
              xmlns:local="clr-namespace:CvSeachTool.Views.UserControls"
              xmlns:Converters="clr-namespace:CvSeachTool.Common.Converters"
              xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
@@ -51,26 +52,35 @@
                                 </b:EventTrigger>
                             </b:Interaction.Triggers>
                         </ComboBox>
-                        <Button Margin="5" Content="新規" Cursor="Hand">
+                        <Button ToolTip="New" Margin="5" Cursor="Hand">
                             <b:Interaction.Triggers>
                                 <b:EventTrigger EventName="Click">
                                     <b:CallMethodAction TargetObject="{Binding}" MethodName="CreateNew"/>
                                 </b:EventTrigger>
                             </b:Interaction.Triggers>
+                            <StackPanel Orientation="Vertical">
+                                <svgc:SvgViewbox Width="15" Source="/Common/Images/new-file-svgrepo-com.svg" />
+                            </StackPanel>
                         </Button>
-                        <Button Margin="5" Content="名前変更" Cursor="Hand">
+                        <Button Margin="5" ToolTip="Rename" Cursor="Hand">
                             <b:Interaction.Triggers>
                                 <b:EventTrigger EventName="Click">
                                     <b:CallMethodAction TargetObject="{Binding}" MethodName="OpenBookmarkRenameV"/>
                                 </b:EventTrigger>
                             </b:Interaction.Triggers>
+                            <StackPanel Orientation="Vertical">
+                                <svgc:SvgViewbox Width="15" Source="/Common/Images/pencil-svgrepo-com.svg" />
+                            </StackPanel>
                         </Button>
-                        <Button Margin="5" Content="初期値として保存">
+                        <Button ToolTip="Save Bookmark" Margin="5" Cursor="Hand">
                             <b:Interaction.Triggers>
                                 <b:EventTrigger EventName="Click">
                                     <b:CallMethodAction TargetObject="{Binding}" MethodName="SaveBookmark"/>
                                 </b:EventTrigger>
                             </b:Interaction.Triggers>
+                            <StackPanel Orientation="Vertical">
+                                <svgc:SvgViewbox Width="15" Source="/Common/Images/save-svgrepo-com.svg" />
+                            </StackPanel>
                         </Button>
                     </StackPanel>
                     <DataGrid Grid.Row="1" AutoGenerateColumns="False" Margin="5,5,5,5" IsReadOnly="True" ItemsSource="{Binding BookmarkConf.Item.Items}" 
