@@ -10,6 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace CvSeachTool.ViewModels
 {
@@ -213,5 +214,23 @@ namespace CvSeachTool.ViewModels
             }
         }
         #endregion
+
+        /// <summary>
+        /// プロンプトのコピー
+        /// </summary>
+        public void CopyClipbordPrompt()
+        {
+            try
+            {
+                // nullチェック
+                if(this.FileList != null && this.FileList.SelectedItem != null
+                    && !string.IsNullOrEmpty(this.FileList.SelectedItem.ImageText))
+                {
+                    // クリップボードにコピー
+                    Clipboard.SetText(this.FileList.SelectedItem.ImageText);
+                }
+            }
+            catch { }
+        }
     }
 }
