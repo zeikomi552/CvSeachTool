@@ -97,7 +97,6 @@
                             </Style>
                         </DataGrid.RowStyle>
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="id" Binding="{Binding Id}"/>
                             <DataGridTextColumn Header="name" Width="100" Binding="{Binding Name}"/>
                             <DataGridTextColumn Header="type" Binding="{Binding Type}"/>
                             <DataGridTextColumn Header="nsfw" Binding="{Binding Nsfw}"/>
@@ -110,6 +109,7 @@
                             <DataGridTextColumn Header="creator.username" Binding="{Binding Creator.Username}"/>
                             <DataGridTextColumn Width="150" Header="description" Binding="{Binding Description}"/>
                             <DataGridTextColumn Header="mode" Binding="{Binding Mode}"/>
+                            <DataGridTextColumn Header="id" Binding="{Binding Id}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>

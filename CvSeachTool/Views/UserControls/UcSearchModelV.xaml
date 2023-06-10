@@ -302,8 +302,13 @@
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
-                                <DataGridTextColumn Header="id" Binding="{Binding Id}"/>
-                                <DataGridTextColumn Header="name" Width="100" Binding="{Binding Name}"/>
+                                <DataGridTextColumn Header="name" Width="100" Binding="{Binding Name}">
+                                    <DataGridTextColumn.CellStyle>
+                                        <Style TargetType="DataGridCell" BasedOn="{StaticResource MaterialDesignDataGridCell}">
+                                            <Setter Property="ToolTip" Value="{Binding Name}" />
+                                        </Style>
+                                    </DataGridTextColumn.CellStyle>
+                                </DataGridTextColumn>
                                 <DataGridTextColumn Header="type" Binding="{Binding Type}"/>
                                 <DataGridTextColumn Header="nsfw" Binding="{Binding Nsfw}"/>
                                 <DataGridTextColumn Header="allowCommercialUse" Binding="{Binding AllowCommercialUse}"/>
@@ -315,6 +320,7 @@
                                 <DataGridTextColumn Header="creator.username" Binding="{Binding Creator.Username}"/>
                                 <DataGridTextColumn Width="150" Header="description" Binding="{Binding Description}"/>
                                 <DataGridTextColumn Header="mode" Binding="{Binding Mode}"/>
+                                <DataGridTextColumn Header="id" Binding="{Binding Id}"/>
                             </DataGrid.Columns>
                             <b:Interaction.Triggers>
                                 <b:EventTrigger EventName="MouseDoubleClick">
@@ -353,12 +359,12 @@
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
-                                <DataGridTextColumn Header="id" Binding="{Binding Id}"/>
                                 <DataGridTextColumn Header="name" Binding="{Binding Name}"/>
                                 <DataGridTextColumn Header="createdAt" Binding="{Binding CreatedAt}"/>
                                 <DataGridTextColumn Header="downloadUrl" Binding="{Binding DownloadUrl}"/>
                                 <DataGridTextColumn Header="trainedWords" Binding="{Binding TrainedWords}"/>
                                 <DataGridTextColumn Width="300" Header="description" Binding="{Binding Description}"/>
+                                <DataGridTextColumn Header="id" Binding="{Binding Id}"/>
                             </DataGrid.Columns>
                             <b:Interaction.Triggers>
                                 <b:EventTrigger EventName="MouseDoubleClick">
