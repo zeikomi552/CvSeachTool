@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,10 +9,15 @@ namespace CvSeachTool.Common.Enums
 {
     public enum ModelAllowCommercialUseEnum
     {
+        [Description("")]
         Empty,
-        None, 
-        Image, 
+        [Description("None")]
+        None,
+        [Description("Image")]
+        Image,
+        [Description("Rent")]
         Rent,
+        [Description("Sell")]
         Sell
     }
 }

@@ -4,6 +4,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:my="clr-namespace:CvSeachTool.Common.Utilities"
              xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
              xmlns:Converters="clr-namespace:CvSeachTool.Common.Converters"
              xmlns:enum="clr-namespace:CvSeachTool.Common.Enums"
@@ -130,20 +131,23 @@
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Width="120" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Types"/>
                                     <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
-                                    <ComboBox Width="100" SelectedItem="{Binding GetCondition.Types, NotifyOnSourceUpdated=True, UpdateSourceTrigger=LostFocus}" 
-                                                ItemsSource="{Binding Mode=OneWay, Source={StaticResource ModelTypeEnum}}"/>
+                                    <ComboBox Width="100" ItemsSource="{Binding Mode=OneWay, Source={my:Enumeration {x:Type enum:ModelTypeEnum}}}"
+                                              SelectedValue="{Binding GetCondition.Types, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                              DisplayMemberPath="Description" SelectedValuePath="Value"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Width="120" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Sort"/>
                                     <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
-                                    <ComboBox Width="100" SelectedItem="{Binding GetCondition.Sort, NotifyOnSourceUpdated=True, UpdateSourceTrigger=LostFocus}" 
-                                                ItemsSource="{Binding Mode=OneWay, Source={StaticResource ModelSortEnum}}"/>
+                                    <ComboBox Width="100" ItemsSource="{Binding Mode=OneWay, Source={my:Enumeration {x:Type enum:ModelSortEnum}}}"
+                                              SelectedValue="{Binding GetCondition.Sort, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                              DisplayMemberPath="Description" SelectedValuePath="Value"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Width="120" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Period"/>
                                     <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
-                                    <ComboBox Width="100" SelectedItem="{Binding GetCondition.Period, NotifyOnSourceUpdated=True, UpdateSourceTrigger=LostFocus}" 
-                                                ItemsSource="{Binding Mode=OneWay, Source={StaticResource ModelPeriodEnum}}"/>
+                                    <ComboBox Width="100" ItemsSource="{Binding Mode=OneWay, Source={my:Enumeration {x:Type enum:ModelPeriodEnum}}}"
+                                              SelectedValue="{Binding GetCondition.Period, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                              DisplayMemberPath="Description" SelectedValuePath="Value"  />
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Width="120" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Rating"/>
@@ -375,8 +379,10 @@
                             </StackPanel>
 
                         </TextBlock>
-                        <ComboBox VerticalAlignment="Center" Width="100" SelectedItem="{Binding ImageFilter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                                            ItemsSource="{Binding Mode=OneWay, Source={StaticResource ImageNsfwEnum}}">
+                        <ComboBox VerticalAlignment="Center" Width="100"
+                                            ItemsSource="{Binding Mode=OneWay, Source={my:Enumeration {x:Type enum:ImageNsfwEnum}}}"
+                                            SelectedValue="{Binding ImageFilter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                            DisplayMemberPath="Description" SelectedValuePath="Value">
                             <b:Interaction.Triggers>
                                 <b:EventTrigger EventName="SelectionChanged">
                                     <b:CallMethodAction TargetObject="{Binding ImageList, Mode=TwoWay}" MethodName="RefreshFilter"/>
