@@ -19,6 +19,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static CvSeachTool.Models.CvsModelM.CvsModelVersions;
 using static CvSeachTool.Models.CvsModelM;
+using System.Windows;
 
 namespace CvSeachTool.ViewModels
 {
@@ -646,6 +647,28 @@ namespace CvSeachTool.ViewModels
                     }
                     // JSON形式で保存
                     this.BookmarkConf!.SaveJSON();
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowMessage.ShowErrorOK(ex.Message, "Error");
+            }
+        }
+        #endregion
+
+        #region JSONリクエストのコピー
+        /// <summary>
+        /// JSONリクエストのコピー
+        /// </summary>
+        public void CopyRequest()
+        {
+            try
+            {
+                // nullチェック
+                if (this.CvsModel != null)
+                {
+                    // クリップボードにコピー
+                    Clipboard.SetText(this.CvsModel.RequestURL);
                 }
             }
             catch (Exception ex)
