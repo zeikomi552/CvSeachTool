@@ -157,12 +157,19 @@ namespace CvSeachTool.ViewModels
                        where x.BookmarkFile.Equals(this.Config!.Item.BookmarkFile)
                        select x).FirstOrDefault();
 
-
+            // nullチェック
             if (tmp != null)
             {
                 // 最初の要素を選択
                 this.BookmarkList.SelectedItem = tmp;
                 BookmarkSelectionChanged();
+            }
+
+            // nullチェック
+            if (this.BookmarkConf != null && this.BookmarkConf.Item != null && this.BookmarkConf.Item.Items != null && this.BookmarkConf.Item.Items.Count > 0)
+            {
+                // 最初の要素を選択
+                this.BookmarkConf.Item.SelectedFirst();
             }
         }
         #endregion
