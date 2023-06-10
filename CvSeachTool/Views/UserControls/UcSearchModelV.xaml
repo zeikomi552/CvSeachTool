@@ -188,9 +188,11 @@
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Width="120" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="AllowCommercialUse"/>
                                     <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
-                                    <ComboBox Width="100" SelectedItem="{Binding GetCondition.AllowCommercialUse, NotifyOnSourceUpdated=True, UpdateSourceTrigger=LostFocus}" 
-                                                ItemsSource="{Binding Mode=OneWay, Source={StaticResource ModelAllowCommercialUseEnum}}"/>
+                                    <ComboBox Width="100" ItemsSource="{Binding Mode=OneWay, Source={my:Enumeration {x:Type enum:ModelAllowCommercialUseEnum}}}"
+                                              SelectedValue="{Binding GetCondition.AllowCommercialUse, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                              DisplayMemberPath="Description" SelectedValuePath="Value"/>
                                 </StackPanel>
+
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Width="120" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Nsfw"/>
                                     <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
