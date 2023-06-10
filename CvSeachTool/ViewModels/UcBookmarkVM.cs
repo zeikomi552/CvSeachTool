@@ -87,40 +87,28 @@ namespace CvSeachTool.ViewModels
         }
         #endregion
 
-        #region ブックマークリスト[BookmarkList]プロパティ
+        #region ブックマーク用ディレクトリ
         /// <summary>
-        /// ブックマークリスト[BookmarkList]プロパティ用変数
-        /// </summary>
-        ModelList<BookmarkM> _BookmarkList = new ModelList<BookmarkM>();
-        /// <summary>
-        /// ブックマークリスト[BookmarkList]プロパティ
-        /// </summary>
-        public ModelList<BookmarkM> BookmarkList
-        {
-            get
-            {
-                return _BookmarkList;
-            }
-            set
-            {
-                if (_BookmarkList == null || !_BookmarkList.Equals(value))
-                {
-                    _BookmarkList = value;
-                    NotifyPropertyChanged("BookmarkList");
-                }
-            }
-        }
-        #endregion
-
-        #region お気に入りを保存しているフォルダ
-        /// <summary>
-        /// お気に入りを保存しているフォルダ
+        /// ブックマーク用ディレクトリ
         /// </summary>
         public string BookmarkDir
         {
             get
             {
-                return Path.Combine(PathManager.GetApplicationFolder(), this.Config!.Item.BookmarkDir);
+                return GblValues.Instance.BookmarkDir;
+            }
+        }
+        #endregion
+
+        #region ブックマークリスト
+        /// <summary>
+        /// ブックマークリスト
+        /// </summary>
+        public ModelList<BookmarkM> BookmarkList
+        {
+            get
+            {
+                return GblValues.Instance.BookmarkList;
             }
         }
         #endregion
@@ -166,8 +154,8 @@ namespace CvSeachTool.ViewModels
             this.BookmarkList.Items = new ObservableCollection<BookmarkM>(list);
 
             var tmp = (from x in this.BookmarkList.Items
-                      where x.BookmarkFile.Equals(this.Config!.Item.BookmarkFile)
-                      select x).FirstOrDefault();
+                       where x.BookmarkFile.Equals(this.Config!.Item.BookmarkFile)
+                       select x).FirstOrDefault();
 
 
             if (tmp != null)

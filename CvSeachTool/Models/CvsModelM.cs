@@ -12,6 +12,8 @@ using static CvSeachTool.Models.CvsModelM.CvsModelVersions;
 using System.Windows;
 using CvSeachTool.ViewModels;
 using MVVMCore.Common.Utilities;
+using CvSeachTool.Common;
+using System.IO;
 
 namespace CvSeachTool.Models
 {
@@ -1820,9 +1822,75 @@ namespace CvSeachTool.Models
                 }
             }
             #endregion
+
+            #region ブックマークのセット処理
+            /// <summary>
+            /// ブックマークのセット処理
+            /// </summary>
+            public void SaveBookmark()
+            {
+                try
+                {
+                    // nullチェック
+                    if (GblValues.Instance.BookmarkList != null && GblValues.Instance.BookmarkList.SelectedItem != null)
+                    {
+                        // ブックマークのセット
+                        GblValues.Instance.Config!.Item.BookmarkFile = Path.GetFileName(GblValues.Instance.BookmarkList.SelectedItem.BookmarkFilePath);
+
+                        // JSON形式で保存
+                        GblValues.Instance.Config.SaveXML();
+                    }
+                }
+                catch (Exception e)
+                {
+                    ShowMessage.ShowErrorOK(e.Message, "Error");
+                }
+            }
+            #endregion
+
+
+            #region ブックマークへ追加
+            /// <summary>
+            /// ブックマークへ追加
+            /// </summary>
+            public void ChangeBookmark()
+            {
+                try
+                {
+                    // nullチェック
+                    if (GblValues.Instance.BookmarkConf != null && GblValues.Instance.BookmarkConf.Item != null && GblValues.Instance.BookmarkConf.Item.Items != null)
+                    {
+                        var check = (from x in GblValues.Instance.BookmarkConf.Item.Items
+                                     where x.Id.Equals(this.Id)
+                                     select x);
+
+                        // 存在しなければ追加
+                        if (!check.Any())
+                        {
+                            // ブックマークの追加
+                            GblValues.Instance.BookmarkConf.Item.Items.Add(this);
+                        }
+                        else
+                        {
+                            // ブックマークの削除
+                            GblValues.Instance.BookmarkConf.Item.Items.Remove(check.First());
+                        }
+                        // JSON形式で保存
+                        GblValues.Instance.BookmarkConf!.SaveJSON();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ShowMessage.ShowErrorOK(ex.Message, "Error");
+                }
+            }
+            #endregion
+
+
+            #endregion
         }
         #endregion
-        #endregion
+
 
         #region GET Model Endpoint[Endpoint]プロパティ
         /// <summary>
@@ -1907,6 +1975,7 @@ namespace CvSeachTool.Models
             }
         }
         #endregion
+
     }
 
 }

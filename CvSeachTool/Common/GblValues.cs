@@ -3,6 +3,7 @@ using CvSeachTool.Models;
 using MVVMCore.Common.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -35,6 +36,19 @@ namespace CvSeachTool.Common
             get
             {
                 return _Instance;
+            }
+        }
+        #endregion
+
+                #region お気に入りを保存しているフォルダ
+        /// <summary>
+        /// お気に入りを保存しているフォルダ
+        /// </summary>
+        public string BookmarkDir
+        {
+            get
+            {
+                return Path.Combine(PathManager.GetApplicationFolder(), this.Config!.Item.BookmarkDir);
             }
         }
         #endregion
@@ -111,6 +125,31 @@ namespace CvSeachTool.Common
         }
         #endregion
 
+
+        #region ブックマークリスト[BookmarkList]プロパティ
+        /// <summary>
+        /// ブックマークリスト[BookmarkList]プロパティ用変数
+        /// </summary>
+        ModelList<BookmarkM> _BookmarkList = new ModelList<BookmarkM>();
+        /// <summary>
+        /// ブックマークリスト[BookmarkList]プロパティ
+        /// </summary>
+        public ModelList<BookmarkM> BookmarkList
+        {
+            get
+            {
+                return _BookmarkList;
+            }
+            set
+            {
+                if (_BookmarkList == null || !_BookmarkList.Equals(value))
+                {
+                    _BookmarkList = value;
+                }
+            }
+        }
+        #endregion
+
         #region コンフィグファイルの初期化処理
         /// <summary>
         /// コンフィグファイルの初期化処理
@@ -139,5 +178,7 @@ namespace CvSeachTool.Common
             this.BookmarkConf.LoadJSON();
         }
         #endregion
+
+
     }
 }

@@ -615,46 +615,6 @@ namespace CvSeachTool.ViewModels
         }
         #endregion
 
-        #region ブックマークへ追加
-        /// <summary>
-        /// ブックマークへ追加
-        /// </summary>
-        public void AddBookmark()
-        {
-            try
-            {
-                // nullチェック
-                if (this.CvsModel != null && this.CvsModel.Items != null && this.CvsModel.Items.SelectedItem != null
-                    && this.BookmarkConf != null && this.BookmarkConf.Item != null && this.BookmarkConf.Item.Items != null)
-                {
-                    var check = (from x in this.BookmarkConf.Item.Items
-                                 where x.Id.Equals(this.CvsModel.Items.SelectedItem.Id)
-                                 select x);
-
-                    // Bookmarkをセット
-                    this.CvsModel.Items.SelectedItem.IsBookmark = !this.CvsModel.Items.SelectedItem.IsBookmark;
-
-                    // 存在しなければ追加
-                    if (!check.Any())
-                    {
-                        // ブックマークの追加
-                        this.BookmarkConf.Item.Items.Add(this.CvsModel.Items.SelectedItem);
-                    }
-                    else
-                    {
-                        // ブックマークの追加
-                        this.BookmarkConf.Item.Items.Remove(check.First());
-                    }
-                    // JSON形式で保存
-                    this.BookmarkConf!.SaveJSON();
-                }
-            }
-            catch (Exception ex)
-            {
-                ShowMessage.ShowErrorOK(ex.Message, "Error");
-            }
-        }
-        #endregion
 
         #region JSONリクエストのコピー
         /// <summary>
