@@ -23,11 +23,10 @@ namespace CvSeachTool.Common.Converters
             }
             try
             {
-                // GoogleのTOPページの画像
                 string url = value!.ToString()!;
-
                 BitmapImage bitmap = new BitmapImage();
                 bitmap.BeginInit();
+                bitmap.CacheOption = BitmapCacheOption.OnLoad;      // プロセスを占有しないため
                 bitmap.UriSource = new Uri(url, UriKind.Absolute);
                 bitmap.EndInit();
                 return bitmap;
