@@ -43,6 +43,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -59,6 +67,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -166,15 +190,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:CvSeachTool"
-        "ProductCode" = "8:{6A740DFE-1186-4AA5-9969-BF344F7D7354}"
-        "PackageCode" = "8:{1C057317-939B-472B-A740-80296E6A7A13}"
+        "ProductCode" = "8:{1FFE1A29-99E1-48DD-9270-08E2E089F7C6}"
+        "PackageCode" = "8:{54A0B31B-61BE-4F90-8FAF-81EF8E1310E0}"
         "UpgradeCode" = "8:{D3BCC342-BAC2-4F9F-B0B1-7F9DC0B5D42B}"
         "AspNetVersion" = "8:"
         "RestartWWWService" = "11:FALSE"
-        "RemovePreviousVersions" = "11:FALSE"
+        "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.0.0"
+        "ProductVersion" = "8:0.0.1"
         "Manufacturer" = "8:Zeikomi"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -716,7 +740,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_D291471A102A4CFFB317FC4909D80A49"
             {
-            "SourcePath" = "8:..\\CvSeachTool\\obj\\Debug\\net6.0-windows\\apphost.exe"
+            "SourcePath" = "8:..\\CvSeachTool\\obj\\Release\\net6.0-windows\\apphost.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_3EF17443DB314768BD98DDB76F34E6EA"
