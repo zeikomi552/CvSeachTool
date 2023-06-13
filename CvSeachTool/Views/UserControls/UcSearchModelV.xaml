@@ -255,7 +255,7 @@
                                     </StackPanel>
                                 </Button>
                                 <StackPanel Orientation="Horizontal">
-                                    <Button Margin="5,0" Width="auto" Height="auto">
+                                    <Button Margin="5,0" Width="auto" Height="auto" Cursor="Hand">
                                         <b:Interaction.Triggers>
                                             <b:EventTrigger EventName="Click">
                                                 <b:CallMethodAction TargetObject="{Binding}" MethodName="Output"/>

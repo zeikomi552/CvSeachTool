@@ -1,6 +1,9 @@
-﻿using CvSeachTool.Common.Enums;
+﻿using CvSeachTool.Common.Commands;
+using CvSeachTool.Common.Enums;
 using CvSeachTool.Models.CvsModel;
 using MVVMCore.BaseClass;
+using MVVMCore.Common.Utilities;
+using MVVMCore.Common.Wrapper;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -8,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace CvSeachTool.Models.CvsImage
 {
@@ -19,8 +23,540 @@ namespace CvSeachTool.Models.CvsImage
         /// </summary>
         public const string Endpoint = "https://civitai.com/api/v1/images";
         #endregion
-        public class CvsItems : ModelBase
+        public class CvsItem : ModelBase
         {
+            public CvsItem()
+            {
+                MouseDoubleClickCommand = new DelegateCommand(OpenURL);
+            }
+            public DelegateCommand MouseDoubleClickCommand { get; private set; }
+
+            #region InnerClass
+            public class CvsImageMeta : ModelBase
+            {
+                #region [ENSD]プロパティ
+                /// <summary>
+                /// [ENSD]プロパティ用変数
+                /// </summary>
+                string _ENSD = string.Empty;
+                /// <summary>
+                /// [ENSD]プロパティ
+                /// </summary>
+                [JsonPropertyName("ENSD")]
+                public string ENSD
+                {
+                    get
+                    {
+                        return _ENSD;
+                    }
+                    set
+                    {
+                        if (_ENSD == null || !_ENSD.Equals(value))
+                        {
+                            _ENSD = value;
+                            NotifyPropertyChanged("ENSD");
+                        }
+                    }
+                }
+                #endregion
+
+                #region [Size]プロパティ
+                /// <summary>
+                /// [Size]プロパティ用変数
+                /// </summary>
+                string _Size = string.Empty;
+                /// <summary>
+                /// [Size]プロパティ
+                /// </summary>
+                [JsonPropertyName("Size")]
+                public string Size
+                {
+                    get
+                    {
+                        return _Size;
+                    }
+                    set
+                    {
+                        if (_Size == null || !_Size.Equals(value))
+                        {
+                            _Size = value;
+                            NotifyPropertyChanged("Size");
+                        }
+                    }
+                }
+                #endregion
+
+                #region [Seed]プロパティ
+                /// <summary>
+                /// [Seed]プロパティ用変数
+                /// </summary>
+                object _Seed = new object();
+                /// <summary>
+                /// [Seed]プロパティ
+                /// </summary>
+                [JsonPropertyName("seed")]
+                public object Seed
+                {
+                    get
+                    {
+                        return _Seed;
+                    }
+                    set
+                    {
+                        if (_Seed == null || !_Seed.Equals(value))
+                        {
+                            _Seed = value;
+                            NotifyPropertyChanged("Seed");
+                        }
+                    }
+                }
+                #endregion
+
+                #region [Model]プロパティ
+                /// <summary>
+                /// [Model]プロパティ用変数
+                /// </summary>
+                string _Model = string.Empty;
+                /// <summary>
+                /// [Model]プロパティ
+                /// </summary>
+                [JsonPropertyName("Model")]
+                public string Model
+                {
+                    get
+                    {
+                        return _Model;
+                    }
+                    set
+                    {
+                        if (_Model == null || !_Model.Equals(value))
+                        {
+                            _Model = value;
+                            NotifyPropertyChanged("Model");
+                        }
+                    }
+                }
+                #endregion
+
+                #region [Steps]プロパティ
+                /// <summary>
+                /// [Steps]プロパティ用変数
+                /// </summary>
+                int _Steps = 0;
+                /// <summary>
+                /// [Steps]プロパティ
+                /// </summary>
+                [JsonPropertyName("steps")]
+                public int Steps
+                {
+                    get
+                    {
+                        return _Steps;
+                    }
+                    set
+                    {
+                        if (!_Steps.Equals(value))
+                        {
+                            _Steps = value;
+                            NotifyPropertyChanged("Steps");
+                        }
+                    }
+                }
+                #endregion
+
+                #region [Prompt]プロパティ
+                /// <summary>
+                /// [Prompt]プロパティ用変数
+                /// </summary>
+                string _Prompt = string.Empty;
+                /// <summary>
+                /// [Prompt]プロパティ
+                /// </summary>
+                [JsonPropertyName("prompt")]
+                public string Prompt
+                {
+                    get
+                    {
+                        return _Prompt;
+                    }
+                    set
+                    {
+                        if (_Prompt == null || !_Prompt.Equals(value))
+                        {
+                            _Prompt = value;
+                            NotifyPropertyChanged("Prompt");
+                        }
+                    }
+                }
+                #endregion
+
+                #region [Sampler]プロパティ
+                /// <summary>
+                /// [Sampler]プロパティ用変数
+                /// </summary>
+                string _Sampler = string.Empty;
+                /// <summary>
+                /// [Sampler]プロパティ
+                /// </summary>
+                [JsonPropertyName("sampler")]
+                public string Sampler
+                {
+                    get
+                    {
+                        return _Sampler;
+                    }
+                    set
+                    {
+                        if (_Sampler == null || !_Sampler.Equals(value))
+                        {
+                            _Sampler = value;
+                            NotifyPropertyChanged("Sampler");
+                        }
+                    }
+                }
+                #endregion
+
+                #region [CfgScale]プロパティ
+                /// <summary>
+                /// [CfgScale]プロパティ用変数
+                /// </summary>
+                object _CfgScale = new object();
+                /// <summary>
+                /// [CfgScale]プロパティ
+                /// </summary>
+                [JsonPropertyName("cfgScale")]
+                public object CfgScale
+                {
+                    get
+                    {
+                        return _CfgScale;
+                    }
+                    set
+                    {
+                        if (_CfgScale == null || !_CfgScale.Equals(value))
+                        {
+                            _CfgScale = value;
+                            NotifyPropertyChanged("CfgScale");
+                        }
+                    }
+                }
+                #endregion
+
+
+
+                #region [Clip_skip]プロパティ
+                /// <summary>
+                /// [Clip_skip]プロパティ用変数
+                /// </summary>
+                string _Clip_skip = string.Empty;
+                /// <summary>
+                /// [Clip_skip]プロパティ
+                /// </summary>
+                [JsonPropertyName("Clip skip")]
+                public string Clip_skip
+                {
+                    get
+                    {
+                        return _Clip_skip;
+                    }
+                    set
+                    {
+                        if (_Clip_skip == null || !_Clip_skip.Equals(value))
+                        {
+                            _Clip_skip = value;
+                            NotifyPropertyChanged("Clip_skip");
+                        }
+                    }
+                }
+                #endregion
+
+                #region [Model_hash]プロパティ
+                /// <summary>
+                /// [Model_hash]プロパティ用変数
+                /// </summary>
+                string _Model_hash = string.Empty;
+                /// <summary>
+                /// [Model_hash]プロパティ
+                /// </summary>
+                [JsonPropertyName("Model hash")]
+                public string Model_hash
+                {
+                    get
+                    {
+                        return _Model_hash;
+                    }
+                    set
+                    {
+                        if (_Model_hash == null || !_Model_hash.Equals(value))
+                        {
+                            _Model_hash = value;
+                            NotifyPropertyChanged("Model_hash");
+                        }
+                    }
+                }
+                #endregion
+
+                #region [Hires_upscale]プロパティ
+                /// <summary>
+                /// [Hires_upscale]プロパティ用変数
+                /// </summary>
+                string _Hires_upscale = string.Empty;
+                /// <summary>
+                /// [Hires_upscale]プロパティ
+                /// </summary>
+                [JsonPropertyName("Hires upscale")]
+                public string Hires_upscale
+                {
+                    get
+                    {
+                        return _Hires_upscale;
+                    }
+                    set
+                    {
+                        if (_Hires_upscale == null || !_Hires_upscale.Equals(value))
+                        {
+                            _Hires_upscale = value;
+                            NotifyPropertyChanged("Hires_upscale");
+                        }
+                    }
+                }
+                #endregion
+
+
+                #region [Hires_upscaler]プロパティ
+                /// <summary>
+                /// [Hires_upscaler]プロパティ用変数
+                /// </summary>
+                string _Hires_upscaler = string.Empty;
+                /// <summary>
+                /// [Hires_upscaler]プロパティ
+                /// </summary>
+                [JsonPropertyName("Hires upscaler")]
+                public string Hires_upscaler
+                {
+                    get
+                    {
+                        return _Hires_upscaler;
+                    }
+                    set
+                    {
+                        if (_Hires_upscaler == null || !_Hires_upscaler.Equals(value))
+                        {
+                            _Hires_upscaler = value;
+                            NotifyPropertyChanged("Hires_upscaler");
+                        }
+                    }
+                }
+                #endregion
+
+                #region [NegativePrompt]プロパティ
+                /// <summary>
+                /// [NegativePrompt]プロパティ用変数
+                /// </summary>
+                string _NegativePrompt = string.Empty;
+                /// <summary>
+                /// [NegativePrompt]プロパティ
+                /// </summary>
+                [JsonPropertyName("negativePrompt")]
+                public string NegativePrompt
+                {
+                    get
+                    {
+                        return _NegativePrompt;
+                    }
+                    set
+                    {
+                        if (_NegativePrompt == null || !_NegativePrompt.Equals(value))
+                        {
+                            _NegativePrompt = value;
+                            NotifyPropertyChanged("NegativePrompt");
+                        }
+                    }
+                }
+                #endregion
+
+                #region [ControlNet_Model]プロパティ
+                /// <summary>
+                /// [ControlNet_Model]プロパティ用変数
+                /// </summary>
+                string _ControlNet_Model = String.Empty;
+                /// <summary>
+                /// [ControlNet_Model]プロパティ
+                /// </summary>
+                [JsonPropertyName("ControlNet Model")]
+                public string ControlNet_Model
+                {
+                    get
+                    {
+                        return _ControlNet_Model;
+                    }
+                    set
+                    {
+                        if (_ControlNet_Model == null || !_ControlNet_Model.Equals(value))
+                        {
+                            _ControlNet_Model = value;
+                            NotifyPropertyChanged("ControlNet_Model");
+                        }
+                    }
+                }
+                #endregion
+
+                #region [ControlNet_Module]プロパティ
+                /// <summary>
+                /// [ControlNet_Module]プロパティ用変数
+                /// </summary>
+                string _ControlNet_Module = String.Empty;
+                /// <summary>
+                /// [ControlNet_Module]プロパティ
+                /// </summary>
+                [JsonPropertyName("ControlNet Module")]
+                public string ControlNet_Module
+                {
+                    get
+                    {
+                        return _ControlNet_Module;
+                    }
+                    set
+                    {
+                        if (_ControlNet_Module == null || !_ControlNet_Module.Equals(value))
+                        {
+                            _ControlNet_Module = value;
+                            NotifyPropertyChanged("ControlNet_Module");
+                        }
+                    }
+                }
+                #endregion
+
+                #region [ControlNet_Weight]プロパティ
+                /// <summary>
+                /// [ControlNet_Weight]プロパティ用変数
+                /// </summary>
+                string _ControlNet_Weight = string.Empty;
+                /// <summary>
+                /// [ControlNet_Weight]プロパティ
+                /// </summary>
+                [JsonPropertyName("ControlNet Weight")]
+                public string ControlNet_Weight
+                {
+                    get
+                    {
+                        return _ControlNet_Weight;
+                    }
+                    set
+                    {
+                        if (_ControlNet_Weight == null || !_ControlNet_Weight.Equals(value))
+                        {
+                            _ControlNet_Weight = value;
+                            NotifyPropertyChanged("ControlNet_Weight");
+                        }
+                    }
+                }
+                #endregion
+
+                #region [ControlNet_Enabled]プロパティ
+                /// <summary>
+                /// [ControlNet_Enabled]プロパティ用変数
+                /// </summary>
+                string _ControlNet_Enabled = string.Empty;
+                /// <summary>
+                /// [ControlNet_Enabled]プロパティ
+                /// </summary>
+                [JsonPropertyName("ControlNet Enabled")]
+                public string ControlNet_Enabled
+                {
+                    get
+                    {
+                        return _ControlNet_Enabled;
+                    }
+                    set
+                    {
+                        if (_ControlNet_Enabled == null || !_ControlNet_Enabled.Equals(value))
+                        {
+                            _ControlNet_Enabled = value;
+                            NotifyPropertyChanged("ControlNet_Enabled");
+                        }
+                    }
+                }
+                #endregion
+
+                #region [Denoising_strength]プロパティ
+                /// <summary>
+                /// [Denoising_strength]プロパティ用変数
+                /// </summary>
+                string _Denoising_strength = string.Empty;
+                /// <summary>
+                /// [Denoising_strength]プロパティ
+                /// </summary>
+                [JsonPropertyName("Denoising strength")]
+                public string Denoising_strength
+                {
+                    get
+                    {
+                        return _Denoising_strength;
+                    }
+                    set
+                    {
+                        if (_Denoising_strength == null || !_Denoising_strength.Equals(value))
+                        {
+                            _Denoising_strength = value;
+                            NotifyPropertyChanged("Denoising_strength");
+                        }
+                    }
+                }
+                #endregion
+
+                #region [ControlNet_Guidance_Strength]プロパティ
+                /// <summary>
+                /// [ControlNet_Guidance_Strength]プロパティ用変数
+                /// </summary>
+                string _ControlNet_Guidance_Strength = string.Empty;
+                /// <summary>
+                /// [ControlNet_Guidance_Strength]プロパティ
+                /// </summary>
+                [JsonPropertyName("ControlNet Guidance Strength")]
+                public string ControlNet_Guidance_Strength
+                {
+                    get
+                    {
+                        return _ControlNet_Guidance_Strength;
+                    }
+                    set
+                    {
+                        if (_ControlNet_Guidance_Strength == null || !_ControlNet_Guidance_Strength.Equals(value))
+                        {
+                            _ControlNet_Guidance_Strength = value;
+                            NotifyPropertyChanged("ControlNet_Guidance_Strength");
+                        }
+                    }
+                }
+                #endregion
+
+
+                /// <summary>
+                /// プロンプトのコピー
+                /// </summary>
+                public void CopyClipbordPrompt()
+                {
+                    try
+                    {
+                        Clipboard.SetText(Prompt);
+                    }
+                    catch { }
+                }
+
+                /// <summary>
+                /// ネガティブプロンプトのコピー
+                /// </summary>
+                public void CopyClipbordNegativePrompt()
+                {
+                    try
+                    {
+                        Clipboard.SetText(NegativePrompt);
+                    }
+                    catch { }
+                }
+            }
+            #endregion
 
             #region The id of the image[Id]プロパティ
             /// <summary>
@@ -256,31 +792,31 @@ namespace CvSeachTool.Models.CvsImage
             }
             #endregion
 
-            //#region The ID of the post the image belongs to[Meta]プロパティ
-            ///// <summary>
-            ///// The ID of the post the image belongs to[Meta]プロパティ用変数
-            ///// </summary>
-            //object _Meta = new object();
-            ///// <summary>
-            ///// The ID of the post the image belongs to[Meta]プロパティ
-            ///// </summary>
-            //[JsonPropertyName("meta")]
-            //public object Meta
-            //{
-            //    get
-            //    {
-            //        return _Meta;
-            //    }
-            //    set
-            //    {
-            //        if (_Meta == null || !_Meta.Equals(value))
-            //        {
-            //            _Meta = value;
-            //            NotifyPropertyChanged("Meta");
-            //        }
-            //    }
-            //}
-            //#endregion
+            #region The ID of the post the image belongs to[Meta]プロパティ
+            /// <summary>
+            /// The ID of the post the image belongs to[Meta]プロパティ用変数
+            /// </summary>
+            CvsImageMeta _Meta = new CvsImageMeta();
+            /// <summary>
+            /// The ID of the post the image belongs to[Meta]プロパティ
+            /// </summary>
+            [JsonPropertyName("meta")]
+            public CvsImageMeta Meta
+            {
+                get
+                {
+                    return _Meta;
+                }
+                set
+                {
+                    if (_Meta == null || !_Meta.Equals(value))
+                    {
+                        _Meta = value;
+                        NotifyPropertyChanged("Meta");
+                    }
+                }
+            }
+            #endregion
 
             #region The username of the creator[Username]プロパティ
             /// <summary>
@@ -307,18 +843,37 @@ namespace CvSeachTool.Models.CvsImage
                 }
             }
             #endregion
+
+            #region URLを開く
+            /// <summary>
+            /// URLを開く
+            /// </summary>
+            public void OpenURL()
+            {
+                try
+                {
+                    var startInfo = new System.Diagnostics.ProcessStartInfo($"https://civitai.com/images/{this.Id}");
+                    startInfo.UseShellExecute = true;
+                    System.Diagnostics.Process.Start(startInfo);
+                }
+                catch (Exception ex)
+                {
+                    ShowMessage.ShowErrorOK(ex.Message, "Error");
+                }
+            }
+            #endregion
         }
 
         #region Element of Image Items[Items]プロパティ
         /// <summary>
         /// Element of Image Items[Items]プロパティ用変数
         /// </summary>
-        ObservableCollection<CvsItems> _Items = new ObservableCollection<CvsItems>();
+        ObservableCollection<CvsItem> _Items = new ObservableCollection<CvsItem>();
         /// <summary>
         /// Element of Image Items[Items]プロパティ
         /// </summary>
         [JsonPropertyName("items")]
-        public ObservableCollection<CvsItems> Items
+        public ObservableCollection<CvsItem> Items
         {
             get
             {
@@ -334,7 +889,6 @@ namespace CvSeachTool.Models.CvsImage
             }
         }
         #endregion
-
 
         #region Metadata[Metadata]プロパティ
         /// <summary>

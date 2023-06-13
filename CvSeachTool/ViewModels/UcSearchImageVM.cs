@@ -1,4 +1,6 @@
-﻿using CvSeachTool.Models;
+﻿using CvSeachTool.Common.Enums;
+using CvSeachTool.Common;
+using CvSeachTool.Models;
 using CvSeachTool.Models.Condition;
 using CvSeachTool.Models.CvsImage;
 using CvSeachTool.Models.CvsModel;
@@ -10,11 +12,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DisplayImageM = CvSeachTool.Models.CvsImage.DisplayImageM;
+using static CvSeachTool.Models.CvsModel.CvsModelM.CvsModelVersions;
+using System.Collections.ObjectModel;
+using static CvSeachTool.Models.CvsImage.CvsImageM;
 
 namespace CvSeachTool.ViewModels
 {
     public class UcSearchImageVM : ViewModelBase
     {
+        #region イメージフィルタ用[ImageFilter]プロパティ
+        /// <summary>
+        /// イメージフィルタ用[ImageFilter]プロパティ
+        /// </summary>
+        public ImageNsfwEnum ImageFilter
+        {
+            get
+            {
+                return GblValues.Instance.ImageFilter;
+            }
+            set
+            {
+                if (!GblValues.Instance.ImageFilter.Equals(value))
+                {
+                    GblValues.Instance.ImageFilter = value;
+                    NotifyPropertyChanged("ImageFilter");
+                }
+            }
+        }
+        #endregion
+
         #region 検索条件[SearchCondition]プロパティ
         /// <summary>
         /// 検索条件[SearchCondition]プロパティ用変数
@@ -66,6 +93,7 @@ namespace CvSeachTool.ViewModels
         #endregion
 
 
+
         #region API実行中フラグ(true:実行中 false:実行中でない)[ExecuteGetAPI]プロパティ
         /// <summary>
         /// API実行中フラグ(true:実行中 false:実行中でない)[ExecuteGetAPI]プロパティ用変数
@@ -90,7 +118,30 @@ namespace CvSeachTool.ViewModels
             }
         }
         #endregion
-
+        #region イメージリスト[ImageList]プロパティ
+        /// <summary>
+        /// イメージリスト[ImageList]プロパティ用変数
+        /// </summary>
+        DisplayImageM _ImageList = new DisplayImageM();
+        /// <summary>
+        /// イメージリスト[ImageList]プロパティ
+        /// </summary>
+        public DisplayImageM ImageList
+        {
+            get
+            {
+                return _ImageList;
+            }
+            set
+            {
+                if (_ImageList == null || !_ImageList.Equals(value))
+                {
+                    _ImageList = value;
+                    NotifyPropertyChanged("ImageList");
+                }
+            }
+        }
+        #endregion
         public override void Init(object sender, EventArgs e)
         {
             try
@@ -183,29 +234,18 @@ namespace CvSeachTool.ViewModels
                     this.CvsImage!.Rowdata = request;               // 生データの保持
                     this.CvsImage!.RequestURL = url;               // 生データの保持
 
+                    //var tmp = from x in request_model.Items where x.NsfwLevel
+                    //this.FilteredCvsImage = new CvsImageExM();
+
+
                     // 1つ以上要素が存在する場合
                     if (this.CvsImage.Items.Count > 0)
                     {
                         // 1つ目の要素をセットする
                         this.CvsImage.Items.SelectedItem = this.CvsImage.Items.ElementAt(0);
-
-                        // DataGridを先頭へスクロールさせる
-                        //DataGridTopRow(sender);
                     }
 
-                    //// ブックマーク登録されている場合はブックマーク情報をセットする
-                    //if (this.BookmarkConf != null && this.BookmarkConf.Item != null && this.BookmarkConf.Item.Items != null)
-                    //{
-                    //    // モデル全数分回す
-                    //    foreach (var cvitem in this.CvsModel.Items)
-                    //    {
-                    //        // ブックマークに登録されているIDならセット
-                    //        cvitem.IsBookmark = (from x in this.BookmarkConf.Item.Items
-                    //                             where x.Id.Equals(cvitem.Id)
-                    //                             select x).Any();
-                    //    }
-                    //}
-
+                    ImageChanged();
                 }
             }
             catch (Exception e)
@@ -215,6 +255,86 @@ namespace CvSeachTool.ViewModels
             finally
             {
                 this.ExecuteGetAPI = false;
+            }
+        }
+        #endregion
+
+        #region 次のページへ移動
+        /// <summary>
+        /// 次のページへ移動
+        /// </summary>
+        public void MoveNext(object sender, EventArgs ev)
+        {
+            try
+            {
+                // null check
+                if (this.CvsImage != null)
+                {
+                    // 次のページが最終ページより前である場合
+                    if (this.CvsImage.Metadata.CurrentPage + 1 <= CvsImage.Metadata.TotalPages)
+                    {
+                        // Execute GET Query
+                        GETQuery(sender, this.CvsImage.Metadata.NextPage, false);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowMessage.ShowErrorOK(ex.Message, "Error");
+            }
+        }
+        #endregion
+
+        #region 前のページへ移動
+        /// <summary>
+        /// 前のページへ移動
+        /// </summary>
+        public void MovePrev(object sender, EventArgs ev)
+        {
+            try
+            {
+                // null check
+                if (this.CvsImage != null)
+                {
+                    // 前のページが1より大きい場合
+                    if (this.CvsImage.Metadata.CurrentPage - 1 >= 1)
+                    {
+                        // Execute GET Query
+                        GETQuery(sender, this.CvsImage.Metadata.PrevPage, false);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowMessage.ShowErrorOK(ex.Message, "Error");
+            }
+        }
+        #endregion
+
+        #region モデルの選択が変更された場合の処理
+        /// <summary>
+        /// モデルの選択が変更された場合の処理
+        /// </summary>
+        public void ImageChanged()
+        {
+            try
+            {
+                // nullチェック
+                if (this.CvsImage != null && this.CvsImage.Items != null && this.CvsImage.Items.SelectedItem != null)
+                {
+                    // イメージをセットする
+                    this.ImageList.SetImages(new ObservableCollection<CvsItem>(this.CvsImage.Items.Items));
+
+                    // 最初の行を選択する
+                    this.ImageList.SetFirst();
+
+                    // ImageリストのListViewを先頭へスクロールさせる
+                    //ListViewTopRow(sender);
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowMessage.ShowErrorOK(ex.Message, "Error");
             }
         }
         #endregion

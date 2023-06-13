@@ -4,12 +4,12 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using static CvSeachTool.Models.CvsImage.CvsImageM;
 using static CvSeachTool.Models.CvsModel.CvsModelM.CvsModelVersions;
 
-namespace CvSeachTool.Models
+namespace CvSeachTool.Models.CvsImage
 {
     public class DisplayImageM : ModelBase
     {
@@ -17,11 +17,11 @@ namespace CvSeachTool.Models
         /// <summary>
         /// This model images[Images]プロパティ用変数
         /// </summary>
-        ObservableCollection<CvsImages> _Images = new ObservableCollection<CvsImages>();
+        ObservableCollection<CvsItem> _Images = new ObservableCollection<CvsItem>();
         /// <summary>
         /// This model images[Images]プロパティ
         /// </summary>
-        private ObservableCollection<CvsImages> Images
+        private ObservableCollection<CvsItem> Images
         {
             get
             {
@@ -38,15 +38,16 @@ namespace CvSeachTool.Models
         }
         #endregion
 
+
         #region This model Filtered images[FilteredImages]プロパティ
         /// <summary>
         /// This model Filtered images[FilteredImages]プロパティ用変数
         /// </summary>
-        ObservableCollection<CvsImages> _FilteredImages = new ObservableCollection<CvsImages>();
+        ObservableCollection<CvsItem> _FilteredImages = new ObservableCollection<CvsItem>();
         /// <summary>
         /// This model Filtered images[FilteredImages]プロパティ
         /// </summary>
-        public ObservableCollection<CvsImages> FilteredImages
+        public ObservableCollection<CvsItem> FilteredImages
         {
             get
             {
@@ -63,15 +64,16 @@ namespace CvSeachTool.Models
         }
         #endregion
 
+
         #region Selected image[SelectedImage]プロパティ
         /// <summary>
         /// Selected image[SelectedImage]プロパティ用変数
         /// </summary>
-        CvsImages _SelectedImage = new CvsImages();
+        CvsItem _SelectedImage = new CvsItem();
         /// <summary>
         /// Selected image[SelectedImage]プロパティ
         /// </summary>
-        public CvsImages SelectedImage
+        public CvsItem SelectedImage
         {
             get
             {
@@ -93,14 +95,15 @@ namespace CvSeachTool.Models
         /// イメージのリストをセットする
         /// </summary>
         /// <param name="images">イメージリスト</param>
-        public void SetImages(ObservableCollection<CvsImages> images)
+        public void SetImages(ObservableCollection<CvsItem> images)
         {
-            this.Images = images;   // イメージのセット
+            Images = images;   // イメージのセット
 
             // フィルタのリフレッシュ
             RefreshFilter();
         }
         #endregion
+
 
         #region イメージフィルターのリフレッシュ
         /// <summary>
@@ -108,11 +111,11 @@ namespace CvSeachTool.Models
         /// </summary>
         public void RefreshFilter()
         {
-            var tmp = (from x in this.Images
-                       where ImageNsfwEnumToVisibilityConverter.Convert(x.Nsfw)
-                       select x).ToList<CvsImages>();
+            var tmp = (from x in Images
+                       where ImageNsfwEnumToVisibilityConverter.Convert(x.NsfwLevel)
+                       select x).ToList<CvsItem>();
 
-            this.FilteredImages = new ObservableCollection<CvsImages>(tmp);
+            FilteredImages = new ObservableCollection<CvsItem>(tmp);
 
         }
         #endregion
@@ -125,7 +128,7 @@ namespace CvSeachTool.Models
         {
             get
             {
-                return this.FilteredImages.Any();
+                return FilteredImages.Any();
             }
         }
         #endregion
@@ -136,9 +139,9 @@ namespace CvSeachTool.Models
         /// </summary>
         public void SetFirst()
         {
-            if (this.FilteredImages.Count > 0)
+            if (FilteredImages.Count > 0)
             {
-                this.SelectedImage = this.FilteredImages.ElementAt(0);
+                SelectedImage = FilteredImages.ElementAt(0);
             }
         }
         #endregion

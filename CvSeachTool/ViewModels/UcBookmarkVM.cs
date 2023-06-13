@@ -1,5 +1,6 @@
 ﻿using CvSeachTool.Common;
 using CvSeachTool.Models;
+using CvSeachTool.Models.CvsModel;
 using CvSeachTool.Views;
 using CvSeachTool.Views.UserControls;
 using MVVMCore.BaseClass;

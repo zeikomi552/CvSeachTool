@@ -18,6 +18,7 @@
     <UserControl.Resources>
         <Converters:ConvertBooleanConverter x:Key="ConvertBooleanConverter"/>
         <Converters:URLStringToImageSourceConverter x:Key="URLStringToImageSourceConverter"/>
+        <Converters:ImageNsfwEnumToVisibilityConverter x:Key="ImageNsfwEnumToVisibilityConverter"/>
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -96,28 +97,144 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <ListView Margin="5,5,5,5" x:Name="lvImages" ItemsSource="{Binding CvsImage.Items.Items}" SelectedItem="{Binding CvsImage.Items.SelectedItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                <ListView.Template>
-                    <ControlTemplate TargetType="{x:Type ListView}">
-                        <Border BorderThickness="5">
-                            <ScrollViewer>
-                                <ItemsPresenter x:Name="itemsPresenter" Margin="5"/>
-                            </ScrollViewer>
-                        </Border>
-                    </ControlTemplate>
-                </ListView.Template>
-                <ListView.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapPanel Orientation="Horizontal" Width="{Binding ActualWidth, ElementName=itemsPresenter, Mode=OneWay}"/>
-                    </ItemsPanelTemplate>
-                </ListView.ItemsPanel>
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <Image Width="100" Source="{Binding Url, Converter={StaticResource URLStringToImageSourceConverter}}"/>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-            <Image Grid.Column="1" Width="400" Source="{Binding CvsImage.Items.SelectedItem.Url, Converter={StaticResource URLStringToImageSourceConverter}}"/>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left">
+                    <StackPanel Margin="5" Orientation="Horizontal">
+                        <Button Margin="5,0" IsEnabled="{Binding ExecuteGetAPI, Converter={StaticResource ConvertBooleanConverter}}" Cursor="Hand">
+                            <b:Interaction.Triggers>
+                                <b:EventTrigger EventName="Click">
+                                    <b:CallMethodAction TargetObject="{Binding}" MethodName="MovePrev"/>
+                                </b:EventTrigger>
+                            </b:Interaction.Triggers>
+                            <StackPanel Orientation="Vertical">
+                                <svgc:SvgViewbox Height="10" Source="/Common/Images/arrowleft-svgrepo-com.svg" />
+                            </StackPanel>
+
+                        </Button>
+                        <TextBlock Text="{Binding CvsImage.Metadata.CurrentPage}" TextAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Text="/" TextAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Text="{Binding CvsImage.Metadata.TotalPages}" TextAlignment="Center" VerticalAlignment="Center"/>
+                        <Button Margin="5,0" IsEnabled="{Binding ExecuteGetAPI, Converter={StaticResource ConvertBooleanConverter}}" Cursor="Hand">
+                            <b:Interaction.Triggers>
+                                <b:EventTrigger EventName="Click">
+                                    <b:CallMethodAction TargetObject="{Binding}" MethodName="MoveNext"/>
+                                </b:EventTrigger>
+                            </b:Interaction.Triggers>
+                            <StackPanel Orientation="Vertical">
+                                <svgc:SvgViewbox Height="10" Source="/Common/Images/arrowright-svgrepo-com.svg" />
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                    <StackPanel Grid.Row="0" Orientation="Horizontal">
+                        <TextBlock VerticalAlignment="Center">
+                            <StackPanel Orientation="Vertical">
+                                <svgc:SvgViewbox Margin="5" Source="/Common/Images/filter-1384-svgrepo-com.svg" />
+                            </StackPanel>
+
+                        </TextBlock>
+                        <ComboBox VerticalAlignment="Center" Width="100"
+                                            ItemsSource="{Binding Mode=OneWay, Source={my:Enumeration {x:Type enum:ImageNsfwEnum}}}"
+                                            SelectedValue="{Binding ImageFilter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                            DisplayMemberPath="Description" SelectedValuePath="Value">
+                            <b:Interaction.Triggers>
+                                <b:EventTrigger EventName="SelectionChanged">
+                                    <b:CallMethodAction TargetObject="{Binding ImageList, Mode=TwoWay}" MethodName="RefreshFilter"/>
+                                </b:EventTrigger>
+                            </b:Interaction.Triggers>
+                        </ComboBox>
+                    </StackPanel>
+
+                </StackPanel>
+
+                <ListView Grid.Row="1" Margin="5,5,5,5" x:Name="lvImages" ItemsSource="{Binding ImageList.FilteredImages}"
+                          SelectedItem="{Binding ImageList.SelectedImage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                    <ListView.Template>
+                        <ControlTemplate TargetType="{x:Type ListView}">
+                            <Border BorderThickness="5">
+                                <ScrollViewer>
+                                    <ItemsPresenter x:Name="itemsPresenter" Margin="5"/>
+                                </ScrollViewer>
+                            </Border>
+                        </ControlTemplate>
+                    </ListView.Template>
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal" Width="{Binding ActualWidth, ElementName=itemsPresenter, Mode=OneWay}"/>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Image Width="100" Source="{Binding Url, Converter={StaticResource URLStringToImageSourceConverter}}">
+                                <Image.InputBindings>
+                                    <MouseBinding MouseAction="LeftDoubleClick" Command="{Binding MouseDoubleClickCommand}"/>
+                                </Image.InputBindings>
+                            </Image>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition MaxHeight="200" Height="Auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="{Binding ImageList.SelectedImage.Meta.Model}"/>
+
+                <Image Grid.Row="1" Source="{Binding ImageList.SelectedImage.Url, Converter={StaticResource URLStringToImageSourceConverter}}"/>
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock VerticalAlignment="Center" TextAlignment="Right" Text="Prompt:"/>
+                        <TextBox VerticalAlignment="Center" Grid.Column="1" IsReadOnly="True" Margin="5"
+                                    TextAlignment="Center" Text="{Binding  CvsImage.Items.SelectedItem.Meta.Prompt}"/>
+                        <Button Grid.Column="2" Margin="5" Cursor="Hand">
+                            <b:Interaction.Triggers>
+                                <b:EventTrigger EventName="Click">
+                                    <b:CallMethodAction TargetObject="{Binding CvsImage.Items.SelectedItem.Meta}" MethodName="CopyClipbordPrompt"/>
+                                </b:EventTrigger>
+                            </b:Interaction.Triggers>
+                            <StackPanel Orientation="Vertical">
+                                <svgc:SvgViewbox Source="/Common/Images/copy-1-svgrepo-com.svg" />
+                            </StackPanel>
+
+                        </Button>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock VerticalAlignment="Center" TextAlignment="Right" Text="NegativPrompt:"/>
+                        <TextBox VerticalAlignment="Center" Grid.Column="1" IsReadOnly="True" Margin="5" TextAlignment="Center"
+                                    Text="{Binding CvsImage.Items.SelectedItem.Meta.NegativePrompt, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <Button Grid.Column="2" Margin="5" Cursor="Hand">
+                            <b:Interaction.Triggers>
+                                <b:EventTrigger EventName="Click">
+                                    <b:CallMethodAction TargetObject="{Binding CvsImage.Items.SelectedItem.Meta}" MethodName="CopyClipbordNegativePrompt"/>
+                                </b:EventTrigger>
+                            </b:Interaction.Triggers>
+                            <StackPanel Orientation="Vertical">
+                                <svgc:SvgViewbox Source="/Common/Images/copy-1-svgrepo-com.svg" />
+                            </StackPanel>
+                        </Button>
+                    </Grid>
+                </Grid>
+
+            </Grid>
 
         </Grid>
     </Grid>
