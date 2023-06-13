@@ -6,7 +6,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace CvSeachTool.Models
+namespace CvSeachTool.Models.CvsModel
 {
     public class CvsMetadataM : ModelBase
     {
@@ -14,12 +14,12 @@ namespace CvSeachTool.Models
         /// <summary>
         /// The total number of items available[TotalItems]プロパティ用変数
         /// </summary>
-        Int64 _TotalItems = new Int64();
+        long _TotalItems = 0;
         /// <summary>
         /// The total number of items available[TotalItems]プロパティ
         /// </summary>
         [JsonPropertyName("totalItems")]
-        public Int64 TotalItems
+        public long TotalItems
         {
             get
             {
@@ -40,12 +40,12 @@ namespace CvSeachTool.Models
         /// <summary>
         /// The the current page you are at[CurrentPage]プロパティ用変数
         /// </summary>
-        Int64 _CurrentPage = new Int64();
+        long _CurrentPage = new long();
         /// <summary>
         /// The the current page you are at[CurrentPage]プロパティ
         /// </summary>
         [JsonPropertyName("currentPage")]
-        public Int64 CurrentPage
+        public long CurrentPage
         {
             get
             {
@@ -66,12 +66,12 @@ namespace CvSeachTool.Models
         /// <summary>
         /// The the size of the batch[PageSize]プロパティ用変数
         /// </summary>
-        Int64 _PageSize = new Int64();
+        long _PageSize = new long();
         /// <summary>
         /// The the size of the batch[PageSize]プロパティ
         /// </summary>
         [JsonPropertyName("pageSize")]
-        public Int64 PageSize
+        public long PageSize
         {
             get
             {
@@ -92,12 +92,12 @@ namespace CvSeachTool.Models
         /// <summary>
         /// The total number of pages[TotalPages]プロパティ用変数
         /// </summary>
-        Int64 _TotalPages = new Int64();
+        long _TotalPages = new long();
         /// <summary>
         /// The total number of pages[TotalPages]プロパティ
         /// </summary>
         [JsonPropertyName("totalPages")]
-        public Int64 TotalPages
+        public long TotalPages
         {
             get
             {

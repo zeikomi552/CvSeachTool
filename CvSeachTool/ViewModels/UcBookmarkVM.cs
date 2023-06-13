@@ -12,8 +12,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static CvSeachTool.Models.CvsModelM;
-using static CvSeachTool.Models.CvsModelM.CvsModelVersions;
+using static CvSeachTool.Models.CvsModel.CvsModelM;
+using static CvSeachTool.Models.CvsModel.CvsModelM.CvsModelVersions;
 
 namespace CvSeachTool.ViewModels
 {

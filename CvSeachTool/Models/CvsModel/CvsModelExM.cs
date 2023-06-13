@@ -15,21 +15,21 @@ using System.Windows.Documents;
 using System.Windows.Interop;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Media3D;
-using static CvSeachTool.Models.CvsModelM;
+using static CvSeachTool.Models.CvsModel.CvsModelM;
 using static System.Net.WebRequestMethods;
 using File = System.IO.File;
 
-namespace CvSeachTool.Models
+namespace CvSeachTool.Models.CvsModel
 {
     public class CvsModelExM : ModelBase
     {
         public CvsModelExM(CvsModelM model)
         {
             // set request items
-            this.Items = new ModelList<CvsItems>(model.Items);
+            Items = new ModelList<CvsItems>(model.Items);
 
             // set request metadata
-            this.Metadata = model.Metadata;
+            Metadata = model.Metadata;
         }
 
         #region json result of items[Items]プロパティ
@@ -153,7 +153,7 @@ namespace CvSeachTool.Models
                 StringBuilder sb = new StringBuilder();
 
                 int rank = 1;
-                foreach (var item in this.Items)
+                foreach (var item in Items)
                 {
                     sb.AppendLine($"## {rank++}位 {item.Id} {item.Name}");
                     sb.AppendLine($"");
@@ -233,7 +233,7 @@ namespace CvSeachTool.Models
                 sb.AppendLine($"https://civitai.com/");
                 sb.AppendLine($"");
                 sb.AppendLine($"REST API");
-                sb.AppendLine($"{this.RequestURL}");
+                sb.AppendLine($"{RequestURL}");
                 sb.AppendLine($"");
 
 
@@ -242,7 +242,7 @@ namespace CvSeachTool.Models
 
 
                 int rank = 1;
-                foreach (var item in this.Items)
+                foreach (var item in Items)
                 {
                     sb.AppendLine($"|<center>{rank++}位</center><center>({item.Stats.DownloadCount})</center>" +
                         $"|{item.Id} / [{item.Creator.Username}](https://civitai.com/user/{item.Creator.Username}/models)<br>[{item.Name.Replace("|", "\\|")}](https://civitai.com/models/{item.Id})" +

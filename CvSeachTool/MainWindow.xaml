@@ -15,8 +15,11 @@
         Title="CvSeachTool" Height="800" Width="1200" WindowStartupLocation="CenterScreen" TitleCharacterCasing="Normal">
     <TabControl>
 
-        <TabItem Header="Civitai">
+        <TabItem Header="Model">
             <UserControls:UcSearchModelV/>
+        </TabItem>
+        <TabItem Header="Image">
+            <UserControls:UcSearchImageV/>
         </TabItem>
         <TabItem Header="Bookmark">
             <UserControls:UcBookmarkV />

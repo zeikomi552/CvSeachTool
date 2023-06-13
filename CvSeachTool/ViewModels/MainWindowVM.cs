@@ -1,7 +1,6 @@
 ﻿using CvSeachTool.Common;
 using CvSeachTool.Common.Enums;
 using CvSeachTool.Common.Utilities;
-using CvSeachTool.Models;
 using CvSeachTool.Models.Condition;
 using CvSeachTool.Views;
 using CvSeachTool.Views.UserControls;
@@ -30,8 +29,8 @@ using System.Windows.Controls;
 using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using static CvSeachTool.Models.CvsModelM;
-using static CvSeachTool.Models.CvsModelM.CvsModelVersions;
+using static CvSeachTool.Models.CvsModel.CvsModelM;
+using static CvSeachTool.Models.CvsModel.CvsModelM.CvsModelVersions;
 
 namespace CvSeachTool.ViewModels
 {

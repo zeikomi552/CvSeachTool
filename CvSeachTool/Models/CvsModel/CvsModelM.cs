@@ -8,14 +8,14 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using static CvSeachTool.Models.CvsModelM.CvsModelVersions;
+using static CvSeachTool.Models.CvsModel.CvsModelM.CvsModelVersions;
 using System.Windows;
 using CvSeachTool.ViewModels;
 using MVVMCore.Common.Utilities;
 using CvSeachTool.Common;
 using System.IO;
 
-namespace CvSeachTool.Models
+namespace CvSeachTool.Models.CvsModel
 {
     public class CvsModelM : ModelBase
     {
@@ -645,12 +645,12 @@ namespace CvSeachTool.Models
                         }
                     }
                     #endregion
-                    
+
                     #region image sample seed[Seed]プロパティ
                     /// <summary>
                     /// image sample seed[Seed]プロパティ用変数
                     /// </summary>
-                    object _Seed = new Int64();
+                    object _Seed = new long();
                     /// <summary>
                     /// image sample seed[Seed]プロパティ
                     /// </summary>
@@ -838,7 +838,7 @@ namespace CvSeachTool.Models
                     {
                         try
                         {
-                            Clipboard.SetText(this.Prompt);
+                            Clipboard.SetText(Prompt);
                         }
                         catch { }
                     }
@@ -850,7 +850,7 @@ namespace CvSeachTool.Models
                     {
                         try
                         {
-                            Clipboard.SetText(this.NegativPrompt);
+                            Clipboard.SetText(NegativPrompt);
                         }
                         catch { }
                     }
@@ -995,12 +995,12 @@ namespace CvSeachTool.Models
                 /// <summary>
                 /// The generation params of the image[Meta]プロパティ用変数
                 /// </summary>
-                CvsImages.CvsMeta _Meta = new ();
+                CvsMeta _Meta = new();
                 /// <summary>
                 /// The generation params of the image[Meta]プロパティ
                 /// </summary>
                 [JsonPropertyName("meta")]
-                public CvsImages.CvsMeta Meta
+                public CvsMeta Meta
                 {
                     get
                     {
@@ -1322,12 +1322,12 @@ namespace CvSeachTool.Models
             /// <summary>
             /// This model stats[Stats]プロパティ用変数
             /// </summary>
-            CvsModelVersions.CvsStats _Stats = new CvsModelVersions.CvsStats();
+            CvsStats _Stats = new CvsStats();
             /// <summary>
             /// This model stats[Stats]プロパティ
             /// </summary>
             [JsonPropertyName("stats")]
-            public CvsModelVersions.CvsStats Stats
+            public CvsStats Stats
             {
                 get
                 {
@@ -1353,7 +1353,7 @@ namespace CvSeachTool.Models
                 try
                 {
                     // nullチェック
-                    if (string.IsNullOrEmpty(this.DownloadUrl))
+                    if (string.IsNullOrEmpty(DownloadUrl))
                     {
                         // ダウンロードするバージョンを選択してください
                         ShowMessage.ShowNoticeOK("Choose the version you want to download", "Notice");
@@ -1361,7 +1361,7 @@ namespace CvSeachTool.Models
                     }
 
                     // ダウンロードURLの取得
-                    string download_url = this.DownloadUrl;
+                    string download_url = DownloadUrl;
 
                     // ブラウザでURLを開く
                     var startInfo = new System.Diagnostics.ProcessStartInfo($"{download_url}");
@@ -1625,7 +1625,7 @@ namespace CvSeachTool.Models
             /// This model creator[Creator]プロパティ
             /// </summary>
             [JsonPropertyName("creator")]
-            public CvsModelM.CvsCreator Creator
+            public CvsCreator Creator
             {
                 get
                 {
@@ -1860,9 +1860,9 @@ namespace CvSeachTool.Models
                     // nullチェック
                     if (GblValues.Instance.BookmarkConf != null && GblValues.Instance.BookmarkConf.Item != null && GblValues.Instance.BookmarkConf.Item.Items != null)
                     {
-                        var check = (from x in GblValues.Instance.BookmarkConf.Item.Items
-                                     where x.Id.Equals(this.Id)
-                                     select x);
+                        var check = from x in GblValues.Instance.BookmarkConf.Item.Items
+                                     where x.Id.Equals(Id)
+                                     select x;
 
                         // 存在しなければ追加
                         if (!check.Any())

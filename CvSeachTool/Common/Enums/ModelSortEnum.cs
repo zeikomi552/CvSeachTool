@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace CvSeachTool.Common.Enums
 {
+    /// <summary>
+    /// モデル検索用
+    /// </summary>
     public enum ModelSortEnum
     {
         [Description("")]
@@ -15,6 +18,21 @@ namespace CvSeachTool.Common.Enums
         Highest_Rated,
         [Description("Most Downloaded")]
         Most_Downloaded,
+        [Description("Newest")]
+        Newest
+    }
+
+    /// <summary>
+    /// Image検索用
+    /// </summary>
+    public enum ModelSortEnum2
+    {
+        [Description("")]
+        Empty,
+        [Description("Most Reactions")]
+        Most_Reactions,
+        [Description("Most Comments")]
+        Most_Comments,
         [Description("Newest")]
         Newest
     }

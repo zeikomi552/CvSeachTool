@@ -8,7 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static CvSeachTool.Models.CvsModelM;
+using static CvSeachTool.Models.CvsModel.CvsModelM;
 
 namespace CvSeachTool.Common
 {

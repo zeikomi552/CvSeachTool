@@ -16,6 +16,9 @@
     <Compile Update="Views\UserControls\UcFileCheckV.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\UserControls\UcSearchImageV.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\UserControls\UcSearchModelV.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -31,6 +34,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\UserControls\UcFileCheckV.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\UserControls\UcSearchImageV.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\UserControls\UcSearchModelV.xaml">

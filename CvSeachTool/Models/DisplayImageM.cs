@@ -7,7 +7,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using static CvSeachTool.Models.CvsModelM.CvsModelVersions;
+using static CvSeachTool.Models.CvsModel.CvsModelM.CvsModelVersions;
 
 namespace CvSeachTool.Models
 {

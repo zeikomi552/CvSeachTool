@@ -81,7 +81,7 @@
                                 <RowDefinition Height="auto"/>
                             </Grid.RowDefinitions>
 
-                            <WrapPanel Orientation="Vertical" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                            <StackPanel Orientation="Vertical" ScrollViewer.HorizontalScrollBarVisibility="Auto">
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Width="120" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Limit"/>
                                     <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
@@ -178,7 +178,7 @@
                                     <CheckBox Width="100" Margin="5" IsChecked="{Binding GetCondition.Nsfw}" IsThreeState="True" VerticalAlignment="Center"/>
                                 </StackPanel>
 
-                            </WrapPanel>
+                            </StackPanel>
                             <StackPanel Grid.Row="1">
                                 <Button Margin="5" IsEnabled="{Binding ExecuteGetAPI, Converter={StaticResource ConvertBooleanConverter}}" Cursor="Hand">
                                     <b:Interaction.Triggers>
