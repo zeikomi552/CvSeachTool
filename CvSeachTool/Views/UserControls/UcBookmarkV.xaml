@@ -127,49 +127,103 @@
             </Grid>
         </GroupBox>
         <GroupBox Margin="5" Grid.Column="1" Header="Images">
-            <ListView Grid.Column="1" x:Name="lvImages" ItemsSource="{Binding ImageList.FilteredImages}"
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <ListView x:Name="lvImages" ItemsSource="{Binding ImageList.FilteredImages}"
                   SelectedItem="{Binding ImageList.SelectedImage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                <ListView.Template>
-                    <ControlTemplate TargetType="{x:Type ListView}">
-                        <Border BorderThickness="5">
-                            <ScrollViewer>
-                                <ItemsPresenter Margin="5"/>
-                            </ScrollViewer>
-                        </Border>
-                    </ControlTemplate>
-                </ListView.Template>
-                <ListView.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel Orientation="Horizontal"/>
-                    </ItemsPanelTemplate>
-                </ListView.ItemsPanel>
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Visibility="{Binding Nsfw, Converter={StaticResource ImageNsfwEnumToVisibilityConverter}}">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="[Model]"/>
-                                <TextBlock Text="{Binding Meta.Model}"/>
-                                <TextBlock Text=" "/>
-                                <TextBlock Text="[Model hash]"/>
-                                <TextBlock Text="{Binding Meta.ModelHash}"/>
-                            </StackPanel>
-                            <StackPanel>
+                    <ListView.Template>
+                        <ControlTemplate TargetType="{x:Type ListView}">
+                            <Border BorderThickness="5">
+                                <ScrollViewer>
+                                    <ItemsPresenter Margin="5"/>
+                                </ScrollViewer>
+                            </Border>
+                        </ControlTemplate>
+                    </ListView.Template>
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Visibility="{Binding Nsfw, Converter={StaticResource ImageNsfwEnumToVisibilityConverter}}">
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="[Size]"/>
-                                    <TextBlock Text="{Binding Meta.Size}"/>
+                                    <TextBlock Text="[Model]"/>
+                                    <TextBlock Text="{Binding Meta.Model}"/>
                                     <TextBlock Text=" "/>
-                                    <TextBlock Text="[Sampler]"/>
-                                    <TextBlock Text="{Binding Meta.Sampler}"/>
-                                    <TextBlock Text=" "/>
-                                    <TextBlock Text="[Seed]"/>
-                                    <TextBlock Text="{Binding Meta.Seed}"/>
+                                    <TextBlock Text="[Model hash]"/>
+                                    <TextBlock Text="{Binding Meta.ModelHash}"/>
                                 </StackPanel>
+                                <StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="[Size]"/>
+                                        <TextBlock Text="{Binding Meta.Size}"/>
+                                        <TextBlock Text=" "/>
+                                        <TextBlock Text="[Sampler]"/>
+                                        <TextBlock Text="{Binding Meta.Sampler}"/>
+                                        <TextBlock Text=" "/>
+                                        <TextBlock Text="[Seed]"/>
+                                        <TextBlock Text="{Binding Meta.Seed}"/>
+                                    </StackPanel>
+                                </StackPanel>
+                                <Image Width="400" Source="{Binding Url, Converter={StaticResource URLStringToImageSourceConverter}}"/>
                             </StackPanel>
-                            <Image Width="400" Source="{Binding Url, Converter={StaticResource URLStringToImageSourceConverter}}"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock VerticalAlignment="Center" TextAlignment="Right" Text="Prompt:"/>
+                        <TextBox VerticalAlignment="Center" Grid.Column="1" IsReadOnly="True" Margin="5"
+                                    TextAlignment="Center" Text="{Binding  ImageList.SelectedImage.Meta.Prompt}"/>
+                        <Button Grid.Column="2" Margin="5" Cursor="Hand">
+                            <b:Interaction.Triggers>
+                                <b:EventTrigger EventName="Click">
+                                    <b:CallMethodAction TargetObject="{Binding ImageList.SelectedImage.Meta}" MethodName="CopyClipbordPrompt"/>
+                                </b:EventTrigger>
+                            </b:Interaction.Triggers>
+                            <StackPanel Orientation="Vertical">
+                                <svgc:SvgViewbox Source="/Common/Images/copy-1-svgrepo-com.svg" />
+                            </StackPanel>
+
+                        </Button>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock VerticalAlignment="Center" TextAlignment="Right" Text="NegativPrompt:"/>
+                        <TextBox VerticalAlignment="Center" Grid.Column="1" IsReadOnly="True" Margin="5" TextAlignment="Center"
+                                    Text="{Binding ImageList.SelectedImage.Meta.NegativPrompt, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <Button Grid.Column="2" Margin="5" Cursor="Hand">
+                            <b:Interaction.Triggers>
+                                <b:EventTrigger EventName="Click">
+                                    <b:CallMethodAction TargetObject="{Binding ImageList.SelectedImage.Meta}" MethodName="CopyClipbordNegativePrompt"/>
+                                </b:EventTrigger>
+                            </b:Interaction.Triggers>
+                            <StackPanel Orientation="Vertical">
+                                <svgc:SvgViewbox Source="/Common/Images/copy-1-svgrepo-com.svg" />
+                            </StackPanel>
+                        </Button>
+                    </Grid>
+                </Grid>
+
+            </Grid>
         </GroupBox>
     </Grid>
 </UserControl>
