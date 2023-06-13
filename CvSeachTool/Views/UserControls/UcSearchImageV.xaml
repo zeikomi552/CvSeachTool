@@ -17,6 +17,7 @@
     </UserControl.DataContext>
     <UserControl.Resources>
         <Converters:ConvertBooleanConverter x:Key="ConvertBooleanConverter"/>
+        <Converters:URLStringToImageSourceConverter x:Key="URLStringToImageSourceConverter"/>
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -37,7 +38,7 @@
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Width="120" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="PostId"/>
                     <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
-                    <TextBox Width="80" Margin="5" Text="{Binding SearchCondition.postId}" VerticalAlignment="Center" TextAlignment="Center"/>
+                    <TextBox Width="80" Margin="5" Text="{Binding SearchCondition.PostId}" VerticalAlignment="Center" TextAlignment="Center"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Width="120" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="ModelId"/>
@@ -76,7 +77,7 @@
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Width="120" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Page"/>
                     <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
-                    <TextBox Width="80" Margin="5" Text="" VerticalAlignment="Center" TextAlignment="Center"/>
+                    <TextBox Width="80" Margin="5" Text="{Binding SearchCondition.Page}" VerticalAlignment="Center" TextAlignment="Center"/>
                 </StackPanel>
                 <Button Margin="5" IsEnabled="{Binding ExecuteGetAPI, Converter={StaticResource ConvertBooleanConverter}}" Cursor="Hand">
                     <b:Interaction.Triggers>
@@ -90,5 +91,34 @@
                 </Button>
             </StackPanel>
         </Expander>
+        <Grid Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <ListView Margin="5,5,5,5" x:Name="lvImages" ItemsSource="{Binding CvsImage.Items.Items}" SelectedItem="{Binding CvsImage.Items.SelectedItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                <ListView.Template>
+                    <ControlTemplate TargetType="{x:Type ListView}">
+                        <Border BorderThickness="5">
+                            <ScrollViewer>
+                                <ItemsPresenter x:Name="itemsPresenter" Margin="5"/>
+                            </ScrollViewer>
+                        </Border>
+                    </ControlTemplate>
+                </ListView.Template>
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" Width="{Binding ActualWidth, ElementName=itemsPresenter, Mode=OneWay}"/>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Image Width="100" Source="{Binding Url, Converter={StaticResource URLStringToImageSourceConverter}}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Image Grid.Column="1" Width="400" Source="{Binding CvsImage.Items.SelectedItem.Url, Converter={StaticResource URLStringToImageSourceConverter}}"/>
+
+        </Grid>
     </Grid>
 </UserControl>
