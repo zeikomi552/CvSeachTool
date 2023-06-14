@@ -49,7 +49,17 @@
                     <TextBlock Margin="5" VerticalAlignment="Center" Text="CIVITAI Image"/>
                 </StackPanel>
             </TabItem.Header>
-            <UserControls:UcSearchImageV/>
+            <TabControl TabStripPlacement="Left">
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <svgc:SvgViewbox Source="/Common/Images/lens-svgrepo-com.svg" Width="50" />
+                            <TextBlock Margin="5" VerticalAlignment="Center" Text="Search"/>
+                        </StackPanel>
+                    </TabItem.Header>
+                    <UserControls:UcSearchImageV/>
+                </TabItem>
+            </TabControl>
         </TabItem>
         <TabItem>
             <TabItem.Header>
