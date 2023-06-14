@@ -14,7 +14,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CvSeachTool.Views.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="800" d:DesignWidth="800">
     <UserControl.DataContext>
         <ViewModels:UcSearchModelVM x:Name="vm"/>
     </UserControl.DataContext>
@@ -64,7 +64,7 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Border Margin="5" BorderBrush="{DynamicResource MahApps.Brushes.Gray9}" BorderThickness="5" Background="{DynamicResource MahApps.Brushes.Button.Square.Background.MouseOver}">
+            <Border Margin="5">
                 <Expander Margin="5" Background="{x:Null}" IsExpanded="True" ExpandDirection="Right">
                     <Expander.Header>
                         <svgc:SvgViewbox Source="/Common/Images/lens-svgrepo-com.svg" Width="30" />
@@ -77,71 +77,71 @@
                             </Grid.RowDefinitions>
 
                             <StackPanel Orientation="Vertical" ScrollViewer.HorizontalScrollBarVisibility="Auto">
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Width="120" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Limit"/>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <TextBlock Width="auto" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Limit"/>
                                     <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
                                     <TextBox Width="80" Margin="5" Text="{Binding GetCondition.Limit}" VerticalAlignment="Center" TextAlignment="Center"/>
                                 </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Width="120" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Page"/>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <TextBlock Width="auto" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Page"/>
                                     <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
-                                    <TextBox Width="100" Margin="5" Text="{Binding GetCondition.Page}" VerticalAlignment="Center" TextAlignment="Center"/>
+                                    <TextBox Width="80" Margin="5" Text="{Binding GetCondition.Page}" VerticalAlignment="Center" TextAlignment="Center"/>
                                 </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Width="120" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Query"/>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <TextBlock Width="auto" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Query"/>
                                     <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
-                                    <TextBox Width="100" Margin="5" Text="{Binding GetCondition.Query}" VerticalAlignment="Center" TextAlignment="Center"/>
+                                    <TextBox Width="80" Margin="5" Text="{Binding GetCondition.Query}" VerticalAlignment="Center" TextAlignment="Center"/>
                                 </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Width="120" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Tag"/>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <TextBlock Width="auto" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Tag"/>
                                     <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
-                                    <TextBox Width="100" Margin="5" Text="{Binding GetCondition.Tag}" VerticalAlignment="Center" TextAlignment="Center"/>
+                                    <TextBox Width="80" Margin="5" Text="{Binding GetCondition.Tag}" VerticalAlignment="Center" TextAlignment="Center"/>
                                 </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Width="120" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Username"/>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <TextBlock Width="auto" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Username"/>
                                     <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
-                                    <TextBox Width="100" Margin="5" Text="{Binding GetCondition.Username}" VerticalAlignment="Center" TextAlignment="Center"/>
+                                    <TextBox Width="80" Margin="5" Text="{Binding GetCondition.Username}" VerticalAlignment="Center" TextAlignment="Center"/>
                                 </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Width="120" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Types"/>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <TextBlock Width="auto" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Types"/>
                                     <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
-                                    <ComboBox Width="100" ItemsSource="{Binding Mode=OneWay, Source={my:Enumeration {x:Type enum:ModelTypeEnum}}}"
+                                    <ComboBox Margin="5" Width="80" ItemsSource="{Binding Mode=OneWay, Source={my:Enumeration {x:Type enum:ModelTypeEnum}}}"
                                               SelectedValue="{Binding GetCondition.Types, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                                               DisplayMemberPath="Description" SelectedValuePath="Value"/>
                                 </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Width="120" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Sort"/>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <TextBlock Width="auto" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Sort"/>
                                     <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
-                                    <ComboBox Width="100" ItemsSource="{Binding Mode=OneWay, Source={my:Enumeration {x:Type enum:ModelSortEnum}}}"
+                                    <ComboBox Margin="5" Width="80" ItemsSource="{Binding Mode=OneWay, Source={my:Enumeration {x:Type enum:ModelSortEnum}}}"
                                               SelectedValue="{Binding GetCondition.Sort, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                                               DisplayMemberPath="Description" SelectedValuePath="Value"/>
                                 </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Width="120" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Period"/>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <TextBlock Width="auto" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Period"/>
                                     <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
-                                    <ComboBox Width="100" ItemsSource="{Binding Mode=OneWay, Source={my:Enumeration {x:Type enum:ModelPeriodEnum}}}"
+                                    <ComboBox Margin="5" Width="80" ItemsSource="{Binding Mode=OneWay, Source={my:Enumeration {x:Type enum:ModelPeriodEnum}}}"
                                               SelectedValue="{Binding GetCondition.Period, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                                               DisplayMemberPath="Description" SelectedValuePath="Value"  />
                                 </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Width="120" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Rating"/>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <TextBlock Width="auto" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Rating"/>
                                     <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
-                                    <TextBox Width="100" Margin="5" Text="{Binding GetCondition.Rating}" VerticalAlignment="Center" TextAlignment="Center"/>
+                                    <TextBox Width="80" Margin="5" Text="{Binding GetCondition.Rating}" VerticalAlignment="Center" TextAlignment="Center"/>
                                 </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Width="120" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Favorites"/>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <TextBlock Width="auto" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Favorites"/>
                                     <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
-                                    <CheckBox Width="100" Margin="5" IsChecked="{Binding GetCondition.Favorites}" IsThreeState="True" VerticalAlignment="Center"/>
+                                    <CheckBox Width="80" Margin="5" IsChecked="{Binding GetCondition.Favorites}" IsThreeState="True" VerticalAlignment="Center"/>
                                 </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Width="120" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Hidden"/>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <TextBlock Width="auto" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Hidden"/>
                                     <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
-                                    <CheckBox Width="100" Margin="5" IsChecked="{Binding GetCondition.Hidden}" IsThreeState="True" VerticalAlignment="Center"/>
+                                    <CheckBox Width="80" Margin="5" IsChecked="{Binding GetCondition.Hidden}" IsThreeState="True" VerticalAlignment="Center"/>
                                 </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Width="120" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="PrimaryFileOnly"/>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <TextBlock Width="auto" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="PrimaryFileOnly"/>
                                     <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
-                                    <CheckBox Width="100" Margin="5" IsChecked="{Binding GetCondition.PrimaryFileOnly}" IsThreeState="True" VerticalAlignment="Center"/>
+                                    <CheckBox Width="80" Margin="5" IsChecked="{Binding GetCondition.PrimaryFileOnly}" IsThreeState="True" VerticalAlignment="Center"/>
                                 </StackPanel>
                                 <!-- CIVITAI側が未対応？-->
                                 <!--<StackPanel Orientation="Horizontal">
@@ -154,23 +154,23 @@
                                     <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
                                     <CheckBox Width="100" Margin="5" IsChecked="{Binding GetCondition.AllowDerivatives}" IsThreeState="True" VerticalAlignment="Center"/>
                                 </StackPanel>-->
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Width="120" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="AllowDifferentLicenses"/>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <TextBlock Width="auto" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="AllowDifferentLicenses"/>
                                     <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
-                                    <CheckBox Width="100" Margin="5" IsChecked="{Binding GetCondition.AllowDifferentLicenses}" IsThreeState="True" VerticalAlignment="Center"/>
+                                    <CheckBox Width="80" Margin="5" IsChecked="{Binding GetCondition.AllowDifferentLicenses}" IsThreeState="True" VerticalAlignment="Center"/>
                                 </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Width="120" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="AllowCommercialUse"/>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <TextBlock Width="auto" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="AllowCommercialUse"/>
                                     <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
-                                    <ComboBox Width="100" ItemsSource="{Binding Mode=OneWay, Source={my:Enumeration {x:Type enum:ModelAllowCommercialUseEnum}}}"
+                                    <ComboBox Width="80" ItemsSource="{Binding Mode=OneWay, Source={my:Enumeration {x:Type enum:ModelAllowCommercialUseEnum}}}"
                                               SelectedValue="{Binding GetCondition.AllowCommercialUse, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                               DisplayMemberPath="Description" SelectedValuePath="Value"/>
                                 </StackPanel>
 
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Width="120" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Nsfw"/>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <TextBlock Width="auto" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Nsfw"/>
                                     <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
-                                    <CheckBox Width="100" Margin="5" IsChecked="{Binding GetCondition.Nsfw}" IsThreeState="True" VerticalAlignment="Center"/>
+                                    <CheckBox Width="80" Margin="5" IsChecked="{Binding GetCondition.Nsfw}" IsThreeState="True" VerticalAlignment="Center"/>
                                 </StackPanel>
 
                             </StackPanel>
@@ -333,7 +333,7 @@
                             SelectedItem="{Binding CvsModel.Items.SelectedItem.SelectedModelVersion, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                             AutoGenerateColumns="False">
                             <DataGrid.RowStyle>
-                                <Style TargetType="DataGridRow">
+                                <Style TargetType="DataGridRow"  BasedOn="{StaticResource MaterialDesignDataGridRow}">
                                     <Setter Property="Height" Value="50" ></Setter>
                                 </Style>
                             </DataGrid.RowStyle>

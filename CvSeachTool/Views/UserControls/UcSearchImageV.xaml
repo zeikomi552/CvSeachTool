@@ -25,8 +25,7 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Expander  Margin="5" BorderBrush="{DynamicResource MahApps.Brushes.Gray9}" BorderThickness="5"
-                   Background="{DynamicResource MahApps.Brushes.Button.Square.Background.MouseOver}" IsExpanded="True" ExpandDirection="Right">
+        <Expander Margin="5" BorderThickness="5" IsExpanded="True" ExpandDirection="Right">
             <Expander.Header>
                 <svgc:SvgViewbox Source="/Common/Images/lens-svgrepo-com.svg" Width="30" />
             </Expander.Header>
@@ -148,15 +147,13 @@
                             </b:Interaction.Triggers>
                         </ComboBox>
                     </StackPanel>
-
                 </StackPanel>
-
                 <ListView Grid.Row="1" Margin="5,5,5,5" x:Name="lvImages" ItemsSource="{Binding ImageList.FilteredImages}"
                           SelectedItem="{Binding ImageList.SelectedImage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                     <ListView.Template>
                         <ControlTemplate TargetType="{x:Type ListView}">
                             <Border BorderThickness="5">
-                                <ScrollViewer>
+                                <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
                                     <ItemsPresenter x:Name="itemsPresenter" Margin="5"/>
                                 </ScrollViewer>
                             </Border>
@@ -178,6 +175,7 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </Grid>
+            <GridSplitter Grid.Column="1" Background="{DynamicResource MahApps.Brushes.Accent4}" Width="5" HorizontalAlignment="Left" />
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>

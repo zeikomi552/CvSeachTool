@@ -12,9 +12,9 @@
         xmlns:local="clr-namespace:CvSeachTool"
         xmlns:b="http://schemas.microsoft.com/xaml/behaviors" xmlns:ViewModels="clr-namespace:CvSeachTool.ViewModels" xmlns:UserControls="clr-namespace:CvSeachTool.Views.UserControls" x:Class="CvSeachTool.MainWindow"
         mc:Ignorable="d"
-        Title="CvSeachTool" Height="800" Width="1200" WindowStartupLocation="CenterScreen" TitleCharacterCasing="Normal">
+        Title="CvSeachTool" Height="800" Width="1200" WindowStartupLocation="CenterScreen" TitleCharacterCasing="Normal" Style="{StaticResource MaterialDesignWindow}">
     <TabControl>
-        <TabItem>
+        <TabItem Background="{DynamicResource MaterialDesignShadowBrush}">
             <TabItem.Header>
                 <StackPanel Orientation="Horizontal">
                     <svgc:SvgViewbox Source="/Common/Images/ai-artificial-intelligence-computer-ai-svgrepo-com.svg" Width="50" />
@@ -22,27 +22,25 @@
                 </StackPanel>
             </TabItem.Header>
             <TabControl TabStripPlacement="Left">
-                <TabItem>
+                <TabItem Background="{DynamicResource MaterialDesignShadowBrush}">
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal">
-                            <svgc:SvgViewbox Source="/Common/Images/lens-svgrepo-com.svg" Width="50" />
-                            <TextBlock Margin="5" VerticalAlignment="Center" Text="Search"/>
+                            <svgc:SvgViewbox Source="/Common/Images/lens-svgrepo-com.svg" ToolTip="Search" Width="50" />
                         </StackPanel>
                     </TabItem.Header>
                     <UserControls:UcSearchModelV/>
                 </TabItem>
-                <TabItem>
+                <TabItem Background="{DynamicResource MaterialDesignShadowBrush}">
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal">
-                            <svgc:SvgViewbox Source="/Common/Images/star-svgrepo-com.svg" Width="50" />
-                            <TextBlock Margin="5" VerticalAlignment="Center" Text="Model Bookmark"/>
+                            <svgc:SvgViewbox Source="/Common/Images/star-svgrepo-com.svg" ToolTip="Bookmark" Width="50" />
                         </StackPanel>
                     </TabItem.Header>
                     <UserControls:UcBookmarkV />
                 </TabItem>
             </TabControl>
         </TabItem>
-        <TabItem>
+        <TabItem Background="{DynamicResource MaterialDesignShadowBrush}">
             <TabItem.Header>
                 <StackPanel Orientation="Horizontal">
                     <svgc:SvgViewbox Source="/Common/Images/image-svgrepo-com.svg" Width="50" />
@@ -50,18 +48,17 @@
                 </StackPanel>
             </TabItem.Header>
             <TabControl TabStripPlacement="Left">
-                <TabItem>
+                <TabItem Background="{DynamicResource MaterialDesignShadowBrush}">
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal">
-                            <svgc:SvgViewbox Source="/Common/Images/lens-svgrepo-com.svg" Width="50" />
-                            <TextBlock Margin="5" VerticalAlignment="Center" Text="Search"/>
+                            <svgc:SvgViewbox Source="/Common/Images/lens-svgrepo-com.svg" Width="50" ToolTip="Search"/>
                         </StackPanel>
                     </TabItem.Header>
                     <UserControls:UcSearchImageV/>
                 </TabItem>
             </TabControl>
         </TabItem>
-        <TabItem>
+        <TabItem Background="{DynamicResource MaterialDesignShadowBrush}">
             <TabItem.Header>
                 <StackPanel Orientation="Horizontal">
                     <svgc:SvgViewbox Source="/Common/Images/folder-1793-svgrepo-com.svg" Width="50" />
