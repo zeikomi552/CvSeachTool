@@ -5,6 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
+#pragma warning disable CS8612
+#pragma warning disable CS8625
+#pragma warning disable CS8618
+#pragma warning disable CS8767
+
 namespace CvSeachTool.Common.Commands
 {
     /// <summary>
@@ -71,3 +76,8 @@ namespace CvSeachTool.Common.Commands
         }
     }
 }
+
+#pragma warning restore CS8612
+#pragma warning restore CS8625
+#pragma warning restore CS8618
+#pragma warning restore CS8767

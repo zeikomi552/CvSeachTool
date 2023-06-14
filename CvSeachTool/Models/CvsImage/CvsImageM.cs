@@ -531,7 +531,7 @@ namespace CvSeachTool.Models.CvsImage
                 }
                 #endregion
 
-
+                #region プロンプトのコピー
                 /// <summary>
                 /// プロンプトのコピー
                 /// </summary>
@@ -543,7 +543,9 @@ namespace CvSeachTool.Models.CvsImage
                     }
                     catch { }
                 }
+                #endregion
 
+                #region ネガティブプロンプトのコピー
                 /// <summary>
                 /// ネガティブプロンプトのコピー
                 /// </summary>
@@ -555,6 +557,7 @@ namespace CvSeachTool.Models.CvsImage
                     }
                     catch { }
                 }
+                #endregion
             }
             #endregion
 
