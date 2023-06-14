@@ -56,7 +56,8 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
-                    <ListView Margin="5,5,5,5" x:Name="lvImages" ItemsSource="{Binding FileList.Items}" SelectedItem="{Binding FileList.SelectedItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                    <ListView Margin="5,5,5,5" x:Name="lvImages" ItemsSource="{Binding FileList.Items}"
+                              SelectedItem="{Binding FileList.SelectedItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                         <ListView.Template>
                             <ControlTemplate TargetType="{x:Type ListView}">
                                 <Border BorderThickness="5">
@@ -98,11 +99,9 @@
                 </Grid>
             </GroupBox>
             <Grid Grid.Column="1">
-                <ScrollViewer Margin="5">
-                    <Image Margin="5" Source="{Binding FileList.SelectedItem.FilePath,
+                <Image Margin="5" Source="{Binding FileList.SelectedItem.FilePath,
                     Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
                     Converter={StaticResource URLStringToImageSourceConverter}}"/>
-                </ScrollViewer>
             </Grid>
         </Grid>
     </Grid>
