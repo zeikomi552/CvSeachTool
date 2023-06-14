@@ -14,17 +14,50 @@
         mc:Ignorable="d"
         Title="CvSeachTool" Height="800" Width="1200" WindowStartupLocation="CenterScreen" TitleCharacterCasing="Normal">
     <TabControl>
-
-        <TabItem Header="Model">
-            <UserControls:UcSearchModelV/>
+        <TabItem>
+            <TabItem.Header>
+                <StackPanel Orientation="Horizontal">
+                    <svgc:SvgViewbox Source="/Common/Images/ai-artificial-intelligence-computer-ai-svgrepo-com.svg" Width="50" />
+                    <TextBlock Margin="5" VerticalAlignment="Center" Text="CIVITAI Model"/>
+                </StackPanel>
+            </TabItem.Header>
+            <TabControl TabStripPlacement="Left">
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <svgc:SvgViewbox Source="/Common/Images/lens-svgrepo-com.svg" Width="50" />
+                            <TextBlock Margin="5" VerticalAlignment="Center" Text="Search"/>
+                        </StackPanel>
+                    </TabItem.Header>
+                    <UserControls:UcSearchModelV/>
+                </TabItem>
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <svgc:SvgViewbox Source="/Common/Images/star-svgrepo-com.svg" Width="50" />
+                            <TextBlock Margin="5" VerticalAlignment="Center" Text="Model Bookmark"/>
+                        </StackPanel>
+                    </TabItem.Header>
+                    <UserControls:UcBookmarkV />
+                </TabItem>
+            </TabControl>
         </TabItem>
-        <TabItem Header="Image">
+        <TabItem>
+            <TabItem.Header>
+                <StackPanel Orientation="Horizontal">
+                    <svgc:SvgViewbox Source="/Common/Images/image-svgrepo-com.svg" Width="50" />
+                    <TextBlock Margin="5" VerticalAlignment="Center" Text="CIVITAI Image"/>
+                </StackPanel>
+            </TabItem.Header>
             <UserControls:UcSearchImageV/>
         </TabItem>
-        <TabItem Header="Bookmark">
-            <UserControls:UcBookmarkV />
-        </TabItem>
-        <TabItem Header="Folder">
+        <TabItem>
+            <TabItem.Header>
+                <StackPanel Orientation="Horizontal">
+                    <svgc:SvgViewbox Source="/Common/Images/folder-1793-svgrepo-com.svg" Width="50" />
+                    <TextBlock Margin="5" VerticalAlignment="Center" Text="Folder"/>
+                </StackPanel>
+            </TabItem.Header>
             <UserControls:UcFileCheckV />
         </TabItem>
     </TabControl>

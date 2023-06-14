@@ -314,8 +314,12 @@ namespace CvSeachTool.ViewModels
             // ウィンドウの取得
             var wnd = (UcBookmarkV)VisualTreeHelperWrapper.GetWindow<UcBookmarkV>(sender);
 
-            // イメージのListViewのスクロールバーを先頭へ移動
-            ScrollbarTopRow.TopRow4ListView(wnd.lvImages);
+            // nullチェック
+            if (wnd != null)
+            {
+                // イメージのListViewのスクロールバーを先頭へ移動
+                ScrollbarTopRow.TopRow4ListView(wnd.lvImages);
+            }
         }
         #endregion
 

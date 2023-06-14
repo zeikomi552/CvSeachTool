@@ -25,58 +25,59 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Expander Margin="5" Background="{x:Null}" IsExpanded="True" ExpandDirection="Right">
+        <Expander  Margin="5" BorderBrush="{DynamicResource MahApps.Brushes.Gray9}" BorderThickness="5"
+                   Background="{DynamicResource MahApps.Brushes.Button.Square.Background.MouseOver}" IsExpanded="True" ExpandDirection="Right">
             <Expander.Header>
                 <svgc:SvgViewbox Source="/Common/Images/lens-svgrepo-com.svg" Width="30" />
             </Expander.Header>
 
             <StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Width="120" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Limit"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBlock Width="auto" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Limit"/>
                     <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
                     <TextBox Width="80" Margin="5" Text="{Binding SearchCondition.Limit}" VerticalAlignment="Center" TextAlignment="Center"/>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Width="120" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="PostId"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBlock Width="auto" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="PostId"/>
                     <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
                     <TextBox Width="80" Margin="5" Text="{Binding SearchCondition.PostId}" VerticalAlignment="Center" TextAlignment="Center"/>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Width="120" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="ModelId"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBlock Width="auto" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="ModelId"/>
                     <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
                     <TextBox Width="80" Margin="5" Text="{Binding SearchCondition.ModelId}" VerticalAlignment="Center" TextAlignment="Center"/>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Width="120" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="ModelVersionId"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBlock Width="auto" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="ModelVersionId"/>
                     <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
                     <TextBox Width="80" Margin="5" Text="{Binding SearchCondition.ModelVersionId}" VerticalAlignment="Center" TextAlignment="Center"/>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Width="120" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Username"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBlock Width="auto" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Username"/>
                     <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
                     <TextBox Width="80" Margin="5" Text="{Binding SearchCondition.Username}" VerticalAlignment="Center" TextAlignment="Center"/>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Width="120" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Nsfw"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBlock Width="auto" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Nsfw"/>
                     <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
-                    <CheckBox Width="100" Margin="5" IsChecked="{Binding SearchCondition.Nsfw}" IsThreeState="True" VerticalAlignment="Center"/>
+                    <CheckBox Width="80" Margin="5" IsChecked="{Binding SearchCondition.Nsfw}" IsThreeState="True" VerticalAlignment="Center"/>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Width="120" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Sort"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBlock Width="auto" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Sort"/>
                     <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
-                    <ComboBox Width="100" ItemsSource="{Binding Mode=OneWay, Source={my:Enumeration {x:Type enum:ModelSortEnum2}}}"
+                    <ComboBox Width="80" Margin="5" ItemsSource="{Binding Mode=OneWay, Source={my:Enumeration {x:Type enum:ModelSortEnum2}}}"
                                               SelectedValue="{Binding SearchCondition.Sort, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                                               DisplayMemberPath="Description" SelectedValuePath="Value"/>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Width="120" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Period"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBlock Width="auto" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Period"/>
                     <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
-                    <ComboBox Width="100" ItemsSource="{Binding Mode=OneWay, Source={my:Enumeration {x:Type enum:ModelPeriodEnum}}}"
+                    <ComboBox Width="80" Margin="5" ItemsSource="{Binding Mode=OneWay, Source={my:Enumeration {x:Type enum:ModelPeriodEnum}}}"
                                               SelectedValue="{Binding SearchCondition.Period, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                                               DisplayMemberPath="Description" SelectedValuePath="Value"  />
                 </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Width="120" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Page"/>
+                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                    <TextBlock Width="auto" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Page"/>
                     <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
                     <TextBox Width="80" Margin="5" Text="{Binding SearchCondition.Page}" VerticalAlignment="Center" TextAlignment="Center"/>
                 </StackPanel>
