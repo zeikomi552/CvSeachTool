@@ -10,6 +10,9 @@
     <Compile Update="Views\BookmarkRenameV.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\SearchTagV.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\UserControls\UcBookmarkV.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -22,12 +25,18 @@
     <Compile Update="Views\UserControls\UcSearchModelV.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\UserControls\UcSearchTagV.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\BookmarkRenameV.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\SearchTagV.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\UserControls\UcBookmarkV.xaml">
@@ -40,6 +49,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\UserControls\UcSearchModelV.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\UserControls\UcSearchTagV.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

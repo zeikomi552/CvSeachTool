@@ -21,6 +21,7 @@ using static CvSeachTool.Models.CvsModel.CvsModelM.CvsModelVersions;
 using static CvSeachTool.Models.CvsModel.CvsModelM;
 using System.Windows;
 using CvSeachTool.Models.CvsModel;
+using MaterialDesignThemes.Wpf;
 
 namespace CvSeachTool.ViewModels
 {
@@ -638,6 +639,23 @@ namespace CvSeachTool.ViewModels
             }
         }
         #endregion
+
+        public void SearchTag()
+        {
+            try
+            {
+                var wnd = new SearchTagV();
+
+                if (wnd.ShowDialog() == true)
+                {
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ShowMessage.ShowErrorOK(ex.Message, "Error");
+            }
+        }
 
         #region 画面初期化処理
         /// <summary>

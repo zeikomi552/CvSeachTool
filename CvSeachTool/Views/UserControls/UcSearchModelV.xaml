@@ -97,6 +97,13 @@
                                     <TextBlock Width="auto" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Tag"/>
                                     <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
                                     <TextBox Width="80" Margin="5" Text="{Binding GetCondition.Tag}" VerticalAlignment="Center" TextAlignment="Center"/>
+                                    <Button Content="Search" Cursor="Hand">
+                                        <b:Interaction.Triggers>
+                                            <b:EventTrigger EventName="Click">
+                                                <b:CallMethodAction TargetObject="{Binding}" MethodName="SearchTag"/>
+                                            </b:EventTrigger>
+                                        </b:Interaction.Triggers>
+                                    </Button>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                     <TextBlock Width="auto" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Username"/>
