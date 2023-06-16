@@ -16,6 +16,7 @@ using DisplayImageM = CvSeachTool.Models.CvsImage.DisplayImageM;
 using static CvSeachTool.Models.CvsModel.CvsModelM.CvsModelVersions;
 using System.Collections.ObjectModel;
 using static CvSeachTool.Models.CvsImage.CvsImageM;
+using System.Windows;
 
 namespace CvSeachTool.ViewModels
 {
@@ -330,6 +331,29 @@ namespace CvSeachTool.ViewModels
 
                     // ImageリストのListViewを先頭へスクロールさせる
                     //ListViewTopRow(sender);
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowMessage.ShowErrorOK(ex.Message, "Error");
+            }
+        }
+        #endregion
+
+
+        #region JSONリクエストのコピー
+        /// <summary>
+        /// JSONリクエストのコピー
+        /// </summary>
+        public void CopyRequest()
+        {
+            try
+            {
+                // nullチェック
+                if (this.CvsImage != null)
+                {
+                    // クリップボードにコピー
+                    Clipboard.SetText(this.CvsImage.RequestURL);
                 }
             }
             catch (Exception ex)

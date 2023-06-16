@@ -22,6 +22,7 @@
         <Converters:ConvertBooleanConverter x:Key="ConvertBooleanConverter"/>
         <Converters:URLStringToImageSourceConverter x:Key="URLStringToImageSourceConverter"/>
         <Converters:ImageNsfwEnumToVisibilityConverter x:Key="ImageNsfwEnumToVisibilityConverter"/>
+        <Converters:EmptyStringConverter x:Key="EmptyStringConverter"/>
         <ObjectDataProvider MethodName="GetValues" ObjectType="{x:Type sys:Enum}" x:Key="ModelTypeEnum">
             <ObjectDataProvider.MethodParameters>
                 <x:Type TypeName="enum:ModelTypeEnum" />
@@ -126,7 +127,7 @@
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                     <TextBlock Width="auto" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Rating"/>
                                     <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
-                                    <TextBox Width="80" Margin="5" Text="{Binding GetCondition.Rating}" VerticalAlignment="Center" TextAlignment="Center"/>
+                                    <TextBox Width="80" Margin="5" Text="{Binding GetCondition.Rating,Converter={StaticResource EmptyStringConverter}}" VerticalAlignment="Center" TextAlignment="Center"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                     <TextBlock Width="auto" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Favorites"/>
