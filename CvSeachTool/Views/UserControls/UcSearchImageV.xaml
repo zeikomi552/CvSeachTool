@@ -26,12 +26,8 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Expander Margin="5" BorderThickness="5" IsExpanded="True" ExpandDirection="Right">
-            <Expander.Header>
-                <svgc:SvgViewbox Source="/Common/Images/lens-svgrepo-com.svg" Width="30" />
-            </Expander.Header>
-
-            <StackPanel>
+        <Border Margin="5">
+            <StackPanel Margin="5">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <TextBlock Width="auto" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Limit"/>
                     <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
@@ -119,7 +115,7 @@
                     </Button>
                 </Grid>
             </StackPanel>
-        </Expander>
+        </Border>
         <Grid Grid.Column="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
