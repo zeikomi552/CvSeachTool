@@ -14,7 +14,7 @@
         mc:Ignorable="d"
         Title="CvSeachTool" Height="800" Width="1200" WindowStartupLocation="CenterScreen" TitleCharacterCasing="Normal" Style="{StaticResource MaterialDesignWindow}">
     <TabControl>
-        <TabItem Background="{DynamicResource MahApps.Brushes.Accent4}">
+        <TabItem>
             <TabItem.Header>
                 <StackPanel Orientation="Horizontal">
                     <svgc:SvgViewbox Source="/Common/Images/ai-artificial-intelligence-computer-ai-svgrepo-com.svg" Width="50" />
@@ -22,7 +22,7 @@
                 </StackPanel>
             </TabItem.Header>
             <TabControl TabStripPlacement="Left">
-                <TabItem Background="{DynamicResource MahApps.Brushes.Accent4}">
+                <TabItem>
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <svgc:SvgViewbox Source="/Common/Images/lens2-svgrepo-com.svg" ToolTip="Search" Width="50" />
@@ -30,7 +30,7 @@
                     </TabItem.Header>
                     <UserControls:UcSearchModelV/>
                 </TabItem>
-                <TabItem Background="{DynamicResource MahApps.Brushes.Accent4}">
+                <TabItem>
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <svgc:SvgViewbox Source="/Common/Images/star-svgrepo-com.svg" ToolTip="Bookmark" Width="50" />
@@ -40,7 +40,7 @@
                 </TabItem>
             </TabControl>
         </TabItem>
-        <TabItem Background="{DynamicResource MahApps.Brushes.Accent4}">
+        <TabItem>
             <TabItem.Header>
                 <StackPanel Orientation="Horizontal">
                     <svgc:SvgViewbox Source="/Common/Images/image-svgrepo-com.svg" Width="50" />
@@ -48,7 +48,7 @@
                 </StackPanel>
             </TabItem.Header>
             <TabControl TabStripPlacement="Left">
-                <TabItem Background="{DynamicResource MahApps.Brushes.Accent4}">
+                <TabItem>
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <svgc:SvgViewbox Source="/Common/Images/lens2-svgrepo-com.svg" Width="50" ToolTip="Search"/>
@@ -58,7 +58,7 @@
                 </TabItem>
             </TabControl>
         </TabItem>
-        <TabItem Background="{DynamicResource MahApps.Brushes.Accent4}">
+        <TabItem>
             <TabItem.Header>
                 <StackPanel Orientation="Horizontal">
                     <svgc:SvgViewbox Source="/Common/Images/folder-1793-svgrepo-com.svg" Width="50" />
