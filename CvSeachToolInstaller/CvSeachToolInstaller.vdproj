@@ -50,6 +50,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
         "Release"
@@ -190,15 +198,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:CvSeachTool"
-        "ProductCode" = "8:{1FFE1A29-99E1-48DD-9270-08E2E089F7C6}"
-        "PackageCode" = "8:{54A0B31B-61BE-4F90-8FAF-81EF8E1310E0}"
+        "ProductCode" = "8:{B961289C-3813-4FA2-BE18-A3FB3556C7BE}"
+        "PackageCode" = "8:{FD89F722-52D2-402F-B1B9-F2C3D39D4ACA}"
         "UpgradeCode" = "8:{D3BCC342-BAC2-4F9F-B0B1-7F9DC0B5D42B}"
         "AspNetVersion" = "8:"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:0.0.1"
+        "ProductVersion" = "8:0.8.0"
         "Manufacturer" = "8:Zeikomi"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
