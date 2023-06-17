@@ -530,34 +530,6 @@ namespace CvSeachTool.Models.CvsImage
                     }
                 }
                 #endregion
-
-                #region プロンプトのコピー
-                /// <summary>
-                /// プロンプトのコピー
-                /// </summary>
-                public void CopyClipbordPrompt()
-                {
-                    try
-                    {
-                        Clipboard.SetText(Prompt);
-                    }
-                    catch { }
-                }
-                #endregion
-
-                #region ネガティブプロンプトのコピー
-                /// <summary>
-                /// ネガティブプロンプトのコピー
-                /// </summary>
-                public void CopyClipbordNegativePrompt()
-                {
-                    try
-                    {
-                        Clipboard.SetText(NegativePrompt);
-                    }
-                    catch { }
-                }
-                #endregion
             }
             #endregion
 
@@ -863,6 +835,75 @@ namespace CvSeachTool.Models.CvsImage
                 {
                     ShowMessage.ShowErrorOK(ex.Message, "Error");
                 }
+            }
+            #endregion
+
+            #region URLのクリップボードへのコピー
+            /// <summary>
+            /// URLのクリップボードへのコピー
+            /// </summary>
+            public void ClipboardURL()
+            {
+                try
+                {
+                    Clipboard.SetText(this.Url);
+                }
+                catch { }
+            }
+            #endregion
+
+            #region プロンプトのクリップボードへのコピー
+            /// <summary>
+            /// プロンプトのクリップボードへのコピー
+            /// </summary>
+            public void ClipboardPrompt()
+            {
+                try
+                {
+                    if (this.Meta != null)
+                    {
+                        Clipboard.SetText(this.Meta.Prompt);
+                    }
+                    else
+                    {
+                        Clipboard.SetText(String.Empty);
+                    }
+                }
+                catch { }
+            }
+            #endregion
+
+            #region ネガティブプロンプトのクリップボードへのコピー
+            /// <summary>
+            /// ネガティブプロンプトのクリップボードへのコピー
+            /// </summary>
+            public void ClipboardNegativePrompt()
+            {
+                try
+                {
+                    if (this.Meta != null)
+                    {
+                        Clipboard.SetText(this.Meta.NegativePrompt);
+                    }
+                    else
+                    {
+                        Clipboard.SetText(String.Empty);
+                    }
+                }
+                catch { }
+            }
+            #endregion
+            #region ユーザー名のコピー
+            /// <summary>
+            /// ユーザー名のコピー
+            /// </summary>
+            public void ClipboardUsername()
+            {
+                try
+                {
+                    Clipboard.SetText(this.Username);
+                }
+                catch { }
             }
             #endregion
         }

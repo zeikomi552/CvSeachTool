@@ -1374,6 +1374,47 @@ namespace CvSeachTool.Models.CvsModel
                 }
             }
             #endregion
+
+            #region モデル名のコピー
+            /// <summary>
+            /// モデル名のコピー
+            /// </summary>
+            public void ClipboardName()
+            {
+                try
+                {
+                    Clipboard.SetText(this.Name);
+                }
+                catch { }
+            }
+            #endregion
+
+            #region Idのコピー
+            /// <summary>
+            /// Idのコピー
+            /// </summary>
+            public void ClipboardModelId()
+            {
+                try
+                {
+                    Clipboard.SetText(this.Id.ToString());
+                }
+                catch { }
+            }
+            #endregion
+            #region DownloadURLのコピー
+            /// <summary>
+            /// DownloadURLのコピー
+            /// </summary>
+            public void ClipboardDownloadURL()
+            {
+                try
+                {
+                    Clipboard.SetText(this.DownloadUrl);
+                }
+                catch { }
+            }
+            #endregion
         }
         #endregion
 
@@ -1886,7 +1927,50 @@ namespace CvSeachTool.Models.CvsModel
             }
             #endregion
 
+            #region ユーザー名のコピー
+            /// <summary>
+            /// ユーザー名のコピー
+            /// </summary>
+            public void ClipboardUsername()
+            {
+                try
+                {
+                    if (this.Creator != null)
+                    {
+                        Clipboard.SetText(this.Creator.Username);
+                    }
+                }
+                catch { }
+            }
+            #endregion
 
+            #region モデル名のコピー
+            /// <summary>
+            /// モデル名のコピー
+            /// </summary>
+            public void ClipboardName()
+            {
+                try
+                {
+                    Clipboard.SetText(this.Name);
+                }
+                catch { }
+            }
+            #endregion
+
+            #region Idのコピー
+            /// <summary>
+            /// Idのコピー
+            /// </summary>
+            public void ClipboardModelId()
+            {
+                try
+                {
+                    Clipboard.SetText(this.Id.ToString());
+                }
+                catch { }
+            }
+            #endregion
             #endregion
         }
         #endregion

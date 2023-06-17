@@ -26,102 +26,108 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Border Margin="5">
-            <StackPanel Margin="5">
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <TextBlock Width="auto" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Limit"/>
-                    <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
-                    <TextBox Width="80" Margin="5" Text="{Binding SearchCondition.Limit}" VerticalAlignment="Center" TextAlignment="Center"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <TextBlock Width="auto" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="PostId"/>
-                    <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
-                    <TextBox Width="80" Margin="5" Text="{Binding SearchCondition.PostId,Converter={StaticResource EmptyStringConverter}}" VerticalAlignment="Center" TextAlignment="Center"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <TextBlock Width="auto" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="ModelId"/>
-                    <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
-                    <TextBox Width="80" Margin="5" Text="{Binding SearchCondition.ModelId,Converter={StaticResource EmptyStringConverter}}" VerticalAlignment="Center" TextAlignment="Center"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <TextBlock Width="auto" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="ModelVersionId"/>
-                    <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
-                    <TextBox Width="80" Margin="5" Text="{Binding SearchCondition.ModelVersionId,Converter={StaticResource EmptyStringConverter}}" VerticalAlignment="Center" TextAlignment="Center"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <TextBlock Width="auto" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Username"/>
-                    <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
-                    <TextBox Width="80" Margin="5" Text="{Binding SearchCondition.Username}" VerticalAlignment="Center" TextAlignment="Center"/>
-                    <Button Cursor="Hand">
+        <Grid Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Border Margin="5">
+                <StackPanel Margin="5">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <TextBlock Width="auto" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Limit"/>
+                        <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
+                        <TextBox Width="80" Margin="5" Text="{Binding SearchCondition.Limit}" VerticalAlignment="Center" TextAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <TextBlock Width="auto" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="PostId"/>
+                        <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
+                        <TextBox Width="80" Margin="5" Text="{Binding SearchCondition.PostId,Converter={StaticResource EmptyStringConverter}}" VerticalAlignment="Center" TextAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <TextBlock Width="auto" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="ModelId"/>
+                        <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
+                        <TextBox Width="80" Margin="5" Text="{Binding SearchCondition.ModelId,Converter={StaticResource EmptyStringConverter}}" VerticalAlignment="Center" TextAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <TextBlock Width="auto" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="ModelVersionId"/>
+                        <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
+                        <TextBox Width="80" Margin="5" Text="{Binding SearchCondition.ModelVersionId,Converter={StaticResource EmptyStringConverter}}" VerticalAlignment="Center" TextAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <TextBlock Width="auto" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Username"/>
+                        <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
+                        <TextBox Width="80" Margin="5" Text="{Binding SearchCondition.Username}" VerticalAlignment="Center" TextAlignment="Center"/>
+                        <Button Cursor="Hand">
+                            <b:Interaction.Triggers>
+                                <b:EventTrigger EventName="Click">
+                                    <b:CallMethodAction TargetObject="{Binding}" MethodName="SearchCreator"/>
+                                </b:EventTrigger>
+                            </b:Interaction.Triggers>
+                            <StackPanel Orientation="Vertical">
+                                <svgc:SvgViewbox Height="20" Source="/Common/Images/lens-svgrepo-com.svg" />
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <TextBlock Width="auto" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Nsfw"/>
+                        <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
+                        <CheckBox Width="80" Margin="5" IsChecked="{Binding SearchCondition.Nsfw}" IsThreeState="True" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <TextBlock Width="auto" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Sort"/>
+                        <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
+                        <ComboBox Width="80" Margin="5" ItemsSource="{Binding Mode=OneWay, Source={my:Enumeration {x:Type enum:ModelSortEnum2}}}"
+                                              SelectedValue="{Binding SearchCondition.Sort, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                              DisplayMemberPath="Description" SelectedValuePath="Value"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <TextBlock Width="auto" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Period"/>
+                        <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
+                        <ComboBox Width="80" Margin="5" ItemsSource="{Binding Mode=OneWay, Source={my:Enumeration {x:Type enum:ModelPeriodEnum}}}"
+                                              SelectedValue="{Binding SearchCondition.Period, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                              DisplayMemberPath="Description" SelectedValuePath="Value"  />
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                        <TextBlock Width="auto" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Page"/>
+                        <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
+                        <TextBox Width="80" Margin="5" Text="{Binding SearchCondition.Page}" VerticalAlignment="Center" TextAlignment="Center"/>
+                    </StackPanel>
+                    <Button Margin="5" IsEnabled="{Binding ExecuteGetAPI, Converter={StaticResource ConvertBooleanConverter}}" Cursor="Hand">
                         <b:Interaction.Triggers>
                             <b:EventTrigger EventName="Click">
-                                <b:CallMethodAction TargetObject="{Binding}" MethodName="SearchCreator"/>
+                                <b:CallMethodAction TargetObject="{Binding}" MethodName="Search"/>
                             </b:EventTrigger>
                         </b:Interaction.Triggers>
                         <StackPanel Orientation="Vertical">
-                            <svgc:SvgViewbox Height="20" Source="/Common/Images/lens-svgrepo-com.svg" />
+                            <svgc:SvgViewbox Height="20" Source="/Common/Images/search-file-svgrepo-com.svg" />
                         </StackPanel>
                     </Button>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <TextBlock Width="auto" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Nsfw"/>
-                    <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
-                    <CheckBox Width="80" Margin="5" IsChecked="{Binding SearchCondition.Nsfw}" IsThreeState="True" VerticalAlignment="Center"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <TextBlock Width="auto" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Sort"/>
-                    <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
-                    <ComboBox Width="80" Margin="5" ItemsSource="{Binding Mode=OneWay, Source={my:Enumeration {x:Type enum:ModelSortEnum2}}}"
-                                              SelectedValue="{Binding SearchCondition.Sort, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                                              DisplayMemberPath="Description" SelectedValuePath="Value"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <TextBlock Width="auto" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Period"/>
-                    <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
-                    <ComboBox Width="80" Margin="5" ItemsSource="{Binding Mode=OneWay, Source={my:Enumeration {x:Type enum:ModelPeriodEnum}}}"
-                                              SelectedValue="{Binding SearchCondition.Period, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                                              DisplayMemberPath="Description" SelectedValuePath="Value"  />
-                </StackPanel>
-                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                    <TextBlock Width="auto" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Page"/>
-                    <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
-                    <TextBox Width="80" Margin="5" Text="{Binding SearchCondition.Page}" VerticalAlignment="Center" TextAlignment="Center"/>
-                </StackPanel>
-                <Button Margin="5" IsEnabled="{Binding ExecuteGetAPI, Converter={StaticResource ConvertBooleanConverter}}" Cursor="Hand">
+            </Border>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock MaxWidth="250" ToolTip="{Binding CvsImage.RequestURL}" TextWrapping="WrapWithOverflow" VerticalAlignment="Center" Text="{Binding CvsImage.RequestURL}" />
+                <Button Grid.Column="1" Margin="5">
                     <b:Interaction.Triggers>
                         <b:EventTrigger EventName="Click">
-                            <b:CallMethodAction TargetObject="{Binding}" MethodName="Search"/>
+                            <b:CallMethodAction TargetObject="{Binding}" MethodName="CopyRequest"/>
                         </b:EventTrigger>
                     </b:Interaction.Triggers>
                     <StackPanel Orientation="Vertical">
-                        <svgc:SvgViewbox Height="20" Source="/Common/Images/search-file-svgrepo-com.svg" />
+                        <svgc:SvgViewbox Source="/Common/Images/copy-1-svgrepo-com.svg" />
                     </StackPanel>
                 </Button>
-                <Grid Grid.Row="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="auto"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock MaxWidth="250" ToolTip="{Binding CvsImage.RequestURL}" TextWrapping="WrapWithOverflow" VerticalAlignment="Center" Text="{Binding CvsImage.RequestURL}" />
-                    <Button Grid.Column="1" Margin="5">
-                        <b:Interaction.Triggers>
-                            <b:EventTrigger EventName="Click">
-                                <b:CallMethodAction TargetObject="{Binding}" MethodName="CopyRequest"/>
-                            </b:EventTrigger>
-                        </b:Interaction.Triggers>
-                        <StackPanel Orientation="Vertical">
-                            <svgc:SvgViewbox Source="/Common/Images/copy-1-svgrepo-com.svg" />
-                        </StackPanel>
-                    </Button>
-                </Grid>
-            </StackPanel>
-        </Border>
+            </Grid>
+        </Grid>
         <Grid Grid.Column="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <GroupBox Margin="5">
+            <GroupBox Style="{StaticResource MaterialDesignCardGroupBox}" Margin="5">
                 <GroupBox.Header>
                     <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left">
                         <StackPanel Margin="5" Orientation="Horizontal">
@@ -153,7 +159,7 @@
                         <StackPanel Grid.Row="0" Orientation="Horizontal">
                             <TextBlock VerticalAlignment="Center">
                             <StackPanel Orientation="Vertical">
-                                <svgc:SvgViewbox Margin="5" Source="/Common/Images/filter-1384-svgrepo-com.svg" />
+                                <svgc:SvgViewbox Source="/Common/Images/filter-1384-svgrepo-com.svg" />
                             </StackPanel>
 
                             </TextBlock>
@@ -193,11 +199,49 @@
                         </ListView.ItemsPanel>
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <Image Width="100" Source="{Binding Url, Converter={StaticResource URLStringToImageSourceConverter}}">
-                                    <Image.InputBindings>
-                                        <MouseBinding MouseAction="LeftDoubleClick" Command="{Binding MouseDoubleClickCommand}"/>
-                                    </Image.InputBindings>
-                                </Image>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Username}"/>
+                                    <Image Width="100" Source="{Binding Url, Converter={StaticResource URLStringToImageSourceConverter}}">
+                                        <Image.InputBindings>
+                                            <MouseBinding MouseAction="LeftDoubleClick" Command="{Binding MouseDoubleClickCommand}"/>
+                                        </Image.InputBindings>
+                                        <Image.ContextMenu>
+                                            <ContextMenu Name="cm" StaysOpen="true">
+                                                <MenuItem Header="Clipboard">
+                                                    <MenuItem Header="Username">
+                                                        <b:Interaction.Triggers>
+                                                            <b:EventTrigger EventName="Click">
+                                                                <b:CallMethodAction TargetObject="{Binding}" MethodName="ClipboardUsername"/>
+                                                            </b:EventTrigger>
+                                                        </b:Interaction.Triggers>
+                                                    </MenuItem>
+
+                                                    <MenuItem Header="Prompt">
+                                                        <b:Interaction.Triggers>
+                                                            <b:EventTrigger EventName="Click">
+                                                                <b:CallMethodAction TargetObject="{Binding}" MethodName="ClipboardPrompt"/>
+                                                            </b:EventTrigger>
+                                                        </b:Interaction.Triggers>
+                                                    </MenuItem>
+                                                    <MenuItem Header="NegativePrompt">
+                                                        <b:Interaction.Triggers>
+                                                            <b:EventTrigger EventName="Click">
+                                                                <b:CallMethodAction TargetObject="{Binding}" MethodName="ClipboardNegativePrompt"/>
+                                                            </b:EventTrigger>
+                                                        </b:Interaction.Triggers>
+                                                    </MenuItem>
+                                                    <MenuItem Header="URL">
+                                                        <b:Interaction.Triggers>
+                                                            <b:EventTrigger EventName="Click">
+                                                                <b:CallMethodAction TargetObject="{Binding}" MethodName="ClipboardURL"/>
+                                                            </b:EventTrigger>
+                                                        </b:Interaction.Triggers>
+                                                    </MenuItem>
+                                                </MenuItem>
+                                            </ContextMenu>
+                                        </Image.ContextMenu>
+                                    </Image>
+                                </StackPanel>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
@@ -233,7 +277,7 @@
                         <Button Grid.Column="2" Margin="5" Cursor="Hand">
                             <b:Interaction.Triggers>
                                 <b:EventTrigger EventName="Click">
-                                    <b:CallMethodAction TargetObject="{Binding ImageList.SelectedImage.Meta}" MethodName="CopyClipbordPrompt"/>
+                                    <b:CallMethodAction TargetObject="{Binding ImageList.SelectedImage}" MethodName="ClipboardPrompt"/>
                                 </b:EventTrigger>
                             </b:Interaction.Triggers>
                             <StackPanel Orientation="Vertical">
@@ -254,7 +298,7 @@
                         <Button Grid.Column="2" Margin="5" Cursor="Hand">
                             <b:Interaction.Triggers>
                                 <b:EventTrigger EventName="Click">
-                                    <b:CallMethodAction TargetObject="{Binding ImageList.SelectedImage.Meta}" MethodName="CopyClipbordNegativePrompt"/>
+                                    <b:CallMethodAction TargetObject="{Binding ImageList.SelectedImage}" MethodName="ClipboardNegativePrompt"/>
                                 </b:EventTrigger>
                             </b:Interaction.Triggers>
                             <StackPanel Orientation="Vertical">
