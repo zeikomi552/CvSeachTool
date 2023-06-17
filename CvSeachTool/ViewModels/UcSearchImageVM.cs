@@ -17,6 +17,7 @@ using static CvSeachTool.Models.CvsModel.CvsModelM.CvsModelVersions;
 using System.Collections.ObjectModel;
 using static CvSeachTool.Models.CvsImage.CvsImageM;
 using System.Windows;
+using CvSeachTool.Views;
 
 namespace CvSeachTool.ViewModels
 {
@@ -355,6 +356,30 @@ namespace CvSeachTool.ViewModels
                     // クリップボードにコピー
                     Clipboard.SetText(this.CvsImage.RequestURL);
                 }
+            }
+            catch (Exception ex)
+            {
+                ShowMessage.ShowErrorOK(ex.Message, "Error");
+            }
+        }
+        #endregion
+
+        #region クリエイター検索画面へ移動処理
+        /// <summary>
+        /// クリエイター検索画面へ移動処理
+        /// </summary>
+        public void SearchCreator()
+        {
+            try
+            {
+                var wnd = new SearchCreatorV();
+                var vm = wnd.DataContext as SearchCreatorVM;
+
+                if (wnd.ShowDialog() == true)
+                {
+                    this.SearchCondition.Username = vm!.SelectedTagItem.Username;
+                }
+
             }
             catch (Exception ex)
             {

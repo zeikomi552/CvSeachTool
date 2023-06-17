@@ -12,7 +12,8 @@
         mc:Ignorable="d"
         Title="SearchTagV" Height="450" Width="800" 
         hlp:DialogResultHelper.DialogResult="{Binding DialogResult}" 
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        TitleCharacterCasing="Normal">
     <Window.DataContext>
         <ViewModels:SearchTagVM/>
     </Window.DataContext>

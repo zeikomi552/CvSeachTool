@@ -9,7 +9,8 @@
         xmlns:local="clr-namespace:CvSeachTool.Views"
         xmlns:ViewModels="clr-namespace:CvSeachTool.ViewModels" x:Class="CvSeachTool.Views.BookmarkRenameV"
         mc:Ignorable="d"
-        Title="Rename" Height="150" Width="400" WindowStartupLocation="CenterScreen" hlp:DialogResultHelper.DialogResult="{Binding DialogResult}" TitleCharacterCasing="Normal">
+        Title="Rename" Height="150" Width="400" WindowStartupLocation="CenterScreen" hlp:DialogResultHelper.DialogResult="{Binding DialogResult}"
+        TitleCharacterCasing="Normal">
     <Window.DataContext>
         <ViewModels:BookmarkRenameVM/>
     </Window.DataContext>
