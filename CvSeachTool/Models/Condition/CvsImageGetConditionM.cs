@@ -130,7 +130,7 @@ namespace CvSeachTool.Models.Condition
                 if (_Page == null || !_Page.Equals(value))
                 {
                     _Page = value;
-                    NotifyPropertyChanged("Page ");
+                    NotifyPropertyChanged("Page");
                 }
             }
         }
@@ -155,7 +155,7 @@ namespace CvSeachTool.Models.Condition
                 if (_Username == null || !_Username.Equals(value))
                 {
                     _Username = value;
-                    NotifyPropertyChanged("Username ");
+                    NotifyPropertyChanged("Username");
                 }
             }
         }

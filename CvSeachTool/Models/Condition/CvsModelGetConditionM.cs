@@ -54,7 +54,7 @@ namespace CvSeachTool.Models.Condition
                 if (_Page == null || !_Page.Equals(value))
                 {
                     _Page = value;
-                    NotifyPropertyChanged("Page ");
+                    NotifyPropertyChanged("Page");
                 }
             }
         }
@@ -79,7 +79,7 @@ namespace CvSeachTool.Models.Condition
                 if (_Query == null || !_Query.Equals(value))
                 {
                     _Query = value;
-                    NotifyPropertyChanged("Query ");
+                    NotifyPropertyChanged("Query");
                 }
             }
         }
@@ -104,7 +104,7 @@ namespace CvSeachTool.Models.Condition
                 if (_Tag == null || !_Tag.Equals(value))
                 {
                     _Tag = value;
-                    NotifyPropertyChanged("Tag ");
+                    NotifyPropertyChanged("Tag");
                 }
             }
         }
@@ -129,7 +129,7 @@ namespace CvSeachTool.Models.Condition
                 if (_Username == null || !_Username.Equals(value))
                 {
                     _Username = value;
-                    NotifyPropertyChanged("Username ");
+                    NotifyPropertyChanged("Username");
                 }
             }
         }
@@ -330,7 +330,7 @@ namespace CvSeachTool.Models.Condition
                 if (_AllowNoCredit == null || !_AllowNoCredit.Equals(value))
                 {
                     _AllowNoCredit = value;
-                    NotifyPropertyChanged("AllowNoCredit ");
+                    NotifyPropertyChanged("AllowNoCredit");
                 }
             }
         }
@@ -355,7 +355,7 @@ namespace CvSeachTool.Models.Condition
                 if (_AllowDerivatives == null || !_AllowDerivatives.Equals(value))
                 {
                     _AllowDerivatives = value;
-                    NotifyPropertyChanged("AllowDerivatives ");
+                    NotifyPropertyChanged("AllowDerivatives");
                 }
             }
         }
@@ -380,7 +380,7 @@ namespace CvSeachTool.Models.Condition
                 if (_AllowDifferentLicenses == null || !_AllowDifferentLicenses.Equals(value))
                 {
                     _AllowDifferentLicenses = value;
-                    NotifyPropertyChanged("AllowDifferentLicenses ");
+                    NotifyPropertyChanged("AllowDifferentLicenses");
                 }
             }
         }
@@ -405,7 +405,7 @@ namespace CvSeachTool.Models.Condition
                 if (_AllowCommercialUse == null || !_AllowCommercialUse.Equals(value))
                 {
                     _AllowCommercialUse = value;
-                    NotifyPropertyChanged("AllowCommercialUse ");
+                    NotifyPropertyChanged("AllowCommercialUse");
                 }
             }
         }
@@ -456,7 +456,7 @@ namespace CvSeachTool.Models.Condition
                 if (!string.IsNullOrEmpty(this.Query)) query += $"&query={this.Query}";
                 if (!string.IsNullOrEmpty(this.Tag)) query += $"&tag={this.Tag}";
                 if (!string.IsNullOrEmpty(this.Username)) query += $"&username={this.Username}";
-                if (this.Types.HasValue && !this.Types.Equals(ModelTypeEnum.Empty)) query += $"&types={this.Types.Value.ToString().Replace("_", "+")}";
+                if (this.Types.HasValue && !this.Types.Equals(ModelTypeEnum.Empty)) query += $"&types={this.Types.Value.ToString().Replace("_","+")}";
                 if (this.Sort.HasValue && !this.Sort.Equals(ModelSortEnum.Empty)) query += $"&sort={this.Sort.Value.ToString().Replace("_", "+")}";
                 if (this.Period.HasValue && !this.Period.Equals(ModelPeriodEnum.Empty)) query += $"&period={this.Period.Value}";
                 if (this.Rating.HasValue) query += $"&rating={this.Rating.Value}";

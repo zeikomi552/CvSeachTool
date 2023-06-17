@@ -24,6 +24,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <StackPanel Margin="5" Orientation="Horizontal">
             <Button Margin="5,0" IsEnabled="{Binding ExecuteGetAPI, Converter={StaticResource ConvertBooleanConverter}}" Cursor="Hand">
@@ -52,12 +53,27 @@
             </Button>
         </StackPanel>
 
-        <DataGrid Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding CvsTag.Items}" Margin="5,5,5,5">
+        <DataGrid Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding CvsTag.Items}"
+                  SelectedItem="{Binding CvsTag.SelectedItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,5,5,5">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="name" Width="auto" Binding="{Binding Name}"/>
                 <DataGridTextColumn Header="modelCount" Width="auto" Binding="{Binding ModelCount}"/>
                 <DataGridTextColumn Header="link" Width="*" Binding="{Binding Link}"/>
             </DataGrid.Columns>
+            <b:Interaction.Triggers>
+                <b:EventTrigger EventName="MouseDoubleClick">
+                    <b:CallMethodAction TargetObject="{Binding}" MethodName="Close"/>
+                </b:EventTrigger>
+            </b:Interaction.Triggers>
         </DataGrid>
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <Button Margin="5" Content="選択" Cursor="Hand">
+                <b:Interaction.Triggers>
+                    <b:EventTrigger EventName="Click">
+                        <b:CallMethodAction TargetObject="{Binding}" MethodName="Close"/>
+                    </b:EventTrigger>
+                </b:Interaction.Triggers>
+            </Button>
+        </StackPanel>
     </Grid>
 </UserControl>

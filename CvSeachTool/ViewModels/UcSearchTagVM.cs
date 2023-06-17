@@ -8,11 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CvSeachTool.Models.CvsTag;
+using System.ComponentModel.Design;
 
 namespace CvSeachTool.ViewModels
 {
     public class UcSearchTagVM : ViewModelBase
     {
+        public SearchTagVM? ParentVM { get; set; }
+
         #region タグ要素[CvsTag]プロパティ
         /// <summary>
         /// タグ要素[CvsTag]プロパティ用変数
@@ -92,7 +95,11 @@ namespace CvSeachTool.ViewModels
         {
             try
             {
-
+                if (this.ParentVM != null)
+                {
+                    this.ParentVM.SelectedTagItem = this.CvsTag.SelectedItem;
+                    this.ParentVM.SelectClose();
+                }
             }
             catch (Exception e)
             {

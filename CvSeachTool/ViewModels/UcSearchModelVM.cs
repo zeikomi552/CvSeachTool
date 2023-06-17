@@ -640,14 +640,20 @@ namespace CvSeachTool.ViewModels
         }
         #endregion
 
+        #region タグの検索画面へ移動処理
+        /// <summary>
+        /// タグの検索画面へ移動処理
+        /// </summary>
         public void SearchTag()
         {
             try
             {
                 var wnd = new SearchTagV();
+                var vm = wnd.DataContext as SearchTagVM;
 
                 if (wnd.ShowDialog() == true)
                 {
+                    this.GetCondition.Tag = vm!.SelectedTagItem.Name;
                 }
 
             }
@@ -656,6 +662,7 @@ namespace CvSeachTool.ViewModels
                 ShowMessage.ShowErrorOK(ex.Message, "Error");
             }
         }
+        #endregion
 
         #region 画面初期化処理
         /// <summary>
@@ -684,10 +691,15 @@ namespace CvSeachTool.ViewModels
         /// <param name="e"></param>
         public override void Close(object sender, EventArgs e)
         {
+            try
+            {
 
+            }
+            catch (Exception ex)
+            {
+                ShowMessage.ShowErrorOK(ex.Message, "Error");
+            }
         }
         #endregion
-
-
     }
 }

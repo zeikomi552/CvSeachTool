@@ -1,15 +1,32 @@
-﻿<Window
+﻿<mah:MetroWindow
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:hlp="clr-namespace:MVVMCore.Common.Helpers;assembly=MVVMCore"
+        xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CvSeachTool.Views"
-        xmlns:UserControls="clr-namespace:CvSeachTool.Views.UserControls" x:Class="CvSeachTool.Views.SearchTagV"
+        xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:UserControls="clr-namespace:CvSeachTool.Views.UserControls"
+        xmlns:ViewModels="clr-namespace:CvSeachTool.ViewModels" x:Class="CvSeachTool.Views.SearchTagV"
         mc:Ignorable="d"
-        Title="SearchTagV" Height="450" Width="800">
-    <Grid>
+        Title="SearchTagV" Height="450" Width="800" 
+        hlp:DialogResultHelper.DialogResult="{Binding DialogResult}" 
+        WindowStartupLocation="CenterScreen">
+    <Window.DataContext>
+        <ViewModels:SearchTagVM/>
+    </Window.DataContext>
+    <b:Interaction.Triggers>
+        <b:EventTrigger>
+            <b:CallMethodAction TargetObject="{Binding}" MethodName="Init"/>
+        </b:EventTrigger>
+        <b:EventTrigger EventName="Closing">
+            <b:CallMethodAction TargetObject="{Binding}" MethodName="Closing"/>
+        </b:EventTrigger>
+    </b:Interaction.Triggers>
 
-        <UserControls:UcSearchTagV/>
+    <Grid>
+        <UserControls:UcSearchTagV x:Name="ucSearchTagV"/>
 
     </Grid>
-</Window>
+</mah:MetroWindow>

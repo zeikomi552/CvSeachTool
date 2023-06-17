@@ -21,7 +21,7 @@
                 <TextBox Margin="5" VerticalAlignment="Center" Width="200" Text="{Binding RenameFilename}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Button Margin="5" Width="100" Content="OK">
+                <Button Margin="5" Width="100" Content="OK" Cursor="Hand">
                     <b:Interaction.Triggers>
                         <b:EventTrigger EventName="Click">
                             <b:CallMethodAction TargetObject="{Binding}" MethodName="OnOk"/>
