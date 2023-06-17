@@ -116,6 +116,31 @@ namespace CvSeachTool.ViewModels
         }
         #endregion
 
+        #region ディレクトリ読み出しの更新処理
+        /// <summary>
+        /// ディレクトリ読み出しの更新処理
+        /// </summary>
+        public void RenewDirectory()
+        {
+            try
+            {
+                // ディレクトリを開く
+                if (Directory.Exists(this.DirectoryPath))
+                {
+                    // ディレクトリ内のpngファイルの読み込み
+                    ReadDirectory(this.DirectoryPath);
+                }
+            }
+            catch (Exception e)
+            {
+                ShowMessage.ShowErrorOK(e.Message, "Error");
+            }
+            finally
+            {
+            }
+        }
+        #endregion
+
         #region ディレクトリを開く処理
         /// <summary>
         /// ディレクトリを開く処理

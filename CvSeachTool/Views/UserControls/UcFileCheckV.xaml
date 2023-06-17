@@ -23,7 +23,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Horizontal">
-            <Button Margin="5">
+            <Button Margin="5" Cursor="Hand">
                 <b:Interaction.Triggers>
                     <b:EventTrigger EventName="Click">
                         <b:CallMethodAction TargetObject="{Binding}" MethodName="ReadDirectory"/>
@@ -31,6 +31,16 @@
                 </b:Interaction.Triggers>
                 <StackPanel Orientation="Vertical">
                     <svgc:SvgViewbox Source="/Common/Images/directory-search-1623-svgrepo-com.svg" />
+                </StackPanel>
+            </Button>
+            <Button Margin="5" Cursor="Hand">
+                <b:Interaction.Triggers>
+                    <b:EventTrigger EventName="Click">
+                        <b:CallMethodAction TargetObject="{Binding}" MethodName="RenewDirectory"/>
+                    </b:EventTrigger>
+                </b:Interaction.Triggers>
+                <StackPanel Orientation="Vertical">
+                    <svgc:SvgViewbox Source="/Common/Images/auto-renewal-2-svgrepo-com.svg" />
                 </StackPanel>
             </Button>
             <Button Cursor="Hand">

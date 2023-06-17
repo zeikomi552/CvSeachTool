@@ -211,8 +211,8 @@
                     <RowDefinition MaxHeight="200" Height="Auto"/>
                 </Grid.RowDefinitions>
                 <StackPanel Margin="5" Orientation="Horizontal">
-                    <TextBlock Margin="5" Text="Model Name: "/>
-                    <TextBlock Margin="5" Text="{Binding ImageList.SelectedImage.Meta.Model}"/>
+                    <TextBlock VerticalAlignment="Center" Margin="5,0" Text="[Model]"/>
+                    <TextBlock VerticalAlignment="Center" Text="{Binding ImageList.SelectedImage.Meta.Model}"/>
                 </StackPanel>
 
                 <Image Grid.Row="1" Source="{Binding ImageList.SelectedImage.Url, Converter={StaticResource URLStringToImageSourceConverter}}"/>
