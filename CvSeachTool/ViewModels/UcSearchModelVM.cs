@@ -664,6 +664,30 @@ namespace CvSeachTool.ViewModels
         }
         #endregion
 
+        #region クリエイター検索画面へ移動処理
+        /// <summary>
+        /// クリエイター検索画面へ移動処理
+        /// </summary>
+        public void SearchCreator()
+        {
+            try
+            {
+                var wnd = new SearchCreatorV();
+                var vm = wnd.DataContext as SearchCreatorVM;
+
+                if (wnd.ShowDialog() == true)
+                {
+                    this.GetCondition.Username = vm!.SelectedTagItem.Username;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ShowMessage.ShowErrorOK(ex.Message, "Error");
+            }
+        }
+        #endregion
+
         #region 画面初期化処理
         /// <summary>
         /// 画面初期化処理

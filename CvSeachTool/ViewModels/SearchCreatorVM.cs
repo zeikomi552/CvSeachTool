@@ -1,9 +1,8 @@
-﻿using CvSeachTool.Models.CvsTag;
+﻿using CvSeachTool.Models.CvsCreator;
+using CvSeachTool.Models.CvsTag;
 using CvSeachTool.Views;
-using CvSeachTool.Views.UserControls;
 using MVVMCore.BaseClass;
 using MVVMCore.Common.Utilities;
-using MVVMCore.Common.Wrapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,17 +11,17 @@ using System.Threading.Tasks;
 
 namespace CvSeachTool.ViewModels
 {
-    public class SearchTagVM : ViewModelBase
+    public class SearchCreatorVM : ViewModelBase
     {
         #region 選択アイテム[SelectedTagItem]プロパティ
         /// <summary>
         /// 選択アイテム[SelectedTagItem]プロパティ用変数
         /// </summary>
-        CvsTagM.CvsItem _SelectedTagItem = new CvsTagM.CvsItem();
+        CvsCreatorM.CvsItem _SelectedTagItem = new CvsCreatorM.CvsItem();
         /// <summary>
         /// 選択アイテム[SelectedTagItem]プロパティ
         /// </summary>
-        public CvsTagM.CvsItem SelectedTagItem
+        public CvsCreatorM.CvsItem SelectedTagItem
         {
             get
             {
@@ -49,14 +48,14 @@ namespace CvSeachTool.ViewModels
         {
             try
             {
-                var uc = sender as SearchTagV;
+                var uc = sender as SearchCreatorV;
                 if (uc != null)
                 {
-                    var vm = uc.ucSearchTagV.DataContext as UcSearchTagVM;
+                    var vm = uc.ucSearchCreatorV.DataContext as UcSearchCreatorVM;
 
-                    if(vm != null)
+                    if (vm != null)
                     {
-                        vm.ParentVM = uc.DataContext as SearchTagVM;
+                        vm.ParentVM = uc.DataContext as SearchCreatorVM;
                     }
                 }
             }
@@ -137,5 +136,6 @@ namespace CvSeachTool.ViewModels
             }
         }
         #endregion
+
     }
 }

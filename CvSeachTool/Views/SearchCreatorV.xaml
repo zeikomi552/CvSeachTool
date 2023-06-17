@@ -1,0 +1,34 @@
+﻿<Window x:Class="CvSeachTool.Views.SearchCreatorV"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:hlp="clr-namespace:MVVMCore.Common.Helpers;assembly=MVVMCore"
+        xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:UserControls="clr-namespace:CvSeachTool.Views.UserControls"
+        xmlns:ViewModels="clr-namespace:CvSeachTool.ViewModels"
+        xmlns:local="clr-namespace:CvSeachTool.Views"
+        mc:Ignorable="d"
+        Title="SearchCreatorV" Height="450" Width="800"
+        hlp:DialogResultHelper.DialogResult="{Binding DialogResult}" 
+        WindowStartupLocation="CenterScreen">
+
+    <Window.DataContext>
+        <ViewModels:SearchCreatorVM/>
+    </Window.DataContext>
+    <b:Interaction.Triggers>
+        <b:EventTrigger>
+            <b:CallMethodAction TargetObject="{Binding}" MethodName="Init"/>
+        </b:EventTrigger>
+        <b:EventTrigger EventName="Closing">
+            <b:CallMethodAction TargetObject="{Binding}" MethodName="Closing"/>
+        </b:EventTrigger>
+    </b:Interaction.Triggers>
+
+    <Grid>
+        <UserControls:UcSearchCreatorV x:Name="ucSearchCreatorV"/>
+
+    </Grid>
+
+</Window>

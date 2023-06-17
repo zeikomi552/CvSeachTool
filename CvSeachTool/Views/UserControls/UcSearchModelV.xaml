@@ -114,6 +114,17 @@
                                     <TextBlock Width="auto" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Username"/>
                                     <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
                                     <TextBox Width="80" Margin="5" Text="{Binding GetCondition.Username}" VerticalAlignment="Center" TextAlignment="Center"/>
+                                    <Button Cursor="Hand">
+                                        <b:Interaction.Triggers>
+                                            <b:EventTrigger EventName="Click">
+                                                <b:CallMethodAction TargetObject="{Binding}" MethodName="SearchCreator"/>
+                                            </b:EventTrigger>
+                                        </b:Interaction.Triggers>
+                                        <StackPanel Orientation="Vertical">
+                                            <svgc:SvgViewbox Height="20" Source="/Common/Images/lens-svgrepo-com.svg" />
+                                        </StackPanel>
+                                    </Button>
+
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                     <TextBlock Width="auto" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Types"/>
