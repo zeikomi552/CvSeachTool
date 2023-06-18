@@ -906,6 +906,27 @@ namespace CvSeachTool.Models.CvsImage
                 catch { }
             }
             #endregion
+
+            #region model名のコピー
+            /// <summary>
+            /// model名のコピー
+            /// </summary>
+            public void ClipboardModel()
+            {
+                try
+                {
+                    if (this.Meta != null && !string.IsNullOrEmpty(this.Meta.Model))
+                    {
+                        Clipboard.SetText(this.Meta.Model);
+                    }
+                    else
+                    {
+                        Clipboard.SetText(string.Empty);
+                    }
+                }
+                catch { }
+            }
+            #endregion
         }
 
         #region Element of Image Items[Items]プロパティ

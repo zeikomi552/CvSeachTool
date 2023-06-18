@@ -353,7 +353,7 @@
                                     </DataGridTextColumn.CellStyle>
                                 </DataGridTextColumn>
                                 <DataGridTextColumn Header="type" Binding="{Binding Type}"/>
-                                <DataGridCheckBoxColumn Header="nsfw" Binding="{Binding Nsfw}" ElementStyle="{Binding Mode=OneWay, Source={StaticResource MaterialDesignUserForegroundCheckBox}}"/>
+                                <DataGridCheckBoxColumn Header="nsfw" Binding="{Binding Nsfw}" IsReadOnly="True"/>
                                 <DataGridTextColumn Header="allowCommercialUse" Binding="{Binding AllowCommercialUse}"/>
                                 <DataGridTextColumn Header="username" Binding="{Binding Creator.Username}"/>
                             </DataGrid.Columns>
