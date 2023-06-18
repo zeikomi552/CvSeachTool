@@ -105,25 +105,25 @@ setup.exeを実行します。
 
 CIVITAIを触る人にはなじみのある画像が出てきます。
 
-![](README-IMG/cvseachtool-01-23.jpg)
+![](README-IMG/cvseachtool-01-23.png)
 
 選択を切り替えていくことで画像イメージが切り替わります。
 
-![](README-IMG/cvseachtool-01-24.jpg)
+![](README-IMG/cvseachtool-01-24.png)
 
 検索条件はこの辺りをいじってみてください。
 
-![](README-IMG/cvseachtool-01-25.jpg)
+![](README-IMG/cvseachtool-01-25.png)
 
 ランキング順に検索するには以下のようにすればできます。
 
-![](README-IMG/cvseachtool-01-26-2.jpg)
+![](README-IMG/cvseachtool-01-26-2.png)
 
 ### ブックマーク
 
 ☆マークを押すとブックマーク画面に移動します。
 
-![](README-IMG/cvseachtool-01-60.jpg)
+![](README-IMG/cvseachtool-01-60.png)
 
 先ほどのモデル検索の画面のこいつです。
 
@@ -148,11 +148,11 @@ CIVITAI Imageのタブをクリックします。
 
 画像データを取得してきます。
 
-![](README-IMG/cvseachtool-01-32.jpg)
+![](README-IMG/cvseachtool-01-32.png)
 
 検索条件はこの辺りを適当に弄ってみてください。
 
-![](README-IMG/cvseachtool-01-33.jpg)
+![](README-IMG/cvseachtool-01-33.png)
 
 ## 過去につくった画像のプロンプト確認
 
@@ -170,15 +170,15 @@ AUTOMATIC1111/stable-diffusion-webuiで生成した画像が保管されてい�
 
 画像が読み込まれます。
 
-![](README-IMG/cvseachtool-01-43.jpg)
+![](README-IMG/cvseachtool-01-43.png)
 
 画像上に埋め込まれている生成した時点の情報が表示されます。
 
-![](README-IMG/cvseachtool-01-44.jpg)
+![](README-IMG/cvseachtool-01-44.png)
 
 変なアイコンをクリックするとクリップボードにコピーされます。
 
-![](README-IMG/cvseachtool-01-45.jpg)
+![](README-IMG/cvseachtool-01-45.png)
 
 メモ帳等に貼り付けが可能です。
 
@@ -188,15 +188,15 @@ AUTOMATIC1111/stable-diffusion-webuiで生成した画像が保管されてい�
 
 ここと
 
-![](README-IMG/cvseachtool-01-50.jpg)
+![](README-IMG/cvseachtool-01-50.png)
 
 ここに
 
-![](README-IMG/cvseachtool-01-51-2.jpg)
+![](README-IMG/cvseachtool-01-51-2.png)
 
 フィルターがあります。
 
-![](README-IMG/cvseachtool-01-52.jpg)
+![](README-IMG/cvseachtool-01-52.png)
 
 Noneが一番健全でXがこの世の性癖すべてを見させられます。
 一番上の空白はフィルタ無しなのでXと同じ扱いです。
