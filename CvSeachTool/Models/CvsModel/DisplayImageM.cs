@@ -3,10 +3,14 @@ using MVVMCore.BaseClass;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Media.TextFormatting;
+using System.Windows.Threading;
 using static CvSeachTool.Models.CvsModel.CvsModelM.CvsModelVersions;
 
 namespace CvSeachTool.Models.CvsModel
@@ -102,18 +106,38 @@ namespace CvSeachTool.Models.CvsModel
         }
         #endregion
 
+        static int Counter = 0;
         #region イメージフィルターのリフレッシュ
         /// <summary>
         /// イメージフィルターのリフレッシュ
         /// </summary>
         public void RefreshFilter()
         {
+            Counter++;
+
+            int own_counter = Counter;
             var tmp = (from x in Images
-                       where ImageNsfwEnumToVisibilityConverter.Convert(x.Nsfw)
-                       select x).ToList<CvsImages>();
+                        where ImageNsfwEnumToVisibilityConverter.Convert(x.Nsfw)
+                        select x).ToList<CvsImages>();
 
-            FilteredImages = new ObservableCollection<CvsImages>(tmp);
+            this.FilteredImages.Clear();
 
+            Task.Run(() =>
+            {
+                System.Threading.Thread.Sleep(100);
+                if (Counter != own_counter)
+                    return;
+
+                foreach (var item in tmp)
+                {
+
+                    Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background,
+                        new Action(() =>
+                        {
+                            this.FilteredImages?.Add(item);
+                        }));
+                }
+            });
         }
         #endregion
 

@@ -22,6 +22,8 @@ using static CvSeachTool.Models.CvsModel.CvsModelM;
 using System.Windows;
 using CvSeachTool.Models.CvsModel;
 using MaterialDesignThemes.Wpf;
+using System.Windows.Threading;
+using System.Diagnostics;
 
 namespace CvSeachTool.ViewModels
 {
