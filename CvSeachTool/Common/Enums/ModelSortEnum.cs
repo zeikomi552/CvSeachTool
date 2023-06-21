@@ -18,6 +18,10 @@ namespace CvSeachTool.Common.Enums
         Highest_Rated,
         [Description("Most Downloaded")]
         Most_Downloaded,
+        [Description("Most Liked")]
+        Most_Liked,
+        [Description("Most Discussed")]
+        Most_Discussed,
         [Description("Newest")]
         Newest
     }

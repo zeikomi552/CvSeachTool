@@ -1889,7 +1889,6 @@ namespace CvSeachTool.Models.CvsModel
             }
             #endregion
 
-
             #region ブックマークへ追加
             /// <summary>
             /// ブックマークへ追加
@@ -1974,7 +1973,6 @@ namespace CvSeachTool.Models.CvsModel
             #endregion
         }
         #endregion
-
 
         #region GET Model Endpoint[Endpoint]プロパティ
         /// <summary>
