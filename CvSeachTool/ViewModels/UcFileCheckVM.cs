@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Threading;
 
 namespace CvSeachTool.ViewModels
 {
@@ -174,35 +175,46 @@ namespace CvSeachTool.ViewModels
         {
             try
             {
-                List<FileInfoM> list = new List<FileInfoM>();
+                // ファイル情報のセット
+                this.FileList.Items.Clear();
 
-                // フォルダ内のファイル一覧を取得
-                var fileArray = Directory.GetFiles(dir, "*.png");
-                foreach (string file in fileArray)
+                Task.Run(() =>
                 {
-                    // バイナリで開く
-                    using (var reader = new BinaryReader(File.Open(file, FileMode.Open, FileAccess.Read)))
+                    // フォルダ内のファイル一覧を取得
+                    var fileArray = Directory.GetFiles(dir, "*.png");
+                    foreach (string file in fileArray)
                     {
-                        // Pngファイルのシグニチャ読み込み
-                        if (PngReader.ReadPngSignature(reader))
+                        // バイナリで開く
+                        using (var reader = new BinaryReader(File.Open(file, FileMode.Open, FileAccess.Read)))
                         {
-                            var ihdrchunk = PngReader.ReadChunk(reader);    // IHDチャンクの読み込み
-                            var itextchunk = PngReader.ReadChunk(reader);   // ITextチャンクの読み込み
+                            // Pngファイルのシグニチャ読み込み
+                            if (PngReader.ReadPngSignature(reader))
+                            {
+                                var ihdrchunk = PngReader.ReadChunk(reader);    // IHDチャンクの読み込み
+                                var itextchunk = PngReader.ReadChunk(reader);   // ITextチャンクの読み込み
 
-                            // データがutf - 8の場合
-                            var msg = System.Text.Encoding.UTF8.GetString(itextchunk.ChunkData).Replace("\0", ":");
+                                // データがutf - 8の場合
+                                var msg = System.Text.Encoding.UTF8.GetString(itextchunk.ChunkData).Replace("\0", ":");
 
-                            var msg_list = msg.Split("\n"); // 分割
-                            var prompt = msg_list.ElementAt(0).Replace("parameters:", "");  // Parameterの文字を消す
+                                var msg_list = msg.Split("\n"); // 分割
+                                var prompt = msg_list.ElementAt(0).Replace("parameters:", "");  // Parameterの文字を消す
 
-                            var file_info = new FileInfoM() { FilePath = file, ImageText = msg, Prompt = prompt, BasePrompt = prompt.Split(",").Last().Trim() };
-                            list.Add(file_info);
+                                var file_info = new FileInfoM() { FilePath = file, ImageText = msg, Prompt = prompt, BasePrompt = prompt.Split(",").Last().Trim() };
+
+                                Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background,
+                                    new Action(() =>
+                                    {
+                                        this.FileList.Items.Add(file_info);
+                                    }));
+                            }
                         }
                     }
-                }
-
-                // ファイル情報のセット
-                this.FileList.Items = new System.Collections.ObjectModel.ObservableCollection<FileInfoM>(list);
+                    Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background,
+                        new Action(() =>
+                        {
+                            this.FileList.SelectedLast();
+                        }));
+                });
             }
             catch (Exception e)
             {
