@@ -22,6 +22,31 @@ namespace CvSeachTool.ViewModels
 {
     public class UcFileCheckVM : ViewModelBase
     {
+        #region ディレクトリ読み込み処理実行中[ExecuteReadDirF]プロパティ
+        /// <summary>
+        /// ディレクトリ読み込み処理実行中[ExecuteReadDirF]プロパティ用変数
+        /// </summary>
+        bool _ExecuteReadDirF = false;
+        /// <summary>
+        /// ディレクトリ読み込み処理実行中[ExecuteReadDirF]プロパティ
+        /// </summary>
+        public bool ExecuteReadDirF
+        {
+            get
+            {
+                return _ExecuteReadDirF;
+            }
+            set
+            {
+                if (!_ExecuteReadDirF.Equals(value))
+                {
+                    _ExecuteReadDirF = value;
+                    NotifyPropertyChanged("ExecuteReadDirF");
+                }
+            }
+        }
+        #endregion
+
 
         #region 読み込んだディレクトリ[DirectoryPath]プロパティ
         /// <summary>
@@ -185,6 +210,17 @@ namespace CvSeachTool.ViewModels
 
                 Task.Run(() =>
                 {
+                    // 読み込み中の場合は無視
+                    if (this.ExecuteReadDirF)
+                        return;
+
+                    // スレッドセーフの呼び出し
+                    Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background,
+                        new Action(() =>
+                        {
+                            this.ExecuteReadDirF = true;    // 読み込み処理実行
+                        }));
+
                     // フォルダ内のファイル一覧を取得
                     var fileArray = Directory.GetFiles(dir, "*.png");
                     foreach (string file in fileArray)
@@ -206,6 +242,7 @@ namespace CvSeachTool.ViewModels
 
                                 var file_info = new FileInfoM() { FilePath = file, ImageText = msg, Prompt = prompt, BasePrompt = prompt.Split(",").Last().Trim() };
 
+                                // スレッドセーフの呼び出し
                                 Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background,
                                     new Action(() =>
                                     {
@@ -214,11 +251,20 @@ namespace CvSeachTool.ViewModels
                             }
                         }
                     }
+                    // スレッドセーフの呼び出し
                     Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background,
                         new Action(() =>
                         {
                             this.FileList.SelectedLast();
                         }));
+
+                    // スレッドセーフの呼び出し
+                    Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background,
+                        new Action(() =>
+                        {
+                            this.ExecuteReadDirF = false;    // 読み込み処理終了
+                        }));
+
                 });
             }
             catch (Exception e)
@@ -320,8 +366,11 @@ namespace CvSeachTool.ViewModels
                             }
                         case Key.F5:
                             {
-                                // フォルダの更新
-                                RenewDirectory();
+                                if (!this.ExecuteReadDirF)
+                                {
+                                    // フォルダの更新
+                                    RenewDirectory();
+                                }
                                 break;
                             }
                     }

@@ -11,6 +11,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
+        <Converters:ConvertBooleanConverter x:Key="ConvertBooleanConverter"/>
         <Converters:URLStringToImageSourceConverter x:Key="URLStringToImageSourceConverter"/>
     </UserControl.Resources>
     <UserControl.DataContext>
@@ -28,7 +29,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Horizontal">
-            <Button Margin="5" Cursor="Hand">
+            <Button IsEnabled="{Binding ExecuteReadDirF, Converter={StaticResource ConvertBooleanConverter}}" Margin="5" Cursor="Hand">
                 <b:Interaction.Triggers>
                     <b:EventTrigger EventName="Click">
                         <b:CallMethodAction TargetObject="{Binding}" MethodName="ReadDirectory"/>
@@ -38,7 +39,7 @@
                     <svgc:SvgViewbox Source="/Common/Images/directory-search-1623-svgrepo-com.svg" />
                 </StackPanel>
             </Button>
-            <Button Margin="5" Cursor="Hand" ToolTip="Renew Files    F5">
+            <Button IsEnabled="{Binding ExecuteReadDirF, Converter={StaticResource ConvertBooleanConverter}}" Margin="5" Cursor="Hand" ToolTip="Renew Files    F5">
                 <b:Interaction.Triggers>
                     <b:EventTrigger EventName="Click">
                         <b:CallMethodAction TargetObject="{Binding}" MethodName="RenewDirectory"/>

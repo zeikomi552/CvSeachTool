@@ -40,7 +40,7 @@ namespace CvSeachTool.Common
         }
         #endregion
 
-                #region お気に入りを保存しているフォルダ
+        #region お気に入りを保存しているフォルダ
         /// <summary>
         /// お気に入りを保存しているフォルダ
         /// </summary>
