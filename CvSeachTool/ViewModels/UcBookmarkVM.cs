@@ -190,6 +190,9 @@ namespace CvSeachTool.ViewModels
                     // ブックマーク情報の作成
                     this.BookmarkConf = new ConfigManager<ModelList<CvsItems>>(this.Config!.Item.BookmarkDir, this.BookmarkList.SelectedItem.BookmarkFile, new ModelList<CvsItems>());
                     this.BookmarkConf.LoadJSON();
+
+                    // ブックマークの保存処理
+                    SaveBookmark();
                 }
             }
             catch (Exception e)

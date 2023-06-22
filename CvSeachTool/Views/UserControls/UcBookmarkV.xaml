@@ -72,16 +72,6 @@
                                 <svgc:SvgViewbox Width="15" Source="/Common/Images/pencil-svgrepo-com.svg" />
                             </StackPanel>
                         </Button>
-                        <Button ToolTip="Save Bookmark" Margin="5" Cursor="Hand">
-                            <b:Interaction.Triggers>
-                                <b:EventTrigger EventName="Click">
-                                    <b:CallMethodAction TargetObject="{Binding}" MethodName="SaveBookmark"/>
-                                </b:EventTrigger>
-                            </b:Interaction.Triggers>
-                            <StackPanel Orientation="Vertical">
-                                <svgc:SvgViewbox Width="15" Source="/Common/Images/save-alt-svgrepo-com.svg" />
-                            </StackPanel>
-                        </Button>
                         <Button Margin="5" Cursor="Hand">
                             <b:Interaction.Triggers>
                                 <b:EventTrigger EventName="Click">
