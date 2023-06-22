@@ -79,7 +79,7 @@
                                 </b:EventTrigger>
                             </b:Interaction.Triggers>
                             <StackPanel Orientation="Vertical">
-                                <svgc:SvgViewbox Width="15" Source="/Common/Images/save-svgrepo-com.svg" />
+                                <svgc:SvgViewbox Width="15" Source="/Common/Images/save-alt-svgrepo-com.svg" />
                             </StackPanel>
                         </Button>
                     </StackPanel>
@@ -115,12 +115,15 @@
                 </Grid>
                 <Grid Grid.Row="1">
                     <StackPanel Orientation="Horizontal">
-                        <Button Margin="5" Width="100" Content="Delete" Cursor="Hand">
+                        <Button Margin="5" Cursor="Hand">
                             <b:Interaction.Triggers>
                                 <b:EventTrigger EventName="Click">
                                     <b:CallMethodAction TargetObject="{Binding}" MethodName="DeleteBookmark"/>
                                 </b:EventTrigger>
                             </b:Interaction.Triggers>
+                            <StackPanel Orientation="Vertical">
+                                <svgc:SvgViewbox Width="25" Source="/Common/Images/delete-recycle-bin-trash-can-svgrepo-com.svg" />
+                            </StackPanel>
                         </Button>
                     </StackPanel>
                 </Grid>
