@@ -97,6 +97,22 @@
                             </Style>
                         </DataGrid.RowStyle>
                         <DataGrid.Columns>
+                            <DataGridTemplateColumn Header="☆">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <ToggleButton Style="{StaticResource MaterialDesignActionToggleButton}" IsChecked="{Binding IsBookmark, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                            <b:Interaction.Triggers>
+                                                <b:EventTrigger EventName="Click">
+                                                    <b:CallMethodAction TargetObject="{Binding}" MethodName="ChangeBookmark"/>
+                                                </b:EventTrigger>
+                                            </b:Interaction.Triggers>
+                                            <StackPanel Orientation="Vertical">
+                                                <svgc:SvgViewbox Height="15" Source="/Common/Images/bookmark-svgrepo-com.svg" />
+                                            </StackPanel>
+                                        </ToggleButton>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
                             <DataGridTextColumn Header="name" Width="100" Binding="{Binding Name}"/>
                             <DataGridTextColumn Header="type" Binding="{Binding Type}"/>
                             <DataGridTextColumn Header="nsfw" Binding="{Binding Nsfw}"/>
