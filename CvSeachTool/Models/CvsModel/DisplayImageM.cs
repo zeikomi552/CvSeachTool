@@ -3,6 +3,7 @@ using MVVMCore.BaseClass;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Security.Cryptography;
@@ -107,6 +108,7 @@ namespace CvSeachTool.Models.CvsModel
         #endregion
 
         static int Counter = 0;
+
         #region イメージフィルターのリフレッシュ
         /// <summary>
         /// イメージフィルターのリフレッシュ
@@ -116,28 +118,32 @@ namespace CvSeachTool.Models.CvsModel
             Counter++;
 
             int own_counter = Counter;
-            var tmp = (from x in Images
-                        where ImageNsfwEnumToVisibilityConverter.Convert(x.Nsfw)
-                        select x).ToList<CvsImages>();
-
-            this.FilteredImages.Clear();
 
             Task.Run(() =>
             {
+
+                // レスポンス向上のため、連続で関数が呼ばれた時、一瞬またせる
                 System.Threading.Thread.Sleep(100);
+
+                // 100ミリ以内の連続呼び出しは破棄（最後のみ残す）
                 if (Counter != own_counter)
-                    return;
-
-                foreach (var item in tmp)
                 {
-
-                    Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background,
-                        new Action(() =>
-                        {
-                            this.FilteredImages?.Add(item);
-                        }));
+                    Debug.WriteLine(string.Format("{0} {1}", Counter, own_counter));
+                    return;
                 }
+
+
+                var tmp = (from x in Images
+                           where ImageNsfwEnumToVisibilityConverter.Convert(x.Nsfw)
+                           select x).ToList<CvsImages>();
+
+                  Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background,
+                    new Action(() =>
+                    {
+                        this.FilteredImages = new ObservableCollection<CvsImages>(tmp);
+                    }));
             });
+
         }
         #endregion
 
