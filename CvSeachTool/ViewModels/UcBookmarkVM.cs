@@ -331,8 +331,19 @@ namespace CvSeachTool.ViewModels
         {
             try
             {
-                // 選択行の削除処理
-                this.BookmarkConf!.Item.SelectedItemDelete();
+                // ブックマークが選択されている場合のみ処理
+                if (this.BookmarkList.SelectedItem != null)
+                {
+                    if (ShowMessage.ShowQuestionYesNo($"Are you sure you want to delete '{this.BookmarkList.SelectedItem.BookmarkFile}'", "Querstion") 
+                        == System.Windows.MessageBoxResult.Yes)
+                    {
+                        // ファイルの削除
+                        File.Delete(this.BookmarkList.SelectedItem.BookmarkFilePath);
+
+                        // ブックマークを削除
+                        this.BookmarkList.Items.Remove(this.BookmarkList.SelectedItem);
+                    }
+                }
             }
             catch (Exception ex)
             {

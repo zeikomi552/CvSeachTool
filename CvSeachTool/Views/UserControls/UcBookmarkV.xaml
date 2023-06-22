@@ -82,6 +82,16 @@
                                 <svgc:SvgViewbox Width="15" Source="/Common/Images/save-alt-svgrepo-com.svg" />
                             </StackPanel>
                         </Button>
+                        <Button Margin="5" Cursor="Hand">
+                            <b:Interaction.Triggers>
+                                <b:EventTrigger EventName="Click">
+                                    <b:CallMethodAction TargetObject="{Binding}" MethodName="DeleteBookmark"/>
+                                </b:EventTrigger>
+                            </b:Interaction.Triggers>
+                            <StackPanel Orientation="Vertical">
+                                <svgc:SvgViewbox Width="25" Source="/Common/Images/delete-recycle-bin-trash-can-svgrepo-com.svg" />
+                            </StackPanel>
+                        </Button>
                     </StackPanel>
                     <DataGrid Grid.Row="1" AutoGenerateColumns="False" Margin="5,5,5,5"
                               IsReadOnly="True" ItemsSource="{Binding BookmarkConf.Item.Items}" 
@@ -128,20 +138,6 @@
                             <DataGridTextColumn Header="id" Binding="{Binding Id}"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                </Grid>
-                <Grid Grid.Row="1">
-                    <StackPanel Orientation="Horizontal">
-                        <Button Margin="5" Cursor="Hand">
-                            <b:Interaction.Triggers>
-                                <b:EventTrigger EventName="Click">
-                                    <b:CallMethodAction TargetObject="{Binding}" MethodName="DeleteBookmark"/>
-                                </b:EventTrigger>
-                            </b:Interaction.Triggers>
-                            <StackPanel Orientation="Vertical">
-                                <svgc:SvgViewbox Width="25" Source="/Common/Images/delete-recycle-bin-trash-can-svgrepo-com.svg" />
-                            </StackPanel>
-                        </Button>
-                    </StackPanel>
                 </Grid>
             </Grid>
         </GroupBox>
