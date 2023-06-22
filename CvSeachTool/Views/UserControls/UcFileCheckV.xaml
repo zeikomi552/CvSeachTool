@@ -16,6 +16,11 @@
     <UserControl.DataContext>
         <ViewModels:UcFileCheckVM/>
     </UserControl.DataContext>
+    <b:Interaction.Triggers>
+        <b:EventTrigger EventName="PreviewKeyDown">
+            <b:CallMethodAction TargetObject="{Binding}" MethodName="PreviewKeyDown"/>
+        </b:EventTrigger>
+    </b:Interaction.Triggers>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -33,14 +38,14 @@
                     <svgc:SvgViewbox Source="/Common/Images/directory-search-1623-svgrepo-com.svg" />
                 </StackPanel>
             </Button>
-            <Button Margin="5" Cursor="Hand">
+            <Button Margin="5" Cursor="Hand" ToolTip="Renew Files    F5">
                 <b:Interaction.Triggers>
                     <b:EventTrigger EventName="Click">
                         <b:CallMethodAction TargetObject="{Binding}" MethodName="RenewDirectory"/>
                     </b:EventTrigger>
                 </b:Interaction.Triggers>
                 <StackPanel Orientation="Vertical">
-                    <svgc:SvgViewbox Source="/Common/Images/auto-renewal-2-svgrepo-com.svg" />
+                    <svgc:SvgViewbox Source="/Common/Images/auto-renewal-2-svgrepo-com.svg"/>
                 </StackPanel>
             </Button>
             <!--<Button Cursor="Hand">
@@ -80,7 +85,20 @@
                         </ListView.ItemsPanel>
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <Image Width="100" Source="{Binding FilePath, Converter={StaticResource URLStringToImageSourceConverter}}"/>
+                                <Image Width="100" Source="{Binding FilePath, Converter={StaticResource URLStringToImageSourceConverter}}">
+                                    <Image.ContextMenu>
+                                        <ContextMenu Name="cm" StaysOpen="true">
+                                            <MenuItem Header="Reveal in File Explore">
+                                                <b:Interaction.Triggers>
+                                                    <b:EventTrigger EventName="Click">
+                                                        <b:CallMethodAction TargetObject="{Binding}" MethodName="RevealInFileExplore"/>
+                                                    </b:EventTrigger>
+                                                </b:Interaction.Triggers>
+                                            </MenuItem>
+                                        </ContextMenu>
+                                    </Image.ContextMenu>
+
+                                </Image>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>

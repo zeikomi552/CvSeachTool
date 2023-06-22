@@ -1,16 +1,21 @@
 ﻿using CvSeachTool.Common.Utilities;
 using CvSeachTool.Models;
+using CvSeachTool.Views.UserControls;
 using Microsoft.Win32;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using MVVMCore.BaseClass;
 using MVVMCore.Common.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.Intrinsics.Arm;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Threading;
 
 namespace CvSeachTool.ViewModels
@@ -269,5 +274,64 @@ namespace CvSeachTool.ViewModels
             }
             catch { }
         }
+
+
+
+        #region キー入力処理の受付
+        /// <summary>
+        /// キー入力処理の受付
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void PreviewKeyDown(object sender, EventArgs e)
+        {
+            try
+            {
+                var wnd = sender as UcFileCheckV;
+
+                if (wnd != null)
+                {
+                    var key_eve = e as KeyEventArgs;
+
+                    if (key_eve!.KeyboardDevice.IsKeyDown(Key.LeftCtrl) || key_eve!.KeyboardDevice.IsKeyDown(Key.RightCtrl))
+                    {
+                        switch (key_eve.Key)
+                        {
+                            case Key.Left:
+                                {
+
+                                    break;
+                                }
+                            case Key.Right:
+                                {
+
+                                    break;
+                                }
+
+                        }
+                    }
+
+                    switch (key_eve.Key)
+                    {
+                        case Key.Enter:
+                            {
+
+                                break;
+                            }
+                        case Key.F5:
+                            {
+                                // フォルダの更新
+                                RenewDirectory();
+                                break;
+                            }
+                    }
+                }
+            }
+            catch (Exception ev)
+            {
+                ShowMessage.ShowErrorOK(ev.Message, "Error");
+            }
+        }
+        #endregion
     }
 }

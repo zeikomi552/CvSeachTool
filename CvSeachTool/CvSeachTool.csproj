@@ -15,6 +15,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Common\Helpers\**" />
+    <EmbeddedResource Remove="Common\Helpers\**" />
+    <None Remove="Common\Helpers\**" />
+    <Page Remove="Common\Helpers\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Common\Images\app.ico" />
   </ItemGroup>
 
@@ -96,10 +103,6 @@
     <None Update="Common\Images\star-svgrepo-com.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Common\Helpers\" />
   </ItemGroup>
 
 </Project>

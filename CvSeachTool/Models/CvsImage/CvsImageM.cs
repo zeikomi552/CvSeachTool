@@ -7,6 +7,7 @@ using MVVMCore.Common.Wrapper;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
@@ -927,6 +928,7 @@ namespace CvSeachTool.Models.CvsImage
                 catch { }
             }
             #endregion
+
         }
 
         #region Element of Image Items[Items]プロパティ

@@ -1,6 +1,7 @@
 ﻿using MVVMCore.BaseClass;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -84,7 +85,6 @@ namespace CvSeachTool.Models
         }
         #endregion
 
-
         #region イメージに含まれるテキスト[ImageText]プロパティ
         /// <summary>
         /// イメージに含まれるテキスト[ImageText]プロパティ用変数
@@ -110,6 +110,25 @@ namespace CvSeachTool.Models
         }
         #endregion
 
-
+        #region ファイルを選択した状態でエクスプローラーを開く
+        /// <summary>
+        /// ファイルを選択した状態でエクスプローラーを開く
+        /// </summary>
+        public void RevealInFileExplore()
+        {
+            try
+            {
+                // ファイルパスのnullチェック
+                if (!string.IsNullOrEmpty(this.FilePath))
+                {
+                    Process.Start("explorer.exe", string.Format(@"/select,""{0}", this.FilePath));  // 指定したフォルダを選択した状態でエクスプローラを開く
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.GetType());
+            }
+        }
+        #endregion
     }
 }
