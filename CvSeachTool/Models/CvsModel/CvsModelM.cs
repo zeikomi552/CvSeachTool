@@ -1447,7 +1447,7 @@ namespace CvSeachTool.Models.CvsModel
         /// <summary>
         /// Items
         /// </summary>
-        public class CvsItems : ModelBase
+        public class CvsItem : ModelBase
         {
             #region ブックマーク[IsBookmark]プロパティ
             /// <summary>
@@ -2010,12 +2010,12 @@ namespace CvSeachTool.Models.CvsModel
         /// <summary>
         /// json result of items[Items]プロパティ用変数
         /// </summary>
-        ObservableCollection<CvsItems> _Items = new ObservableCollection<CvsItems>();
+        ObservableCollection<CvsItem> _Items = new ObservableCollection<CvsItem>();
         /// <summary>
         /// json result of items[Items]プロパティ
         /// </summary>
         [JsonPropertyName("items")]
-        public ObservableCollection<CvsItems> Items
+        public ObservableCollection<CvsItem> Items
         {
             get
             {

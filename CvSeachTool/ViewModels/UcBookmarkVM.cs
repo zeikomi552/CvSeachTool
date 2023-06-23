@@ -25,7 +25,7 @@ namespace CvSeachTool.ViewModels
         /// <summary>
         /// ブックマーク[BookmarkConf]プロパティ
         /// </summary>
-        public ConfigManager<ModelList<CvsItems>>? BookmarkConf
+        public ConfigManager<ModelList<CvsItem>>? BookmarkConf
         {
             get
             {
@@ -188,7 +188,7 @@ namespace CvSeachTool.ViewModels
                     File.Exists(this.BookmarkList.SelectedItem.BookmarkFilePath))
                 {
                     // ブックマーク情報の作成
-                    this.BookmarkConf = new ConfigManager<ModelList<CvsItems>>(this.Config!.Item.BookmarkDir, this.BookmarkList.SelectedItem.BookmarkFile, new ModelList<CvsItems>());
+                    this.BookmarkConf = new ConfigManager<ModelList<CvsItem>>(this.Config!.Item.BookmarkDir, this.BookmarkList.SelectedItem.BookmarkFile, new ModelList<CvsItem>());
                     this.BookmarkConf.LoadJSON();
 
                     // ブックマークの保存処理
@@ -398,7 +398,7 @@ namespace CvSeachTool.ViewModels
                 }
 
                 // ブックマーク情報の作成
-                this.BookmarkConf = new ConfigManager<ModelList<CvsItems>>(this.BookmarkDir, filename, new ModelList<CvsItems>());
+                this.BookmarkConf = new ConfigManager<ModelList<CvsItem>>(this.BookmarkDir, filename, new ModelList<CvsItem>());
                 this.BookmarkConf.SaveJSON();
 
                 // お気に入りのコンボボックスに追加する

@@ -129,7 +129,7 @@ namespace CvSeachTool.ViewModels
         /// <summary>
         /// ブックマーク[BookmarkConf]プロパティ
         /// </summary>
-        public ConfigManager<ModelList<CvsItems>>? BookmarkConf
+        public ConfigManager<ModelList<CvsItem>>? BookmarkConf
         {
             get
             {

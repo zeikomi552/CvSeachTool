@@ -81,11 +81,11 @@ namespace CvSeachTool.Common
         /// <summary>
         /// ブックマーク[BookmarkConf]プロパティ用変数
         /// </summary>
-        ConfigManager<ModelList<CvsItems>>? _BookmarkConf;
+        ConfigManager<ModelList<CvsItem>>? _BookmarkConf;
         /// <summary>
         /// ブックマーク[BookmarkConf]プロパティ
         /// </summary>
-        public ConfigManager<ModelList<CvsItems>>? BookmarkConf
+        public ConfigManager<ModelList<CvsItem>>? BookmarkConf
         {
             get
             {
@@ -166,12 +166,12 @@ namespace CvSeachTool.Common
             if (File.Exists(Path.Combine(PathManager.GetApplicationFolder(), this.Config.Item.BookmarkDir, this.Config.Item.BookmarkFile)))
             {
                 // ブックマーク情報の作成
-                this.BookmarkConf = new ConfigManager<ModelList<CvsItems>>(this.Config.Item.BookmarkDir, this.Config.Item.BookmarkFile, new ModelList<CvsItems>());
+                this.BookmarkConf = new ConfigManager<ModelList<CvsItem>>(this.Config.Item.BookmarkDir, this.Config.Item.BookmarkFile, new ModelList<CvsItem>());
             }
             else
             {
                 // ブックマーク情報の作成
-                this.BookmarkConf = new ConfigManager<ModelList<CvsItems>>(@"conf\bookmark", @"bookmark.conf", new ModelList<CvsItems>());
+                this.BookmarkConf = new ConfigManager<ModelList<CvsItem>>(@"conf\bookmark", @"bookmark.conf", new ModelList<CvsItem>());
             }
 
             // ブックマークファイルの読み込み

@@ -26,7 +26,7 @@ namespace CvSeachTool.Models.CvsModel
         public CvsModelExM(CvsModelM model)
         {
             // set request items
-            Items = new ModelList<CvsItems>(model.Items);
+            Items = new ModelList<CvsItem>(model.Items);
 
             // set request metadata
             Metadata = model.Metadata;
@@ -36,12 +36,12 @@ namespace CvSeachTool.Models.CvsModel
         /// <summary>
         /// json result of items[Items]プロパティ用変数
         /// </summary>
-        ModelList<CvsItems> _Items = new ModelList<CvsItems>();
+        ModelList<CvsItem> _Items = new ModelList<CvsItem>();
         /// <summary>
         /// json result of items[Items]プロパティ
         /// </summary>
         [JsonPropertyName("items")]
-        public ModelList<CvsItems> Items
+        public ModelList<CvsItem> Items
         {
             get
             {

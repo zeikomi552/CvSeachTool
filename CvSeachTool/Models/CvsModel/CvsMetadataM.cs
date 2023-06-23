@@ -165,11 +165,5 @@ namespace CvSeachTool.Models.CvsModel
             }
         }
         #endregion
-
-
-
-
-
-
     }
 }
