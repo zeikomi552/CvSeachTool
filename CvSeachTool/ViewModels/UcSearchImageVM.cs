@@ -18,6 +18,7 @@ using System.Collections.ObjectModel;
 using static CvSeachTool.Models.CvsImage.CvsImageM;
 using System.Windows;
 using CvSeachTool.Views;
+using CvSeachTool.Models.Bookmark;
 
 namespace CvSeachTool.ViewModels
 {
@@ -144,17 +145,29 @@ namespace CvSeachTool.ViewModels
             }
         }
         #endregion
+
+        #region 初期化処理
+        /// <summary>
+        /// 初期化処理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public override void Init(object sender, EventArgs e)
         {
             try
             {
-
+                if (this.CvsImage != null)
+                {
+                    // 画面とブックマークを合致させる
+                    ImageBookmarkM.AdjustBookmark(this.CvsImage.Items);
+                }
             }
             catch (Exception ex)
             {
                 ShowMessage.ShowErrorOK(ex.Message, "Error");
             }
         }
+        #endregion
 
         public override void Close(object sender, EventArgs e)
         {
@@ -246,6 +259,9 @@ namespace CvSeachTool.ViewModels
                         // 1つ目の要素をセットする
                         this.CvsImage.Items.SelectedItem = this.CvsImage.Items.ElementAt(0);
                     }
+
+                    // 画面とブックマークを合致させる
+                    ImageBookmarkM.AdjustBookmark(this.CvsImage.Items);
 
                     ImageChanged();
                 }

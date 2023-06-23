@@ -21,6 +21,11 @@
         <Converters:ImageNsfwEnumToVisibilityConverter x:Key="ImageNsfwEnumToVisibilityConverter"/>
         <Converters:EmptyStringConverter x:Key="EmptyStringConverter"/>
     </UserControl.Resources>
+    <b:Interaction.Triggers>
+        <b:EventTrigger>
+            <b:CallMethodAction TargetObject="{Binding}" MethodName="Init"/>
+        </b:EventTrigger>
+    </b:Interaction.Triggers>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
