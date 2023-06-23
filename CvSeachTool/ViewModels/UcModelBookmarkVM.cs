@@ -19,7 +19,7 @@ using static CvSeachTool.Models.CvsModel.CvsModelM.CvsModelVersions;
 
 namespace CvSeachTool.ViewModels
 {
-    public class UcBookmarkVM : ViewModelBase
+    public class UcModelBookmarkVM : ViewModelBase
     {
 
         #region ブックマーク[BookmarkConf]プロパティ

@@ -11,7 +11,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.DataContext>
-        <ViewModels:UcBookmarkVM/>
+        <ViewModels:UcModelBookmarkVM/>
     </UserControl.DataContext>
     <UserControl.Resources>
         <Converters:ImageNsfwEnumToVisibilityConverter x:Key="ImageNsfwEnumToVisibilityConverter"/>
