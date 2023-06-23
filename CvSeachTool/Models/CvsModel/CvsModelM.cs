@@ -1910,11 +1910,15 @@ namespace CvSeachTool.Models.CvsModel
                                     where x.Id.Equals(Id)
                                      select x;
 
-                        // 存在しなければ追加
-                        if (IsBookmark && !check.Any())
+                        // BookmarkOn
+                        if (IsBookmark)
                         {
-                            // ブックマークの追加
-                            model_bookmark_items.Add(this);
+                            // 存在しなければ
+                            if (!check.Any())
+                            {
+                                // ブックマークの追加
+                                model_bookmark_items.Add(this);
+                            }
                         }
                         else
                         {
