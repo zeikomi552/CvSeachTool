@@ -1,36 +1,6 @@
-﻿using CvSeachTool.Common;
-using CvSeachTool.Common.Enums;
-using CvSeachTool.Common.Utilities;
-using CvSeachTool.Models.Condition;
-using CvSeachTool.Views;
-using CvSeachTool.Views.UserControls;
-using Microsoft.Win32;
-using Microsoft.WindowsAPICodePack.Dialogs;
-using MVVMCore.BaseClass;
+﻿using MVVMCore.BaseClass;
 using MVVMCore.Common.Utilities;
-using MVVMCore.Common.Wrapper;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Data.Common;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Net.Http.Json;
-using System.Reflection;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Markup;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using static CvSeachTool.Models.CvsModel.CvsModelM;
-using static CvSeachTool.Models.CvsModel.CvsModelM.CvsModelVersions;
 
 namespace CvSeachTool.ViewModels
 {

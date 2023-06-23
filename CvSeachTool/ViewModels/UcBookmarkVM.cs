@@ -1,5 +1,6 @@
 ﻿using CvSeachTool.Common;
-using CvSeachTool.Models;
+using CvSeachTool.Models.Bookmark;
+using CvSeachTool.Models.Config;
 using CvSeachTool.Models.CvsModel;
 using CvSeachTool.Views;
 using CvSeachTool.Views.UserControls;
@@ -29,13 +30,13 @@ namespace CvSeachTool.ViewModels
         {
             get
             {
-                return GblValues.Instance.BookmarkConf;
+                return GblValues.Instance.ModelBookmark.ModelBookmarkConf;
             }
             set
             {
-                if (GblValues.Instance.BookmarkConf == null || !GblValues.Instance.BookmarkConf.Equals(value))
+                if (GblValues.Instance.ModelBookmark.ModelBookmarkConf == null || !GblValues.Instance.ModelBookmark.ModelBookmarkConf.Equals(value))
                 {
-                    GblValues.Instance.BookmarkConf = value;
+                    GblValues.Instance.ModelBookmark.ModelBookmarkConf = value;
                     NotifyPropertyChanged("BookmarkConf");
                 }
             }
@@ -96,7 +97,7 @@ namespace CvSeachTool.ViewModels
         {
             get
             {
-                return GblValues.Instance.BookmarkDir;
+                return GblValues.Instance.ModelBookmark.BookmarkDirFullPath;
             }
         }
         #endregion
@@ -105,11 +106,11 @@ namespace CvSeachTool.ViewModels
         /// <summary>
         /// ブックマークリスト
         /// </summary>
-        public ModelList<BookmarkM> BookmarkList
+        public ModelList<ModelBookmarkM> BookmarkList
         {
             get
             {
-                return GblValues.Instance.BookmarkList;
+                return GblValues.Instance.ModelBookmarkList;
             }
         }
         #endregion
@@ -142,20 +143,20 @@ namespace CvSeachTool.ViewModels
             // お気に入りのフォルダのパス
             var dirPath = this.BookmarkDir;
 
-            List<BookmarkM> list = new();
+            List<ModelBookmarkM> list = new();
 
             // フォルダ内のファイル一覧を取得
             var fileArray = Directory.GetFiles(dirPath);
             foreach (string file in fileArray)
             {
-                list.Add(new BookmarkM() { BookmarkFilePath = file });
+                list.Add(new ModelBookmarkM() { BookmarkFilePath = file });
             }
 
             // ブックマークリストのセット
-            this.BookmarkList.Items = new ObservableCollection<BookmarkM>(list);
+            this.BookmarkList.Items = new ObservableCollection<ModelBookmarkM>(list);
 
             var tmp = (from x in this.BookmarkList.Items
-                       where x.BookmarkFile.Equals(this.Config!.Item.BookmarkFile)
+                       where x.BookmarkFile.Equals(this.Config!.Item.ModelBookmarkFile)
                        select x).FirstOrDefault();
 
             // nullチェック
@@ -188,7 +189,7 @@ namespace CvSeachTool.ViewModels
                     File.Exists(this.BookmarkList.SelectedItem.BookmarkFilePath))
                 {
                     // ブックマーク情報の作成
-                    this.BookmarkConf = new ConfigManager<ModelList<CvsItem>>(this.Config!.Item.BookmarkDir, this.BookmarkList.SelectedItem.BookmarkFile, new ModelList<CvsItem>());
+                    this.BookmarkConf = new ConfigManager<ModelList<CvsItem>>(this.Config!.Item.ModelBookmarkDir, this.BookmarkList.SelectedItem.BookmarkFile, new ModelList<CvsItem>());
                     this.BookmarkConf.LoadJSON();
 
                     // ブックマークの保存処理
@@ -214,7 +215,7 @@ namespace CvSeachTool.ViewModels
                 var vm = wnd.DataContext as BookmarkRenameVM;
 
                 // ディレクトリパスをセット
-                vm!.DirPath = this.Config!.Item.BookmarkDir;
+                vm!.DirPath = this.Config!.Item.ModelBookmarkDir;
 
                 // リネーム前のファイル名をセット
                 vm!.RenameFilename = Path.GetFileNameWithoutExtension(this.BookmarkList.SelectedItem.BookmarkFile);
@@ -232,10 +233,10 @@ namespace CvSeachTool.ViewModels
                     this.BookmarkList.SelectedItem.BookmarkFilePath = file_path;
 
                     // コンフィグのファイルパスが当該ブックマークファイルを選択しているのであれば
-                    if (this.Config.Item.BookmarkFile.Equals(this.BookmarkList.SelectedItem.BookmarkFile))
+                    if (this.Config.Item.ModelBookmarkFile.Equals(this.BookmarkList.SelectedItem.BookmarkFile))
                     {
                         // ファイル名を変更する
-                        this.Config.Item.BookmarkFile = Path.GetFileName(file_path);
+                        this.Config.Item.ModelBookmarkFile = Path.GetFileName(file_path);
 
                         // ファイルを保存する
                         this.Config.SaveXML();
@@ -367,7 +368,7 @@ namespace CvSeachTool.ViewModels
                 if (this.BookmarkList != null && this.BookmarkList.SelectedItem != null)
                 {
                     // ブックマークのセット
-                    this.Config!.Item.BookmarkFile = Path.GetFileName(this.BookmarkList.SelectedItem.BookmarkFilePath);
+                    this.Config!.Item.ModelBookmarkFile = Path.GetFileName(this.BookmarkList.SelectedItem.BookmarkFilePath);
 
                     // JSON形式で保存
                     this.Config.SaveXML();
@@ -402,7 +403,7 @@ namespace CvSeachTool.ViewModels
                 this.BookmarkConf.SaveJSON();
 
                 // お気に入りのコンボボックスに追加する
-                this.BookmarkList.Items.Add(new BookmarkM() { BookmarkFilePath = Path.Combine(this.BookmarkDir, filename) });
+                this.BookmarkList.Items.Add(new ModelBookmarkM() { BookmarkFilePath = Path.Combine(this.BookmarkDir, filename) });
                 this.BookmarkList.SelectedLast();
             }
             catch (Exception ex)

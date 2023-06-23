@@ -126,7 +126,6 @@ namespace CvSeachTool.ViewModels
         }
         #endregion
 
-
         #region GETクエリの実行処理
         /// <summary>
         /// GETクエリの実行処理
@@ -182,7 +181,6 @@ namespace CvSeachTool.ViewModels
             }
         }
         #endregion
-
 
         #region 次のページへ移動
         /// <summary>

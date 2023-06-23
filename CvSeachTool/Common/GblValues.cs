@@ -1,5 +1,6 @@
 ﻿using CvSeachTool.Common.Enums;
-using CvSeachTool.Models;
+using CvSeachTool.Models.Bookmark;
+using CvSeachTool.Models.Config;
 using MVVMCore.Common.Utilities;
 using System;
 using System.Collections.Generic;
@@ -40,15 +41,51 @@ namespace CvSeachTool.Common
         }
         #endregion
 
-        #region お気に入りを保存しているフォルダ
+        #region モデル用ブックマークオブジェクト[ModelBookmark]プロパティ
         /// <summary>
-        /// お気に入りを保存しているフォルダ
+        /// モデル用ブックマークオブジェクト[ModelBookmark]プロパティ用変数
         /// </summary>
-        public string BookmarkDir
+        ModelBookmarkM _ModelBookmark = new ModelBookmarkM();
+        /// <summary>
+        /// モデル用ブックマークオブジェクト[ModelBookmark]プロパティ
+        /// </summary>
+        public ModelBookmarkM ModelBookmark
         {
             get
             {
-                return Path.Combine(PathManager.GetApplicationFolder(), this.Config!.Item.BookmarkDir);
+                return _ModelBookmark;
+            }
+            set
+            {
+                if (_ModelBookmark == null || !_ModelBookmark.Equals(value))
+                {
+                    _ModelBookmark = value;
+                }
+            }
+        }
+        #endregion
+
+
+        #region イメージ用ブックマークオブジェクト[ImageBookmark]プロパティ
+        /// <summary>
+        /// イメージ用ブックマークオブジェクト[ImageBookmark]プロパティ用変数
+        /// </summary>
+        ImageBookmarkM _ImageBookmark = new ImageBookmarkM();
+        /// <summary>
+        /// イメージ用ブックマークオブジェクト[ImageBookmark]プロパティ
+        /// </summary>
+        public ImageBookmarkM ImageBookmark
+        {
+            get
+            {
+                return _ImageBookmark;
+            }
+            set
+            {
+                if (_ImageBookmark == null || !_ImageBookmark.Equals(value))
+                {
+                    _ImageBookmark = value;
+                }
             }
         }
         #endregion
@@ -72,30 +109,6 @@ namespace CvSeachTool.Common
                 if (!_ImageFilter.Equals(value))
                 {
                     _ImageFilter = value;
-                }
-            }
-        }
-        #endregion
-
-        #region ブックマーク[BookmarkConf]プロパティ
-        /// <summary>
-        /// ブックマーク[BookmarkConf]プロパティ用変数
-        /// </summary>
-        ConfigManager<ModelList<CvsItem>>? _BookmarkConf;
-        /// <summary>
-        /// ブックマーク[BookmarkConf]プロパティ
-        /// </summary>
-        public ConfigManager<ModelList<CvsItem>>? BookmarkConf
-        {
-            get
-            {
-                return _BookmarkConf;
-            }
-            set
-            {
-                if (_BookmarkConf == null || !_BookmarkConf.Equals(value))
-                {
-                    _BookmarkConf = value;
                 }
             }
         }
@@ -125,26 +138,25 @@ namespace CvSeachTool.Common
         }
         #endregion
 
-
-        #region ブックマークリスト[BookmarkList]プロパティ
+        #region Model用ブックマークリスト[ModelBookmarkList]プロパティ
         /// <summary>
-        /// ブックマークリスト[BookmarkList]プロパティ用変数
+        /// Model用ブックマークリスト[ModelBookmarkList]プロパティ用変数
         /// </summary>
-        ModelList<BookmarkM> _BookmarkList = new ModelList<BookmarkM>();
+        ModelList<ModelBookmarkM> _ModelBookmarkList = new ModelList<ModelBookmarkM>();
         /// <summary>
-        /// ブックマークリスト[BookmarkList]プロパティ
+        /// Model用ブックマークリスト[ModelBookmarkList]プロパティ
         /// </summary>
-        public ModelList<BookmarkM> BookmarkList
+        public ModelList<ModelBookmarkM> ModelBookmarkList
         {
             get
             {
-                return _BookmarkList;
+                return _ModelBookmarkList;
             }
             set
             {
-                if (_BookmarkList == null || !_BookmarkList.Equals(value))
+                if (_ModelBookmarkList == null || !_ModelBookmarkList.Equals(value))
                 {
-                    _BookmarkList = value;
+                    _ModelBookmarkList = value;
                 }
             }
         }
@@ -157,28 +169,17 @@ namespace CvSeachTool.Common
         public void ConfigInit()
         {
             // コンフィグファイルの作成
-            this.Config = new ConfigManager<ConfigM>("conf", "CvSearchTool.conf", new ConfigM());
+            this.Config = new ConfigManager<ConfigM>(ConfigM.CurrDir, ConfigM.DefaultFile, new ConfigM());
 
             // コンフィグファイルの読み込み
             this.Config.LoadXML();
 
-            // ブックマークファイルの存在確認
-            if (File.Exists(Path.Combine(PathManager.GetApplicationFolder(), this.Config.Item.BookmarkDir, this.Config.Item.BookmarkFile)))
-            {
-                // ブックマーク情報の作成
-                this.BookmarkConf = new ConfigManager<ModelList<CvsItem>>(this.Config.Item.BookmarkDir, this.Config.Item.BookmarkFile, new ModelList<CvsItem>());
-            }
-            else
-            {
-                // ブックマーク情報の作成
-                this.BookmarkConf = new ConfigManager<ModelList<CvsItem>>(@"conf\bookmark", @"bookmark.conf", new ModelList<CvsItem>());
-            }
+            // モデル用ブックマークの初期化処理
+            this.ModelBookmark.InitBookmark();
 
-            // ブックマークファイルの読み込み
-            this.BookmarkConf.LoadJSON();
+            // イメージ用ブックマークの初期化処理
+            this.ImageBookmark.InitBookmark();
         }
         #endregion
-
-
     }
 }

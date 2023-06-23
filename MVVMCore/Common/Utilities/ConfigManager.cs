@@ -15,7 +15,7 @@ namespace MVVMCore.Common.Utilities
         /// <summary>
         /// コンフィグディレクトリ
         /// </summary>
-        string ConfigDirectory = "Config";
+        string ConfigDirectory = "Conf";
         #endregion
 
         #region コンフィグファイル名

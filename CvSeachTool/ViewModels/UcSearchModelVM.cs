@@ -24,6 +24,7 @@ using CvSeachTool.Models.CvsModel;
 using MaterialDesignThemes.Wpf;
 using System.Windows.Threading;
 using System.Diagnostics;
+using CvSeachTool.Models.Config;
 
 namespace CvSeachTool.ViewModels
 {
@@ -133,13 +134,14 @@ namespace CvSeachTool.ViewModels
         {
             get
             {
-                return GblValues.Instance.BookmarkConf;
+                return GblValues.Instance.ModelBookmark.ModelBookmarkConf;
             }
             set
             {
-                if (GblValues.Instance.BookmarkConf == null || !GblValues.Instance.BookmarkConf.Equals(value))
+                if (GblValues.Instance.ModelBookmark.ModelBookmarkConf == null 
+                    || !GblValues.Instance.ModelBookmark.ModelBookmarkConf.Equals(value))
                 {
-                    GblValues.Instance.BookmarkConf = value;
+                    GblValues.Instance.ModelBookmark.ModelBookmarkConf = value;
                     NotifyPropertyChanged("BookmarkConf");
                 }
             }
@@ -269,7 +271,6 @@ namespace CvSeachTool.ViewModels
             }
         }
         #endregion
-
 
         #region Execute GET REST API
         /// <summary>
@@ -618,7 +619,6 @@ namespace CvSeachTool.ViewModels
             }
         }
         #endregion
-
 
         #region JSONリクエストのコピー
         /// <summary>

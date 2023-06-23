@@ -1873,10 +1873,12 @@ namespace CvSeachTool.Models.CvsModel
                 try
                 {
                     // nullチェック
-                    if (GblValues.Instance.BookmarkList != null && GblValues.Instance.BookmarkList.SelectedItem != null)
+                    if (GblValues.Instance.ModelBookmarkList != null
+                        && GblValues.Instance.ModelBookmarkList.SelectedItem != null)
                     {
                         // ブックマークのセット
-                        GblValues.Instance.Config!.Item.BookmarkFile = Path.GetFileName(GblValues.Instance.BookmarkList.SelectedItem.BookmarkFilePath);
+                        GblValues.Instance.Config!.Item.ModelBookmarkFile
+                            = Path.GetFileName(GblValues.Instance.ModelBookmarkList.SelectedItem.BookmarkFilePath);
 
                         // JSON形式で保存
                         GblValues.Instance.Config.SaveXML();
@@ -1897,26 +1899,30 @@ namespace CvSeachTool.Models.CvsModel
             {
                 try
                 {
+                    var model_bookmark = GblValues.Instance.ModelBookmark;
+
                     // nullチェック
-                    if (GblValues.Instance.BookmarkConf != null && GblValues.Instance.BookmarkConf.Item != null && GblValues.Instance.BookmarkConf.Item.Items != null)
+                    if (model_bookmark != null && model_bookmark.ModelBookmarkConf != null 
+                        && model_bookmark.ModelBookmarkConf.Item != null && model_bookmark.ModelBookmarkConf.Item.Items != null)
                     {
-                        var check = from x in GblValues.Instance.BookmarkConf.Item.Items
-                                     where x.Id.Equals(Id)
+                        var model_bookmark_items = model_bookmark.ModelBookmarkConf.Item.Items;
+                        var check = from x in model_bookmark_items
+                                    where x.Id.Equals(Id)
                                      select x;
 
                         // 存在しなければ追加
-                        if (!check.Any())
+                        if (IsBookmark && !check.Any())
                         {
                             // ブックマークの追加
-                            GblValues.Instance.BookmarkConf.Item.Items.Add(this);
+                            model_bookmark_items.Add(this);
                         }
                         else
                         {
                             // ブックマークの削除
-                            GblValues.Instance.BookmarkConf.Item.Items.Remove(check.First());
+                            model_bookmark_items.Remove(check.First());
                         }
                         // JSON形式で保存
-                        GblValues.Instance.BookmarkConf!.SaveJSON();
+                        model_bookmark.ModelBookmarkConf.SaveJSON();
                     }
                 }
                 catch (Exception ex)
