@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace CvSeachTool.Views.UserControls
 {
     /// <summary>
-    /// ucBookmarkV.xaml の相互作用ロジック
+    /// UcModelBookmarkV.xaml の相互作用ロジック
     /// </summary>
-    public partial class UcBookmarkV : UserControl
+    public partial class UcModelBookmarkV : UserControl
     {
-        public UcBookmarkV()
+        public UcModelBookmarkV()
         {
             InitializeComponent();
         }

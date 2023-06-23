@@ -16,7 +16,7 @@
     <Compile Update="Views\SearchTagV.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\UserControls\UcBookmarkV.xaml.cs">
+    <Compile Update="Views\UserControls\UcModelBookmarkV.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\UserControls\UcFileCheckV.xaml.cs">
@@ -48,7 +48,7 @@
     <Page Update="Views\SearchTagV.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\UserControls\UcBookmarkV.xaml">
+    <Page Update="Views\UserControls\UcModelBookmarkV.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\UserControls\UcFileCheckV.xaml">

@@ -36,7 +36,7 @@
                             <svgc:SvgViewbox Source="/Common/Images/star-svgrepo-com.svg" ToolTip="Bookmark" Width="50" />
                         </StackPanel>
                     </TabItem.Header>
-                    <UserControls:UcBookmarkV />
+                    <UserControls:UcModelBookmarkV />
                 </TabItem>
             </TabControl>
         </TabItem>

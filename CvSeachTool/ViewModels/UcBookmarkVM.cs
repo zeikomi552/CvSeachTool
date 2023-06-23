@@ -315,7 +315,7 @@ namespace CvSeachTool.ViewModels
         private void ListViewTopRow(object sender)
         {
             // ウィンドウの取得
-            var wnd = (UcBookmarkV)VisualTreeHelperWrapper.GetWindow<UcBookmarkV>(sender);
+            var wnd = (UcModelBookmarkV)VisualTreeHelperWrapper.GetWindow<UcModelBookmarkV>(sender);
 
             // nullチェック
             if (wnd != null)
