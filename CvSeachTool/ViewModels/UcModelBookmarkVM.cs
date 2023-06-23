@@ -21,7 +21,6 @@ namespace CvSeachTool.ViewModels
 {
     public class UcModelBookmarkVM : ViewModelBase
     {
-
         #region ブックマーク[BookmarkConf]プロパティ
         /// <summary>
         /// ブックマーク[BookmarkConf]プロパティ

@@ -318,7 +318,6 @@ namespace CvSeachTool.ViewModels
 
                     // 画面とブックマークを合致させる
                     ModelBookmarkM.AdjustBookmark(this.CvsModel.Items);
-
                 }
             }
             catch (Exception e)
@@ -417,9 +416,9 @@ namespace CvSeachTool.ViewModels
         }
         #endregion
 
-        #region フレーズのダブルクリック
+        #region モデル行のダブルクリック
         /// <summary>
-        /// フレーズのダブルクリック
+        /// モデル行のダブルクリック
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -445,9 +444,9 @@ namespace CvSeachTool.ViewModels
         }
         #endregion
 
-        #region フレーズのダブルクリック
+        #region モデル行のダブルクリック
         /// <summary>
-        /// フレーズのダブルクリック
+        /// モデル行のダブルクリック
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
