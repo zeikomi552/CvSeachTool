@@ -38,7 +38,6 @@ namespace CvSeachTool.Models.CvsImage
         }
         #endregion
 
-
         #region This model Filtered images[FilteredImages]プロパティ
         /// <summary>
         /// This model Filtered images[FilteredImages]プロパティ用変数
@@ -63,7 +62,6 @@ namespace CvSeachTool.Models.CvsImage
             }
         }
         #endregion
-
 
         #region Selected image[SelectedImage]プロパティ
         /// <summary>
@@ -103,7 +101,6 @@ namespace CvSeachTool.Models.CvsImage
             RefreshFilter();
         }
         #endregion
-
 
         #region イメージフィルターのリフレッシュ
         /// <summary>

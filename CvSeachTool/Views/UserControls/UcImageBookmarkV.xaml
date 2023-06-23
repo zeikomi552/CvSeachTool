@@ -102,9 +102,9 @@
                                 <TextBlock Text="{Binding Username}"/>
                                 <Grid>
                                     <Image Width="100" Source="{Binding Url, Converter={StaticResource URLStringToImageSourceConverter}}">
-                                        <Image.InputBindings>
+                                        <!--<Image.InputBindings>
                                             <MouseBinding MouseAction="LeftDoubleClick" Command="{Binding MouseDoubleClickCommand}"/>
-                                        </Image.InputBindings>
+                                        </Image.InputBindings>-->
                                         <Image.ContextMenu>
                                             <ContextMenu Name="cm" StaysOpen="true">
                                                 <MenuItem Header="Clipboard">
@@ -144,6 +144,14 @@
                                                         </b:Interaction.Triggers>
                                                     </MenuItem>
                                                 </MenuItem>
+                                                <MenuItem Header="Open URL">
+                                                    <b:Interaction.Triggers>
+                                                        <b:EventTrigger EventName="Click">
+                                                            <b:CallMethodAction TargetObject="{Binding}" MethodName="OpenURL"/>
+                                                        </b:EventTrigger>
+                                                    </b:Interaction.Triggers>
+                                                </MenuItem>
+
                                             </ContextMenu>
                                         </Image.ContextMenu>
                                     </Image>

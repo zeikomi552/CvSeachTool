@@ -32,7 +32,9 @@ namespace CvSeachTool.Models.CvsImage
             {
                 MouseDoubleClickCommand = new DelegateCommand(OpenURL);
             }
-            public DelegateCommand MouseDoubleClickCommand { get; private set; }
+
+            public static DelegateCommand? MouseDoubleClickCommand { get; private set; }
+
             #region ブックマーク[IsBookmark]プロパティ
             /// <summary>
             /// ブックマーク[IsBookmark]プロパティ用変数

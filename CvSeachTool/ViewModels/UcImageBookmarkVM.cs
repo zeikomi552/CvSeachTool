@@ -155,7 +155,7 @@ namespace CvSeachTool.ViewModels
             this.BookmarkList.Items = new ObservableCollection<ImageBookmarkM>(list);
 
             var tmp = (from x in this.BookmarkList.Items
-                       where x.BookmarkFile.Equals(this.Config!.Item.ModelBookmarkFile)
+                       where x.BookmarkFile.Equals(this.Config!.Item.ImageBookmarkFile)
                        select x).FirstOrDefault();
 
             // nullチェック
@@ -163,7 +163,6 @@ namespace CvSeachTool.ViewModels
             {
                 // 最初の要素を選択
                 this.BookmarkList.SelectedItem = tmp;
-                BookmarkSelectionChanged();
             }
 
             // nullチェック
@@ -360,7 +359,7 @@ namespace CvSeachTool.ViewModels
                 if (this.BookmarkList != null && this.BookmarkList.SelectedItem != null)
                 {
                     // ブックマークのセット
-                    this.Config!.Item.ModelBookmarkFile = Path.GetFileName(this.BookmarkList.SelectedItem.BookmarkFilePath);
+                    this.Config!.Item.ImageBookmarkFile = Path.GetFileName(this.BookmarkList.SelectedItem.BookmarkFilePath);
 
                     // JSON形式で保存
                     this.Config.SaveXML();
