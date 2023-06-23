@@ -12,24 +12,6 @@ namespace CvSeachTool.Models.Bookmark
 {
     public class BookmarkBaseM : ModelBase
     {
-        /// <summary>
-        /// ブックマーク用保存用ディレクトリ
-        /// </summary>
-        public static string BookmarkDir { get; set; } = string.Format(@"{0}\bookmark", ConfigM.CurrDir);
-
-        #region お気に入りを保存しているフォルダ
-        /// <summary>
-        /// お気に入りを保存しているフォルダ
-        /// </summary>
-        public string BookmarkDirFullPath
-        {
-            get
-            {
-                return Path.Combine(PathManager.GetApplicationFolder(), BookmarkDir);
-            }
-        }
-        #endregion
-
         #region ブックマークのファイルパス[BookmarkFilePath]プロパティ
         /// <summary>
         /// ブックマークのファイルパス[BookmarkFilePath]プロパティ用変数

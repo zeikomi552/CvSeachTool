@@ -1,4 +1,5 @@
 ﻿using CvSeachTool.Common.Utilities;
+using CvSeachTool.Models.Config;
 using Microsoft.Win32;
 using MVVMCore.BaseClass;
 using MVVMCore.Common.Utilities;
@@ -14,6 +15,23 @@ namespace CvSeachTool.Models.Bookmark
 {
     public class ModelBookmarkM : BookmarkBaseM
     {
+        /// <summary>
+        /// ブックマーク用保存用ディレクトリ
+        /// </summary>
+        public static string BookmarkDir { get; set; } = string.Format(@"{0}\bookmark", ConfigM.CurrDir);
+
+        #region お気に入りを保存しているフォルダ
+        /// <summary>
+        /// お気に入りを保存しているフォルダ
+        /// </summary>
+        public string BookmarkDirFullPath
+        {
+            get
+            {
+                return Path.Combine(PathManager.GetApplicationFolder(), BookmarkDir);
+            }
+        }
+        #endregion
         public static string DefaultBookmarkFile { get; set; } = "bookmark.conf";
 
         #region モデル用ブックマークのフォルダパス[ModelBookmarkDir]プロパティ

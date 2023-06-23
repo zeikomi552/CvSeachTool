@@ -1,4 +1,5 @@
-﻿using CvSeachTool.Models.CvsImage;
+﻿using CvSeachTool.Models.Config;
+using CvSeachTool.Models.CvsImage;
 using MVVMCore.Common.Utilities;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,25 @@ namespace CvSeachTool.Models.Bookmark
 {
     public class ImageBookmarkM : BookmarkBaseM
     {
+
+        /// <summary>
+        /// ブックマーク用保存用ディレクトリ
+        /// </summary>
+        public static string BookmarkDir { get; set; } = string.Format(@"{0}\imgbookmark", ConfigM.CurrDir);
+
+        #region お気に入りを保存しているフォルダ
+        /// <summary>
+        /// お気に入りを保存しているフォルダ
+        /// </summary>
+        public string BookmarkDirFullPath
+        {
+            get
+            {
+                return Path.Combine(PathManager.GetApplicationFolder(), BookmarkDir);
+            }
+        }
+        #endregion
+        
         /// <summary>
         /// デフォルトブックマークファイルパス
         /// </summary>
