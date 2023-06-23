@@ -25,6 +25,7 @@ using MaterialDesignThemes.Wpf;
 using System.Windows.Threading;
 using System.Diagnostics;
 using CvSeachTool.Models.Config;
+using CvSeachTool.Models.Bookmark;
 
 namespace CvSeachTool.ViewModels
 {
@@ -121,28 +122,6 @@ namespace CvSeachTool.ViewModels
                 {
                     _CvsModel = value;
                     NotifyPropertyChanged("CvsModel");
-                }
-            }
-        }
-        #endregion
-
-        #region ブックマーク[BookmarkConf]プロパティ
-        /// <summary>
-        /// ブックマーク[BookmarkConf]プロパティ
-        /// </summary>
-        public ConfigManager<ModelList<CvsItem>>? BookmarkConf
-        {
-            get
-            {
-                return GblValues.Instance.ModelBookmark.ModelBookmarkConf;
-            }
-            set
-            {
-                if (GblValues.Instance.ModelBookmark.ModelBookmarkConf == null 
-                    || !GblValues.Instance.ModelBookmark.ModelBookmarkConf.Equals(value))
-                {
-                    GblValues.Instance.ModelBookmark.ModelBookmarkConf = value;
-                    NotifyPropertyChanged("BookmarkConf");
                 }
             }
         }
@@ -337,18 +316,8 @@ namespace CvSeachTool.ViewModels
                         DataGridTopRow(sender);
                     }
 
-                    // ブックマーク登録されている場合はブックマーク情報をセットする
-                    if (this.BookmarkConf != null && this.BookmarkConf.Item != null && this.BookmarkConf.Item.Items != null)
-                    {
-                        // モデル全数分回す
-                        foreach (var cvitem in this.CvsModel.Items)
-                        {
-                            // ブックマークに登録されているIDならセット
-                            cvitem.IsBookmark = (from x in this.BookmarkConf.Item.Items
-                                                 where x.Id.Equals(cvitem.Id)
-                                                 select x).Any();
-                        }
-                    }
+                    // 画面とブックマークを合致させる
+                    ModelBookmarkM.AdjustBookmark(this.CvsModel.Items);
 
                 }
             }

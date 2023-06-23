@@ -1,4 +1,5 @@
-﻿using CvSeachTool.Common.Utilities;
+﻿using CvSeachTool.Common;
+using CvSeachTool.Common.Utilities;
 using CvSeachTool.Models.Config;
 using Microsoft.Win32;
 using MVVMCore.BaseClass;
@@ -128,6 +129,31 @@ namespace CvSeachTool.Models.Bookmark
 
             // ブックマークファイルの読み込み
             this.ModelBookmarkConf.LoadJSON();
+        }
+        #endregion
+
+        #region ブックマークの状態と画面表示のブックマーク状態を合致させる
+        /// <summary>
+        /// ブックマークの状態と画面表示のブックマーク状態を合致させる
+        /// </summary>
+        public static void AdjustBookmark(ModelList<CvsItem> items)
+        {
+
+            // ブックマーク用のコンフィグを取得
+            var bookmark_confg = GblValues.Instance.ModelBookmark.ModelBookmarkConf;
+
+            // ブックマーク登録されている場合はブックマーク情報をセットする
+            if (bookmark_confg != null && bookmark_confg.Item != null && bookmark_confg.Item.Items != null)
+            {
+                // モデル全数分回す
+                foreach (var cvitem in items)
+                {
+                    // ブックマークに登録されているIDならセット
+                    cvitem.IsBookmark = (from x in bookmark_confg.Item.Items
+                                         where x.Id.Equals(cvitem.Id)
+                                         select x).Any();
+                }
+            }
         }
         #endregion
     }
