@@ -126,8 +126,8 @@ namespace CvSeachTool.Models.Bookmark
             else
             {
                 // イメージファイルのブックマーク情報の作成
-                this.ImageBookmarkConf = new ConfigManager<ModelList<CvsImageM.CvsItem>>(ModelBookmarkM.BookmarkDir,
-                    ModelBookmarkM.DefaultBookmarkFile, new ModelList<CvsImageM.CvsItem>());
+                this.ImageBookmarkConf = new ConfigManager<ModelList<CvsImageM.CvsItem>>(ImageBookmarkM.BookmarkDir,
+                    ImageBookmarkM.DefaultBookmarkFile, new ModelList<CvsImageM.CvsItem>());
             }
 
             // メージファイルのブックマーク情報の読み込み
