@@ -162,6 +162,30 @@ namespace CvSeachTool.Common
         }
         #endregion
 
+        #region イメージ用ブックマークリスト[ImageBookmarkList]プロパティ
+        /// <summary>
+        /// イメージ用ブックマークリスト[ImageBookmarkList]プロパティ用変数
+        /// </summary>
+        ModelList<ImageBookmarkM> _ImageBookmarkList = new ModelList<ImageBookmarkM>();
+        /// <summary>
+        /// イメージ用ブックマークリスト[ImageBookmarkList]プロパティ
+        /// </summary>
+        public ModelList<ImageBookmarkM> ImageBookmarkList
+        {
+            get
+            {
+                return _ImageBookmarkList;
+            }
+            set
+            {
+                if (_ImageBookmarkList == null || !_ImageBookmarkList.Equals(value))
+                {
+                    _ImageBookmarkList = value;
+                }
+            }
+        }
+        #endregion
+
         #region コンフィグファイルの初期化処理
         /// <summary>
         /// コンフィグファイルの初期化処理

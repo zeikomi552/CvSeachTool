@@ -1,4 +1,5 @@
-﻿using CvSeachTool.Common.Commands;
+﻿using CvSeachTool.Common;
+using CvSeachTool.Common.Commands;
 using CvSeachTool.Common.Enums;
 using CvSeachTool.Models.CvsModel;
 using MVVMCore.BaseClass;
@@ -8,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
@@ -31,6 +33,31 @@ namespace CvSeachTool.Models.CvsImage
                 MouseDoubleClickCommand = new DelegateCommand(OpenURL);
             }
             public DelegateCommand MouseDoubleClickCommand { get; private set; }
+            #region ブックマーク[IsBookmark]プロパティ
+            /// <summary>
+            /// ブックマーク[IsBookmark]プロパティ用変数
+            /// </summary>
+            bool _IsBookmark = false;
+            /// <summary>
+            /// ブックマーク[IsBookmark]プロパティ
+            /// </summary>
+            [JsonPropertyName("IsBookmark")]
+            public bool IsBookmark
+            {
+                get
+                {
+                    return _IsBookmark;
+                }
+                set
+                {
+                    if (!_IsBookmark.Equals(value))
+                    {
+                        _IsBookmark = value;
+                        NotifyPropertyChanged("IsBookmark");
+                    }
+                }
+            }
+            #endregion
 
             #region InnerClass
             public class CvsImageMeta : ModelBase
@@ -929,6 +956,50 @@ namespace CvSeachTool.Models.CvsImage
             }
             #endregion
 
+            #region ブックマークへ追加
+            /// <summary>
+            /// ブックマークへ追加
+            /// </summary>
+            public void ChangeBookmark()
+            {
+                try
+                {
+                    var model_bookmark = GblValues.Instance.ImageBookmark;
+
+                    // nullチェック
+                    if (model_bookmark != null && model_bookmark.ImageBookmarkConf != null
+                        && model_bookmark.ImageBookmarkConf.Item != null && model_bookmark.ImageBookmarkConf.Item.Items != null)
+                    {
+                        var model_bookmark_items = model_bookmark.ImageBookmarkConf.Item.Items;
+                        var check = from x in model_bookmark_items
+                                    where x.Id.Equals(Id)
+                                    select x;
+
+                        // BookmarkOn
+                        if (IsBookmark)
+                        {
+                            // 存在しなければ
+                            if (!check.Any())
+                            {
+                                // ブックマークの追加
+                                model_bookmark_items.Add(this);
+                            }
+                        }
+                        else
+                        {
+                            // ブックマークの削除
+                            model_bookmark_items.Remove(check.First());
+                        }
+                        // JSON形式で保存
+                        model_bookmark.ImageBookmarkConf.SaveJSON();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ShowMessage.ShowErrorOK(ex.Message, "Error");
+                }
+            }
+            #endregion
         }
 
         #region Element of Image Items[Items]プロパティ

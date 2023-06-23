@@ -668,7 +668,11 @@ namespace CvSeachTool.ViewModels
         {
             try
             {
-
+                if (this.CvsModel != null)
+                {
+                    // 画面とブックマークを合致させる
+                    ModelBookmarkM.AdjustBookmark(this.CvsModel.Items);
+                }
             }
             catch (Exception ex)
             {

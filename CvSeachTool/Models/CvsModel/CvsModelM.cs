@@ -1864,33 +1864,6 @@ namespace CvSeachTool.Models.CvsModel
             }
             #endregion
 
-            #region ブックマークのセット処理
-            /// <summary>
-            /// ブックマークのセット処理
-            /// </summary>
-            public void SaveBookmark()
-            {
-                try
-                {
-                    // nullチェック
-                    if (GblValues.Instance.ModelBookmarkList != null
-                        && GblValues.Instance.ModelBookmarkList.SelectedItem != null)
-                    {
-                        // ブックマークのセット
-                        GblValues.Instance.Config!.Item.ModelBookmarkFile
-                            = Path.GetFileName(GblValues.Instance.ModelBookmarkList.SelectedItem.BookmarkFilePath);
-
-                        // JSON形式で保存
-                        GblValues.Instance.Config.SaveXML();
-                    }
-                }
-                catch (Exception e)
-                {
-                    ShowMessage.ShowErrorOK(e.Message, "Error");
-                }
-            }
-            #endregion
-
             #region ブックマークへ追加
             /// <summary>
             /// ブックマークへ追加
