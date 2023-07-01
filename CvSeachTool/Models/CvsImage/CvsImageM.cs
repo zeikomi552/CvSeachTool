@@ -125,7 +125,7 @@ namespace CvSeachTool.Models.CvsImage
                 /// [Seed]プロパティ
                 /// </summary>
                 [JsonPropertyName("seed")]
-                public object Seed
+                public object? Seed
                 {
                     get
                     {
@@ -272,8 +272,6 @@ namespace CvSeachTool.Models.CvsImage
                 }
                 #endregion
 
-
-
                 #region [Clip_skip]プロパティ
                 /// <summary>
                 /// [Clip_skip]プロパティ用変数
@@ -351,7 +349,6 @@ namespace CvSeachTool.Models.CvsImage
                     }
                 }
                 #endregion
-
 
                 #region [Hires_upscaler]プロパティ
                 /// <summary>
@@ -849,6 +846,19 @@ namespace CvSeachTool.Models.CvsImage
             }
             #endregion
 
+            #region ImageのCivitaiURLL
+            /// <summary>
+            /// ImageのCivitaiURLL
+            /// </summary>
+            public string ImageURL
+            {
+                get
+                {
+                    return $"https://civitai.com/images/{this.Id}";
+                }
+            }
+            #endregion
+
             #region URLを開く
             /// <summary>
             /// URLを開く
@@ -857,7 +867,7 @@ namespace CvSeachTool.Models.CvsImage
             {
                 try
                 {
-                    var startInfo = new System.Diagnostics.ProcessStartInfo($"https://civitai.com/images/{this.Id}");
+                    var startInfo = new System.Diagnostics.ProcessStartInfo(ImageURL);
                     startInfo.UseShellExecute = true;
                     System.Diagnostics.Process.Start(startInfo);
                 }
@@ -923,6 +933,7 @@ namespace CvSeachTool.Models.CvsImage
                 catch { }
             }
             #endregion
+
             #region ユーザー名のコピー
             /// <summary>
             /// ユーザー名のコピー
