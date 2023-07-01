@@ -286,26 +286,30 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition MaxHeight="200" Height="Auto"/>
                 </Grid.RowDefinitions>
-                <WrapPanel Orientation="Horizontal">
-                    <StackPanel Margin="5" Orientation="Horizontal">
+                <WrapPanel Margin="5" Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal">
                         <TextBlock VerticalAlignment="Center" Text="[Model]"/>
                         <TextBlock VerticalAlignment="Center" Text="{Binding ImageList.SelectedImage.Meta.Model}"/>
                     </StackPanel>
-                    <StackPanel Margin="5" Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal">
                         <TextBlock VerticalAlignment="Center" Text="[Sampler]"/>
                         <TextBlock VerticalAlignment="Center" Text="{Binding ImageList.SelectedImage.Meta.Sampler}"/>
                     </StackPanel>
-                    <StackPanel Margin="5" Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock VerticalAlignment="Center" Text="[Size]"/>
+                        <TextBlock VerticalAlignment="Center" Text="{Binding ImageList.SelectedImage.Meta.Size}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
                         <TextBlock VerticalAlignment="Center" Text="[Seed]"/>
                         <TextBlock VerticalAlignment="Center" Text="{Binding ImageList.SelectedImage.Meta.Seed}"/>
                     </StackPanel>
-                    <StackPanel Margin="5" Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal">
                         <TextBlock VerticalAlignment="Center" Text="[Steps]"/>
                         <TextBlock VerticalAlignment="Center" Text="{Binding ImageList.SelectedImage.Meta.Steps}"/>
                     </StackPanel>
-                    <StackPanel Margin="5" Orientation="Horizontal">
-                        <TextBlock VerticalAlignment="Center" Text="[Size]"/>
-                        <TextBlock VerticalAlignment="Center" Text="{Binding ImageList.SelectedImage.Meta.Size}"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock VerticalAlignment="Center" Text="[ModelHash]"/>
+                        <TextBlock VerticalAlignment="Center" Text="{Binding ImageList.SelectedImage.Meta.Model_hash}"/>
                     </StackPanel>
                 </WrapPanel>
                 <Image Grid.Row="1" Source="{Binding ImageList.SelectedImage.Url, Converter={StaticResource URLStringToImageSourceConverter}}"/>
