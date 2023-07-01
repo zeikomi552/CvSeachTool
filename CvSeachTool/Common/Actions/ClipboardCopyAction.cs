@@ -29,7 +29,10 @@ namespace CvSeachTool.Common.Actions
         {
             try
             {
-                Clipboard.SetText(CopyText);
+                if (CopyText != null)
+                {
+                    Clipboard.SetText(CopyText);
+                }
             }
             catch (Exception ex)
             {

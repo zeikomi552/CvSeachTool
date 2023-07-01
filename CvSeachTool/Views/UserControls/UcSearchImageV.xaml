@@ -384,7 +384,6 @@
 
                         </ContextMenu>
                     </Image.ContextMenu>
-
                 </Image>
                 <Grid Grid.Row="2">
                     <Grid.ColumnDefinitions>
