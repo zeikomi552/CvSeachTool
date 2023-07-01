@@ -312,7 +312,7 @@
                         <TextBlock VerticalAlignment="Center" Text="{Binding ImageList.SelectedImage.Meta.Model_hash}"/>
                     </StackPanel>
                 </WrapPanel>
-                <Image Grid.Row="1" Source="{Binding ImageList.SelectedImage.Url, Converter={StaticResource URLStringToImageSourceConverter}}"/>
+                <Image Margin="5" Grid.Row="1" Source="{Binding ImageList.SelectedImage.Url, Converter={StaticResource URLStringToImageSourceConverter}}"/>
                 <Grid Grid.Row="2">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -324,7 +324,7 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="auto"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Margin="5" VerticalAlignment="Center" TextAlignment="Right" Text="Prompt:"/>
+                        <TextBlock ToolTip="{Binding ImageList.SelectedImage.Meta.Prompt}" Margin="5" VerticalAlignment="Center" TextAlignment="Right" Text="Prompt:"/>
                         <TextBox VerticalAlignment="Center" Grid.Column="1" IsReadOnly="True" Margin="5"
                                     TextAlignment="Center" Text="{Binding ImageList.SelectedImage.Meta.Prompt, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                         <Button Grid.Column="2" Margin="5" Cursor="Hand">
@@ -345,7 +345,7 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="auto"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Margin="5" VerticalAlignment="Center" TextAlignment="Right" Text="NegativPrompt:"/>
+                        <TextBlock ToolTip="{Binding ImageList.SelectedImage.Meta.NegativePrompt}" Margin="5" VerticalAlignment="Center" TextAlignment="Right" Text="NegativPrompt:"/>
                         <TextBox VerticalAlignment="Center" Grid.Column="1" IsReadOnly="True" Margin="5" TextAlignment="Center"
                                     Text="{Binding ImageList.SelectedImage.Meta.NegativePrompt, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                         <Button Grid.Column="2" Margin="5" Cursor="Hand">

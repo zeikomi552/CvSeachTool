@@ -141,6 +141,13 @@ namespace CvSeachTool.Models.CvsModel
                     new Action(() =>
                     {
                         this.FilteredImages = new ObservableCollection<CvsImages>(tmp);
+
+                        // フィルター後のイメージが1個以上ある場合
+                        if (this.FilteredImages.Any())
+                        {
+                            // 最初のものを選択する
+                            this.SelectedImage = this.FilteredImages.First();
+                        }
                     }));
             });
 

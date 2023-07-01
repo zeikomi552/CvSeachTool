@@ -178,12 +178,40 @@
         <GroupBox Margin="5" Grid.Column="1" Header="Images">
             <Grid>
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-                <Image Source="{Binding ImageList.SelectedImage.Url, Converter={StaticResource URLStringToImageSourceConverter}}"/>
+                <WrapPanel Margin="5" Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock VerticalAlignment="Center" Text="[Model]"/>
+                        <TextBlock VerticalAlignment="Center" Text="{Binding ImageList.SelectedImage.Meta.Model}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock VerticalAlignment="Center" Text="[Sampler]"/>
+                        <TextBlock VerticalAlignment="Center" Text="{Binding ImageList.SelectedImage.Meta.Sampler}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock VerticalAlignment="Center" Text="[Size]"/>
+                        <TextBlock VerticalAlignment="Center" Text="{Binding ImageList.SelectedImage.Meta.Size}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock VerticalAlignment="Center" Text="[Seed]"/>
+                        <TextBlock VerticalAlignment="Center" Text="{Binding ImageList.SelectedImage.Meta.Seed}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock VerticalAlignment="Center" Text="[Steps]"/>
+                        <TextBlock VerticalAlignment="Center" Text="{Binding ImageList.SelectedImage.Meta.Steps}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock VerticalAlignment="Center" Text="[ModelHash]"/>
+                        <TextBlock VerticalAlignment="Center" Text="{Binding ImageList.SelectedImage.Meta.Model_hash}"/>
+                    </StackPanel>
+                </WrapPanel>
 
-                <Grid Grid.Row="1">
+                <Image Grid.Row="1" Source="{Binding ImageList.SelectedImage.Url, Converter={StaticResource URLStringToImageSourceConverter}}"/>
+
+                <Grid Grid.Row="2">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
