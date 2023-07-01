@@ -276,12 +276,12 @@ namespace CvSeachTool.Models.CvsImage
                 /// <summary>
                 /// [Clip_skip]プロパティ用変数
                 /// </summary>
-                string _Clip_skip = string.Empty;
+                object _Clip_skip = string.Empty;
                 /// <summary>
                 /// [Clip_skip]プロパティ
                 /// </summary>
                 [JsonPropertyName("Clip skip")]
-                public string Clip_skip
+                public object Clip_skip
                 {
                     get
                     {
