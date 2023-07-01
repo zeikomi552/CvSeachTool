@@ -266,9 +266,10 @@ namespace CvSeachTool.ViewModels
                     ImageChanged();
                 }
             }
-            catch (Exception e)
+            catch (JSONDeserializeException e)
             {
-                ShowMessage.ShowErrorOK(e.Message, "Error");
+                string msg = e.Message + "\r\n" + e.JSON;
+                ShowMessage.ShowErrorOK(msg, "Error");
             }
             finally
             {

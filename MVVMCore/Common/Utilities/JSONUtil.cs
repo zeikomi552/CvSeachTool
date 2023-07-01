@@ -8,6 +8,19 @@ using System.Threading.Tasks;
 
 namespace MVVMCore.Common.Utilities
 {
+    public class JSONDeserializeException : Exception
+    {
+        public JSONDeserializeException(string message, Exception e, string json) : base(message, e)
+        {
+            this.JSON = json;
+        }
+
+        /// <summary>
+        /// JSON文字列
+        /// </summary>
+        public string JSON { get; set; } = string.Empty;
+    }
+
     public static class JSONUtil
     {
         /// <summary>
@@ -24,7 +37,10 @@ namespace MVVMCore.Common.Utilities
                 // 指定されたデータ用のクラス型で値を返す。
                 return JsonSerializer.Deserialize<T>(new MemoryStream(Encoding.UTF8.GetBytes(jsontext)));
             }
-            catch { throw; }
+            catch (Exception e)
+            {
+                throw new JSONDeserializeException(e.Message, e, jsontext);
+            }
         }
 
         /// <summary>

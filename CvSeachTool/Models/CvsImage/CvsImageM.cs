@@ -120,7 +120,7 @@ namespace CvSeachTool.Models.CvsImage
                 /// <summary>
                 /// [Seed]プロパティ用変数
                 /// </summary>
-                object _Seed = new object();
+                object? _Seed = null;
                 /// <summary>
                 /// [Seed]プロパティ
                 /// </summary>

@@ -147,9 +147,9 @@
                                 </StackPanel>
 
                             </Button>
-                            <TextBlock Text="{Binding CvsImage.Metadata.CurrentPage}" TextAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBlock MinWidth="25" Text="{Binding CvsImage.Metadata.CurrentPage}" TextAlignment="Center" VerticalAlignment="Center"/>
                             <TextBlock Text="/" TextAlignment="Center" VerticalAlignment="Center"/>
-                            <TextBlock Text="{Binding CvsImage.Metadata.TotalPages}" TextAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBlock MinWidth="25" Text="{Binding CvsImage.Metadata.TotalPages}" TextAlignment="Center" VerticalAlignment="Center"/>
                             <Button Margin="5,0" IsEnabled="{Binding ExecuteGetAPI, Converter={StaticResource ConvertBooleanConverter}}" Cursor="Hand">
                                 <b:Interaction.Triggers>
                                     <b:EventTrigger EventName="Click">
@@ -286,11 +286,28 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition MaxHeight="200" Height="Auto"/>
                 </Grid.RowDefinitions>
-                <StackPanel Margin="5" Orientation="Horizontal">
-                    <TextBlock VerticalAlignment="Center" Margin="5,0" Text="[Model]"/>
-                    <TextBlock VerticalAlignment="Center" Text="{Binding ImageList.SelectedImage.Meta.Model}"/>
-                </StackPanel>
-
+                <WrapPanel Orientation="Horizontal">
+                    <StackPanel Margin="5" Orientation="Horizontal">
+                        <TextBlock VerticalAlignment="Center" Text="[Model]"/>
+                        <TextBlock VerticalAlignment="Center" Text="{Binding ImageList.SelectedImage.Meta.Model}"/>
+                    </StackPanel>
+                    <StackPanel Margin="5" Orientation="Horizontal">
+                        <TextBlock VerticalAlignment="Center" Text="[Sampler]"/>
+                        <TextBlock VerticalAlignment="Center" Text="{Binding ImageList.SelectedImage.Meta.Sampler}"/>
+                    </StackPanel>
+                    <StackPanel Margin="5" Orientation="Horizontal">
+                        <TextBlock VerticalAlignment="Center" Text="[Seed]"/>
+                        <TextBlock VerticalAlignment="Center" Text="{Binding ImageList.SelectedImage.Meta.Seed}"/>
+                    </StackPanel>
+                    <StackPanel Margin="5" Orientation="Horizontal">
+                        <TextBlock VerticalAlignment="Center" Text="[Steps]"/>
+                        <TextBlock VerticalAlignment="Center" Text="{Binding ImageList.SelectedImage.Meta.Steps}"/>
+                    </StackPanel>
+                    <StackPanel Margin="5" Orientation="Horizontal">
+                        <TextBlock VerticalAlignment="Center" Text="[Size]"/>
+                        <TextBlock VerticalAlignment="Center" Text="{Binding ImageList.SelectedImage.Meta.Size}"/>
+                    </StackPanel>
+                </WrapPanel>
                 <Image Grid.Row="1" Source="{Binding ImageList.SelectedImage.Url, Converter={StaticResource URLStringToImageSourceConverter}}"/>
                 <Grid Grid.Row="2">
                     <Grid.ColumnDefinitions>
