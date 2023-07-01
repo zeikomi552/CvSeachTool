@@ -17,6 +17,7 @@
         <ViewModels:UcSearchImageVM/>
     </UserControl.DataContext>
     <UserControl.Resources>
+        <Converters:NullToBooleanFalseConverter x:Key="NullToBooleanFalseConverter"/>
         <Converters:ConvertBooleanConverter x:Key="ConvertBooleanConverter"/>
         <Converters:URLStringToImageSourceConverter x:Key="URLStringToImageSourceConverter"/>
         <Converters:ImageNsfwEnumToVisibilityConverter x:Key="ImageNsfwEnumToVisibilityConverter"/>
@@ -317,56 +318,56 @@
                     <Image.ContextMenu>
                         <ContextMenu x:Name="cm2" StaysOpen="true">
                             <MenuItem Header="Clipboard">
-                                <MenuItem Header="Model">
+                                <MenuItem Header="Model" IsEnabled="{Binding ImageList.SelectedImage.Meta.Model, Converter={StaticResource NullToBooleanFalseConverter}, FallbackValue=False}">
                                     <b:Interaction.Triggers>
                                         <b:EventTrigger EventName="Click">
                                             <Actions:ClipboardCopyAction CopyText="{Binding ImageList.SelectedImage.Meta.Model}"/>
                                         </b:EventTrigger>
                                     </b:Interaction.Triggers>
                                 </MenuItem>
-                                <MenuItem Header="Sampler">
+                                <MenuItem Header="Sampler" IsEnabled="{Binding ImageList.SelectedImage.Meta.Sampler, Converter={StaticResource NullToBooleanFalseConverter}, FallbackValue=False}">
                                     <b:Interaction.Triggers>
                                         <b:EventTrigger EventName="Click">
                                             <Actions:ClipboardCopyAction CopyText="{Binding ImageList.SelectedImage.Meta.Sampler}"/>
                                         </b:EventTrigger>
                                     </b:Interaction.Triggers>
                                 </MenuItem>
-                                <MenuItem Header="Size">
+                                <MenuItem Header="Size" IsEnabled="{Binding ImageList.SelectedImage.Meta.Size, Converter={StaticResource NullToBooleanFalseConverter}, FallbackValue=False}">
                                     <b:Interaction.Triggers>
                                         <b:EventTrigger EventName="Click">
                                             <Actions:ClipboardCopyAction CopyText="{Binding ImageList.SelectedImage.Meta.Size}"/>
                                         </b:EventTrigger>
                                     </b:Interaction.Triggers>
                                 </MenuItem>
-                                <MenuItem Header="Seed">
+                                <MenuItem Header="Seed" IsEnabled="{Binding ImageList.SelectedImage.Meta.Seed, Converter={StaticResource NullToBooleanFalseConverter}, FallbackValue=False}">
                                     <b:Interaction.Triggers>
                                         <b:EventTrigger EventName="Click">
                                             <Actions:ClipboardCopyAction CopyText="{Binding ImageList.SelectedImage.Meta.Seed}"/>
                                         </b:EventTrigger>
                                     </b:Interaction.Triggers>
                                 </MenuItem>
-                                <MenuItem Header="Steps">
+                                <MenuItem Header="Steps" IsEnabled="{Binding ImageList.SelectedImage.Meta.Steps, Converter={StaticResource NullToBooleanFalseConverter}, FallbackValue=False}">
                                     <b:Interaction.Triggers>
                                         <b:EventTrigger EventName="Click">
                                             <Actions:ClipboardCopyAction CopyText="{Binding ImageList.SelectedImage.Meta.Steps}"/>
                                         </b:EventTrigger>
                                     </b:Interaction.Triggers>
                                 </MenuItem>
-                                <MenuItem Header="ModdelHash">
+                                <MenuItem Header="ModdelHash" IsEnabled="{Binding ImageList.SelectedImage.Meta.Model_hash, Converter={StaticResource NullToBooleanFalseConverter}, FallbackValue=False}">
                                     <b:Interaction.Triggers>
                                         <b:EventTrigger EventName="Click">
                                             <Actions:ClipboardCopyAction CopyText="{Binding ImageList.SelectedImage.Meta.Model_hash}"/>
                                         </b:EventTrigger>
                                     </b:Interaction.Triggers>
                                 </MenuItem>
-                                <MenuItem Header="Prompt">
+                                <MenuItem Header="Prompt" IsEnabled="{Binding ImageList.SelectedImage.Meta.Prompt, Converter={StaticResource NullToBooleanFalseConverter}, FallbackValue=False}">
                                     <b:Interaction.Triggers>
                                         <b:EventTrigger EventName="Click">
                                             <Actions:ClipboardCopyAction CopyText="{Binding ImageList.SelectedImage.Meta.Prompt}"/>
                                         </b:EventTrigger>
                                     </b:Interaction.Triggers>
                                 </MenuItem>
-                                <MenuItem Header="NegativePrompt">
+                                <MenuItem Header="NegativePrompt" IsEnabled="{Binding ImageList.SelectedImage.Meta.NegativePrompt, Converter={StaticResource NullToBooleanFalseConverter}, FallbackValue=False}">
                                     <b:Interaction.Triggers>
                                         <b:EventTrigger EventName="Click">
                                             <Actions:ClipboardCopyAction CopyText="{Binding ImageList.SelectedImage.Meta.NegativePrompt}"/>
