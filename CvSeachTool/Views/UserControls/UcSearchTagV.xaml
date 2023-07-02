@@ -67,12 +67,15 @@
             </b:Interaction.Triggers>
         </DataGrid>
         <StackPanel Grid.Row="2" Orientation="Horizontal">
-            <Button Margin="5" Content="選択" Cursor="Hand">
+            <Button Margin="5" Cursor="Hand">
                 <b:Interaction.Triggers>
                     <b:EventTrigger EventName="Click">
                         <b:CallMethodAction TargetObject="{Binding}" MethodName="Close"/>
                     </b:EventTrigger>
                 </b:Interaction.Triggers>
+                <StackPanel Orientation="Vertical">
+                    <svgc:SvgViewbox Height="10" Source="/Common/Images/select-svgrepo-com.svg" />
+                </StackPanel>
             </Button>
         </StackPanel>
     </Grid>
