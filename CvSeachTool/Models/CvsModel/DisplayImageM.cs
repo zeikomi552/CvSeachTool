@@ -95,7 +95,7 @@ namespace CvSeachTool.Models.CvsModel
 
         #region イメージのリストをセットする
         /// <summary>
-        /// イメージのリストをセットする
+        /// イメージのリストをセットする(フィルタ処理は非同期)
         /// </summary>
         /// <param name="images">イメージリスト</param>
         public void SetImages(ObservableCollection<CvsImages> images)
@@ -104,6 +104,30 @@ namespace CvSeachTool.Models.CvsModel
 
             // フィルタのリフレッシュ
             RefreshFilter();
+        }
+        #endregion
+
+        #region イメージのリストをセットする(フィルタ処理は同期的に行う)
+        /// <summary>
+        /// イメージのリストをセットする(フィルタ処理は同期的に行う)
+        /// </summary>
+        /// <param name="images">イメージ</param>
+        public void SetImages2(ObservableCollection<CvsImages> images)
+        {
+            Images = images;   // イメージのセット
+
+            var tmp = (from x in Images
+                       where ImageNsfwEnumToVisibilityConverter.Convert(x.Nsfw)
+                       select x).ToList<CvsImages>();
+
+            this.FilteredImages = new ObservableCollection<CvsImages>(tmp);
+
+            // フィルター後のイメージが1個以上ある場合
+            if (this.FilteredImages.Any())
+            {
+                // 最初のものを選択する
+                this.SelectedImage = this.FilteredImages.First();
+            }
         }
         #endregion
 

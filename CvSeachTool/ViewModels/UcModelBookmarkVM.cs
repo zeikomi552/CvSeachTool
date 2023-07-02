@@ -1,4 +1,5 @@
 ﻿using CvSeachTool.Common;
+using CvSeachTool.Models;
 using CvSeachTool.Models.Bookmark;
 using CvSeachTool.Models.Config;
 using CvSeachTool.Models.CvsModel;
@@ -411,5 +412,37 @@ namespace CvSeachTool.ViewModels
             }
         }
         #endregion
+
+        #region Promptリスト作成画面へ移動処理
+        /// <summary>
+        /// Promptリスト作成画面へ移動処理
+        /// </summary>
+        public void CreatePromptList()
+        {
+            try
+            {
+                if (this.ImageList != null && this.BookmarkConf != null)
+                {
+                    var tmp = new PromptCountCollectionM();
+                    tmp.InitItems(this.BookmarkConf.Item.Items.ToList<CvsItem>());
+
+                    var wnd = new PromptWindowV();
+                    var vm = wnd.DataContext as PromptWindowVM;
+                    vm!.PromptItems = tmp;
+
+                    if (wnd.ShowDialog() == true)
+                    {
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowMessage.ShowErrorOK(ex.Message, "Error");
+            }
+        }
+        #endregion
+
+
     }
 }

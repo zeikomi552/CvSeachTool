@@ -84,6 +84,18 @@
                                 <svgc:SvgViewbox Width="25" Source="/Common/Images/delete-recycle-bin-trash-can-svgrepo-com.svg" />
                             </StackPanel>
                         </Button>
+
+                        <Button Margin="5" ToolTip="Check the prompts">
+                            <b:Interaction.Triggers>
+                                <b:EventTrigger EventName="Click">
+                                    <b:CallMethodAction TargetObject="{Binding}" MethodName="CreatePromptList"/>
+                                </b:EventTrigger>
+                            </b:Interaction.Triggers>
+                            <StackPanel Orientation="Vertical">
+                                <svgc:SvgViewbox Height="20" Source="/Common/Images/magic-square-3-svgrepo-com.svg" />
+                            </StackPanel>
+                        </Button>
+
                     </StackPanel>
                     <DataGrid Grid.Row="1" AutoGenerateColumns="False" Margin="5,5,5,5"
                               IsReadOnly="True" ItemsSource="{Binding BookmarkConf.Item.Items}" 

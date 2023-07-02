@@ -6,8 +6,10 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
+using static CvSeachTool.Models.CvsModel.CvsModelM.CvsModelVersions;
 
 namespace CvSeachTool.Models
 {
@@ -105,6 +107,21 @@ namespace CvSeachTool.Models
         /// </summary>
         /// <param name="cvsimg">CIVITAI用イメージ要素</param>
         public void InitItems(CvsModelExM cvsimg)
+        {
+            // プロンプトリストの初期化
+            CreatePromptItems(cvsimg, false);
+
+            // ネガティブプロンプトリストの初期化
+            CreatePromptItems(cvsimg, true);
+        }
+        #endregion
+
+        #region プロンプトリストの初期化
+        /// <summary>
+        /// プロンプトリストの初期化
+        /// </summary>
+        /// <param name="cvsimg">CIVITAI用イメージ要素</param>
+        public void InitItems(List<CvsModelM.CvsItem> cvsimg)
         {
             // プロンプトリストの初期化
             CreatePromptItems(cvsimg, false);
@@ -324,5 +341,92 @@ namespace CvSeachTool.Models
         }
         #endregion
 
+        #region Promptリストの初期化
+        /// <summary>
+        /// Promptリストの初期化
+        /// </summary>
+        /// <param name="cvsimg">Civitai用イメージ</param>
+        /// <param name="negative_prompt_f">false:Promptのセット true:ネガティブプロンプトのセット</param>
+        public void CreatePromptItems(List<CvsModelM.CvsItem> cvsmodel, bool negative_prompt_f = false)
+        {
+            // ディクショナリで管理
+            Dictionary<string, int> prompt_dic = new Dictionary<string, int>();
+            List<string> id_list = new List<string>();
+            var image_list = new CvsModel.DisplayImageM();
+
+            List<CvsImages> tmp_img = new List<CvsImages>();
+
+            // モデルバージョン分イメージをリストにセット
+            foreach (var cvs in cvsmodel)
+            {
+                foreach (var model_ver in cvs.ModelVersions)
+                {
+                    // イメージをリストにセット
+                    tmp_img.AddRange(model_ver.Images);
+                }
+            }
+
+            // イメージをセットする
+            image_list.SetImages2(new ObservableCollection<CvsImages>(tmp_img));
+
+            // イメージを一通り回す
+            foreach (var item in image_list.FilteredImages)
+            {
+                // メタ情報のnullチェック
+                if (item.Meta == null)
+                    continue;
+
+                // 既に確認した内容ならば飛ばす
+                if (id_list.Contains(item.Url))
+                    continue;
+                else
+                    id_list.Add(item.Url);
+
+                // >の後は何故か,で区切られてないことが多いので,を追加
+                string prompt = negative_prompt_f ? item.Meta.NegativPrompt.Replace(">", ">,") : item.Meta.Prompt.Replace(">", ">,");
+
+                // 分割
+                string[] prompt_list = prompt.Split(",");
+
+                // プロンプトリストを回す
+                foreach (var pitem in prompt_list)
+                {
+                    // (や)を外す
+                    string key = pitem.Trim().Replace("(", "").Replace(")", "").ToLower();
+
+                    // プロンプトが登録されていない場合無視
+                    if (string.IsNullOrEmpty(key))
+                    {
+                        continue;
+                    }
+
+                    // 既に登録済みかを確認
+                    if (prompt_dic.ContainsKey(key))
+                    {
+                        prompt_dic[key]++;  // カウントアップ
+                    }
+                    else
+                    {
+                        prompt_dic.Add(key, 1); // 初期登録
+                    }
+                }
+            }
+
+            // ソート
+            var tmp = (from x in prompt_dic
+                       select new PromptCountM { Prompt = x.Key, Count = x.Value }).OrderByDescending(x => x.Count).ThenBy(x => x.Prompt).ToList();
+
+            if (negative_prompt_f)
+            {
+                // 要素にセット
+                this.NegativePromptItems.Items = new ObservableCollection<PromptCountM>(tmp);
+            }
+            else
+            {
+                // 要素にセット
+                this.PromptItems.Items = new ObservableCollection<PromptCountM>(tmp);
+            }
+        }
+        #endregion
     }
 }
