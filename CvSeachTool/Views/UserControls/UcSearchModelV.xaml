@@ -267,7 +267,7 @@
                                         <svgc:SvgViewbox Height="10" Source="/Common/Images/arrowright-svgrepo-com.svg" />
                                     </StackPanel>
                                 </Button>
-                                <Button  Margin="5" Cursor="Hand">
+                                <Button  Margin="5" Cursor="Hand" ToolTip="Output to markdown">
                                     <b:Interaction.Triggers>
                                         <b:EventTrigger EventName="Click">
                                             <b:CallMethodAction TargetObject="{Binding}" MethodName="Output2"/>
@@ -277,7 +277,7 @@
                                         <svgc:SvgViewbox Source="/Common/Images/markdown-svgrepo-com.svg" />
                                     </StackPanel>
                                 </Button>
-                                <Button Margin="5">
+                                <Button Margin="5" ToolTip="Check the prompts">
                                     <b:Interaction.Triggers>
                                         <b:EventTrigger EventName="Click">
                                             <b:CallMethodAction TargetObject="{Binding}" MethodName="CreatePromptList"/>
