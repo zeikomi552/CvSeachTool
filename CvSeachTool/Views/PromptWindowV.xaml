@@ -10,7 +10,7 @@
         xmlns:ViewModels="clr-namespace:CvSeachTool.ViewModels" x:Name="metroWindow" x:Class="CvSeachTool.Views.PromptWindowV"
         xmlns:b="http://schemas.microsoft.com/xaml/behaviors" 
         mc:Ignorable="d"
-        Title="PromptMaker" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+        Title="Prompt Tool" Height="450" Width="800" WindowStartupLocation="CenterScreen" TitleCharacterCasing="Normal">
     <mah:MetroWindow.DataContext>
         <ViewModels:PromptWindowVM x:Name="vm"/>
     </mah:MetroWindow.DataContext>

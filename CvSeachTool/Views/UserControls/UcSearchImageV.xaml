@@ -10,11 +10,11 @@
              xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
              xmlns:Actions="clr-namespace:CvSeachTool.Common.Actions"
              xmlns:local="clr-namespace:CvSeachTool.Views.UserControls"
-             xmlns:ViewModels="clr-namespace:CvSeachTool.ViewModels" x:Class="CvSeachTool.Views.UserControls.UcSearchImageV"
+             xmlns:ViewModels="clr-namespace:CvSeachTool.ViewModels" x:Name="userControl" x:Class="CvSeachTool.Views.UserControls.UcSearchImageV"
              mc:Ignorable="d" 
              d:DesignHeight="800" d:DesignWidth="1200">
     <UserControl.DataContext>
-        <ViewModels:UcSearchImageVM/>
+        <ViewModels:UcSearchImageVM x:Name="vm"/>
     </UserControl.DataContext>
     <UserControl.Resources>
         <Converters:NullToBooleanFalseConverter x:Key="NullToBooleanFalseConverter"/>
@@ -264,6 +264,13 @@
                                                             </b:EventTrigger>
                                                         </b:Interaction.Triggers>
                                                     </MenuItem>
+                                                    <MenuItem Header="Open PromptTool">
+                                                        <b:Interaction.Triggers>
+                                                            <b:EventTrigger EventName="Click">
+                                                                <b:CallMethodAction TargetObject="{Binding}" MethodName="OpenPromptTool"/>
+                                                            </b:EventTrigger>
+                                                        </b:Interaction.Triggers>
+                                                    </MenuItem>
                                                 </ContextMenu>
                                             </Image.ContextMenu>
                                         </Image>
@@ -394,7 +401,13 @@
                                     </b:EventTrigger>
                                 </b:Interaction.Triggers>
                             </MenuItem>
-
+                            <MenuItem Header="Open PromptTool">
+                                <b:Interaction.Triggers>
+                                    <b:EventTrigger EventName="Click">
+                                        <b:CallMethodAction TargetObject="{Binding}" MethodName="OpenPromptToolSingle"/>
+                                    </b:EventTrigger>
+                                </b:Interaction.Triggers>
+                            </MenuItem>
                         </ContextMenu>
                     </Image.ContextMenu>
                 </Image>

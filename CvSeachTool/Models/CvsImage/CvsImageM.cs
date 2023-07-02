@@ -2,6 +2,8 @@
 using CvSeachTool.Common.Commands;
 using CvSeachTool.Common.Enums;
 using CvSeachTool.Models.CvsModel;
+using CvSeachTool.ViewModels;
+using CvSeachTool.Views;
 using MVVMCore.BaseClass;
 using MVVMCore.Common.Utilities;
 using MVVMCore.Common.Wrapper;
@@ -877,6 +879,21 @@ namespace CvSeachTool.Models.CvsImage
                 }
             }
             #endregion
+
+            public void OpenPromptTool()
+            {
+                var tmp = new PromptCountCollectionM();
+                tmp.InitItems(this);
+
+                var wnd = new PromptWindowV();
+                var vm = wnd.DataContext as PromptWindowVM;
+                vm!.PromptItems = tmp;
+
+                if (wnd.ShowDialog() == true)
+                {
+
+                }
+            }
 
             #region URLのクリップボードへのコピー
             /// <summary>

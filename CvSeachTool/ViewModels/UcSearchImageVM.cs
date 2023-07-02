@@ -388,6 +388,37 @@ namespace CvSeachTool.ViewModels
         }
         #endregion
 
+        #region プロンプトツールの起動
+        /// <summary>
+        /// プロンプトツールの起動
+        /// </summary>
+        public void OpenPromptToolSingle()
+        {
+            try
+            {
+                if (this.CvsImage != null)
+                {
+                    var tmp = new PromptCountCollectionM();
+                    var list_items = new List<CvsItem>();
+                    tmp.InitItems(this.CvsImage.Items.SelectedItem);
+
+                    var wnd = new PromptWindowV();
+                    var vm = wnd.DataContext as PromptWindowVM;
+                    vm!.PromptItems = tmp;
+
+                    if (wnd.ShowDialog() == true)
+                    {
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowMessage.ShowErrorOK(ex.Message, "Error");
+            }
+        }
+        #endregion
+
         #region JSONリクエストのコピー
         /// <summary>
         /// JSONリクエストのコピー
