@@ -68,7 +68,7 @@
             </b:Interaction.Triggers>
         </DataGrid>
         <StackPanel Grid.Row="2" Orientation="Horizontal">
-            <Button Margin="5" Cursor="Hand">
+            <Button Margin="5" Cursor="">
                 <b:Interaction.Triggers>
                     <b:EventTrigger EventName="Click">
                         <b:CallMethodAction TargetObject="{Binding}" MethodName="Close"/>
