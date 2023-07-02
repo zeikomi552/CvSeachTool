@@ -16,6 +16,7 @@ using System.Threading.Tasks;
 using static CvSeachTool.Models.CvsModel.CvsModelM.CvsModelVersions;
 using static CvSeachTool.Models.CvsImage.CvsImageM;
 using CvSeachTool.Models.CvsImage;
+using CvSeachTool.Models;
 
 namespace CvSeachTool.ViewModels
 {
@@ -404,5 +405,34 @@ namespace CvSeachTool.ViewModels
         }
         #endregion
 
+        #region Promptリスト作成画面へ移動処理
+        /// <summary>
+        /// Promptリスト作成画面へ移動処理
+        /// </summary>
+        public void CreatePromptList()
+        {
+            try
+            {
+                if (this.ImageList != null)
+                {
+                    var tmp = new PromptCountCollectionM();
+                    tmp.InitItems(this.ImageList);
+
+                    var wnd = new PromptWindowV();
+                    var vm = wnd.DataContext as PromptWindowVM;
+                    vm!.PromptItems = tmp;
+
+                    if (wnd.ShowDialog() == true)
+                    {
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowMessage.ShowErrorOK(ex.Message, "Error");
+            }
+        }
+        #endregion
     }
 }

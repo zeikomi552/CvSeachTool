@@ -358,6 +358,10 @@ namespace CvSeachTool.ViewModels
         }
         #endregion
 
+        #region Promptリスト作成画面へ移動処理
+        /// <summary>
+        /// Promptリスト作成画面へ移動処理
+        /// </summary>
         public void CreatePromptList()
         {
             try
@@ -382,6 +386,7 @@ namespace CvSeachTool.ViewModels
                 ShowMessage.ShowErrorOK(ex.Message, "Error");
             }
         }
+        #endregion
 
         #region JSONリクエストのコピー
         /// <summary>

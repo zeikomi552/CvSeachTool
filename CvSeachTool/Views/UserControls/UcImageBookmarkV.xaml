@@ -80,6 +80,17 @@
                                 <svgc:SvgViewbox Width="25" Source="/Common/Images/delete-recycle-bin-trash-can-svgrepo-com.svg" />
                             </StackPanel>
                         </Button>
+                        <Button Margin="5">
+                            <b:Interaction.Triggers>
+                                <b:EventTrigger EventName="Click">
+                                    <b:CallMethodAction TargetObject="{Binding}" MethodName="CreatePromptList"/>
+                                </b:EventTrigger>
+                            </b:Interaction.Triggers>
+                            <StackPanel Orientation="Vertical">
+                                <svgc:SvgViewbox Height="20" Source="/Common/Images/magic-square-3-svgrepo-com.svg" />
+                            </StackPanel>
+                        </Button>
+
                     </StackPanel>
                 </Grid>
                 <ListView Grid.Row="1" Margin="5,5,5,5" x:Name="lvImages" ItemsSource="{Binding ImageList.FilteredImages}"
