@@ -12,11 +12,25 @@
         <ViewModels:PromptWindowVM/>
     </mah:MetroWindow.DataContext>
     <Grid>
-        <DataGrid IsReadOnly="True" AutoGenerateColumns="False" Margin="5" ItemsSource="{Binding PromptItems.PromptItems.Items}">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Prompt" Binding="{Binding Prompt}"/>
-                <DataGridTextColumn Header="Count" Binding="{Binding Count}"/>
-            </DataGrid.Columns>
-        </DataGrid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <GroupBox Header="Prompt">
+            <DataGrid IsReadOnly="True" AutoGenerateColumns="False" Margin="5" ItemsSource="{Binding PromptItems.PromptItems.Items}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Prompt" Binding="{Binding Prompt}"/>
+                    <DataGridTextColumn Header="Count" Binding="{Binding Count}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </GroupBox>
+        <GroupBox Header="Negative Prompt" Grid.Column="1">
+            <DataGrid IsReadOnly="True" AutoGenerateColumns="False" Margin="5" ItemsSource="{Binding PromptItems.NegativePromptItems.Items}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Prompt" Binding="{Binding Prompt}"/>
+                    <DataGridTextColumn Header="Count" Binding="{Binding Count}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </GroupBox>
     </Grid>
 </mah:MetroWindow>

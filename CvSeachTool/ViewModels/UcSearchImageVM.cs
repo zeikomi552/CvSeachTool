@@ -365,7 +365,7 @@ namespace CvSeachTool.ViewModels
                 if (this.CvsImage != null)
                 {
                     var tmp = new PromptCountCollectionM();
-                    tmp.CreatePromptItems(this.CvsImage);
+                    tmp.InitItems(this.CvsImage);
 
                     var wnd = new PromptWindowV();
                     var vm = wnd.DataContext as PromptWindowVM;
