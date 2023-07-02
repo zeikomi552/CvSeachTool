@@ -659,6 +659,36 @@ namespace CvSeachTool.ViewModels
         }
         #endregion
 
+        #region Promptリスト作成画面へ移動処理
+        /// <summary>
+        /// Promptリスト作成画面へ移動処理
+        /// </summary>
+        public void CreatePromptList()
+        {
+            try
+            {
+                if (this.CvsModel != null)
+                {
+                    var tmp = new PromptCountCollectionM();
+                    tmp.InitItems(this.CvsModel);
+
+                    var wnd = new PromptWindowV();
+                    var vm = wnd.DataContext as PromptWindowVM;
+                    vm!.PromptItems = tmp;
+
+                    if (wnd.ShowDialog() == true)
+                    {
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowMessage.ShowErrorOK(ex.Message, "Error");
+            }
+        }
+        #endregion
+
         #region 画面初期化処理
         /// <summary>
         /// 画面初期化処理
