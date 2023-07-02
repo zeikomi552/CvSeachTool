@@ -358,6 +358,30 @@ namespace CvSeachTool.ViewModels
         }
         #endregion
 
+        public void CreatePromptList()
+        {
+            try
+            {
+                if (this.CvsImage != null)
+                {
+                    var tmp = new PromptCountCollectionM();
+                    tmp.CreatePromptItems(this.CvsImage);
+
+                    var wnd = new PromptWindowV();
+                    var vm = wnd.DataContext as PromptWindowVM;
+                    vm!.PromptItems = tmp;
+
+                    if (wnd.ShowDialog() == true)
+                    {
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowMessage.ShowErrorOK(ex.Message, "Error");
+            }
+        }
 
         #region JSONリクエストのコピー
         /// <summary>
