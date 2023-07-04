@@ -577,6 +577,13 @@
                                                         </b:Interaction.Triggers>
                                                     </MenuItem>
                                                 </MenuItem>
+                                                <MenuItem Header="Open PromptTool">
+                                                    <b:Interaction.Triggers>
+                                                        <b:EventTrigger EventName="Click">
+                                                            <b:CallMethodAction TargetObject="{Binding}" MethodName="OpenPromptTool"/>
+                                                        </b:EventTrigger>
+                                                    </b:Interaction.Triggers>
+                                                </MenuItem>
                                             </ContextMenu>
                                         </Image.ContextMenu>
                                     </Image>

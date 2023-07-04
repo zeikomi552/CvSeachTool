@@ -14,6 +14,7 @@ using CvSeachTool.ViewModels;
 using MVVMCore.Common.Utilities;
 using CvSeachTool.Common;
 using System.IO;
+using CvSeachTool.Views;
 
 namespace CvSeachTool.Models.CvsModel
 {
@@ -854,8 +855,23 @@ namespace CvSeachTool.Models.CvsModel
                         }
                         catch { }
                     }
-
                 }
+                #region プロンプトツールの起動
+                public void OpenPromptTool()
+                {
+                    var tmp = new PromptCountCollectionM();
+                    tmp.InitItems(this);
+
+                    var wnd = new PromptWindowV();
+                    var vm = wnd.DataContext as PromptWindowVM;
+                    vm!.PromptItems = tmp;
+
+                    if (wnd.ShowDialog() == true)
+                    {
+
+                    }
+                }
+                #endregion
 
 
 
