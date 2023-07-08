@@ -316,21 +316,21 @@
                                                     <MenuItem Header="ModelId">
                                                         <b:Interaction.Triggers>
                                                             <b:EventTrigger EventName="Click">
-                                                                <b:CallMethodAction TargetObject="{Binding}" MethodName="ClipboardModelId"/>
+                                                                <Actions:ClipboardCopyAction CopyText="{Binding Id}"/>
                                                             </b:EventTrigger>
                                                         </b:Interaction.Triggers>
                                                     </MenuItem>
                                                     <MenuItem Header="ModelName">
                                                         <b:Interaction.Triggers>
                                                             <b:EventTrigger EventName="Click">
-                                                                <b:CallMethodAction TargetObject="{Binding}" MethodName="ClipboardName"/>
+                                                                <Actions:ClipboardCopyAction CopyText="{Binding Name}"/>
                                                             </b:EventTrigger>
                                                         </b:Interaction.Triggers>
                                                     </MenuItem>
                                                     <MenuItem Header="Username">
                                                         <b:Interaction.Triggers>
                                                             <b:EventTrigger EventName="Click">
-                                                                <b:CallMethodAction TargetObject="{Binding}" MethodName="ClipboardUsername"/>
+                                                                <Actions:ClipboardCopyAction CopyText="{Binding Creator.Username}"/>
                                                             </b:EventTrigger>
                                                         </b:Interaction.Triggers>
                                                     </MenuItem>

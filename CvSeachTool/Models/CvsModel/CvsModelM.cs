@@ -1390,47 +1390,6 @@ namespace CvSeachTool.Models.CvsModel
                 }
             }
             #endregion
-
-            #region モデル名のコピー
-            /// <summary>
-            /// モデル名のコピー
-            /// </summary>
-            public void ClipboardName()
-            {
-                try
-                {
-                    Clipboard.SetText(this.Name);
-                }
-                catch { }
-            }
-            #endregion
-
-            #region Idのコピー
-            /// <summary>
-            /// Idのコピー
-            /// </summary>
-            public void ClipboardModelId()
-            {
-                try
-                {
-                    Clipboard.SetText(this.Id.ToString());
-                }
-                catch { }
-            }
-            #endregion
-            #region DownloadURLのコピー
-            /// <summary>
-            /// DownloadURLのコピー
-            /// </summary>
-            public void ClipboardDownloadURL()
-            {
-                try
-                {
-                    Clipboard.SetText(this.DownloadUrl);
-                }
-                catch { }
-            }
-            #endregion
         }
         #endregion
 
