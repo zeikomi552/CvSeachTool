@@ -149,9 +149,9 @@
                                 </StackPanel>
 
                             </Button>
-                            <TextBlock MinWidth="25" Text="{Binding CvsImage.Metadata.CurrentPage}" TextAlignment="Center" VerticalAlignment="Center"/>
+                            <!--<TextBlock MinWidth="25" Text="{Binding CvsImage.Metadata.CurrentPage}" TextAlignment="Center" VerticalAlignment="Center"/>
                             <TextBlock Text="/" TextAlignment="Center" VerticalAlignment="Center"/>
-                            <TextBlock MinWidth="25" Text="{Binding CvsImage.Metadata.TotalPages}" TextAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBlock MinWidth="25" Text="{Binding CvsImage.Metadata.TotalPages}" TextAlignment="Center" VerticalAlignment="Center"/>-->
                             <Button Margin="5,0" IsEnabled="{Binding ExecuteGetAPI, Converter={StaticResource ConvertBooleanConverter}}" Cursor="Hand">
                                 <b:Interaction.Triggers>
                                     <b:EventTrigger EventName="Click">
