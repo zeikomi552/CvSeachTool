@@ -1,4 +1,5 @@
 ﻿using CvSeachTool.Common.Enums;
+using CvSeachTool.Models.CvsImage;
 using MVVMCore.BaseClass;
 using System;
 using System.Collections.Generic;
@@ -110,7 +111,6 @@ namespace CvSeachTool.Models.Condition
         }
         #endregion
 
-
         #region The page from which to start fetching models[Page ]プロパティ
         /// <summary>
         /// The page from which to start fetching models[Page ]プロパティ用変数
@@ -131,6 +131,31 @@ namespace CvSeachTool.Models.Condition
                 {
                     _Page = value;
                     NotifyPropertyChanged("Page");
+                }
+            }
+        }
+        #endregion
+
+        #region カーソルリスト[CursorList]プロパティ
+        /// <summary>
+        /// カーソルリスト[CursorList]プロパティ用変数
+        /// </summary>
+        Dictionary<int, string> _CursorList = new Dictionary<int, string>();
+        /// <summary>
+        /// カーソルリスト[CursorList]プロパティ
+        /// </summary>
+        public Dictionary<int, string> CursorList
+        {
+            get
+            {
+                return _CursorList;
+            }
+            set
+            {
+                if (_CursorList == null || !_CursorList.Equals(value))
+                {
+                    _CursorList = value;
+                    NotifyPropertyChanged("CursorList");
                 }
             }
         }
@@ -161,7 +186,6 @@ namespace CvSeachTool.Models.Condition
         }
         #endregion
 
-
         #region The time frame in which the models will be sorted[Period]プロパティ
         /// <summary>
         /// The time frame in which the models will be sorted[Period]プロパティ用変数
@@ -186,7 +210,6 @@ namespace CvSeachTool.Models.Condition
             }
         }
         #endregion
-
 
         #region If false, will return safer images and hide models that don't have safe images[Nsfw]プロパティ
         /// <summary>
@@ -262,12 +285,40 @@ namespace CvSeachTool.Models.Condition
                 if (this.Period.HasValue && !this.Period.Equals(ModelPeriodEnum.Empty)) query += $"&period={this.Period.Value}";
                 if (this.Nsfw.HasValue) query += $"&nsfw={this.Nsfw.Value}";
                 if (this.Sort.HasValue && !this.Sort.Equals(ModelSortEnum2.Empty)) query += $"&sort={this.Sort.Value.ToString().Replace("_", "+")}";
-                if (this.Page.HasValue) query += $"&page={this.Page.Value}";
+                //if (this.Page.HasValue) query += $"&page={this.Page.Value}";
 
                 return "?" + query;
-
             }
         }
         #endregion
+
+        /// <summary>
+        /// カーソルのクリア
+        /// </summary>
+        public void CursorClear()
+        {
+            this.CursorList.Clear();
+        }
+
+        /// <summary>
+        /// カーソルの追加
+        /// </summary>
+        /// <param name="img">イメージモデル</param>
+        public void AddCursor(CvsImageExM img)
+        {
+            // nullチェック
+            if (img != null && img.Metadata != null && img.Metadata.NextCursor != null)
+            {
+                // 次のカーソルのセット
+                this.CursorList.Add(img.Metadata.NextCursor.Value, img.Metadata.NextPage);
+            }
+        }
+        public void RemoveLastCursor()
+        {
+            if (this.CursorList.Count > 0)
+            {
+                this.CursorList.Remove(this.CursorList.LastOrDefault().Key);
+            }
+        }
     }
 }

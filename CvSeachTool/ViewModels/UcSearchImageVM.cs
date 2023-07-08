@@ -201,8 +201,18 @@ namespace CvSeachTool.ViewModels
         {
             try
             {
+                // カーソル情報のクリア
+                this.SearchCondition.CursorClear();
+
                 // GET クエリの実行
                 GETQuery(sender, this.SearchCondition.GetConditionQuery);
+
+                // nullチェック
+                if (this.CvsImage != null)
+                {
+                    // カーソルの追加
+                    this.SearchCondition.AddCursor(this.CvsImage);
+                }
             }
             catch (Exception e)
             {
@@ -249,10 +259,6 @@ namespace CvSeachTool.ViewModels
                     this.CvsImage!.Rowdata = request;               // 生データの保持
                     this.CvsImage!.RequestURL = url;               // 生データの保持
 
-                    //var tmp = from x in request_model.Items where x.NsfwLevel
-                    //this.FilteredCvsImage = new CvsImageExM();
-
-
                     // 1つ以上要素が存在する場合
                     if (this.CvsImage.Items.Count > 0)
                     {
@@ -290,10 +296,17 @@ namespace CvSeachTool.ViewModels
                 if (this.CvsImage != null)
                 {
                     // 次のページが最終ページより前である場合
-                    if (this.CvsImage.Metadata.CurrentPage + 1 <= CvsImage.Metadata.TotalPages)
+                    if (!string.IsNullOrEmpty(this.CvsImage.Metadata.NextPage))
                     {
                         // Execute GET Query
                         GETQuery(sender, this.CvsImage.Metadata.NextPage, false);
+
+                        // nullチェック
+                        if (this.CvsImage != null)
+                        {
+                            // カーソルの追加
+                            this.SearchCondition.AddCursor(this.CvsImage);
+                        }
                     }
                 }
             }
@@ -316,10 +329,11 @@ namespace CvSeachTool.ViewModels
                 if (this.CvsImage != null)
                 {
                     // 前のページが1より大きい場合
-                    if (this.CvsImage.Metadata.CurrentPage - 1 >= 1)
+                    if (this.SearchCondition.CursorList.Count > 1)
                     {
+                        this.SearchCondition.RemoveLastCursor();
                         // Execute GET Query
-                        GETQuery(sender, this.CvsImage.Metadata.PrevPage, false);
+                        GETQuery(sender, this.SearchCondition.CursorList.LastOrDefault().Value, false);
                     }
                 }
             }

@@ -165,5 +165,31 @@ namespace CvSeachTool.Models.CvsModel
             }
         }
         #endregion
+
+        #region 次のカーソル[NextCursor]プロパティ
+        /// <summary>
+        /// 次のカーソル[NextCursor]プロパティ用変数
+        /// </summary>
+        int? _NextCursor = null;
+        /// <summary>
+        /// 次のカーソル[NextCursor]プロパティ
+        /// </summary>
+        [JsonPropertyName("nextCursor")]
+        public int? NextCursor
+        {
+            get
+            {
+                return _NextCursor;
+            }
+            set
+            {
+                if (_NextCursor == null || !_NextCursor.Equals(value))
+                {
+                    _NextCursor = value;
+                    NotifyPropertyChanged("NextCursor");
+                }
+            }
+        }
+        #endregion
     }
 }
