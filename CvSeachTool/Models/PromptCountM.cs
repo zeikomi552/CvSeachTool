@@ -23,7 +23,21 @@ namespace CvSeachTool.Models
         {
             get
             {
-                return _Prompt;
+                string text = _Prompt;
+
+                if (_Prompt.Contains(':'))
+                {
+                    text = $"({_Prompt})";
+                    if (_Prompt.Contains('<') || _Prompt.Contains('>'))
+                    {
+                        text = _Prompt;
+                    }
+                }
+                else
+                {
+                    text = _Prompt;
+                }
+                return text;
             }
             set
             {
@@ -60,7 +74,5 @@ namespace CvSeachTool.Models
             }
         }
         #endregion
-
-
     }
 }
