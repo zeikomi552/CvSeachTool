@@ -875,6 +875,8 @@ namespace CvSeachTool.Models.CvsModel
 
 
 
+
+
                 #endregion
 
                 #region The url for the image[Url]プロパティ

@@ -156,6 +156,21 @@ namespace CvSeachTool.Models
         /// プロンプトリストの初期化
         /// </summary>
         /// <param name="cvsimg">CIVITAI用イメージ要素</param>
+        public void InitItems(List<CvsModelM.CvsItem> cvsimg)
+        {
+            // プロンプトリストの初期化
+            CreatePromptItems(cvsimg, false);
+
+            // ネガティブプロンプトリストの初期化
+            CreatePromptItems(cvsimg, true);
+        }
+        #endregion
+
+        #region プロンプトリストの初期化
+        /// <summary>
+        /// プロンプトリストの初期化
+        /// </summary>
+        /// <param name="cvsimg">CIVITAI用イメージ要素</param>
         public void InitItems(CvsModelExM cvsimg)
         {
             if (cvsimg != null && cvsimg.Items != null && cvsimg.Items.Items != null)
@@ -176,21 +191,6 @@ namespace CvSeachTool.Models
             var list = new List<CvsModelM.CvsItem>();
             list.Add(cvsimg);
             InitItems(list);
-        }
-        #endregion
-
-        #region プロンプトリストの初期化
-        /// <summary>
-        /// プロンプトリストの初期化
-        /// </summary>
-        /// <param name="cvsimg">CIVITAI用イメージ要素</param>
-        public void InitItems(List<CvsModelM.CvsItem> cvsimg)
-        {
-            // プロンプトリストの初期化
-            CreatePromptItems(cvsimg, false);
-
-            // ネガティブプロンプトリストの初期化
-            CreatePromptItems(cvsimg, true);
         }
         #endregion
 

@@ -880,6 +880,10 @@ namespace CvSeachTool.Models.CvsImage
             }
             #endregion
 
+            #region プロンプトツールを開く処理
+            /// <summary>
+            /// プロンプトツールを開く処理
+            /// </summary>
             public void OpenPromptTool()
             {
                 var tmp = new PromptCountCollectionM();
@@ -894,6 +898,7 @@ namespace CvSeachTool.Models.CvsImage
 
                 }
             }
+            #endregion
 
             #region ブックマークへ追加
             /// <summary>
