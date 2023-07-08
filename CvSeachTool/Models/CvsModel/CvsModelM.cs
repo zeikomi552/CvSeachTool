@@ -829,32 +829,6 @@ namespace CvSeachTool.Models.CvsModel
                         }
                     }
                     #endregion
-
-
-
-                    /// <summary>
-                    /// プロンプトのコピー
-                    /// </summary>
-                    public void CopyClipbordPrompt()
-                    {
-                        try
-                        {
-                            Clipboard.SetText(Prompt);
-                        }
-                        catch { }
-                    }
-
-                    /// <summary>
-                    /// ネガティブプロンプトのコピー
-                    /// </summary>
-                    public void CopyClipbordNegativePrompt()
-                    {
-                        try
-                        {
-                            Clipboard.SetText(NegativPrompt);
-                        }
-                        catch { }
-                    }
                 }
                 #region プロンプトツールの起動
                 public void OpenPromptTool()
