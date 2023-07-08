@@ -94,11 +94,11 @@
                                               SelectedValue="{Binding SearchCondition.Period, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                                               DisplayMemberPath="Description" SelectedValuePath="Value"  />
                     </StackPanel>
-                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                    <!--<StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
                         <TextBlock Width="auto" TextAlignment="Right" VerticalAlignment="Center" Margin="5" Text="Page"/>
                         <TextBlock VerticalAlignment="Center" Margin="5" Text=":"/>
                         <TextBox Width="80" Margin="5" Text="{Binding SearchCondition.Page}" VerticalAlignment="Center" TextAlignment="Center"/>
-                    </StackPanel>
+                    </StackPanel>-->
                     <Button Margin="5" IsEnabled="{Binding ExecuteGetAPI, Converter={StaticResource ConvertBooleanConverter}}" Cursor="Hand">
                         <b:Interaction.Triggers>
                             <b:EventTrigger EventName="Click">
@@ -145,13 +145,13 @@
                                     </b:EventTrigger>
                                 </b:Interaction.Triggers>
                                 <StackPanel Orientation="Vertical">
-                                    <svgc:SvgViewbox Height="10" Source="/Common/Images/arrowleft-svgrepo-com.svg" />
+                                    <svgc:SvgViewbox Height="10" Source="/Common/Images/arrowleft-svgrepo-com.svg" Cursor="" />
                                 </StackPanel>
 
                             </Button>
-                            <TextBlock MinWidth="25" Text="{Binding CvsImage.Metadata.CurrentPage}" TextAlignment="Center" VerticalAlignment="Center"/>
+                            <!--<TextBlock MinWidth="25" Text="{Binding CvsImage.Metadata.CurrentPage}" TextAlignment="Center" VerticalAlignment="Center"/>
                             <TextBlock Text="/" TextAlignment="Center" VerticalAlignment="Center"/>
-                            <TextBlock MinWidth="25" Text="{Binding CvsImage.Metadata.TotalPages}" TextAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBlock MinWidth="25" Text="{Binding CvsImage.Metadata.TotalPages}" TextAlignment="Center" VerticalAlignment="Center"/>-->
                             <Button Margin="5,0" IsEnabled="{Binding ExecuteGetAPI, Converter={StaticResource ConvertBooleanConverter}}" Cursor="Hand">
                                 <b:Interaction.Triggers>
                                     <b:EventTrigger EventName="Click">
