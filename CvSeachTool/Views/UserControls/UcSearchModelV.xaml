@@ -313,21 +313,21 @@
                                             <!--右クリックで表示されるメニュー-->
                                             <ContextMenu>
                                                 <MenuItem Header="Clipboard">
-                                                    <MenuItem Header="ModelId">
+                                                    <MenuItem Header="ModelId" IsEnabled="{Binding Id, Converter={StaticResource NullToBooleanFalseConverter}, FallbackValue=False}">
                                                         <b:Interaction.Triggers>
                                                             <b:EventTrigger EventName="Click">
                                                                 <Actions:ClipboardCopyAction CopyText="{Binding Id}"/>
                                                             </b:EventTrigger>
                                                         </b:Interaction.Triggers>
                                                     </MenuItem>
-                                                    <MenuItem Header="ModelName">
+                                                    <MenuItem Header="ModelName" IsEnabled="{Binding Name, Converter={StaticResource NullToBooleanFalseConverter}, FallbackValue=False}">
                                                         <b:Interaction.Triggers>
                                                             <b:EventTrigger EventName="Click">
                                                                 <Actions:ClipboardCopyAction CopyText="{Binding Name}"/>
                                                             </b:EventTrigger>
                                                         </b:Interaction.Triggers>
                                                     </MenuItem>
-                                                    <MenuItem Header="Username">
+                                                    <MenuItem Header="Username" IsEnabled="{Binding Creator.Username, Converter={StaticResource NullToBooleanFalseConverter}, FallbackValue=False}">
                                                         <b:Interaction.Triggers>
                                                             <b:EventTrigger EventName="Click">
                                                                 <Actions:ClipboardCopyAction CopyText="{Binding Creator.Username}"/>
@@ -393,21 +393,21 @@
                                             <!--右クリックで表示されるメニュー-->
                                             <ContextMenu>
                                                 <MenuItem Header="Clipboard">
-                                                    <MenuItem Header="ModelId">
+                                                    <MenuItem Header="ModelId" IsEnabled="{Binding Id, Converter={StaticResource NullToBooleanFalseConverter}, FallbackValue=False}">
                                                         <b:Interaction.Triggers>
                                                             <b:EventTrigger EventName="Click">
                                                                 <Actions:ClipboardCopyAction CopyText="{Binding Id}"/>
                                                             </b:EventTrigger>
                                                         </b:Interaction.Triggers>
                                                     </MenuItem>
-                                                    <MenuItem Header="ModelName">
+                                                    <MenuItem Header="ModelName" IsEnabled="{Binding Name, Converter={StaticResource NullToBooleanFalseConverter}, FallbackValue=False}">
                                                         <b:Interaction.Triggers>
                                                             <b:EventTrigger EventName="Click">
                                                                 <Actions:ClipboardCopyAction CopyText="{Binding Name}"/>
                                                             </b:EventTrigger>
                                                         </b:Interaction.Triggers>
                                                     </MenuItem>
-                                                    <MenuItem Header="DownloadURL">
+                                                    <MenuItem Header="DownloadURL" IsEnabled="{Binding DownloadUrl, Converter={StaticResource NullToBooleanFalseConverter}, FallbackValue=False}">
                                                         <b:Interaction.Triggers>
                                                             <b:EventTrigger EventName="Click">
                                                                 <Actions:ClipboardCopyAction CopyText="{Binding DownloadUrl}"/>
