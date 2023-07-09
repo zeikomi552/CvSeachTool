@@ -411,5 +411,47 @@ namespace CvSeachTool.Models
             }
         }
         #endregion
+
+        public string AllPrompt
+        {
+            get
+            {
+                string prompt = string.Empty;
+                foreach (var tmp in this.PromptItems.Items)
+                {
+                    if (string.IsNullOrEmpty(prompt))
+                    {
+                        prompt = prompt + tmp.Prompt;
+                    }
+                    else
+                    {
+                        prompt = prompt + "," + tmp.Prompt;
+                    }
+                }
+                return prompt;
+            }
+        }
+
+        public string AllNegativePrompt
+        { 
+            get
+            {
+                string negative = string.Empty;
+                foreach (var tmp in this.NegativePromptItems.Items)
+                {
+                    if (string.IsNullOrEmpty(negative))
+                    {
+                        negative = negative + tmp.Prompt;
+                    }
+                    else
+                    {
+                        negative = negative + "," + tmp.Prompt;
+                    }
+                }
+                return negative;
+            }
+        }
+
+
     }
 }

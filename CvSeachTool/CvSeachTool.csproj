@@ -58,10 +58,16 @@
     <None Update="Common\Images\auto-renewal-2-svgrepo-com.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Common\Images\bookmark-close-fill-1238-svgrepo-com.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Common\Images\bookmark-svgrepo-com.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Common\Images\copy-1-svgrepo-com.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Common\Images\copy-svgrepo-com.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Common\Images\delete-recycle-bin-trash-can-svgrepo-com.svg">

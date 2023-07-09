@@ -185,6 +185,16 @@
                                     <svgc:SvgViewbox Height="20" Source="/Common/Images/magic-square-3-svgrepo-com.svg" />
                                 </StackPanel>
                             </Button>
+                            <Button Margin="5" ToolTip="Bookmark all">
+                                <b:Interaction.Triggers>
+                                    <b:EventTrigger EventName="Click">
+                                        <b:CallMethodAction TargetObject="{Binding}" MethodName="AllBookmark"/>
+                                    </b:EventTrigger>
+                                </b:Interaction.Triggers>
+                                <StackPanel Orientation="Vertical">
+                                    <svgc:SvgViewbox Height="20" Source="/Common/Images/bookmark-close-fill-1238-svgrepo-com.svg" />
+                                </StackPanel>
+                            </Button>
                         </StackPanel>
                     </StackPanel>
                 </GroupBox.Header>

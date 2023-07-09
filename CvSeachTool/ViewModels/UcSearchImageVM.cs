@@ -478,5 +478,25 @@ namespace CvSeachTool.ViewModels
             }
         }
         #endregion
+
+        public void AllBookmark()
+        {
+            try
+            {
+                if (this.CvsImage != null)
+                {
+                    foreach (var img in this.CvsImage.Items)
+                    {
+                        img.IsBookmark = true;
+                        img.ChangeBookmark();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowMessage.ShowErrorOK(ex.Message, "Error");
+            }
+        }
+            
     }
 }
