@@ -187,6 +187,7 @@ namespace CvSeachTool.ViewModels
                 if (this.BookmarkList.SelectedItem != null &&
                     File.Exists(this.BookmarkList.SelectedItem.BookmarkFilePath))
                 {
+
                     // ブックマーク情報の作成
                     this.BookmarkConf = new ConfigManager<ModelList<CvsItem>>(this.Config!.Item.ImageBookmarkDir, this.BookmarkList.SelectedItem.BookmarkFile, new ModelList<CvsItem>());
                     this.BookmarkConf.LoadJSON();

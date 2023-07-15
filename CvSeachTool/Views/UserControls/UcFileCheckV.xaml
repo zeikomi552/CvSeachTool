@@ -49,16 +49,16 @@
                     <svgc:SvgViewbox Source="/Common/Images/auto-renewal-2-svgrepo-com.svg"/>
                 </StackPanel>
             </Button>
-            <!--<Button Cursor="Hand">
+            <Button Cursor="Hand">
                 <b:Interaction.Triggers>
                     <b:EventTrigger EventName="Click">
                         <b:CallMethodAction TargetObject="{Binding}" MethodName="OutputMarkdown"/>
-                    </b:EventTrigger>
+                    </b:EventTrigger>   
                 </b:Interaction.Triggers>
                 <StackPanel Orientation="Vertical">
                     <svgc:SvgViewbox Source="/Common/Images/markdown-svgrepo-com.svg" />
                 </StackPanel>
-            </Button>-->
+            </Button>
         </StackPanel>
 
         <Grid Grid.Row="1">

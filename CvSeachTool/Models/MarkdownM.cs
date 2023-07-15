@@ -38,19 +38,8 @@ namespace CvSeachTool.Models
             int no = 1;
             foreach (var tmp in list_sort)
             {
-                if (!base_prompt.Equals(tmp.BasePrompt))
-                {
-                    base_prompt = tmp.BasePrompt;
-                    sb.AppendLine($"## No.{no++} {tmp.BasePrompt}");
-                }
-                string keyword = tmp.BasePrompt.Replace("(", "").Replace(")", "").Split(":").ElementAt(0);
-                string search = tmp.BasePrompt.Replace("(", "").Replace(")", "").Replace(" ", "+").Split(":").ElementAt(0);
-
+                sb.AppendLine($"## No.{no++} {tmp.Prompt}");
                 sb.AppendLine($"");
-                sb.AppendLine($"[Google画像検索 - {keyword}](https://www.google.co.jp/search?q={search}&tbm=isch)");
-                sb.AppendLine($"");
-
-                //sb.AppendLine($"### {tmp.Prompt}");
                 string img_file_soutai = Path.Combine(Path.GetFileNameWithoutExtension(mk_filepath), mk_filename + "_" + Path.GetFileName(tmp.FilePath));
                 sb.AppendLine($"![]({img_file_soutai})");
                 sb.AppendLine($"");
