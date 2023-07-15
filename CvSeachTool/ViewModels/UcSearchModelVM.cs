@@ -352,22 +352,11 @@ namespace CvSeachTool.ViewModels
 
                     List<CvsImages> tmp_img = new List<CvsImages>();
 
-                    //// モデルバージョン分イメージをリストにセット
-                    //foreach (var modelver in this.CvsModel.Items.SelectedItem.ModelVersions)
-                    //{
-                    //    // イメージをリストにセット
-                    //    tmp_img.AddRange(modelver.Images);
-                    //}
-
-                    //// イメージをセットする
-                    //this.ImageList.SetImages(new ObservableCollection<CvsImages>(tmp_img));
-
                     if (this.CvsModel.Items.SelectedItem.ModelVersions.Count > 0)
                     {
                         // 1つ目の要素をセットする
                         CvsModel.Items.SelectedItem.SelectedModelVersion = this.CvsModel.Items.SelectedItem.ModelVersions.ElementAt(0);
                     }
-
 
                     // 最初の行を選択する
                     this.ImageList.SetFirst();
