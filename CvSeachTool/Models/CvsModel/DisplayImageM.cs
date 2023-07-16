@@ -23,7 +23,7 @@ namespace CvSeachTool.Models.CvsModel
         /// <summary>
         /// イメージフィルタ用[ImageFilter]プロパティ用変数
         /// </summary>
-        ImageNsfwEnum _ImageFilter = new ();
+        ImageNsfwEnum _ImageFilter = ImageNsfwEnum.None;
         /// <summary>
         /// イメージフィルタ用[ImageFilter]プロパティ
         /// </summary>
