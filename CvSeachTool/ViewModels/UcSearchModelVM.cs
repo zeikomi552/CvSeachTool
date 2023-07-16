@@ -26,6 +26,7 @@ using System.Windows.Threading;
 using System.Diagnostics;
 using CvSeachTool.Models.Config;
 using CvSeachTool.Models.Bookmark;
+using CvSeachTool.Common.Commands;
 
 namespace CvSeachTool.ViewModels
 {
@@ -732,5 +733,6 @@ namespace CvSeachTool.ViewModels
             }
         }
         #endregion
+
     }
 }

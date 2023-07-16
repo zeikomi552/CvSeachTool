@@ -7,18 +7,17 @@
              xmlns:my="clr-namespace:CvSeachTool.Common.Utilities"
              xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
              xmlns:Converters="clr-namespace:CvSeachTool.Common.Converters"
+             xmlns:model="clr-namespace:CvSeachTool.Models"
              xmlns:enum="clr-namespace:CvSeachTool.Common.Enums"
              xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:ViewModels="clr-namespace:CvSeachTool.ViewModels"
+             xmlns:VMCmd="clr-namespace:CvSeachTool.ViewModels.Comands"
              xmlns:Actions="clr-namespace:CvSeachTool.Common.Actions"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CvSeachTool.Views.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="800" d:DesignWidth="1200">
-    <UserControl.DataContext>
-        <ViewModels:UcSearchModelVM x:Name="vm"/>
-    </UserControl.DataContext>
     <UserControl.Resources>
         <Converters:NullToBooleanFalseConverter x:Key="NullToBooleanFalseConverter"/>
         <Converters:ConvertBooleanConverter x:Key="ConvertBooleanConverter"/>
@@ -50,7 +49,12 @@
                 <x:Type TypeName="enum:ImageNsfwEnum" />
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
+        <VMCmd:ClipboardCopyCommandM x:Key="cmd"/>
     </UserControl.Resources>
+    <UserControl.DataContext>
+        <ViewModels:UcSearchModelVM/>
+    </UserControl.DataContext>
+
     <b:Interaction.Triggers>
         <b:EventTrigger>
             <b:CallMethodAction TargetObject="{Binding}" MethodName="Init"/>
@@ -333,6 +337,15 @@
                                                                 <Actions:ClipboardCopyAction CopyText="{Binding Creator.Username}"/>
                                                             </b:EventTrigger>
                                                         </b:Interaction.Triggers>
+                                                    </MenuItem>
+                                                    <MenuItem Header="Tags" ItemsSource="{Binding Tags}">
+                                                        <MenuItem.ItemContainerStyle>
+                                                            <Style  TargetType="{x:Type MenuItem}" BasedOn="{StaticResource MaterialDesignMenuItem}">
+                                                                <Setter Property="Header" Value="{Binding}"/>
+                                                                <Setter Property="Command" Value="{Binding ClipboardCopy, Source={StaticResource cmd}}"/>
+                                                                <Setter Property="CommandParameter" Value="{Binding}"/>
+                                                            </Style>
+                                                        </MenuItem.ItemContainerStyle>
                                                     </MenuItem>
                                                 </MenuItem>
                                             </ContextMenu>
