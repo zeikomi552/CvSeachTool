@@ -232,16 +232,11 @@ namespace CvSeachTool.ViewModels
                     // 変更後のファイル名をセット
                     this.BookmarkList.SelectedItem.BookmarkFilePath = file_path;
 
-                    // コンフィグのファイルパスが当該ブックマークファイルを選択しているのであれば
-                    if (this.Config.Item.ModelBookmarkFile.Equals(this.BookmarkList.SelectedItem.BookmarkFile))
-                    {
-                        // ファイル名を変更する
-                        this.Config.Item.ModelBookmarkFile = Path.GetFileName(file_path);
+                    // ファイル名を変更する
+                    this.Config.Item.ModelBookmarkFile = Path.GetFileName(file_path);
 
-                        // ファイルを保存する
-                        this.Config.SaveXML();
-                    }
-
+                    // ファイルを保存する
+                    this.Config.SaveXML();
                 }
             }
             catch (Exception e)
