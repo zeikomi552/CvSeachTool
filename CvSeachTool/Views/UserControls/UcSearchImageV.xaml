@@ -167,7 +167,7 @@
                             <svgc:SvgViewbox Height="20" Source="/Common/Images/filter-1384-svgrepo-com.svg" />
                             <ComboBox VerticalAlignment="Center" Width="100"
                                             ItemsSource="{Binding Mode=OneWay, Source={my:Enumeration {x:Type enum:ImageNsfwEnum}}}"
-                                            SelectedValue="{Binding ImageFilter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                            SelectedValue="{Binding ImageList.ImageFilter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                             DisplayMemberPath="Description" SelectedValuePath="Value">
                                 <b:Interaction.Triggers>
                                     <b:EventTrigger EventName="SelectionChanged">

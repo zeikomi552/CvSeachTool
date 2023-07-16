@@ -24,26 +24,6 @@ namespace CvSeachTool.ViewModels
 {
     public class UcSearchImageVM : ViewModelBase
     {
-        #region イメージフィルタ用[ImageFilter]プロパティ
-        /// <summary>
-        /// イメージフィルタ用[ImageFilter]プロパティ
-        /// </summary>
-        public ImageNsfwEnum ImageFilter
-        {
-            get
-            {
-                return GblValues.Instance.ImageFilter;
-            }
-            set
-            {
-                if (!GblValues.Instance.ImageFilter.Equals(value))
-                {
-                    GblValues.Instance.ImageFilter = value;
-                    NotifyPropertyChanged("ImageFilter");
-                }
-            }
-        }
-        #endregion
 
         #region 検索条件[SearchCondition]プロパティ
         /// <summary>
@@ -95,8 +75,6 @@ namespace CvSeachTool.ViewModels
         }
         #endregion
 
-
-
         #region API実行中フラグ(true:実行中 false:実行中でない)[ExecuteGetAPI]プロパティ
         /// <summary>
         /// API実行中フラグ(true:実行中 false:実行中でない)[ExecuteGetAPI]プロパティ用変数
@@ -121,6 +99,7 @@ namespace CvSeachTool.ViewModels
             }
         }
         #endregion
+
         #region イメージリスト[ImageList]プロパティ
         /// <summary>
         /// イメージリスト[ImageList]プロパティ用変数
