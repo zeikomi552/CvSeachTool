@@ -341,6 +341,9 @@ namespace CvSeachTool.ViewModels
 
                         // ブックマークを削除
                         this.BookmarkList.Items.Remove(this.BookmarkList.SelectedItem);
+
+                        // 最後の要素を選択する
+                        this.BookmarkList.SelectedLast();
                     }
                 }
             }
