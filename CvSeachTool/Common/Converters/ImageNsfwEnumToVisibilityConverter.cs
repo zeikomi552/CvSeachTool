@@ -11,6 +11,10 @@ namespace CvSeachTool.Common.Converters
     [System.Windows.Data.ValueConversion(typeof(ImageNsfwEnum), typeof(Visibility))]
     public class ImageNsfwEnumToVisibilityConverter : System.Windows.Data.IValueConverter
     {
+        /// <summary>
+        /// イメージフィルター
+        /// </summary>
+        public static ImageNsfwEnum ImageFilter { get; set; } = ImageNsfwEnum.None;
 
         #region IValueConverter メンバ
 
@@ -19,11 +23,11 @@ namespace CvSeachTool.Common.Converters
 
             var target = (ImageNsfwEnum)Enum.Parse(typeof(ImageNsfwEnum), value.ToString()!);
 
-            if (GblValues.Instance.ImageFilter == ImageNsfwEnum.Empty)
+            if (ImageFilter == ImageNsfwEnum.Empty)
             {
                 return true;
             }
-            else if (target > GblValues.Instance.ImageFilter)
+            else if (target > ImageFilter)
             {
                 return false;
             }

@@ -32,27 +32,6 @@ namespace CvSeachTool.ViewModels
 {
     public class UcSearchModelVM : ViewModelBase
     {
-        #region イメージフィルタ用[ImageFilter]プロパティ
-        /// <summary>
-        /// イメージフィルタ用[ImageFilter]プロパティ
-        /// </summary>
-        public ImageNsfwEnum ImageFilter
-        {
-            get
-            {
-                return GblValues.Instance.ImageFilter;
-            }
-            set
-            {
-                if (!GblValues.Instance.ImageFilter.Equals(value))
-                {
-                    GblValues.Instance.ImageFilter = value;
-                    NotifyPropertyChanged("ImageFilter");
-                }
-            }
-        }
-        #endregion
-
         #region イメージリスト[ImageList]プロパティ
         /// <summary>
         /// イメージリスト[ImageList]プロパティ用変数

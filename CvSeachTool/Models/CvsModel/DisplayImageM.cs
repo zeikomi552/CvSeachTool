@@ -1,4 +1,5 @@
 ﻿using CvSeachTool.Common.Converters;
+using CvSeachTool.Common.Enums;
 using MVVMCore.BaseClass;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,31 @@ namespace CvSeachTool.Models.CvsModel
 {
     public class DisplayImageM : ModelBase
     {
+        #region イメージフィルタ用[ImageFilter]プロパティ
+        /// <summary>
+        /// イメージフィルタ用[ImageFilter]プロパティ用変数
+        /// </summary>
+        ImageNsfwEnum _ImageFilter = new ();
+        /// <summary>
+        /// イメージフィルタ用[ImageFilter]プロパティ
+        /// </summary>
+        public ImageNsfwEnum ImageFilter
+        {
+            get
+            {
+                return _ImageFilter;
+            }
+            set
+            {
+                if (!_ImageFilter.Equals(value))
+                {
+                    _ImageFilter = value;
+                    NotifyPropertyChanged("ImageFilter");
+                }
+            }
+        }
+        #endregion
+
         #region This model images[Images]プロパティ
         /// <summary>
         /// This model images[Images]プロパティ用変数
@@ -156,7 +182,10 @@ namespace CvSeachTool.Models.CvsModel
                     return;
                 }
 
+                // イメージフィルターのセット
+                ImageNsfwEnumToVisibilityConverter.ImageFilter = this.ImageFilter;
 
+                // 表示する画像のリスト作成
                 var tmp = (from x in Images
                            where ImageNsfwEnumToVisibilityConverter.Convert(x.Nsfw)
                            select x).ToList<CvsImages>();
