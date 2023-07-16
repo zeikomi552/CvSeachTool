@@ -65,7 +65,6 @@ namespace CvSeachTool.Common
         }
         #endregion
 
-
         #region イメージ用ブックマークオブジェクト[ImageBookmark]プロパティ
         /// <summary>
         /// イメージ用ブックマークオブジェクト[ImageBookmark]プロパティ用変数
@@ -85,30 +84,6 @@ namespace CvSeachTool.Common
                 if (_ImageBookmark == null || !_ImageBookmark.Equals(value))
                 {
                     _ImageBookmark = value;
-                }
-            }
-        }
-        #endregion
-
-        #region イメージフィルタ用[ImageFilter]プロパティ
-        /// <summary>
-        /// イメージフィルタ用[ImageFilter]プロパティ用変数
-        /// </summary>
-        ImageNsfwEnum _ImageFilter = ImageNsfwEnum.None;
-        /// <summary>
-        /// イメージフィルタ用[ImageFilter]プロパティ
-        /// </summary>
-        public ImageNsfwEnum ImageFilter
-        {
-            get
-            {
-                return _ImageFilter;
-            }
-            set
-            {
-                if (!_ImageFilter.Equals(value))
-                {
-                    _ImageFilter = value;
                 }
             }
         }
