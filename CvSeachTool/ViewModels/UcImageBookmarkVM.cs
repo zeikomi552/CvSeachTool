@@ -235,16 +235,11 @@ namespace CvSeachTool.ViewModels
                     // 変更後のファイル名をセット
                     this.BookmarkList.SelectedItem.BookmarkFilePath = file_path;
 
-                    // コンフィグのファイルパスが当該ブックマークファイルを選択しているのであれば
-                    if (this.Config.Item.ImageBookmarkFile.Equals(this.BookmarkList.SelectedItem.BookmarkFile))
-                    {
-                        // ファイル名を変更する
-                        this.Config.Item.ImageBookmarkFile = Path.GetFileName(file_path);
+                    // ファイル名を変更する
+                    this.Config.Item.ImageBookmarkFile = Path.GetFileName(file_path);
 
-                        // ファイルを保存する
-                        this.Config.SaveXML();
-                    }
-
+                    // ファイルを保存する
+                    this.Config.SaveXML();
                 }
             }
             catch (Exception e)
@@ -339,6 +334,9 @@ namespace CvSeachTool.ViewModels
 
                         // ブックマークを削除
                         this.BookmarkList.Items.Remove(this.BookmarkList.SelectedItem);
+
+                        // 最後の要素を選択
+                        this.BookmarkList.SelectedLast();
                     }
                 }
             }
