@@ -329,20 +329,16 @@ namespace CvSeachTool.ViewModels
                 // nullチェック
                 if (this.CvsModel != null && this.CvsModel.Items != null && this.CvsModel.Items.SelectedItem != null)
                 {
-
-                    List<CvsImages> tmp_img = new List<CvsImages>();
-
                     if (this.CvsModel.Items.SelectedItem.ModelVersions.Count > 0)
                     {
                         // 1つ目の要素をセットする
                         CvsModel.Items.SelectedItem.SelectedModelVersion = this.CvsModel.Items.SelectedItem.ModelVersions.ElementAt(0);
                     }
+                    ////// 最初の行を選択する
+                    //this.ImageList.SetFirst();
 
-                    // 最初の行を選択する
-                    this.ImageList.SetFirst();
-
-                    // ImageリストのListViewを先頭へスクロールさせる
-                    ListViewTopRow(sender);
+                    ////// ImageリストのListViewを先頭へスクロールさせる
+                    //ListViewTopRow(sender);
                 }
             }
             catch (Exception ex)
@@ -365,8 +361,6 @@ namespace CvSeachTool.ViewModels
                     && this.CvsModel.Items.SelectedItem != null
                     && this.CvsModel.Items.SelectedItem.SelectedModelVersion != null)
                 {
-                    List<CvsImages> tmp_img = new List<CvsImages>();
-
                     // 対象行をセット
                     this.ImageList.SetImages(this.CvsModel.Items.SelectedItem.SelectedModelVersion.Images);
 

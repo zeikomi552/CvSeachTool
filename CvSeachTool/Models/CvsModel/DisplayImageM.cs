@@ -171,14 +171,13 @@ namespace CvSeachTool.Models.CvsModel
 
             Task.Run(() =>
             {
-
                 // レスポンス向上のため、連続で関数が呼ばれた時、一瞬またせる
                 System.Threading.Thread.Sleep(100);
 
                 // 100ミリ以内の連続呼び出しは破棄（最後のみ残す）
                 if (Counter != own_counter)
                 {
-                    Debug.WriteLine(string.Format("{0} {1}", Counter, own_counter));
+                    //Debug.WriteLine(string.Format("{0} {1}", Counter, own_counter));
                     return;
                 }
 
