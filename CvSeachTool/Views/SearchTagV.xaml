@@ -10,7 +10,7 @@
         xmlns:UserControls="clr-namespace:CvSeachTool.Views.UserControls"
         xmlns:ViewModels="clr-namespace:CvSeachTool.ViewModels" x:Class="CvSeachTool.Views.SearchTagV"
         mc:Ignorable="d"
-        Title="SearchTagV" Height="450" Width="800" 
+        Title="Tag Search" Height="450" Width="800" 
         hlp:DialogResultHelper.DialogResult="{Binding DialogResult}" 
         WindowStartupLocation="CenterScreen"
         TitleCharacterCasing="Normal">

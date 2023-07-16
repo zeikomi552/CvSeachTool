@@ -10,7 +10,7 @@
         xmlns:ViewModels="clr-namespace:CvSeachTool.ViewModels"
         xmlns:local="clr-namespace:CvSeachTool.Views"
         mc:Ignorable="d"
-        Title="SearchCreatorV" Height="450" Width="800"
+        Title="Creator Search" Height="450" Width="800"
         hlp:DialogResultHelper.DialogResult="{Binding DialogResult}" 
         WindowStartupLocation="CenterScreen"
         TitleCharacterCasing="Normal">
