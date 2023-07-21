@@ -15,7 +15,7 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_A97DE83122B242C3927190E605DFD9A2"
+        "MsmKey" = "8:_97426CBEAC594FF394791C37F0E9B56B"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -122,7 +122,7 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A97DE83122B242C3927190E605DFD9A2"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_97426CBEAC594FF394791C37F0E9B56B"
             {
             "SourcePath" = "8:..\\Chovitai\\Common\\Images\\app.ico"
             "TargetName" = "8:app.ico"
@@ -199,7 +199,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:CvSeachTool"
         "ProductCode" = "8:{FE6286D0-874F-4CB9-9D2E-1E39B259EB3A}"
-        "PackageCode" = "8:{23ADD0B5-5AB2-4E06-B32D-AC8FEB07233D}"
+        "PackageCode" = "8:{FA26F4EC-FA28-46AF-A0C1-5A0998298FFF}"
         "UpgradeCode" = "8:{D3BCC342-BAC2-4F9F-B0B1-7F9DC0B5D42B}"
         "AspNetVersion" = "8:"
         "RestartWWWService" = "11:FALSE"
@@ -216,7 +216,7 @@
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
-        "ARPPRODUCTICON" = "8:_A97DE83122B242C3927190E605DFD9A2"
+        "ARPPRODUCTICON" = "8:_97426CBEAC594FF394791C37F0E9B56B"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
@@ -330,7 +330,7 @@
             "Target" = "8:_D291471A102A4CFFB317FC4909D80A49"
             "Folder" = "8:_BD42E4F8E6EF4FE1B711D07F8588C43E"
             "WorkingFolder" = "8:_3EF17443DB314768BD98DDB76F34E6EA"
-            "Icon" = "8:_A97DE83122B242C3927190E605DFD9A2"
+            "Icon" = "8:_97426CBEAC594FF394791C37F0E9B56B"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_9DB4339DD238444EACE8F2B6BDCC5F89"
@@ -344,7 +344,7 @@
             "Target" = "8:_D291471A102A4CFFB317FC4909D80A49"
             "Folder" = "8:_6006FD4CCE594B92B12F68243FB11968"
             "WorkingFolder" = "8:_3EF17443DB314768BD98DDB76F34E6EA"
-            "Icon" = "8:_A97DE83122B242C3927190E605DFD9A2"
+            "Icon" = "8:_97426CBEAC594FF394791C37F0E9B56B"
             "Feature" = "8:"
             }
         }
