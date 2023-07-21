@@ -1,4 +1,4 @@
-# CvSeachTool
+# Chovitai
 
 ![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/zeikomi552/CvSeachTool)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/zeikomi552/CvSeachTool)
@@ -209,5 +209,6 @@ Noneが一番健全でXがこの世の性癖すべてを見させられます。
 
 ## 余談
 
-アプリ名スペルミスしています。
-面倒なのでこのまま行きます。
+アプリ名を変更しました。
+CvSeachTool → Chovitai
+ずっとスペルミスをしてた。
