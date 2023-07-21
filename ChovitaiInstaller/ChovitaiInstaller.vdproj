@@ -15,7 +15,7 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_AD57564B79AA42C2919492A747E74A94"
+        "MsmKey" = "8:_A97DE83122B242C3927190E605DFD9A2"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -122,9 +122,9 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_AD57564B79AA42C2919492A747E74A94"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A97DE83122B242C3927190E605DFD9A2"
             {
-            "SourcePath" = "8:..\\CvSeachTool\\Common\\Images\\app.ico"
+            "SourcePath" = "8:..\\Chovitai\\Common\\Images\\app.ico"
             "TargetName" = "8:app.ico"
             "Tag" = "8:"
             "Folder" = "8:_3EF17443DB314768BD98DDB76F34E6EA"
@@ -216,7 +216,7 @@
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
-        "ARPPRODUCTICON" = "8:_AD57564B79AA42C2919492A747E74A94"
+        "ARPPRODUCTICON" = "8:_A97DE83122B242C3927190E605DFD9A2"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
@@ -330,7 +330,7 @@
             "Target" = "8:_D291471A102A4CFFB317FC4909D80A49"
             "Folder" = "8:_BD42E4F8E6EF4FE1B711D07F8588C43E"
             "WorkingFolder" = "8:_3EF17443DB314768BD98DDB76F34E6EA"
-            "Icon" = "8:_AD57564B79AA42C2919492A747E74A94"
+            "Icon" = "8:_A97DE83122B242C3927190E605DFD9A2"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_9DB4339DD238444EACE8F2B6BDCC5F89"
@@ -344,7 +344,7 @@
             "Target" = "8:_D291471A102A4CFFB317FC4909D80A49"
             "Folder" = "8:_6006FD4CCE594B92B12F68243FB11968"
             "WorkingFolder" = "8:_3EF17443DB314768BD98DDB76F34E6EA"
-            "Icon" = "8:_AD57564B79AA42C2919492A747E74A94"
+            "Icon" = "8:_A97DE83122B242C3927190E605DFD9A2"
             "Feature" = "8:"
             }
         }
@@ -748,7 +748,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_D291471A102A4CFFB317FC4909D80A49"
             {
-            "SourcePath" = "8:..\\CvSeachTool\\obj\\Debug\\net6.0-windows\\apphost.exe"
+            "SourcePath" = "8:..\\Chovitai\\obj\\Release\\net6.0-windows\\apphost.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_3EF17443DB314768BD98DDB76F34E6EA"
