@@ -3,7 +3,7 @@
 "VSVersion" = "3:800"
 "ProjectType" = "8:{978C614F-708E-4E1A-B201-565925725DBA}"
 "IsWebType" = "8:FALSE"
-"ProjectName" = "8:CvSeachToolInstaller"
+"ProjectName" = "8:ChovitaiInstaller"
 "LanguageId" = "3:1041"
 "CodePage" = "3:932"
 "UILanguageId" = "3:1041"
@@ -199,7 +199,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:CvSeachTool"
         "ProductCode" = "8:{FE6286D0-874F-4CB9-9D2E-1E39B259EB3A}"
-        "PackageCode" = "8:{623E86A3-0026-4252-99E5-D96D68945A6A}"
+        "PackageCode" = "8:{23ADD0B5-5AB2-4E06-B32D-AC8FEB07233D}"
         "UpgradeCode" = "8:{D3BCC342-BAC2-4F9F-B0B1-7F9DC0B5D42B}"
         "AspNetVersion" = "8:"
         "RestartWWWService" = "11:FALSE"
@@ -210,7 +210,7 @@
         "Manufacturer" = "8:Zeikomi"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:CvSeachToolInstaller"
+        "Title" = "8:ChovitaiInstaller"
         "Subject" = "8:"
         "ARPCONTACT" = "8:Zeikomi552"
         "Keywords" = "8:"
@@ -321,7 +321,7 @@
         {
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_567E355812084A4D8A256879D3970ECB"
             {
-            "Name" = "8:CvSeachTool"
+            "Name" = "8:Chovitai"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
@@ -335,7 +335,7 @@
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_9DB4339DD238444EACE8F2B6BDCC5F89"
             {
-            "Name" = "8:CvSeachToolへのショートカット"
+            "Name" = "8:Chovitaiへのショートカット"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
@@ -748,7 +748,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_D291471A102A4CFFB317FC4909D80A49"
             {
-            "SourcePath" = "8:..\\CvSeachTool\\obj\\Release\\net6.0-windows\\apphost.exe"
+            "SourcePath" = "8:..\\CvSeachTool\\obj\\Debug\\net6.0-windows\\apphost.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_3EF17443DB314768BD98DDB76F34E6EA"
