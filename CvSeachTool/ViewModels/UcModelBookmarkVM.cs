@@ -194,6 +194,9 @@ namespace CvSeachTool.ViewModels
 
                     // ブックマークの保存処理
                     SaveBookmark();
+
+                    // 最初の要素を選択
+                    this.BookmarkConf.Item.SelectedFirst();
                 }
             }
             catch (Exception e)

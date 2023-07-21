@@ -40,6 +40,7 @@ namespace CvSeachTool.Models
             {
                 sb.AppendLine($"## No.{no++} {tmp.Prompt}");
                 sb.AppendLine($"");
+                sb.AppendLine($"[Google翻訳 -{tmp.Prompt}](https://translate.google.co.jp/?sl=en&tl=ja&text={tmp.Prompt.Replace(" ", "+")}&op=translate)");
                 string img_file_soutai = Path.Combine(Path.GetFileNameWithoutExtension(mk_filepath), mk_filename + "_" + Path.GetFileName(tmp.FilePath));
                 sb.AppendLine($"![]({img_file_soutai})");
                 sb.AppendLine($"");
