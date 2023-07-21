@@ -1,10 +1,10 @@
-﻿using CvSeachTool.Common;
-using CvSeachTool.Models;
-using CvSeachTool.Models.Bookmark;
-using CvSeachTool.Models.Config;
-using CvSeachTool.Models.CvsModel;
-using CvSeachTool.Views;
-using CvSeachTool.Views.UserControls;
+﻿using Chovitai.Common;
+using Chovitai.Models;
+using Chovitai.Models.Bookmark;
+using Chovitai.Models.Config;
+using Chovitai.Models.CvsModel;
+using Chovitai.Views;
+using Chovitai.Views.UserControls;
 using MVVMCore.BaseClass;
 using MVVMCore.Common.Utilities;
 using MVVMCore.Common.Wrapper;
@@ -15,10 +15,10 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static CvSeachTool.Models.CvsModel.CvsModelM;
-using static CvSeachTool.Models.CvsModel.CvsModelM.CvsModelVersions;
+using static Chovitai.Models.CvsModel.CvsModelM;
+using static Chovitai.Models.CvsModel.CvsModelM.CvsModelVersions;
 
-namespace CvSeachTool.ViewModels
+namespace Chovitai.ViewModels
 {
     public class UcModelBookmarkVM : ViewModelBase
     {
@@ -220,26 +220,30 @@ namespace CvSeachTool.ViewModels
                 // ディレクトリパスをセット
                 vm!.DirPath = this.Config!.Item.ModelBookmarkDir;
 
-                // リネーム前のファイル名をセット
-                vm!.RenameFilename = Path.GetFileNameWithoutExtension(this.BookmarkList.SelectedItem.BookmarkFile);
-
-                // Windowを開く
-                if (wnd.ShowDialog() == true)
+                // nullチェック
+                if (this.BookmarkList.Count > 0 && this.BookmarkList.SelectedItem != null && string.IsNullOrEmpty(this.BookmarkList.SelectedItem.BookmarkFile))
                 {
-                    // ファイルパスの作成
-                    string file_path = Path.Combine(this.BookmarkDir, vm!.RenameFilename + ".conf");
+                    // リネーム前のファイル名をセット
+                    vm!.RenameFilename = Path.GetFileNameWithoutExtension(this.BookmarkList.SelectedItem.BookmarkFile);
 
-                    // ファイル名の変更
-                    System.IO.File.Move(this.BookmarkList.SelectedItem.BookmarkFilePath, file_path);
+                    // Windowを開く
+                    if (wnd.ShowDialog() == true)
+                    {
+                        // ファイルパスの作成
+                        string file_path = Path.Combine(this.BookmarkDir, vm!.RenameFilename + ".conf");
 
-                    // 変更後のファイル名をセット
-                    this.BookmarkList.SelectedItem.BookmarkFilePath = file_path;
+                        // ファイル名の変更
+                        System.IO.File.Move(this.BookmarkList.SelectedItem.BookmarkFilePath, file_path);
 
-                    // ファイル名を変更する
-                    this.Config.Item.ModelBookmarkFile = Path.GetFileName(file_path);
+                        // 変更後のファイル名をセット
+                        this.BookmarkList.SelectedItem.BookmarkFilePath = file_path;
 
-                    // ファイルを保存する
-                    this.Config.SaveXML();
+                        // ファイル名を変更する
+                        this.Config.Item.ModelBookmarkFile = Path.GetFileName(file_path);
+
+                        // ファイルを保存する
+                        this.Config.SaveXML();
+                    }
                 }
             }
             catch (Exception e)

@@ -1,6 +1,6 @@
-﻿using CvSeachTool.Common.Enums;
-using CvSeachTool.Models.Bookmark;
-using CvSeachTool.Models.Config;
+﻿using Chovitai.Common.Enums;
+using Chovitai.Models.Bookmark;
+using Chovitai.Models.Config;
 using MVVMCore.Common.Utilities;
 using System;
 using System.Collections.Generic;
@@ -9,9 +9,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static CvSeachTool.Models.CvsModel.CvsModelM;
+using static Chovitai.Models.CvsModel.CvsModelM;
 
-namespace CvSeachTool.Common
+namespace Chovitai.Common
 {
     public sealed class GblValues
     {

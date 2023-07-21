@@ -1,9 +1,9 @@
-﻿using CvSeachTool.Common.Enums;
-using CvSeachTool.Common;
-using CvSeachTool.Models;
-using CvSeachTool.Models.Condition;
-using CvSeachTool.Models.CvsImage;
-using CvSeachTool.Models.CvsModel;
+﻿using Chovitai.Common.Enums;
+using Chovitai.Common;
+using Chovitai.Models;
+using Chovitai.Models.Condition;
+using Chovitai.Models.CvsImage;
+using Chovitai.Models.CvsModel;
 using Microsoft.Win32;
 using MVVMCore.BaseClass;
 using MVVMCore.Common.Utilities;
@@ -12,15 +12,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DisplayImageM = CvSeachTool.Models.CvsImage.DisplayImageM;
-using static CvSeachTool.Models.CvsModel.CvsModelM.CvsModelVersions;
+using DisplayImageM = Chovitai.Models.CvsImage.DisplayImageM;
+using static Chovitai.Models.CvsModel.CvsModelM.CvsModelVersions;
 using System.Collections.ObjectModel;
-using static CvSeachTool.Models.CvsImage.CvsImageM;
+using static Chovitai.Models.CvsImage.CvsImageM;
 using System.Windows;
-using CvSeachTool.Views;
-using CvSeachTool.Models.Bookmark;
+using Chovitai.Views;
+using Chovitai.Models.Bookmark;
 
-namespace CvSeachTool.ViewModels
+namespace Chovitai.ViewModels
 {
     public class UcSearchImageVM : ViewModelBase
     {

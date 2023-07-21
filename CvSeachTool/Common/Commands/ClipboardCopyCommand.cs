@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
-namespace CvSeachTool.Common.Commands
+namespace Chovitai.Common.Commands
 {
     public class ClipboardCopyCommand : ICommand
     {

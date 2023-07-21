@@ -1,6 +1,6 @@
-﻿using CvSeachTool.Common;
-using CvSeachTool.Models.Config;
-using CvSeachTool.Models.CvsImage;
+﻿using Chovitai.Common;
+using Chovitai.Models.Config;
+using Chovitai.Models.CvsImage;
 using MVVMCore.Common.Utilities;
 using System;
 using System.Collections.Generic;
@@ -8,9 +8,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static CvSeachTool.Models.CvsImage.CvsImageM;
+using static Chovitai.Models.CvsImage.CvsImageM;
 
-namespace CvSeachTool.Models.Bookmark
+namespace Chovitai.Models.Bookmark
 {
     public class ImageBookmarkM : BookmarkBaseM
     {

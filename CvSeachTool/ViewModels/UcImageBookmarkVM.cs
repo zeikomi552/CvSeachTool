@@ -1,8 +1,8 @@
-﻿using CvSeachTool.Common;
-using CvSeachTool.Models.Bookmark;
-using CvSeachTool.Models.Config;
-using CvSeachTool.Views.UserControls;
-using CvSeachTool.Views;
+﻿using Chovitai.Common;
+using Chovitai.Models.Bookmark;
+using Chovitai.Models.Config;
+using Chovitai.Views.UserControls;
+using Chovitai.Views;
 using MVVMCore.BaseClass;
 using MVVMCore.Common.Utilities;
 using MVVMCore.Common.Wrapper;
@@ -13,12 +13,12 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static CvSeachTool.Models.CvsModel.CvsModelM.CvsModelVersions;
-using static CvSeachTool.Models.CvsImage.CvsImageM;
-using CvSeachTool.Models.CvsImage;
-using CvSeachTool.Models;
+using static Chovitai.Models.CvsModel.CvsModelM.CvsModelVersions;
+using static Chovitai.Models.CvsImage.CvsImageM;
+using Chovitai.Models.CvsImage;
+using Chovitai.Models;
 
-namespace CvSeachTool.ViewModels
+namespace Chovitai.ViewModels
 {
     public class UcImageBookmarkVM : ViewModelBase
     {

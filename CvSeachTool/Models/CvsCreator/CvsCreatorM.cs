@@ -1,4 +1,4 @@
-﻿using CvSeachTool.Models.CvsModel;
+﻿using Chovitai.Models.CvsModel;
 using MVVMCore.BaseClass;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace CvSeachTool.Models.CvsCreator
+namespace Chovitai.Models.CvsCreator
 {
     public class CvsCreatorM : ModelBase
     {

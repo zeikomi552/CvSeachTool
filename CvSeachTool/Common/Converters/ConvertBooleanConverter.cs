@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CvSeachTool.Common.Converters
+namespace Chovitai.Common.Converters
 {
     [System.Windows.Data.ValueConversion(typeof(bool), typeof(bool))]
     public class ConvertBooleanConverter : System.Windows.Data.IValueConverter

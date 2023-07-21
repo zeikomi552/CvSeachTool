@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CvSeachTool.Models
+namespace Chovitai.Models
 {
     public class FileInfoM : ModelBase
     {

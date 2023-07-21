@@ -1,4 +1,4 @@
-﻿using CvSeachTool.Models;
+﻿using Chovitai.Models;
 using MVVMCore.BaseClass;
 using MVVMCore.Common.Utilities;
 using System;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CvSeachTool.ViewModels
+namespace Chovitai.ViewModels
 {
     public class PromptWindowVM : ViewModelBase
     {

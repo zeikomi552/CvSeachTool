@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
-namespace CvSeachTool.Common.Converters
+namespace Chovitai.Common.Converters
 {
     [System.Windows.Data.ValueConversion(typeof(string), typeof(BitmapImage))]
     public class URLStringToImageSourceConverter : System.Windows.Data.IValueConverter

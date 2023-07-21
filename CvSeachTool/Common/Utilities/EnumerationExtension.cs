@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Markup;
 
-namespace CvSeachTool.Common.Utilities
+namespace Chovitai.Common.Utilities
 {
     public class EnumerationExtension : MarkupExtension
     {

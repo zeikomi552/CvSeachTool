@@ -1,5 +1,5 @@
-﻿using CvSeachTool.Common.Converters;
-using CvSeachTool.Common.Enums;
+﻿using Chovitai.Common.Converters;
+using Chovitai.Common.Enums;
 using MVVMCore.BaseClass;
 using System;
 using System.Collections.Generic;
@@ -13,9 +13,9 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media.TextFormatting;
 using System.Windows.Threading;
-using static CvSeachTool.Models.CvsModel.CvsModelM.CvsModelVersions;
+using static Chovitai.Models.CvsModel.CvsModelM.CvsModelVersions;
 
-namespace CvSeachTool.Models.CvsModel
+namespace Chovitai.Models.CvsModel
 {
     public class DisplayImageM : ModelBase
     {

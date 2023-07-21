@@ -2,7 +2,7 @@
 using MVVMCore.Common.Utilities;
 using System;
 
-namespace CvSeachTool.ViewModels
+namespace Chovitai.ViewModels
 {
     public class MainWindowVM : ViewModelBase
     {

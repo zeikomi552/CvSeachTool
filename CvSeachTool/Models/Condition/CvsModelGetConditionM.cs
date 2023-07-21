@@ -1,4 +1,4 @@
-﻿using CvSeachTool.Common.Enums;
+﻿using Chovitai.Common.Enums;
 using MVVMCore.BaseClass;
 using System;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CvSeachTool.Models.Condition
+namespace Chovitai.Models.Condition
 {
     public class CvsModelGetConditionM : ModelBase
     {

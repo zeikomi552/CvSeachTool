@@ -1,4 +1,4 @@
-﻿using CvSeachTool.Common.Utilities;
+﻿using Chovitai.Common.Utilities;
 using Microsoft.Win32;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using MVVMCore.BaseClass;
@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CvSeachTool.Models
+namespace Chovitai.Models
 {
     public class MarkdownM : ModelBase
     {

@@ -1,5 +1,5 @@
-﻿using CvSeachTool.Common.Enums;
-using CvSeachTool.Models.CvsImage;
+﻿using Chovitai.Common.Enums;
+using Chovitai.Models.CvsImage;
 using MVVMCore.BaseClass;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CvSeachTool.Models.Condition
+namespace Chovitai.Models.Condition
 {
     public class CvsImageGetConditionM : ModelBase
     {

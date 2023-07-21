@@ -6,8 +6,8 @@
         xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
-        xmlns:local="clr-namespace:CvSeachTool.Views"
-        xmlns:ViewModels="clr-namespace:CvSeachTool.ViewModels" x:Class="CvSeachTool.Views.BookmarkRenameV"
+        xmlns:local="clr-namespace:Chovitai.Views"
+        xmlns:ViewModels="clr-namespace:Chovitai.ViewModels" x:Class="Chovitai.Views.BookmarkRenameV"
         mc:Ignorable="d"
         Title="Rename" Height="150" Width="400" WindowStartupLocation="CenterScreen" hlp:DialogResultHelper.DialogResult="{Binding DialogResult}"
         TitleCharacterCasing="Normal">

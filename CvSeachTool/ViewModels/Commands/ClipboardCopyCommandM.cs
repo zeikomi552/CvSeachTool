@@ -1,4 +1,4 @@
-﻿using CvSeachTool.Common.Commands;
+﻿using Chovitai.Common.Commands;
 using MVVMCore.BaseClass;
 using System;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CvSeachTool.ViewModels.Comands
+namespace Chovitai.ViewModels.Comands
 {
     public class ClipboardCopyCommandM : ViewModelBase
     {

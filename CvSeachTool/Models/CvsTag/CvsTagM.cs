@@ -1,4 +1,4 @@
-﻿using CvSeachTool.Models.CvsModel;
+﻿using Chovitai.Models.CvsModel;
 using MVVMCore.BaseClass;
 using MVVMCore.Common.Utilities;
 using System;
@@ -9,7 +9,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace CvSeachTool.Models.CvsTag
+namespace Chovitai.Models.CvsTag
 {
     public class CvsTagM : ModelBase
     {

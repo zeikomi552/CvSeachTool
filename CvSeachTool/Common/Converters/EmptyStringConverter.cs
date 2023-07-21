@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Data;
 using System.Windows.Markup;
 
-namespace CvSeachTool.Common.Converters
+namespace Chovitai.Common.Converters
 {
     public class EmptyStringConverter : MarkupExtension, IValueConverter
     {

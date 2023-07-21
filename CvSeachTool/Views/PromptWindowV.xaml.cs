@@ -13,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace CvSeachTool.Views
+namespace Chovitai.Views
 {
     /// <summary>
     /// PromptWindowV.xaml の相互作用ロジック

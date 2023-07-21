@@ -1,6 +1,6 @@
-﻿using CvSeachTool.Models.CvsTag;
-using CvSeachTool.Views;
-using CvSeachTool.Views.UserControls;
+﻿using Chovitai.Models.CvsTag;
+using Chovitai.Views;
+using Chovitai.Views.UserControls;
 using MVVMCore.BaseClass;
 using MVVMCore.Common.Utilities;
 using MVVMCore.Common.Wrapper;
@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CvSeachTool.ViewModels
+namespace Chovitai.ViewModels
 {
     public class SearchTagVM : ViewModelBase
     {

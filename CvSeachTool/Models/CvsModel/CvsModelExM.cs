@@ -1,4 +1,4 @@
-﻿using CvSeachTool.Common.Utilities;
+﻿using Chovitai.Common.Utilities;
 using Microsoft.Win32;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using MVVMCore.BaseClass;
@@ -15,11 +15,11 @@ using System.Windows.Documents;
 using System.Windows.Interop;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Media3D;
-using static CvSeachTool.Models.CvsModel.CvsModelM;
+using static Chovitai.Models.CvsModel.CvsModelM;
 using static System.Net.WebRequestMethods;
 using File = System.IO.File;
 
-namespace CvSeachTool.Models.CvsModel
+namespace Chovitai.Models.CvsModel
 {
     public class CvsModelExM : ModelBase
     {

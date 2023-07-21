@@ -6,7 +6,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace CvSeachTool.Models.CvsModel
+namespace Chovitai.Models.CvsModel
 {
     public class CvsMetadataM : ModelBase
     {

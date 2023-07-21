@@ -1,4 +1,4 @@
-﻿using CvSeachTool.Models.Config;
+﻿using Chovitai.Models.Config;
 using MVVMCore.BaseClass;
 using MVVMCore.Common.Utilities;
 using System;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CvSeachTool.Models.Bookmark
+namespace Chovitai.Models.Bookmark
 {
     public class BookmarkBaseM : ModelBase
     {

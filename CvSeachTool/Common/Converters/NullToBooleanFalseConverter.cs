@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CvSeachTool.Common.Converters
+namespace Chovitai.Common.Converters
 {
     /// <summary>
     /// NullやString.Emptyの場合Bool型のFalseを返却するコンバーター

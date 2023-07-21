@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CvSeachTool.Views.UserControls
+namespace Chovitai.Views.UserControls
 {
     /// <summary>
     /// UcSearchImageV.xaml の相互作用ロジック

@@ -1,6 +1,6 @@
-﻿using CvSeachTool.Common;
-using CvSeachTool.Common.Converters;
-using CvSeachTool.Common.Enums;
+﻿using Chovitai.Common;
+using Chovitai.Common.Converters;
+using Chovitai.Common.Enums;
 using MVVMCore.BaseClass;
 using System;
 using System.Collections.Generic;
@@ -8,10 +8,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static CvSeachTool.Models.CvsImage.CvsImageM;
-using static CvSeachTool.Models.CvsModel.CvsModelM.CvsModelVersions;
+using static Chovitai.Models.CvsImage.CvsImageM;
+using static Chovitai.Models.CvsModel.CvsModelM.CvsModelVersions;
 
-namespace CvSeachTool.Models.CvsImage
+namespace Chovitai.Models.CvsImage
 {
     public class DisplayImageM : ModelBase
     {

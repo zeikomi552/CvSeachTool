@@ -1,10 +1,10 @@
-﻿using CvSeachTool.Common.Enums;
-using CvSeachTool.Common.Utilities;
-using CvSeachTool.Common;
-using CvSeachTool.Models.Condition;
-using CvSeachTool.Models;
-using CvSeachTool.Views.UserControls;
-using CvSeachTool.Views;
+﻿using Chovitai.Common.Enums;
+using Chovitai.Common.Utilities;
+using Chovitai.Common;
+using Chovitai.Models.Condition;
+using Chovitai.Models;
+using Chovitai.Views.UserControls;
+using Chovitai.Views;
 using Microsoft.Win32;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using MVVMCore.BaseClass;
@@ -17,18 +17,18 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static CvSeachTool.Models.CvsModel.CvsModelM.CvsModelVersions;
-using static CvSeachTool.Models.CvsModel.CvsModelM;
+using static Chovitai.Models.CvsModel.CvsModelM.CvsModelVersions;
+using static Chovitai.Models.CvsModel.CvsModelM;
 using System.Windows;
-using CvSeachTool.Models.CvsModel;
+using Chovitai.Models.CvsModel;
 using MaterialDesignThemes.Wpf;
 using System.Windows.Threading;
 using System.Diagnostics;
-using CvSeachTool.Models.Config;
-using CvSeachTool.Models.Bookmark;
-using CvSeachTool.Common.Commands;
+using Chovitai.Models.Config;
+using Chovitai.Models.Bookmark;
+using Chovitai.Common.Commands;
 
-namespace CvSeachTool.ViewModels
+namespace Chovitai.ViewModels
 {
     public class UcSearchModelVM : ViewModelBase
     {

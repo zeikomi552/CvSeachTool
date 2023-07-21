@@ -10,7 +10,7 @@ using System.Windows.Input;
 #pragma warning disable CS8618
 #pragma warning disable CS8767
 
-namespace CvSeachTool.Common.Commands
+namespace Chovitai.Common.Commands
 {
     /// <summary>
     /// 引数を受け付けない（引数なし）DelegateCommand

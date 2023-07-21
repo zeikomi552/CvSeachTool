@@ -1,4 +1,4 @@
-﻿using CvSeachTool.Common.Enums;
+﻿using Chovitai.Common.Enums;
 using MVVMCore.BaseClass;
 using System.Text.Json.Serialization;
 using System;
@@ -8,15 +8,15 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using static CvSeachTool.Models.CvsModel.CvsModelM.CvsModelVersions;
+using static Chovitai.Models.CvsModel.CvsModelM.CvsModelVersions;
 using System.Windows;
-using CvSeachTool.ViewModels;
+using Chovitai.ViewModels;
 using MVVMCore.Common.Utilities;
-using CvSeachTool.Common;
+using Chovitai.Common;
 using System.IO;
-using CvSeachTool.Views;
+using Chovitai.Views;
 
-namespace CvSeachTool.Models.CvsModel
+namespace Chovitai.Models.CvsModel
 {
     public class CvsModelM : ModelBase
     {

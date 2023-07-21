@@ -1,4 +1,4 @@
-﻿using CvSeachTool.Common.Enums;
+﻿using Chovitai.Common.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace CvSeachTool.Common.Converters
+namespace Chovitai.Common.Converters
 {
     [System.Windows.Data.ValueConversion(typeof(ImageNsfwEnum), typeof(Visibility))]
     public class ImageNsfwEnumToVisibilityConverter : System.Windows.Data.IValueConverter

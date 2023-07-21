@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CvSeachTool.Common.Enums
+namespace Chovitai.Common.Enums
 {
     public enum ModelPeriodEnum
     {

@@ -1,6 +1,6 @@
-﻿using CvSeachTool.Common.Utilities;
-using CvSeachTool.Models;
-using CvSeachTool.Views.UserControls;
+﻿using Chovitai.Common.Utilities;
+using Chovitai.Models;
+using Chovitai.Views.UserControls;
 using Microsoft.Win32;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using MVVMCore.BaseClass;
@@ -18,7 +18,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Threading;
 
-namespace CvSeachTool.ViewModels
+namespace Chovitai.ViewModels
 {
     public class UcFileCheckVM : ViewModelBase
     {

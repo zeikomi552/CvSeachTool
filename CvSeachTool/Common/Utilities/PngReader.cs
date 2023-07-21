@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CvSeachTool.Common.Utilities
+namespace Chovitai.Common.Utilities
 {
     public struct Chunk
     {

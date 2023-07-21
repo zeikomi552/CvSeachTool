@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CvSeachTool.ViewModels
+namespace Chovitai.ViewModels
 {
     public class BookmarkRenameVM : ViewModelBase
     {

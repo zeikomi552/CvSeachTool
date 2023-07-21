@@ -1,6 +1,6 @@
-﻿using CvSeachTool.Common;
-using CvSeachTool.Common.Utilities;
-using CvSeachTool.Models.Config;
+﻿using Chovitai.Common;
+using Chovitai.Common.Utilities;
+using Chovitai.Models.Config;
 using Microsoft.Win32;
 using MVVMCore.BaseClass;
 using MVVMCore.Common.Utilities;
@@ -10,9 +10,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static CvSeachTool.Models.CvsModel.CvsModelM;
+using static Chovitai.Models.CvsModel.CvsModelM;
 
-namespace CvSeachTool.Models.Bookmark
+namespace Chovitai.Models.Bookmark
 {
     public class ModelBookmarkM : BookmarkBaseM
     {

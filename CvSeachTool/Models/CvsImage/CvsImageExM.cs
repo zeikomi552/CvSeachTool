@@ -1,4 +1,4 @@
-﻿using CvSeachTool.Models.CvsModel;
+﻿using Chovitai.Models.CvsModel;
 using MVVMCore.BaseClass;
 using MVVMCore.Common.Utilities;
 using System;
@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
-using static CvSeachTool.Models.CvsImage.CvsImageM;
+using static Chovitai.Models.CvsImage.CvsImageM;
 
-namespace CvSeachTool.Models.CvsImage
+namespace Chovitai.Models.CvsImage
 {
     public class CvsImageExM : ModelBase
     {

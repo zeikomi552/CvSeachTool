@@ -1,5 +1,5 @@
-﻿using CvSeachTool.Models.CvsImage;
-using CvSeachTool.Models.CvsModel;
+﻿using Chovitai.Models.CvsImage;
+using Chovitai.Models.CvsModel;
 using MVVMCore.BaseClass;
 using MVVMCore.Common.Utilities;
 using System;
@@ -9,9 +9,9 @@ using System.Linq;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
-using static CvSeachTool.Models.CvsModel.CvsModelM.CvsModelVersions;
+using static Chovitai.Models.CvsModel.CvsModelM.CvsModelVersions;
 
-namespace CvSeachTool.Models
+namespace Chovitai.Models
 {
     public class PromptCountCollectionM : ModelBase
     {

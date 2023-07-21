@@ -1,5 +1,5 @@
-﻿using CvSeachTool.Common;
-using CvSeachTool.Models.Bookmark;
+﻿using Chovitai.Common;
+using Chovitai.Models.Bookmark;
 using Microsoft.VisualBasic;
 using MVVMCore.BaseClass;
 using MVVMCore.Common.Utilities;
@@ -9,9 +9,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static CvSeachTool.Models.CvsModel.CvsModelM;
+using static Chovitai.Models.CvsModel.CvsModelM;
 
-namespace CvSeachTool.Models.Config
+namespace Chovitai.Models.Config
 {
     public class ConfigM : ModelBase
     {
