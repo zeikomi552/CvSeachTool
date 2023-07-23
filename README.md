@@ -6,8 +6,7 @@
 
 ※こちらの開発はアプリ名変更にともない終了しました。
 
-↓後継アプリはこちらです。↓
-[Choivitai](https://github.com/zeikomi552/Chovitai)
+後継アプリはこちらです。→ [Choivitai](https://github.com/zeikomi552/Chovitai)
 
 
 ###########################
