@@ -1,4 +1,4 @@
-# Chovitai
+# CvSeachTool
 
 ![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/zeikomi552/CvSeachTool)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/zeikomi552/CvSeachTool)
