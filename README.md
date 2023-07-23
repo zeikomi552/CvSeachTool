@@ -4,6 +4,12 @@
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/zeikomi552/CvSeachTool)
 ![GitHub](https://img.shields.io/github/license/zeikomi552/CvSeachTool)
 
+※こちらの開発はアプリ名変更にともない終了しました。
+後継アプリはこちらです。
+
+https://github.com/zeikomi552/Chovitai
+
+
 
 [CIVITAI](https://civitai.com/)の検索を効率化することを目的としたツールです。
 CIVITAIを調べていると同じところをぐるぐる回ってしまうので作りました。
